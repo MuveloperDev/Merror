@@ -70,13 +70,11 @@ public class BaseStateMachine : MonoBehaviour
     // Deallocate state.
     protected virtual void TurnOffState()
     {
-
         if (navMeshAgent != null)
         { 
             navMeshAgent.ResetPath();
             navMeshAgent.enabled = false;
         } 
-
        
         // False animation of previous state and Stop coroutine.
         if(prevState != State.NONE) myAnimator.SetBool(prevState.ToString(), false);

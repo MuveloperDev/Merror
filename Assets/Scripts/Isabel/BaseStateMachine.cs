@@ -12,7 +12,7 @@ public class BaseStateMachine : MonoBehaviour
     {
         NONE,
         IDLE,
-        RUN,
+        CHASE,
         SCREAM,
         FOCUS,
         DEATH,
@@ -37,26 +37,40 @@ public class BaseStateMachine : MonoBehaviour
     // Assign state.
     protected virtual void TurnOnState(State STATE)
     {
-        Debug.Log($"prevState : {prevState} paramState : {STATE}");
-
-        // 상태해제 테스트용
-        if (prevState == STATE)
-        { 
-            TurnOffState();
+        #region error
+        if (myAnimator == null)
+        {
+            Debug.LogError("Please Add Animator Component by MH");
             return;
         }
-        else if (prevState != State.IDLE)
+
+        if (audioSource == null) 
         {
-            
-            TurnOffState();
+            Debug.LogError("Please Add audioSource Component by MH");
+            return;
         }
+        #endregion
+
         prevState = STATE;
         StartCoroutine(STATE.ToString() + "_STATE");
     }
 
+    //// 상태해제 테스트용
+    //if (prevState == STATE)
+    //{
+    //    TurnOffState();
+    //    return;
+    //}
+    //else if (prevState != State.IDLE)
+    //{
+
+    //    TurnOffState();
+    //}
+
     // Deallocate state.
     protected virtual void TurnOffState()
     {
+
         if (navMeshAgent != null)
         { 
             navMeshAgent.ResetPath();
@@ -74,7 +88,7 @@ public class BaseStateMachine : MonoBehaviour
     #region STATE_COURUTINE
     // STATE_COROUTINES
 
-    IEnumerator RUN_STATE()
+    IEnumerator CHASE_STATE()
     {
         if (navMeshAgent != null)
         {
@@ -86,7 +100,7 @@ public class BaseStateMachine : MonoBehaviour
         
 
 
-        myAnimator.SetBool(State.RUN.ToString(), true);
+        myAnimator.SetBool(State.CHASE.ToString(), true);
         navMeshAgent.acceleration = 50f;
         while (true)
         {

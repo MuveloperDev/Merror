@@ -33,8 +33,8 @@ public class GameInput : MonoBehaviour
         Clamped_Delta_Mouse_Y += Input.GetAxis("Mouse Y"); // Get delta
         // Clamp degree 0 to 360
         Clamped_Delta_Mouse_Y = Clamped_Delta_Mouse_Y > 180f ? Clamped_Delta_Mouse_Y - 360f : Clamped_Delta_Mouse_Y;
-        Debug.Log("Unclamped delta Y : " + Clamped_Delta_Mouse_Y);
+        //Debug.Log("Unclamped delta Y : " + Clamped_Delta_Mouse_Y);
         Clamped_Delta_Mouse_Y = Mathf.Clamp(Clamped_Delta_Mouse_Y, -70f, 70f); // Clamp Range : (-Upside, -Downside)
-        Debug.Log("Clamped delta Y : " + Clamped_Delta_Mouse_Y);
+        //Debug.Log("Clamped delta Y : " + Clamped_Delta_Mouse_Y);
     }
 }

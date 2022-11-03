@@ -57,7 +57,7 @@ public partial class Player : MonoBehaviour
 
         Speed = MaxWalkSpeed;
         Stamina = MaxStamina;
-        _UI.UpdateStamina(Stamina);
+        //_UI.UpdateStamina(Stamina);
 
         //_MainCam.
     }

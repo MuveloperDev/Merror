@@ -30,7 +30,7 @@ public class BaseStateMachine : MonoBehaviour
     { 
         myAnimator = GetComponent<Animator>();
         transform = GetComponent<Transform>();
-        audioSource = GetComponent<AudioSource>();
+        audioSource = GetComponentInChildren<AudioSource>();
     }
 
     
@@ -50,22 +50,22 @@ public class BaseStateMachine : MonoBehaviour
             return;
         }
         #endregion
+        // 상태해제 테스트용
+        if (prevState == STATE)
+        {
+            TurnOffState();
+            return;
+        }
+        else if (prevState != State.IDLE)
+        {
 
+            TurnOffState();
+        }
         prevState = STATE;
         StartCoroutine(STATE.ToString() + "_STATE");
     }
 
-    //// 상태해제 테스트용
-    //if (prevState == STATE)
-    //{
-    //    TurnOffState();
-    //    return;
-    //}
-    //else if (prevState != State.IDLE)
-    //{
 
-    //    TurnOffState();
-    //}
 
     // Deallocate state.
     protected virtual void TurnOffState()
@@ -100,6 +100,7 @@ public class BaseStateMachine : MonoBehaviour
 
         myAnimator.SetBool(State.CHASE.ToString(), true);
         navMeshAgent.acceleration = 50f;
+
         while (true)
         {
             yield return null;

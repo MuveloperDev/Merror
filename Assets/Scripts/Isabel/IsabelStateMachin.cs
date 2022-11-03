@@ -14,10 +14,6 @@ public class IsabelStateMachin : BaseStateMachine
         {
             TurnOnState(State.CHASE);
         }
-        if (Input.GetKeyUp(KeyCode.H))
-        {
-            TurnOffState();
-        }
         if (Input.GetKeyDown(KeyCode.J))
         {
             TurnOnState(State.SCREAM);
@@ -45,4 +41,5 @@ public class IsabelStateMachin : BaseStateMachine
     {
         base.TurnOffState();
     }
+
 }

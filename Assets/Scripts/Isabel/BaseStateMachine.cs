@@ -21,7 +21,7 @@ public class BaseStateMachine : MonoBehaviour
 
     protected Animator myAnimator = null;
     protected NavMeshAgent navMeshAgent = null;
-    protected Transform transform = null;
+    //protected Transform transform = null;
     protected Transform target = null;
     protected AudioSource audioSource = null;
 
@@ -29,7 +29,7 @@ public class BaseStateMachine : MonoBehaviour
     protected virtual void Init()
     { 
         myAnimator = GetComponent<Animator>();
-        transform = GetComponent<Transform>();
+        //transform = GetComponent<Transform>();
         audioSource = GetComponent<AudioSource>();
     }
 

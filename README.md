@@ -33,6 +33,11 @@ Kim Jong Hoon
 Kim Bo Kang
 
 Choi Min Ju
+
+Kwon Yong Mun
+
+Sin Sung Hwan
+
 ```
 </div>
 

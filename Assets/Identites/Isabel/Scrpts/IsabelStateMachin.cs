@@ -10,13 +10,13 @@ public class IsabelStateMachin : BaseStateMachine
 
     void Update()
     {
+
+
+
+
         if (Input.GetKeyDown(KeyCode.H))
         {
             TurnOnState(State.CHASE);
-        }
-        if (Input.GetKeyUp(KeyCode.H))
-        {
-            TurnOffState();
         }
         if (Input.GetKeyDown(KeyCode.J))
         {
@@ -30,10 +30,10 @@ public class IsabelStateMachin : BaseStateMachine
         {
             TurnOnState(State.DEATH);
         }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            TurnOnState(State.SLEEPING);
-        }
+        //if (Input.GetKeyDown(KeyCode.S))
+        //{
+        //    TurnOnState(State.SLEEPING);
+        //}
     }
 
     protected override void TurnOnState(State STATE)

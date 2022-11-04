@@ -161,11 +161,11 @@ namespace MyLibrary
         public static void Save(T data)
         {
             string json = JsonUtility.ToJson(data);
-            json = json.Replace(",","$");
-            json = Convert.ToBase64String(Encryption(myKey,myIV,json));
-            json = json.Replace("=","@");
+            json = json.Replace(",", "$");
+            json = Convert.ToBase64String(Encryption(myKey, myIV, json));
+            json = json.Replace("=", "@");
 
-            System.Diagnostics.Process.Start(savePath,json).WaitForExit();
+            System.Diagnostics.Process.Start(savePath, json).WaitForExit();
         }
 
         /// <summary>
@@ -197,11 +197,11 @@ namespace MyLibrary
             }
             T data = myData;
 
-            encodingString = encodingString.Replace("@","=");
+            encodingString = encodingString.Replace("@", "=");
 
-            encodingString = Descryption(myKey,myIV,Convert.FromBase64String(encodingString));
-            JsonUtility.FromJsonOverwrite(encodingString.Replace("$",","),data);
-            
+            encodingString = Descryption(myKey, myIV, Convert.FromBase64String(encodingString));
+            JsonUtility.FromJsonOverwrite(encodingString.Replace("$", ","), data);
+
             return data;
         }
 
@@ -212,7 +212,7 @@ namespace MyLibrary
         /// <param name="myIV"> Key Vector </param>
         /// <param name="data"> Json String Data </param>
         /// <returns> Encyptored Data Data by byte Array  </returns>
-        private static byte[] Encryption(byte[] myKey,byte[] myIV,string data)
+        private static byte[] Encryption(byte[] myKey, byte[] myIV, string data)
         {
             byte[] encryptoed = null;
 
@@ -220,14 +220,14 @@ namespace MyLibrary
             {
                 enAes.Key = myKey;
                 enAes.IV = myIV;
-                    
+
                 // 암호화 변형의 기본 작업 설정
-                ICryptoTransform encrypto = enAes.CreateEncryptor(enAes.Key,enAes.IV);
+                ICryptoTransform encrypto = enAes.CreateEncryptor(enAes.Key, enAes.IV);
 
                 // 백업 저장소를 메모리로 만듬
                 using (MemoryStream msEncryto = new MemoryStream())
                 {
-                    using (CryptoStream enCrStream = new CryptoStream(msEncryto,encrypto,CryptoStreamMode.Write))
+                    using (CryptoStream enCrStream = new CryptoStream(msEncryto, encrypto, CryptoStreamMode.Write))
                     {
                         using (StreamWriter swEncrypto = new StreamWriter(enCrStream))
                         {
@@ -249,7 +249,7 @@ namespace MyLibrary
         /// <param name="myIV"> Key Vector </param>
         /// <param name="data"> Encrytored Data byte Array</param>
         /// <returns> Decryptored Data string Data </returns>
-        private static string Descryption(byte[] myKey,byte[] myIV,byte[] data)
+        private static string Descryption(byte[] myKey, byte[] myIV, byte[] data)
         {
             string result = null;
             using (Aes deAes = Aes.Create())
@@ -303,19 +303,69 @@ namespace MyLibrary
         }
     }
 
+    public static class MyRay
+    {
+        private static RaycastHit? originalInfo = null;
+        private static RaycastHit tempInfo;
+        private static bool isChangeObj = false;
+        private static Interactable interObj = null;
+
+        public static bool IsChangeObj { get { return isChangeObj; } }
+
+        /// <summary>
+        /// Shot Raycast at Main Camera foward
+        /// </summary>
+        /// <param name="pointCamera"> Starting Point Camera </param>
+        /// <param name="maxDistance"> Raycast Max distance </param>
+        /// <param name="isClicked"> Is input costom Key (Keyboard or Mouse) </param>
+        public static void StartRay(Camera pointCamera, float maxDistance, bool isClicked)
+        {
+            Vector3 direction = pointCamera.transform.forward;
+            Debug.DrawRay(pointCamera.transform.position, direction, Color.red);
+
+            if (Physics.Raycast(pointCamera.transform.position, direction, out tempInfo, maxDistance))
+            {
+                if (originalInfo == null)
+                {
+                    isChangeObj = true;
+                    originalInfo = tempInfo;
+                }
+                else
+                {
+                    if (isChangeObj = !(originalInfo.Equals(tempInfo)))
+                    {
+                        originalInfo = null;
+                        interObj = null;
+                    }
+                }
+
+                if (interObj == null)
+                {
+                    if (!tempInfo.transform.gameObject.TryGetComponent<Interactable>(out interObj))
+                        return;
+                }
+
+                if (isClicked == true)
+                {
+                    interObj.SendMessage("Do_Interact", SendMessageOptions.DontRequireReceiver);
+                }
+            }
+        }
+
+    }
+
     /// <summary>
     /// GameObject Inventory Class
     /// </summary>
     public class Inventory : MonoBehaviour
     {
-        private int InventoryLayer; 
+        private int InventoryLayer;
         private TextMeshProUGUI notice = null;
         private Canvas canvas = null;
         private Camera uiCamera = null;
 
         private List<GameObject> inven = null;
         private int count = 0;
-        private RaycastHit hitInfo;
 
         /// <summary>
         /// Class Constructor Initializing Members
@@ -323,13 +373,13 @@ namespace MyLibrary
         /// <param name="notice"> Notice Noting in inventory TMP </param>
         /// <param name="canvas"> BackGround Canvas (Background Panel and Notice in the Canvas) </param>
         /// <param name="InventoryLayer"> Inventory Layer's Value </param>
-        public Inventory(TextMeshProUGUI notice,Canvas canvas,int InventoryLayer)
+        public Inventory(TextMeshProUGUI notice, Canvas canvas, int InventoryLayer)
         {
             inven = new List<GameObject>();
 
             // UI Camera is Show only Inventory UI
             // Main Camera is Shouldn't Show Inventory UI
-            if(uiCamera == null)
+            if (uiCamera == null)
             {
                 uiCamera = new GameObject("UICAM").AddComponent<Camera>();
                 uiCamera.clearFlags = CameraClearFlags.Depth;
@@ -352,27 +402,7 @@ namespace MyLibrary
             canvas.gameObject.SetActive(false);
         }
 
-        /// <summary>
-        /// Shot Raycast at Main Camera foward
-        /// </summary>
-        /// <param name="maxDistance"> Raycast Max distance </param>
-        /// <param name="isClicked"> Is input costom Key (Keyboard or Mouse) </param>
-        public void StartRay(float maxDistance,bool isClicked)
-        {
-            Vector3 direction = Camera.main.transform.forward;
-            if (Physics.Raycast(Camera.main.transform.position, direction, out hitInfo, maxDistance))
-            {
-                Interactable interObj = hitInfo.transform.gameObject.GetComponent<Interactable>();
-                if (interObj == null)
-                    return;
 
-                if (isClicked == true)
-                {
-                    interObj.SendMessage("Do_Interact", SendMessageOptions.DontRequireReceiver);
-                }
-
-            }
-        }
 
         /// <summary>
         /// Get Item and insert inventory list
@@ -382,7 +412,7 @@ namespace MyLibrary
         {
             Interactable interObj = null;
 
-            if(item.TryGetComponent<Interactable>(out interObj) == true)
+            if (item.TryGetComponent<Interactable>(out interObj) == true)
             {
                 item.layer = InventoryLayer;
                 item.transform.SetParent(uiCamera.transform, true);
@@ -394,14 +424,14 @@ namespace MyLibrary
             {
                 return;
             }
-            
+
         }
 
         /// <summary>
         /// Show Inventory List as a 3D Object
         /// GamePlaying state is Pause
         /// </summary>
-        public void ShowInventory() 
+        public void ShowInventory()
         {
             TimeControl.Pause();
 
@@ -424,7 +454,7 @@ namespace MyLibrary
             {
                 notice.gameObject.SetActive(true);
             }
-            
+
         }
 
         /// <summary>
@@ -450,7 +480,7 @@ namespace MyLibrary
 
             count++;
 
-            if(count >= inven.Count)
+            if (count >= inven.Count)
             {
                 count = 0;
                 inven[count].transform.localPosition = inven[inven.Count - 1].transform.localPosition;
@@ -476,7 +506,7 @@ namespace MyLibrary
 
             count--;
 
-            if(count < 0)
+            if (count < 0)
             {
                 count = inven.Count - 1;
                 inven[count].transform.localPosition = inven[0].transform.localPosition;
@@ -491,7 +521,7 @@ namespace MyLibrary
             inven[count].SetActive(true);
             inven[count].transform.rotation = Quaternion.identity;
         }
-        
+
         /// <summary>
         /// When Mouse Click And Drag 3D Object is Rotate
         /// </summary>
@@ -499,8 +529,8 @@ namespace MyLibrary
         {
             float mouseXAxis = Input.GetAxis("Mouse X");
             float mouseYAxis = Input.GetAxis("Mouse Y");
-            
-            inven[count].transform.Rotate(mouseYAxis * 15f,-mouseXAxis * 15f,0f);
+
+            inven[count].transform.Rotate(mouseYAxis * 15f, -mouseXAxis * 15f, 0f);
         }
 
         /// <summary>
@@ -513,11 +543,11 @@ namespace MyLibrary
         /// </returns>
         public GameObject UseItem(string objID)
         {
-            foreach(GameObject iObj in inven)
+            foreach (GameObject iObj in inven)
             {
-                string iObjName = iObj.name.Replace("(Clone)","");
+                string iObjName = iObj.name.Replace("(Clone)", "");
 
-                if(iObjName == objID)
+                if (iObjName == objID)
                 {
                     inven.Remove(iObj);
                     return iObj;

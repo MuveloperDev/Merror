@@ -23,11 +23,18 @@ public class BaseStateMachine : MonoBehaviour
     protected Transform target = null;
     protected AudioSource audioSource = null;
 
+    protected bool isKill = false;
     private State prevState = State.NONE;
+
     protected virtual void Init()
     { 
         myAnimator = GetComponent<Animator>();
         audioSource = GetComponentInChildren<AudioSource>();
+        navMeshAgent = GetComponent<NavMeshAgent>();
+
+        navMeshAgent.ResetPath();
+        navMeshAgent.enabled = false;
+        isKill = false;
     }
 
     
@@ -82,28 +89,26 @@ public class BaseStateMachine : MonoBehaviour
 
     IEnumerator CHASE_STATE()
     {
-        transform.LookAt(target);
-        if (navMeshAgent != null)
-        {
-            navMeshAgent.enabled = true;
-        }
-        if (navMeshAgent == null) navMeshAgent = GetComponent<NavMeshAgent>();
         if (target == null) target = GameObject.FindGameObjectWithTag("Player").transform;
-        
+        transform.LookAt(target);
 
+        navMeshAgent.enabled = true;
+
+        
 
         myAnimator.SetBool(State.CHASE.ToString(), true);
         navMeshAgent.acceleration = 50f;
-
-        
-
         while (true)
         {
             yield return null;
             float desiredDir = Vector3.Distance(target.transform.position, transform.position);
-            if (desiredDir < 3f)
+            if (desiredDir < 2f)
             {
-                target.SendMessage("Death", SendMessageOptions.DontRequireReceiver);
+                if (!isKill)
+                {
+                    target.SendMessage("Death", CameraState.CamState.PANIC, SendMessageOptions.DontRequireReceiver);
+                    isKill = true;
+                }
                 TurnOffState();
                 TurnOnState(State.SCREAM);
             }

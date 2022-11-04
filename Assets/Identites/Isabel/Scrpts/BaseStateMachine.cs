@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -21,7 +20,6 @@ public class BaseStateMachine : MonoBehaviour
 
     protected Animator myAnimator = null;
     protected NavMeshAgent navMeshAgent = null;
-    //protected Transform transform = null;
     protected Transform target = null;
     protected AudioSource audioSource = null;
 
@@ -29,8 +27,7 @@ public class BaseStateMachine : MonoBehaviour
     protected virtual void Init()
     { 
         myAnimator = GetComponent<Animator>();
-        //transform = GetComponent<Transform>();
-        audioSource = GetComponent<AudioSource>();
+        audioSource = GetComponentInChildren<AudioSource>();
     }
 
     
@@ -51,26 +48,23 @@ public class BaseStateMachine : MonoBehaviour
         }
         #endregion
 
+        // 상태해제 테스트용
+        if (prevState == STATE)
+        {
+            TurnOffState();
+            return;
+        }
+
         prevState = STATE;
         StartCoroutine(STATE.ToString() + "_STATE");
     }
 
-    //// 상태해제 테스트용
-    //if (prevState == STATE)
-    //{
-    //    TurnOffState();
-    //    return;
-    //}
-    //else if (prevState != State.IDLE)
-    //{
 
-    //    TurnOffState();
-    //}
 
     // Deallocate state.
     protected virtual void TurnOffState()
     {
-        if (navMeshAgent != null)
+        if (navMeshAgent != null && navMeshAgent.enabled)
         { 
             navMeshAgent.ResetPath();
             navMeshAgent.enabled = false;
@@ -88,9 +82,9 @@ public class BaseStateMachine : MonoBehaviour
 
     IEnumerator CHASE_STATE()
     {
+        transform.LookAt(target);
         if (navMeshAgent != null)
         {
-            transform.LookAt(target);
             navMeshAgent.enabled = true;
         }
         if (navMeshAgent == null) navMeshAgent = GetComponent<NavMeshAgent>();
@@ -100,10 +94,20 @@ public class BaseStateMachine : MonoBehaviour
 
         myAnimator.SetBool(State.CHASE.ToString(), true);
         navMeshAgent.acceleration = 50f;
+
+        
+
         while (true)
         {
             yield return null;
-            navMeshAgent.SetDestination(target.position);
+            float desiredDir = Vector3.Distance(target.transform.position, transform.position);
+            if (desiredDir < 3f)
+            {
+                target.SendMessage("Death", SendMessageOptions.DontRequireReceiver);
+                TurnOffState();
+                TurnOnState(State.SCREAM);
+            }
+            if (navMeshAgent.enabled) navMeshAgent.SetDestination(target.position);
         }
     }
 

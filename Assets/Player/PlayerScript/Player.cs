@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using MyLibrary;
+using static CameraState;
 
 public partial class Player : MonoBehaviour
 {
     //[SerializeField] private Inventory inventory = null;
+    [SerializeField] private CameraState cameraState;
+
     private void Awake()
     {
         //_Collider = GetComponent<CapsuleCollider>();
@@ -31,9 +34,10 @@ public partial class Player : MonoBehaviour
     {
         RotatePlayerSpine();
     }
-    private void Death()
+    private void Death(CamState camState)
     {
         Debug.Log("Player : I'm Dead!!!");
+        cameraState.TurnOnState(camState);
     }
     public void StartRay(float maxDistance, bool isClicked)
     {

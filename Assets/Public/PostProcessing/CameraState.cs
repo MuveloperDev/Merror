@@ -40,14 +40,6 @@ public class CameraState : MonoBehaviour
     void Start() => Init();
 
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            TurnOnState(CamState.PANIC);
-        }
-    }
-
     void Init()
     {
 
@@ -63,7 +55,7 @@ public class CameraState : MonoBehaviour
     }
 
 
-    void TurnOnState(CamState STATE)
+    public void TurnOnState(CamState STATE)
     {
         Debug.Log("TurnOnState");
 

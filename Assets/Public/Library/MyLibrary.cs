@@ -6,6 +6,8 @@ using System.IO;
 using System;
 using System.Security.Cryptography;
 using TMPro;
+using Cinemachine;
+using Newtonsoft.Json.Bson;
 
 namespace MyLibrary
 {
@@ -305,51 +307,99 @@ namespace MyLibrary
 
     public static class MyRay
     {
-        private static RaycastHit? originalInfo = null;
-        private static RaycastHit tempInfo;
-        private static bool isChangeObj = false;
-        private static Interactable interObj = null;
+        private static RaycastHit? lastHit = null; // Last hit object
+        private static RaycastHit currentHit; // Current hitting object
+        private static bool isRayExit = false; // Is my ray point another one?
+        private static Interactable interObj = null; // Can interactable object
+        public static bool IsRayExit { get { return isRayExit; } }
 
-        public static bool IsChangeObj { get { return isChangeObj; } }
+        private static CinemachineVirtualCamera startPointCam = null; // Starting point of camera
 
         /// <summary>
-        /// Shot Raycast at Main Camera foward
+        /// Shoot Ray Main Logic
+        /// </summary>
+        private static void ShootRay(float maxDistance, bool isClicked)
+        {
+            Vector3 direction;
+            Vector3 startPos;
+
+            if (startPointCam != null) // If received camera information
+            {
+                startPos = startPointCam.gameObject.transform.position;
+                direction = startPointCam.gameObject.transform.forward;
+            }
+            else // Just for main camera
+            {
+                startPos = Camera.main.transform.position;
+                direction = Camera.main.transform.forward;
+            }
+            Debug.DrawRay(startPos, direction * maxDistance, Color.red);
+            if (Physics.Raycast(startPos, direction, out currentHit, maxDistance)) // Hit something
+            {
+                if (lastHit == null) // When game start at first
+                {
+                    isRayExit = true;
+                    lastHit = currentHit;
+                }
+                else // When playing,
+                {
+                    if (isRayExit = !(lastHit.Equals(currentHit))) // Something have changes
+                    {
+                        // Turn off the outline last object's. if it can interactable.
+                        if (lastHit.Value.transform.TryGetComponent<Interactable>(out interObj))
+                        {
+                            interObj.SendMessage("Do_Outline", false, SendMessageOptions.DontRequireReceiver);
+                        }
+                        // Turn on the outline new object's. if it can interactable.
+                        if (currentHit.transform.TryGetComponent<Interactable>(out interObj))
+                        {
+                            interObj.SendMessage("Do_Outline", true, SendMessageOptions.DontRequireReceiver);
+                        }
+                    }
+                }
+                if (isClicked == true && interObj != null) // Click down and can interactable
+                {
+                    // Do something
+                    interObj.SendMessage("Do_Interact", SendMessageOptions.DontRequireReceiver);
+                }
+                lastHit = currentHit; // Initialize
+            }
+            else // Ray didn't hit anything.
+            {
+                if (lastHit != null) // If have last hit information,
+                {
+                    // Turn off last one.
+                    if (lastHit.Value.transform.TryGetComponent<Interactable>(out interObj))
+                    {
+                        interObj.SendMessage("Do_Outline", false, SendMessageOptions.DontRequireReceiver);
+                    }
+                }
+                isRayExit = true; // Ray is exit.
+                lastHit = null; // Initialize
+            }
+        }
+
+        /// <summary>
+        /// Default Ray(Start Main Camera)
+        /// </summary>
+        /// <param name="maxDistance"> Raycast Max distance </param>
+        /// <param name="isClicked"> Is input costom Key (Keyboard or Mouse) </param>
+        public static void StartRay(float maxDistance, bool isClicked)
+        {
+            startPointCam = null;
+            ShootRay(maxDistance, isClicked);
+        }
+
+        /// <summary>
+        /// Custom Ray(Start Param's Cinemachine Virtual Camera)
         /// </summary>
         /// <param name="pointCamera"> Starting Point Camera </param>
         /// <param name="maxDistance"> Raycast Max distance </param>
         /// <param name="isClicked"> Is input costom Key (Keyboard or Mouse) </param>
-        public static void StartRay(Camera pointCamera, float maxDistance, bool isClicked)
+        public static void StartRay(CinemachineVirtualCamera pointCam, float maxDistance, bool isClicked)
         {
-            Vector3 direction = pointCamera.transform.forward;
-            Debug.DrawRay(pointCamera.transform.position, direction, Color.red);
-
-            if (Physics.Raycast(pointCamera.transform.position, direction, out tempInfo, maxDistance))
-            {
-                if (originalInfo == null)
-                {
-                    isChangeObj = true;
-                    originalInfo = tempInfo;
-                }
-                else
-                {
-                    if (isChangeObj = !(originalInfo.Equals(tempInfo)))
-                    {
-                        originalInfo = null;
-                        interObj = null;
-                    }
-                }
-
-                if (interObj == null)
-                {
-                    if (!tempInfo.transform.gameObject.TryGetComponent<Interactable>(out interObj))
-                        return;
-                }
-
-                if (isClicked == true)
-                {
-                    interObj.SendMessage("Do_Interact", SendMessageOptions.DontRequireReceiver);
-                }
-            }
+            startPointCam = pointCam;
+            ShootRay(maxDistance, isClicked);
         }
 
     }

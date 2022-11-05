@@ -40,7 +40,6 @@ public class TrainLogic : MonoBehaviour
         {
             turnLeft = true;
             move = false;
-            Debug.Log("1");
         }
         else if(other.gameObject.name == "2") // Stop turn trigger
         {
@@ -50,13 +49,11 @@ public class TrainLogic : MonoBehaviour
                 transform.rotation = Quaternion.Euler(transform.rotation.x, 180f, transform.rotation.y);
             }
             move = true;
-            Debug.Log("2");
         }
         else if(other.gameObject.name == "3") // Turn right trigger
         {
             turnRight = true;
             move = false;
-            Debug.Log("3");
         }
         else if (other.gameObject.name == "4")
         {
@@ -68,7 +65,6 @@ public class TrainLogic : MonoBehaviour
             }
             transform.position = new Vector3(transform.position.x, transform.position.y, startPos.position.z);
             transform.rotation = Quaternion.Euler(new Vector3(0f, 90f, 0f));
-            Debug.Log("Reset");
         }
     }
     private IEnumerator Reset()
@@ -78,7 +74,6 @@ public class TrainLogic : MonoBehaviour
             transform.position = Vector3.Lerp(transform.position, startPos.position, Time.deltaTime * 2f);
             if(transform.position == startPos.position)
             {
-                Debug.Log("Reset Finished");
                 yield break;
             }
             yield return null;

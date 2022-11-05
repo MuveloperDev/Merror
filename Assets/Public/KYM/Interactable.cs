@@ -25,6 +25,7 @@ public partial class Interactable : MonoBehaviour
         Toilet_Flush,
         Sink,
         Switch,
+        PuzzleGuessWho,
     }
     [SerializeField] protected ObjectType myType = ObjectType.None;
 

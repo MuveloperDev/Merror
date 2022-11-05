@@ -26,6 +26,11 @@ public partial class Interactable : MonoBehaviour
                     Do_Light();
                     break;
                 }
+            case ObjectType.PuzzleGuessWho:
+                {
+                    Do_Puzzle_GuessWho();
+                    break;
+                }
         }
     }
     /// <summary>
@@ -72,6 +77,18 @@ public partial class Interactable : MonoBehaviour
                 {
                     break;
                 }
+        }
+    }
+
+    public virtual void Do_Puzzle_GuessWho()
+    {
+        if (TryGetComponent<PuzzleGuessWho>(out PuzzleGuessWho puzzleGuessWho))
+        {
+            puzzleGuessWho.SendMessage("CheckAnswer",SendMessageOptions.DontRequireReceiver);
+        }
+        else
+        {
+            Debug.Log("This Object not have PuzzleGuessWho Script.");
         }
     }
 }

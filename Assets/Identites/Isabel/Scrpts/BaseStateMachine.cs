@@ -32,7 +32,6 @@ public class BaseStateMachine : MonoBehaviour
         audioSource = GetComponentInChildren<AudioSource>();
         navMeshAgent = GetComponent<NavMeshAgent>();
 
-        navMeshAgent.ResetPath();
         navMeshAgent.enabled = false;
         isKill = false;
     }

@@ -49,7 +49,7 @@ public class CameraState : MonoBehaviour
         bloom.intensity.value = 20.06f;
         lensDistortion.intensity.value = 17f;
         chromaticAberration.intensity.value = 0f;
-        depthOfField.focusDistance.value = 77f;
+        depthOfField.focusDistance.value = 2.3f;
         time = 0f;
 
     }

@@ -3004,9 +3004,10 @@ GameObject:
   - component: {fileID: 8935074835262804246}
   - component: {fileID: 8935074835262804247}
   - component: {fileID: 1365494751}
+  - component: {fileID: 1782499360}
   m_Layer: 0
   m_Name: PlayerPrefab
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3122,3 +3123,16 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.25
   m_Center: {x: 0, y: 0.25, z: 0}
+--- !u!65 &1782499360
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8935074835262804264}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.2, y: 1.2240838, z: 0.2}
+  m_Center: {x: 0, y: 0.94, z: 0}

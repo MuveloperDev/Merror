@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using MyLibrary;
-using static CameraState;
 
 public partial class Player : MonoBehaviour
 {
@@ -34,7 +33,7 @@ public partial class Player : MonoBehaviour
     {
         RotatePlayerSpine();
     }
-    private void Death(CamState camState)
+    private void Death(CameraState.CamState camState)
     {
         Debug.Log("Player : I'm Dead!!!");
         cameraState.TurnOnState(camState);

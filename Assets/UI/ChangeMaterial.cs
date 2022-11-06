@@ -22,7 +22,7 @@ public class ChangeMaterial : MonoBehaviour
     void Start()
     {
         // Default aim setting
-        AimUI.material = UIMaterial[5];
+        AimUI.material = UIMaterial[0];
     }
 
     // Update is called once per frame

@@ -36938,6 +36938,7 @@ GameObject:
   - component: {fileID: 2084358455}
   - component: {fileID: 2084358457}
   - component: {fileID: 2084358456}
+  - component: {fileID: 2084358458}
   m_Layer: 5
   m_Name: Aim
   m_TagString: Untagged
@@ -36977,7 +36978,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: 12025cca13e30b94082d07518f910110, type: 2}
+  m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -37003,6 +37004,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2084358454}
   m_CullTransparentMesh: 1
+--- !u!114 &2084358458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084358454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 264429c5d29d6fd4f8918027d679d410, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIMaterial:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!23 &2084412088
 MeshRenderer:
   m_ObjectHideFlags: 0

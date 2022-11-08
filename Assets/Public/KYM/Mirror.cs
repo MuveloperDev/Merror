@@ -11,6 +11,9 @@ public class Mirror : MonoBehaviour
         pieces.SetActive(false);
         Debug.Log("MirrorInit");
     }
+    /// <summary>
+    /// Be Sent Message by player. Break mirror and fall pieces.
+    /// </summary>
     private void Break()
     {
         Debug.Log("Break");
@@ -23,6 +26,9 @@ public class Mirror : MonoBehaviour
         this.gameObject.SetActive(false);
         Invoke("PhysicsOff", 2f);
     }
+    /// <summary>
+    /// To raise performance, turn off the rigidbodies when falling finished.
+    /// </summary>
     private void PhysicsOff()
     {
         for (int i = 0; i < pieces.transform.childCount; i++)

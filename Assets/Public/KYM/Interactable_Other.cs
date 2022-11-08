@@ -5,6 +5,7 @@ using static UnityEngine.EventSystems.EventTrigger;
 
 public partial class Interactable : MonoBehaviour
 {
+    [Header("More Function")]
     [SerializeField] private bool Gettable = false;
     [SerializeField] private bool Special = false;
     [SerializeField] private Light _Light = null;
@@ -29,6 +30,12 @@ public partial class Interactable : MonoBehaviour
             case ObjectType.PuzzleGuessWho:
                 {
                     Do_Puzzle_GuessWho();
+                    break;
+                }
+            case ObjectType.Mirror:
+                {
+                    Do_Break_Mirror();
+                    Debug.Log("Added");
                     break;
                 }
         }
@@ -89,6 +96,18 @@ public partial class Interactable : MonoBehaviour
         else
         {
             Debug.Log("This Object not have PuzzleGuessWho Script.");
+        }
+    }
+    public void Do_Break_Mirror()
+    {
+        if (TryGetComponent<Mirror>(out Mirror mirror))
+        {
+            Debug.Log("GetMirror");
+            mirror.SendMessage("Break", SendMessageOptions.DontRequireReceiver);
+        }
+        else
+        {
+            Debug.Log("This Object not have Mirror Script.");
         }
     }
 }

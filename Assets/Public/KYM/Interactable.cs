@@ -77,5 +77,9 @@ public partial class Interactable : MonoBehaviour
     public virtual void Do_Interact()
     {
         DoMyWork(); // Do delegate chain
-    } 
+    }
+    public virtual void Do_Inventory()
+    {
+        GameManager.Instance.GetInventory().InsertItem(this.gameObject, Inventory_Scale);
+    }
 }

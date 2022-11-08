@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Cinemachine;
+using UnityEngine.Rendering;
+using EPOOutline;
+using UnityEditor;
+using MyLibrary;
+using TMPro;
+
 public class GameManager : Singleton<GameManager>
 {
     private Player MyPlayer = null;
@@ -11,6 +17,16 @@ public class GameManager : Singleton<GameManager>
 
     private CinemachineVirtualCamera PlayerCam = null;
     public CinemachineVirtualCamera GetPlayerCamera() { return PlayerCam; }
+
+    private bool ShowInven = false;
+    private Inventory MyInventory = null;
+    public Inventory GetInventory() { return MyInventory; }
+    [SerializeField] private Canvas InventoryCanvas = null;
+    [SerializeField] private TextMeshProUGUI Notice = null;
+    public void InitInventory()
+    { 
+        MyInventory = new Inventory(Notice, InventoryCanvas);
+    }
     public void FindPlayerCamera()
     {
         if (MyPlayer != null)
@@ -30,6 +46,26 @@ public class GameManager : Singleton<GameManager>
     {
         SceneManager.activeSceneChanged -= OnSceneChanged;
         SceneManager.activeSceneChanged += OnSceneChanged;
+        InitInventory();
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            ShowInven = !ShowInven;
+            if (ShowInven)
+            {
+                MyInventory.ShowInventory();
+            }
+            else MyInventory.HideInventory();
+        }
+        if (ShowInven)
+        {
+            if (MyInventory.GetItemCount > 0)
+            {
+                MyInventory.RotationItem();
+            }
+        }
     }
     private void OnSceneChanged(Scene previous, Scene current)
     {

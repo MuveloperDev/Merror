@@ -294,13 +294,13 @@ namespace MyLibrary
             Pause = () =>
             {
                 Time.timeScale = 0f;
-                Time.fixedDeltaTime = 0.2f * Time.timeScale;
+                //Time.fixedDeltaTime = Time.fixedTime * Time.timeScale;
             };
 
             Play = () =>
             {
                 Time.timeScale = 1f;
-                Time.fixedDeltaTime = 0.2f * Time.timeScale;
+                //Time.fixedDeltaTime = Time.fixedTime * Time.timeScale;
             };
         }
     }
@@ -415,6 +415,7 @@ namespace MyLibrary
         private Camera uiCamera = null;
 
         private List<GameObject> inven = null;
+        public int GetItemCount { get { return inven.Count; } }
         private int count = 0;
 
         /// <summary>
@@ -423,7 +424,7 @@ namespace MyLibrary
         /// <param name="notice"> Notice Noting in inventory TMP </param>
         /// <param name="canvas"> BackGround Canvas (Background Panel and Notice in the Canvas) </param>
         /// <param name="InventoryLayer"> Inventory Layer's Value </param>
-        public Inventory(TextMeshProUGUI notice, Canvas canvas, int InventoryLayer)
+        public Inventory(TextMeshProUGUI notice, Canvas canvas)
         {
             inven = new List<GameObject>();
 
@@ -439,12 +440,12 @@ namespace MyLibrary
                 uiCamera.gameObject.SetActive(false);
 
                 Camera.main.cullingMask = Camera.main.cullingMask & ~(1 << LayerMask.NameToLayer("Inventory"));
-                Camera.main.cullingMask = ~(-1 << LayerMask.NameToLayer("UI"));
+                Camera.main.cullingMask = Camera.main.cullingMask & ~(1 << LayerMask.NameToLayer("UI"));
             }
 
             this.notice = notice;
             this.canvas = canvas;
-            this.InventoryLayer = InventoryLayer;
+            InventoryLayer = LayerMask.NameToLayer("Inventory");
 
             canvas.planeDistance = 6;
             canvas.renderMode = RenderMode.ScreenSpaceCamera;
@@ -458,14 +459,16 @@ namespace MyLibrary
         /// Get Item and insert inventory list
         /// </summary>
         /// <param name="item"> acquired item </param>
-        public void InsertItem(GameObject item)
+        public void InsertItem(GameObject item, float scale)
         {
             Interactable interObj = null;
 
             if (item.TryGetComponent<Interactable>(out interObj) == true)
             {
+                Debug.Log(InventoryLayer);
                 item.layer = InventoryLayer;
-                item.transform.SetParent(uiCamera.transform, true);
+                item.transform.localScale = new Vector3(scale, scale, scale);
+                item.transform.SetParent(uiCamera.transform, false);
                 Destroy(interObj);
                 item.SetActive(false);
                 inven.Add(item);
@@ -577,10 +580,13 @@ namespace MyLibrary
         /// </summary>
         public void RotationItem()
         {
-            float mouseXAxis = Input.GetAxis("Mouse X");
-            float mouseYAxis = Input.GetAxis("Mouse Y");
+            if (Input.GetMouseButton(0))
+            {
+                float mouseXAxis = Input.GetAxis("Mouse X");
+                float mouseYAxis = Input.GetAxis("Mouse Y");
 
-            inven[count].transform.Rotate(mouseYAxis * 15f, -mouseXAxis * 15f, 0f);
+                inven[count].transform.Rotate(mouseYAxis * 5f, -mouseXAxis * 5f, 0f);
+            }
         }
 
         /// <summary>

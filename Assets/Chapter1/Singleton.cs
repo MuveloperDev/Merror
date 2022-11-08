@@ -32,15 +32,11 @@ public class Singleton<T> : MonoBehaviour where T : Singleton<T>
         }
     }
     [SerializeField] private int Instance_ID;
-    public new Transform transform { get; private set; }
-    public new GameObject gameObject { get; private set; }
 
     private void Awake()
     {
         if(instance == null)
         {
-            transform = this.transform;
-            gameObject = this.gameObject;
             Instance_ID = GetInstanceID();
             Debug.Log("Awake singleton class <" + this.name + ">, Instance ID : " + Instance_ID);
             instance = this as T;

@@ -26,6 +26,7 @@ public partial class Interactable : MonoBehaviour
         Sink,
         Switch,
         PuzzleGuessWho,
+        Mirror,
     }
     [SerializeField] protected ObjectType myType = ObjectType.None;
 
@@ -37,6 +38,10 @@ public partial class Interactable : MonoBehaviour
         if (Outlinable)
         {
             InitOutlineComponent();
+        }
+        if (Moveable)
+        {
+            DoMyWork += Do_Movement;
         }
         if (Rotatable)
         {
@@ -72,5 +77,9 @@ public partial class Interactable : MonoBehaviour
     public virtual void Do_Interact()
     {
         DoMyWork(); // Do delegate chain
-    } 
+    }
+    public virtual void Do_Inventory()
+    {
+        GameManager.Instance.GetInventory().InsertItem(this.gameObject, Inventory_Scale);
+    }
 }

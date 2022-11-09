@@ -27,6 +27,7 @@ public partial class Interactable : MonoBehaviour
         Switch,
         PuzzleGuessWho,
     }
+
     [SerializeField] protected ObjectType myType = ObjectType.None;
 
     private delegate void Do();

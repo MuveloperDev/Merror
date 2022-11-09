@@ -238,9 +238,7 @@ namespace MyLibrary
                         encryptoed = msEncryto.ToArray();
                     }
                 }
-
             }
-
             return encryptoed;
         }
 
@@ -273,10 +271,8 @@ namespace MyLibrary
                 }
 
             }
-
             return result;
         }
-
     }
 
     /// <summary>
@@ -401,7 +397,6 @@ namespace MyLibrary
             startPointCam = pointCam;
             ShootRay(maxDistance, isClicked);
         }
-
     }
 
     /// <summary>

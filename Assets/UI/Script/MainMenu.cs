@@ -5,24 +5,22 @@ using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class MainMenu : MonoBehaviour
+public class MainMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     GameObject soundManager = null;
     //Image[] im = null;
 
+    Button[] transButton;
+
+    GameObject button;
+
     private void Awake()
     {
         soundManager = GameObject.Find("SoundOption");
-        //im = gameObject.GetComponentsInChildren<Image>();
+        transButton = GameObject.Find("Menu").GetComponentsInChildren<Button>();
+        //button = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
     }
 
-    private void Start()
-    {
-        /*for (int i = 0; i < im.Length; i++)
-        {
-            im[i].enabled = false;
-        }*/
-    }
 
     // NewGameButton
     public void OnClickNewGame()
@@ -61,13 +59,40 @@ public class MainMenu : MonoBehaviour
     {
         soundManager.SetActive(false);
     }
-
+/*
     public void PointerEnterHandler()
     {
-        /*Image AA = this.gameObject.GetComponent<Image>();
-        AA.enabled = true;*/
+        //NameCheck(button.name);
+        Debug.Log(UnityEngine.EventSystems.EventSystem.current.gameObject.name);
+        //UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.name;
+        //buttonImage.enabled = true;
 
+    }
 
-        Debug.Log("올라감");
+    public void PointerExitHandler()
+    {
+        Debug.Log("내려감");
+        //buttonImage.enabled = false;
+
+    }
+
+    private void NameCheck(string Name)
+    {
+        switch (Name)
+        {
+            case "StartButton":
+
+                break;
+        }
+    }
+*/
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        Debug.Log(gameObject.name);
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        Debug.Log(gameObject.name);
     }
 }

@@ -332,7 +332,8 @@ namespace MyLibrary
             }
             Debug.DrawRay(startPos, direction * maxDistance, Color.red);
             if (Physics.Raycast(startPos, direction, out currentHit, maxDistance)) // Hit something
-            {
+            { 
+
                 if (lastHit == null) // When game start at first
                 {
                     isRayExit = true;

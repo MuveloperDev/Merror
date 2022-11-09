@@ -6,7 +6,7 @@ using UnityEngine.UI;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
-public class MainMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class MainMenu : MonoBehaviour
 {
     GameObject soundManager = null;
     
@@ -24,7 +24,6 @@ public class MainMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     // NewGameButton
     public void OnClickNewGame()
     {
-        Debug.Log("���� ����");
         // LodingScene AsyncLoad
         SceneManager.LoadSceneAsync("LodingScene");
     }
@@ -32,7 +31,6 @@ public class MainMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     // OptionButton
     public void OnClickOption()
     {
-        Debug.Log("�ɼ�");
         // Activate SoundManager UI
         soundManager.SetActive(true);
     }
@@ -40,7 +38,7 @@ public class MainMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     // SaveButton
     public void OnClickSave()
     {
-        Debug.Log("�ҷ�����");
+        Debug.Log("저장됨");
     }
 
     // ExitButton

@@ -81,7 +81,7 @@ public partial class Interactable : MonoBehaviour
     /// </summary>
     public virtual void Do_Interact()
     {
-        if (IsLocked == false) return;
+        if (IsLocked == true) return;
         DoMyWork(); // Do delegate chain
     }
     public virtual void Do_Inventory()

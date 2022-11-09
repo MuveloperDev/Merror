@@ -22,6 +22,7 @@ public partial class Player : MonoBehaviour
     {
         InitMovementValues();
         MyRay.StartRay(_MainCam, 5f, Input.GetMouseButtonDown(0));
+
         RotatePlayer();
         Crouch();
     }

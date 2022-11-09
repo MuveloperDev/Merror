@@ -16,5 +16,19 @@ public class UIManager : MonoBehaviour
 
         //MyRay.GetInterObj().GetMyType();
     }
+
+
+    // Add Pointer Script
+
+
+    // Contact Mylibrary => interactable Script
+    private void ChangeAim()
+    {
+
+    }
+    
+
+
+
     #endregion
 }

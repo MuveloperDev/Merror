@@ -18,7 +18,11 @@ public partial class Interactable : MonoBehaviour
     public virtual void Do_Outline(bool value)
     {
         if (_Outlinable != null)
+        {
             _Outlinable.enabled = value;
+        }
+        
+        
     }
     /// <summary>
     /// Initialize Outline Component. Trying get component and if failed, create new component.
@@ -41,9 +45,9 @@ public partial class Interactable : MonoBehaviour
             }
             catch (Exception e)
             {
-                if(e != null)
-                Debug.LogError("Outline Component Error : There's no Outline Assets Package.\n" +
-                    "Please check your package installed.");
+                if (e != null)
+                    Debug.LogError("Outline Component Error : There's no Outline Assets Package.\n" +
+                        "Please check your package installed.");
             }
         }
     }

@@ -5,7 +5,9 @@ using static UnityEngine.EventSystems.EventTrigger;
 
 public partial class Interactable : MonoBehaviour
 {
+    [Header("More Function")]
     [SerializeField] private bool Gettable = false;
+    [SerializeField] private float Inventory_Scale = 1f;
     [SerializeField] private bool Special = false;
     [SerializeField] private Light _Light = null;
 
@@ -36,6 +38,12 @@ public partial class Interactable : MonoBehaviour
                     Do_Puzzme_IsabellRoom();
                     break;
                 }
+            case ObjectType.Mirror:
+                {
+                    Do_Break_Mirror();
+                    Debug.Log("Added");
+                    break;
+                }
         }
     }
     /// <summary>
@@ -60,28 +68,6 @@ public partial class Interactable : MonoBehaviour
         if (_Light != null)
         {
             _Light.enabled = !_Light.enabled;
-        }
-    }
-    /// <summary>
-    /// Move this object to player inventory and hide this object.
-    /// </summary>
-    public virtual void Do_Inventory()
-    {
-        if (Gettable == false) return;
-        switch (myType)
-        {
-            case ObjectType.None:
-                {
-                    break;
-                }
-            case ObjectType.Key:
-                {
-                    break;
-                }
-            case ObjectType.Lock:
-                {
-                    break;
-                }
         }
     }
 
@@ -109,6 +95,18 @@ public partial class Interactable : MonoBehaviour
         else
         {
             Debug.Log("This Object not have Puzzle_IsabellRoom Script.");
+        }
+    }
+    public void Do_Break_Mirror()
+    {
+        if (TryGetComponent<Mirror>(out Mirror mirror))
+        {
+            Debug.Log("GetMirror");
+            mirror.SendMessage("Break", SendMessageOptions.DontRequireReceiver);
+        }
+        else
+        {
+            Debug.Log("This Object not have Mirror Script.");
         }
     }
 }

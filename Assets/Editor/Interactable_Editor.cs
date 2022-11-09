@@ -10,6 +10,10 @@ public class Interactable_Editor : Editor
     private List<SerializedProperty> Audio = new List<SerializedProperty>();
     private string[] Audio_Menu;
 
+    private SerializedProperty Moveable = null;
+    private List<SerializedProperty> Move = new List<SerializedProperty>();
+    private string[] Move_Menu;
+
     private SerializedProperty Rotatable = null;
     private List<SerializedProperty> Rotate = new List<SerializedProperty>();
     private string[] Rotate_Menu;
@@ -19,6 +23,10 @@ public class Interactable_Editor : Editor
     //private SerializedProperty Outlinable = null;
     private void Awake()
     {
+        Move_Menu = new string[]
+        {
+            "Movement_Axis", "Target_Movement", "Movement_Speed", "InvertMovement"
+        };
         Rotate_Menu = new string[] // Menu List
         {
             "Rotation_Axis", "Target_Angle", "Rotate_Speed",
@@ -35,11 +43,19 @@ public class Interactable_Editor : Editor
     }
     private void OnEnable()
     {
+        Move.Clear();
         Rotate.Clear(); // Clear List
         Audio.Clear();
         Lighting.Clear();
 
         MyType = serializedObject.FindProperty("myType");
+
+        Moveable = serializedObject.FindProperty("Moveable");
+        for (int i = 0; i < Move_Menu.Length; i++)
+        {
+            Move.Add(serializedObject.FindProperty(Move_Menu[i]));
+        }
+
         Rotatable = serializedObject.FindProperty("Rotatable");
         for(int i = 0; i < Rotate_Menu.Length; i++) // Find property by menu name in string[]
         {
@@ -71,6 +87,14 @@ public class Interactable_Editor : Editor
                     if(iterator.name == audioMenu.name) // If audio menu,
                     {
                         visible = AudioPlayable.boolValue; // Get audio playable bool value
+                        break;
+                    }
+                }
+                foreach (var moveMenu in Move)
+                {
+                    if (iterator.name == moveMenu.name)
+                    {
+                        visible = Moveable.boolValue;
                         break;
                     }
                 }

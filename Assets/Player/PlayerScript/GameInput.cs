@@ -14,10 +14,13 @@ public class GameInput : MonoBehaviour
     public bool LeftCtrl { get; private set; } = false;
     public bool LeftCtrlUp { get; private set; } = false;
 
+    [SerializeField] private float XSpeed = 70f;
+    [SerializeField] private float YSpeed = 70f;
+
     private void Update()
     {
-        MouseX = Input.GetAxis("Mouse X");
-        MouseY = Input.GetAxis("Mouse Y");
+        MouseX = Input.GetAxis("Mouse X") * Time.deltaTime * XSpeed;
+        MouseY = Input.GetAxis("Mouse Y") * Time.deltaTime * YSpeed;
 
         ClampMouseY();
 
@@ -30,11 +33,9 @@ public class GameInput : MonoBehaviour
     }
     private void ClampMouseY()
     {
-        Clamped_Delta_Mouse_Y += Input.GetAxis("Mouse Y"); // Get delta
+        Clamped_Delta_Mouse_Y += MouseY; // Get delta
         // Clamp degree 0 to 360
         Clamped_Delta_Mouse_Y = Clamped_Delta_Mouse_Y > 180f ? Clamped_Delta_Mouse_Y - 360f : Clamped_Delta_Mouse_Y;
-        //Debug.Log("Unclamped delta Y : " + Clamped_Delta_Mouse_Y);
         Clamped_Delta_Mouse_Y = Mathf.Clamp(Clamped_Delta_Mouse_Y, -70f, 70f); // Clamp Range : (-Upside, -Downside)
-        //Debug.Log("Clamped delta Y : " + Clamped_Delta_Mouse_Y);
     }
 }

@@ -156,16 +156,17 @@ public partial class Player : MonoBehaviour
             }
             else
             {
-                Stamina -= StaminaDecreaseRate * Time.deltaTime;
-                if (_UI != null && !(Stamina < 0f) && !(Stamina > 100f))
-                    _UI.UpdateStamina(Stamina);
-                if (Stamina < 0f)
+                if (Stamina <= 100f)
                 {
-                    Stamina = 0f;
-                    if (_UI != null)
-                        _UI.UpdateStamina(Stamina);
-                    Debug.Log("Out Of Stamina");
-                    yield break;
+                    Stamina -= StaminaDecreaseRate * Time.deltaTime;
+                    GameManager.Instance.GetUI().UpdateStamina(Stamina);
+                    if (Stamina < 0f)
+                    {
+                        Stamina = 0f;
+                        GameManager.Instance.GetUI().UpdateStamina(Stamina);
+                        Debug.Log("Out Of Stamina");
+                        yield break;
+                    }
                 }
             }
 
@@ -177,13 +178,11 @@ public partial class Player : MonoBehaviour
         while (true)
         {
             Stamina += StaminaRecoverRate * Time.deltaTime;
-            if(_UI != null && !(Stamina < 0f) && !(Stamina > 100f))
-                _UI.UpdateStamina(Stamina);
-            if (Stamina > MaxStamina)
+            GameManager.Instance.GetUI().UpdateStamina(Stamina);
+            if (Stamina >= MaxStamina)
             {
                 Stamina = MaxStamina;
-                if (_UI != null)
-                    _UI.UpdateStamina(Stamina);
+                GameManager.Instance.GetUI().UpdateStamina(Stamina);
                 Debug.Log("Finished Recover Stamina");
                 yield break;
             }

@@ -5,13 +5,7 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    // Singleton
-    #region Singleton
-    private static AudioManager instance = null;
-    public static AudioManager Inst{ get { return instance; } }
-    #endregion // Singleton
-    //-----------------------------------------------------------------------------
-
+    private AudioManager() { }
     [SerializeField] ScriptableObj PlayerObj;
     [SerializeField] ScriptableObj PropsObj;
     [SerializeField] ScriptableObj EnviromentObj;
@@ -24,9 +18,6 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
-        DontDestroyOnLoad(instance);
-
         AddAllClipsToDic(PlayerObj);
         AddAllClipsToDic(PropsObj);
         AddAllClipsToDic(EnviromentObj);

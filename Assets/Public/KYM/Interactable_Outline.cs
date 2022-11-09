@@ -33,18 +33,8 @@ public partial class Interactable : MonoBehaviour
         }
         else
         {
-            Debug.Log("Failed to find \"Outlinable\" component. It will be created new one.");
-            try
-            {
-                Debug.Log("Successfully create outlinable component.");
-                this.AddComponent<Outlinable>(); // Added new one but, it can't customizable.
-            }
-            catch (Exception e)
-            {
-                if(e != null)
-                Debug.LogError("Outline Component Error : There's no Outline Assets Package.\n" +
-                    "Please check your package installed.");
-            }
+            Debug.Log("Outline Component Error : There's no outline component.");
+            Outlinable = false;
         }
     }
 }

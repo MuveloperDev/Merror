@@ -16,7 +16,6 @@ public class Mirror : MonoBehaviour
     /// </summary>
     private void Break()
     {
-        Debug.Log("Break");
         pieces.SetActive(true);
         pieces.transform.SetParent(null);
         for (int i = 0; i < pieces.transform.childCount; i++)
@@ -25,6 +24,7 @@ public class Mirror : MonoBehaviour
         }
         this.gameObject.SetActive(false);
         Invoke("PhysicsOff", 2f);
+        GameManager.Instance.GetPuzzle().SetClear(1, "Mirror", true);
     }
     /// <summary>
     /// To raise performance, turn off the rigidbodies when falling finished.

@@ -34,6 +34,7 @@ public partial class Player : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera _MainCam = null;
     [SerializeField] private Transform OriginCamPos = null;
     [SerializeField] private Transform CrouchCamPos = null;
+    [SerializeField] private float RayDistance = 5f;
 
     private Coroutine StandUpCoroutine = null;
     private Coroutine StaminaDecreaseCoroutine = null;
@@ -44,7 +45,6 @@ public partial class Player : MonoBehaviour
     [SerializeField] private Transform Spine = null;
 
     [Header("Temp")]
-    [SerializeField] private UIManager _UI = null;
     [SerializeField] private bool Cheat = false;
     /// <summary>
     /// Initialize player's required components and values.
@@ -58,7 +58,5 @@ public partial class Player : MonoBehaviour
         Speed = MaxWalkSpeed;
         Stamina = MaxStamina;
         //_UI.UpdateStamina(Stamina);
-
-        //_MainCam.
     }
 }

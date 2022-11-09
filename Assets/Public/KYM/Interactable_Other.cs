@@ -9,6 +9,7 @@ public partial class Interactable : MonoBehaviour
     [SerializeField] private bool Gettable = false;
     [SerializeField] private float Inventory_Scale = 1f;
     [SerializeField] private bool Special = false;
+    public void SetSpecial(bool value) => Special = value;
     [SerializeField] private Light _Light = null;
 
     /// <summary>
@@ -41,7 +42,6 @@ public partial class Interactable : MonoBehaviour
             case ObjectType.Mirror:
                 {
                     Do_Break_Mirror();
-                    Debug.Log("Added");
                     break;
                 }
         }

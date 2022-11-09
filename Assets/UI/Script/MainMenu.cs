@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
-public class MainMenu : MonoBehaviour
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+public class MainMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     GameObject soundManager = null;
     
@@ -22,7 +24,7 @@ public class MainMenu : MonoBehaviour
     // NewGameButton
     public void OnClickNewGame()
     {
-        Debug.Log("°ÔÀÓ ½ÃÀÛ");
+        Debug.Log("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
         // LodingScene AsyncLoad
         SceneManager.LoadSceneAsync("LodingScene");
     }
@@ -30,7 +32,7 @@ public class MainMenu : MonoBehaviour
     // OptionButton
     public void OnClickOption()
     {
-        Debug.Log("¿É¼Ç");
+        Debug.Log("ï¿½É¼ï¿½");
         // Activate SoundManager UI
         soundManager.SetActive(true);
     }
@@ -38,15 +40,16 @@ public class MainMenu : MonoBehaviour
     // SaveButton
     public void OnClickSave()
     {
-        Debug.Log("ºÒ·¯¿À±â");
+        Debug.Log("ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½");
     }
 
     // ExitButton
     public void OnClickExit()
     {
+#if UNITY_EDITOR
         // Works only in UnityEditor
         UnityEditor.EditorApplication.isPlaying = false;
-
+#endif
         // Works only in Applications
         // Application.Quit();
     }

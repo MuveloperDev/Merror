@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class Mirror : MonoBehaviour
 {
+    private MirrorManager mirrorManager = null;
     private GameObject pieces;
     private void Start()
     {
+        mirrorManager = GameObject.FindObjectOfType<MirrorManager>();
         pieces = this.transform.GetChild(0).gameObject;
         pieces.SetActive(false);
     }
@@ -21,9 +23,9 @@ public class Mirror : MonoBehaviour
         {
             pieces.transform.GetChild(i).gameObject.GetComponent<Rigidbody>().isKinematic = false;
         }
+        mirrorManager.RemoveMirror(this);
         this.gameObject.SetActive(false);
         Invoke("PhysicsOff", 2f);
-        GameManager.Instance.GetPuzzle().SetClear("Mirror", true);
     }
     /// <summary>
     /// To raise performance, turn off the rigidbodies when falling finished.

@@ -13,8 +13,6 @@ public class UIManager : MonoBehaviour
     public void UpdateStamina(float changed)
     {
         Stamina.value = changed;
-
-        //MyRay.GetInterObj().GetMyType();
     }
     #endregion
 

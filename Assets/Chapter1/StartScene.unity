@@ -928,7 +928,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Instance_ID: 0
-  CutSceneClip: {fileID: 0}
+  CutSceneURL: 
 --- !u!4 &453554241
 Transform:
   m_ObjectHideFlags: 0
@@ -969,7 +969,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 453554239}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c42297fa4cf3dcd45b55ce0703991fac, type: 3}
+  m_Script: {fileID: 11500000, guid: ffda97e920094fc44b30314f903406df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Stamina: {fileID: 0}
@@ -1010,7 +1010,7 @@ VideoPlayer:
   - {fileID: 0}
   m_DirectAudioVolumes:
   - 1
-  m_Url: 
+  m_Url: https://www.youtube.com/watch?v=9benrj2J6ZM
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1

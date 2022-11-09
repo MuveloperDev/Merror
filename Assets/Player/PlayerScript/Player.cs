@@ -9,6 +9,7 @@ public partial class Player : MonoBehaviour
     private void Start()
     {
         InitPlayer();
+        GameInput.Clamped_Delta_Mouse_Y = 0f;
     }
     private void FixedUpdate()
     {

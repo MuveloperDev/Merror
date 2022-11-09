@@ -10,6 +10,7 @@ using MyLibrary;
 using TMPro;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine.Video;
+using UnityEngine.Networking;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -21,6 +22,10 @@ public class GameManager : Singleton<GameManager>
         InitCutScenePlayer();
         SceneManager.activeSceneChanged -= OnSceneChanged;
         SceneManager.activeSceneChanged += OnSceneChanged;
+    }
+    private void Update()
+    {
+        GameInput.UpdateKey();
     }
     #region Check current scene and initialize something work
     private void OnSceneChanged(Scene previous, Scene current) // Called when scene changed
@@ -143,6 +148,7 @@ public class GameManager : Singleton<GameManager>
         CutScenePlayer.enabled = true;
         CutScenePlayer.targetCamera = Camera.main;
         CutScenePlayer.clip = CutSceneClip;
+        if(CutSceneClip == null) { Debug.Log("There's no cut scene clip."); return; }
         CutScenePlayer.Play();
         StartCoroutine(WhenCutSceneEnd());
     }

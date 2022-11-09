@@ -25,7 +25,6 @@ public partial class Player : MonoBehaviour
 
     private Vector3 MoveVector;
 
-    private GameInput _Input = null;
     private Rigidbody _Rigidbody = null;
     private Animator _Animator = null;
 
@@ -53,10 +52,8 @@ public partial class Player : MonoBehaviour
     {
         _Rigidbody = GetComponent<Rigidbody>();
         _Animator = GetComponent<Animator>();
-        _Input = GetComponent<GameInput>();
 
         Speed = MaxWalkSpeed;
         Stamina = MaxStamina;
-        //_UI.UpdateStamina(Stamina);
     }
 }

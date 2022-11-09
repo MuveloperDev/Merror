@@ -10,6 +10,7 @@ using EPOOutline;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MyLibrary;
 
 public partial class Interactable : MonoBehaviour
 {
@@ -29,12 +30,18 @@ public partial class Interactable : MonoBehaviour
         PuzzleGuessWho,
         PuzzleIsabellRoom,
         Mirror,
+        PuzzleDecryption,
     }
 
     [SerializeField] protected ObjectType myType = ObjectType.None;
 
     private delegate void Do();
     private Do DoMyWork = null; // My Interaction
+
+    private void Awake()
+    {
+        NonInteractable();
+    }
 
     public virtual void Start()
     {
@@ -64,16 +71,6 @@ public partial class Interactable : MonoBehaviour
             DoMyWork += Do_Special;
         }
     }
-    /*
-    public virtual void Update()
-    {
-        if(Input.GetMouseButtonDown(0)) // Temp condition
-        {
-            Do_Rotate(); // If null, start.
-            Do_Light();
-        }
-    }*/
-
     /// <summary>
     /// Interact with object. Like rotation, getting an item, play sound, do something.
     /// </summary>
@@ -84,5 +81,26 @@ public partial class Interactable : MonoBehaviour
     public virtual void Do_Inventory()
     {
         GameManager.Instance.GetInventory().InsertItem(this.gameObject, Inventory_Scale);
+    }
+    
+    public void NonInteractable()
+    {
+        if (Special == false) // If this object do not anything special,
+        {
+            // If this not have any other work
+            if ((Rotatable || Audio_Playable || Gettable) == false)
+            {
+                if (Outlinable) // If have outline component
+                {
+                    if (TryGetComponent<Outlinable>(out Outlinable outline))
+                    {
+                        outline.enabled = false;
+                        Destroy(outline); // Destroy outline
+                    }
+                    Outlinable = false;
+                }
+                Destroy(this); // Destroy Interactable
+            }
+        }
     }
 }

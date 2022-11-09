@@ -16,22 +16,12 @@ public class UIManager : MonoBehaviour
 
         //MyRay.GetInterObj().GetMyType();
     }
-<<<<<<<< HEAD:Assets/Public/UIManager.cs
-========
-
+    #endregion
 
     // Add Pointer Script
-
-
     // Contact Mylibrary => interactable Script
     private void ChangeAim()
     {
 
     }
-    
-
-
-
->>>>>>>> origin/UI_SSH:Assets/UI/Script/UIManager.cs
-    #endregion
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using MyLibrary;
+using TMPro;
 
 public partial class Player : MonoBehaviour
 {

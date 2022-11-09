@@ -14,7 +14,11 @@ using MyLibrary;
 
 public partial class Interactable : MonoBehaviour
 {
-    public Interactable() { }
+    public Interactable()
+    {
+
+    }
+
     public enum ObjectType
     {
         None,
@@ -45,6 +49,10 @@ public partial class Interactable : MonoBehaviour
         {
             InitOutlineComponent();
         }
+        if (Moveable)
+        {
+            DoMyWork += Do_Movement;
+        }
         if (Rotatable)
         {
             DoMyWork += Do_Rotate;
@@ -70,7 +78,11 @@ public partial class Interactable : MonoBehaviour
     {
         DoMyWork(); // Do delegate chain
     }
-
+    public virtual void Do_Inventory()
+    {
+        GameManager.Instance.GetInventory().InsertItem(this.gameObject, Inventory_Scale);
+    }
+    
     public void NonInteractable()
     {
         if (Special == false) // If this object do not anything special,

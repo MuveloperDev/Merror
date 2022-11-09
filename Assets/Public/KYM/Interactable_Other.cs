@@ -34,6 +34,17 @@ public partial class Interactable : MonoBehaviour
                     Do_Puzzle_GuessWho();
                     break;
                 }
+            case ObjectType.PuzzleIsabellRoom:
+                {
+                    Do_Puzzme_IsabellRoom();
+                    break;
+                }
+            case ObjectType.Mirror:
+                {
+                    Do_Break_Mirror();
+                    Debug.Log("Added");
+                    break;
+                }
             case ObjectType.PuzzleDecryption:
                 {
                     Do_Puzzle_Decryption();
@@ -65,38 +76,43 @@ public partial class Interactable : MonoBehaviour
             _Light.enabled = !_Light.enabled;
         }
     }
-    /// <summary>
-    /// Move this object to player inventory and hide this object.
-    /// </summary>
-    public virtual void Do_Inventory()
-    {
-        if (Gettable == false) return;
-        switch (myType)
-        {
-            case ObjectType.None:
-                {
-                    break;
-                }
-            case ObjectType.Key:
-                {
-                    break;
-                }
-            case ObjectType.Lock:
-                {
-                    break;
-                }
-        }
-    }
 
     public virtual void Do_Puzzle_GuessWho()
     {
         if (TryGetComponent<PuzzleGuessWho>(out PuzzleGuessWho puzzleGuessWho))
         {
-            puzzleGuessWho.SendMessage("CheckAnswer", SendMessageOptions.DontRequireReceiver);
+            puzzleGuessWho.SendMessage("CheckAnswer",SendMessageOptions.DontRequireReceiver);
         }
         else
         {
             Debug.Log("This Object not have PuzzleGuessWho Script.");
+        }
+    }
+
+    /// <summary>
+    /// Check Puzzle in IsabellRoom
+    /// </summary>
+    protected void Do_Puzzme_IsabellRoom()
+    {
+        if (TryGetComponent<Puzzle_IsabellRoom>(out Puzzle_IsabellRoom puzzle_IsabellRoom))
+        {
+            puzzle_IsabellRoom.SendMessage("CheckDolls", SendMessageOptions.DontRequireReceiver);
+        }
+        else
+        {
+            Debug.Log("This Object not have Puzzle_IsabellRoom Script.");
+        }
+    }
+    public void Do_Break_Mirror()
+    {
+        if (TryGetComponent<Mirror>(out Mirror mirror))
+        {
+            Debug.Log("GetMirror");
+            mirror.SendMessage("Break", SendMessageOptions.DontRequireReceiver);
+        }
+        else
+        {
+            Debug.Log("This Object not have Mirror Script.");
         }
     }
 
@@ -115,5 +131,4 @@ public partial class Interactable : MonoBehaviour
             Debug.Log("This is not Puzzle Decryption");
         }
     }
-
 }

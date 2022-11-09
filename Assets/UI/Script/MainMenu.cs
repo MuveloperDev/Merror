@@ -4,7 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 public class MainMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     GameObject soundManager = null;
@@ -47,9 +49,10 @@ public class MainMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     // ExitButton
     public void OnClickExit()
     {
+#if UNITY_EDITOR
         // Works only in UnityEditor
         UnityEditor.EditorApplication.isPlaying = false;
-
+#endif
         // Works only in Applications
         // Application.Quit();
     }

@@ -19,7 +19,7 @@ public class GameManager : Singleton<GameManager>
         InitAudioManager();
         InitUIManager();
         InitPuzzleManager();
-        InitCutScenePlayer();
+        //InitCutScenePlayer();
         SceneManager.activeSceneChanged -= OnSceneChanged;
         SceneManager.activeSceneChanged += OnSceneChanged;
     }

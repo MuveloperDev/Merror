@@ -5,8 +5,11 @@ using static UnityEngine.EventSystems.EventTrigger;
 
 public partial class Interactable : MonoBehaviour
 {
+    [Header("More Function")]
     [SerializeField] private bool Gettable = false;
+    [SerializeField] private float Inventory_Scale = 1f;
     [SerializeField] private bool Special = false;
+    public void SetSpecial(bool value) => Special = value;
     [SerializeField] private Light _Light = null;
 
     /// <summary>
@@ -29,6 +32,11 @@ public partial class Interactable : MonoBehaviour
             case ObjectType.PuzzleGuessWho:
                 {
                     Do_Puzzle_GuessWho();
+                    break;
+                }
+            case ObjectType.PuzzleDecryption:
+                {
+                    Do_Puzzle_Decryption();
                     break;
                 }
         }
@@ -84,11 +92,23 @@ public partial class Interactable : MonoBehaviour
     {
         if (TryGetComponent<PuzzleGuessWho>(out PuzzleGuessWho puzzleGuessWho))
         {
-            puzzleGuessWho.SendMessage("CheckAnswer",SendMessageOptions.DontRequireReceiver);
+            puzzleGuessWho.SendMessage("CheckAnswer", SendMessageOptions.DontRequireReceiver);
         }
         else
         {
             Debug.Log("This Object not have PuzzleGuessWho Script.");
+        }
+    }
+
+    public virtual void Do_Puzzle_Decryption()
+    {
+        if(TryGetComponent<Decryption_Puzzle>(out Decryption_Puzzle puzzleDecryption))
+        {
+            puzzleDecryption.SendMessage("VisibleUI",SendMessageOptions.DontRequireReceiver);
+        }
+        else
+        {
+            Debug.Log("This is not Puzzle Decryption");
         }
     }
 }

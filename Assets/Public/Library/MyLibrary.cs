@@ -294,13 +294,11 @@ namespace MyLibrary
             Pause = () =>
             {
                 Time.timeScale = 0f;
-                Time.fixedDeltaTime = 0.2f * Time.timeScale;
             };
 
             Play = () =>
             {
                 Time.timeScale = 1f;
-                Time.fixedDeltaTime = 0.2f * Time.timeScale;
             };
         }
     }

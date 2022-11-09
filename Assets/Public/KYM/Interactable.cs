@@ -13,10 +13,8 @@ using UnityEngine;
 
 public partial class Interactable : MonoBehaviour
 {
-    public Interactable()
-    {
+    public Interactable() { }
 
-    }
     public enum ObjectType
     {
         None,
@@ -26,11 +24,20 @@ public partial class Interactable : MonoBehaviour
         Sink,
         Switch,
         PuzzleGuessWho,
+        PuzzleIsabellRoom,
+        Mirror,
+        PuzzleDecryption
     }
+
     [SerializeField] protected ObjectType myType = ObjectType.None;
 
     private delegate void Do();
     private Do DoMyWork = null; // My Interaction
+
+    private void Awake()
+    {
+        NonInteractable();
+    }
 
     public virtual void Start()
     {
@@ -56,21 +63,32 @@ public partial class Interactable : MonoBehaviour
             DoMyWork += Do_Special;
         }
     }
-    /*
-    public virtual void Update()
-    {
-        if(Input.GetMouseButtonDown(0)) // Temp condition
-        {
-            Do_Rotate(); // If null, start.
-            Do_Light();
-        }
-    }*/
-
     /// <summary>
     /// Interact with object. Like rotation, getting an item, play sound, do something.
     /// </summary>
     public virtual void Do_Interact()
     {
         DoMyWork(); // Do delegate chain
-    } 
+    }
+
+    public void NonInteractable()
+    {
+        if (Special == false) // If this object do not anything special,
+        {
+            // If this not have any other work
+            if ((Rotatable || Audio_Playable || Gettable) == false)
+            {
+                if (Outlinable) // If have outline component
+                {
+                    if (TryGetComponent<Outlinable>(out Outlinable outline))
+                    {
+                        outline.enabled = false;
+                        Destroy(outline); // Destroy outline
+                    }
+                    Outlinable = false;
+                }
+                Destroy(this); // Destroy Interactable
+            }
+        }
+    }
 }

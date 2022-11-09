@@ -223,10 +223,10 @@ namespace MyLibrary
                 enAes.Key = myKey;
                 enAes.IV = myIV;
 
-                // ¾ÏÈ£È­ º¯ÇüÀÇ ±âº» ÀÛ¾÷ ¼³Á¤
+                // ï¿½ï¿½È£È­ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½âº» ï¿½Û¾ï¿½ ï¿½ï¿½ï¿½ï¿½
                 ICryptoTransform encrypto = enAes.CreateEncryptor(enAes.Key, enAes.IV);
 
-                // ¹é¾÷ ÀúÀå¼Ò¸¦ ¸Þ¸ð¸®·Î ¸¸µë
+                // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ò¸ï¿½ ï¿½Þ¸ð¸®·ï¿½ ï¿½ï¿½ï¿½ï¿½
                 using (MemoryStream msEncryto = new MemoryStream())
                 {
                     using (CryptoStream enCrStream = new CryptoStream(msEncryto, encrypto, CryptoStreamMode.Write))
@@ -332,7 +332,8 @@ namespace MyLibrary
             }
             Debug.DrawRay(startPos, direction * maxDistance, Color.red);
             if (Physics.Raycast(startPos, direction, out currentHit, maxDistance)) // Hit something
-            {
+            { 
+
                 if (lastHit == null) // When game start at first
                 {
                     isRayExit = true;
@@ -618,5 +619,42 @@ namespace MyLibrary
         }
 
     }
+    public static class GameInput
+    {
+        public static float MouseX = 0f;
+        public static float MouseY = 0f;
+        public static float Clamped_Delta_Mouse_Y = 0f;
+        public static bool LeftShift { get; private set; } = false;
+        public static bool LeftShiftDown { get; private set; } = false;
+        public static bool LeftShiftUp { get; private set; } = false;
+        public static bool LeftCtrl { get; private set; } = false;
+        public static bool LeftCtrlUp { get; private set; } = false;
 
+        private static float XSpeed = 70f;
+        public static void SetXSpeed(float speed) => XSpeed = speed;
+        private static float YSpeed = 70f;
+        public static void SetYSpeed(float speed) => YSpeed = speed;
+
+        public static void UpdateKey()
+        {
+            MouseX = Input.GetAxis("Mouse X") * Time.deltaTime * XSpeed;
+            MouseY = Input.GetAxis("Mouse Y") * Time.deltaTime * YSpeed;
+
+            ClampMouseY();
+
+            LeftShift = Input.GetKey(KeyCode.LeftShift);
+            LeftShiftDown = Input.GetKeyDown(KeyCode.LeftShift);
+            LeftShiftUp = Input.GetKeyUp(KeyCode.LeftShift);
+
+            LeftCtrl = Input.GetKey(KeyCode.LeftControl);
+            LeftCtrlUp = Input.GetKeyUp(KeyCode.LeftControl);
+        }
+        private static void ClampMouseY()
+        {
+            Clamped_Delta_Mouse_Y += MouseY; // Get delta
+                                             // Clamp degree 0 to 360
+            Clamped_Delta_Mouse_Y = Clamped_Delta_Mouse_Y > 180f ? Clamped_Delta_Mouse_Y - 360f : Clamped_Delta_Mouse_Y;
+            Clamped_Delta_Mouse_Y = Mathf.Clamp(Clamped_Delta_Mouse_Y, -70f, 70f); // Clamp Range : (-Upside, -Downside)
+        }
+    }
 }

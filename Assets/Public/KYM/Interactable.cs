@@ -14,10 +14,7 @@ using MyLibrary;
 
 public partial class Interactable : MonoBehaviour
 {
-    public Interactable()
-    {
-
-    }
+    public Interactable() { }
 
     public enum ObjectType
     {
@@ -33,7 +30,9 @@ public partial class Interactable : MonoBehaviour
         PuzzleDecryption,
     }
 
+    public bool IsLocked = false;
     [SerializeField] protected ObjectType myType = ObjectType.None;
+    public ObjectType GetMyType() => myType;
 
     private delegate void Do();
     private Do DoMyWork = null; // My Interaction
@@ -76,30 +75,29 @@ public partial class Interactable : MonoBehaviour
     /// </summary>
     public virtual void Do_Interact()
     {
+        if (IsLocked == true) return;
         DoMyWork(); // Do delegate chain
     }
     public virtual void Do_Inventory()
     {
         GameManager.Instance.GetInventory().InsertItem(this.gameObject, Inventory_Scale);
     }
-    
     public void NonInteractable()
     {
         if (Special == false) // If this object do not anything special,
         {
             // If this not have any other work
-            if ((Rotatable || Audio_Playable || Gettable) == false)
+            if ((Moveable || Rotatable || Audio_Playable || Gettable) == false)
             {
+                Destroy(this); // Destroy Interactable
                 if (Outlinable) // If have outline component
                 {
                     if (TryGetComponent<Outlinable>(out Outlinable outline))
                     {
-                        outline.enabled = false;
                         Destroy(outline); // Destroy outline
                     }
                     Outlinable = false;
                 }
-                Destroy(this); // Destroy Interactable
             }
         }
     }

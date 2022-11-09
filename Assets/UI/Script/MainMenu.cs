@@ -2,14 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class MainMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class MainMenu : MonoBehaviour
 {
     GameObject soundManager = null;
-    //Image[] im = null;
-
+    
     Button[] transButton;
 
     GameObject button;
@@ -18,7 +16,6 @@ public class MainMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         soundManager = GameObject.Find("SoundOption");
         transButton = GameObject.Find("Menu").GetComponentsInChildren<Button>();
-        //button = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
     }
 
 
@@ -58,41 +55,5 @@ public class MainMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public void OnClickClose()
     {
         soundManager.SetActive(false);
-    }
-/*
-    public void PointerEnterHandler()
-    {
-        //NameCheck(button.name);
-        Debug.Log(UnityEngine.EventSystems.EventSystem.current.gameObject.name);
-        //UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.name;
-        //buttonImage.enabled = true;
-
-    }
-
-    public void PointerExitHandler()
-    {
-        Debug.Log("³»·Á°¨");
-        //buttonImage.enabled = false;
-
-    }
-
-    private void NameCheck(string Name)
-    {
-        switch (Name)
-        {
-            case "StartButton":
-
-                break;
-        }
-    }
-*/
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        Debug.Log(gameObject.name);
-    }
-
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        Debug.Log(gameObject.name);
     }
 }

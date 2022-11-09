@@ -181,7 +181,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Save
+  m_text: Laod Game
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 20bd4e9f9915f594b905c13e260c2360, type: 2}
   m_sharedMaterial: {fileID: -858760330144286876, guid: 20bd4e9f9915f594b905c13e260c2360, type: 2}
@@ -602,11 +602,11 @@ RectTransform:
   - {fileID: 1525392173}
   - {fileID: 44958420}
   m_Father: {fileID: 839091524}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -251, y: -82}
+  m_AnchoredPosition: {x: -251, y: -21}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &276038310
@@ -1781,8 +1781,8 @@ RectTransform:
   - {fileID: 623637795}
   - {fileID: 1714739031}
   - {fileID: 1950896751}
-  - {fileID: 911425017}
   - {fileID: 276038309}
+  - {fileID: 911425017}
   - {fileID: 608304222}
   - {fileID: 1139433399}
   m_Father: {fileID: 0}
@@ -1931,11 +1931,11 @@ RectTransform:
   - {fileID: 1453856145}
   - {fileID: 500926731}
   m_Father: {fileID: 839091524}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -255, y: -21.000002}
+  m_AnchoredPosition: {x: -254, y: -78}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &911425018
@@ -2715,7 +2715,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Start
+  m_text: New Game
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 20bd4e9f9915f594b905c13e260c2360, type: 2}
   m_sharedMaterial: {fileID: -858760330144286876, guid: 20bd4e9f9915f594b905c13e260c2360, type: 2}

@@ -3,39 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using MyLibrary;
 using System.Linq;
+using JetBrains.Annotations;
 
 public class PuzzleManager : MonoBehaviour
 {
-    private Chapter1Puzzle chapter1Puzzle = null;
-    public Chapter1Puzzle GetChapter1Puzzle() => chapter1Puzzle;
-    public class Chapter1Puzzle
+    private Puzzle CurrentPuzzle = null;
+    public Puzzle GetCurrentPuzzle() => CurrentPuzzle;
+    public class Puzzle : PuzzleManager
     {
-        public List<GameObject> Doors = new List<GameObject>();
-        public Dictionary<string, bool> Puzzle = new Dictionary<string, bool>();
+        public int ChapterNumber;
+        public Dictionary<string, bool> PuzzleList = null;
         public bool AllClear = false;
-        public Chapter1Puzzle()
-        {
-            //if(Get saved data == true)
-            // else
-            Puzzle.Add("GuessWho", false);
-            Puzzle.Add("Keyboard", false);
-            Puzzle.Add("Doll", false);
-            Puzzle.Add("Mirror", false);
-        }
-        public void GetDoors()
-        {
-            Doors.AddRange(GameObject.FindGameObjectsWithTag("Door"));
-        }
-    }
-    private Chapter2Puzzle chapter2Puzzle = null;
-    public Chapter2Puzzle GetChapter2Puzzle() => chapter2Puzzle;
-    public class Chapter2Puzzle
-    {
-        public Dictionary<string, bool> Puzzle = new Dictionary<string, bool>();
-        public Chapter2Puzzle()
-        { 
-            
-        }
+        public Puzzle() { Debug.Log("New Puzzle Class Instantiated."); }
     }
     /// <summary>
     /// Initialize memory for a certain chapter's puzzle.
@@ -43,10 +22,25 @@ public class PuzzleManager : MonoBehaviour
     /// <param name="chapterNum">Chapter number</param>
     public void InitPuzzle(int chapterNum)
     {
-        switch (chapterNum)
+        if (chapterNum <= 0 || chapterNum > 5)
         {
-            case 1: { chapter1Puzzle = new Chapter1Puzzle(); break; }
-            case 2: { chapter2Puzzle = new Chapter2Puzzle(); break; }
+            Debug.Log("Chapter Number Error : Can't initialize puzzle class.");
+            return;
+        }
+        if(CurrentPuzzle != null) CurrentPuzzle = null; // Delete current puzzle memory.
+        CurrentPuzzle = new Puzzle(); // Create new puzzle class
+        CurrentPuzzle.ChapterNumber = chapterNum;
+        CurrentPuzzle.PuzzleList = new Dictionary<string, bool>();
+        switch (CurrentPuzzle.ChapterNumber) // Init puzzle dictionary
+        {
+            case 1:
+                {
+                    CurrentPuzzle.PuzzleList.Add("GuessWho", false);
+                    CurrentPuzzle.PuzzleList.Add("Keyboard", false);
+                    CurrentPuzzle.PuzzleList.Add("Doll", false);
+                    CurrentPuzzle.PuzzleList.Add("Mirror", false);
+                    break;
+                }
         }
     }
     /// <summary>
@@ -55,42 +49,34 @@ public class PuzzleManager : MonoBehaviour
     /// <param name="chapterNum">Chapter number</param>
     /// <param name="puzzleName">Puzzle's name</param>
     /// <param name="isClear">Clear flag</param>
-    public void SetClear(int chapterNum, string puzzleName, bool isClear)
+    public void SetClear(string puzzleName, bool isClear)
     {
-        Dictionary<string, bool> dic = null;
-        switch (chapterNum)
-        {
-            default: { Debug.LogError("Puzzle chapter index error."); return; }
-            case 1: { if(chapter1Puzzle != null) dic = chapter1Puzzle.Puzzle; break; }
-            case 2: { if (chapter2Puzzle != null) dic = chapter2Puzzle.Puzzle; break; }
-        }
-
-        foreach (var puzzle in dic)
+        bool isContain = false;
+        foreach (var puzzle in CurrentPuzzle.PuzzleList)
         {
             if (puzzle.Key == puzzleName)
             {
-                dic.Remove(puzzle.Key);
-                dic.Add(puzzleName, isClear);
+                CurrentPuzzle.PuzzleList.Remove(puzzle.Key);
+                CurrentPuzzle.PuzzleList.Add(puzzleName, isClear); // Change state.
+                isContain = true;
                 Debug.Log(puzzleName + " puzzle's clear state changed : " + isClear);
                 break;
             }
         }
-        CheckAllPuzzleClear(chapterNum);
+        if (isContain == false) // If puzzle name doesn't exist in dictionary
+        {
+            Debug.LogError("Can't set puzzle clear state : Puzzle name error");
+            return;
+        }
+        CheckAllPuzzleClear();
     }
     /// <summary>
     /// Check this chapter's puzzles are all cleared.
     /// </summary>
     /// <param name="chapterNum">Chapter number</param>
-    private void CheckAllPuzzleClear(int chapterNum)
+    private void CheckAllPuzzleClear()
     {
-        Dictionary<string, bool> dic = null;
-        switch (chapterNum)
-        {
-            default: { Debug.LogError("Puzzle chapter index error."); return; }
-            case 1: { if (chapter1Puzzle != null) dic = chapter1Puzzle.Puzzle; break; }
-            case 2: { if (chapter2Puzzle != null) dic = chapter2Puzzle.Puzzle; break; }
-        }
-        foreach (var puzzle in dic)
+        foreach (var puzzle in CurrentPuzzle.PuzzleList)
         {
             if (puzzle.Value == false)
             {
@@ -98,7 +84,7 @@ public class PuzzleManager : MonoBehaviour
                 return;
             }
         }
-        Debug.Log("Chapter " + chapterNum + " puzzles all clear.");
-        chapter1Puzzle.AllClear = true;
+        Debug.Log("Chapter " + CurrentPuzzle.ChapterNumber + " puzzles all clear.");
+        CurrentPuzzle.AllClear = true;
     }
 }

@@ -59,7 +59,7 @@ public class GameManager : Singleton<GameManager>
     {
         if (MyPlayer != null)
         {
-            if (MyPlayer.gameObject.TryGetComponent<CinemachineVirtualCamera>(out CinemachineVirtualCamera cam))
+            if (MyPlayer.transform.GetChild(0).TryGetComponent<CinemachineVirtualCamera>(out CinemachineVirtualCamera cam))
             {
                 PlayerCam = cam;
                 return;

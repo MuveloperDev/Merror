@@ -11229,7 +11229,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh151422
+  m_Name: pb_Mesh1277896
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -14485,7 +14485,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh148058
+  m_Name: pb_Mesh1275506
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -15144,7 +15144,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh156302
+  m_Name: pb_Mesh1282406
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -15820,7 +15820,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh157634
+  m_Name: pb_Mesh1283738
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -19238,7 +19238,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh151956
+  m_Name: pb_Mesh1278288
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -23464,7 +23464,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 900, y: 820}
+  m_AnchoredPosition: {x: 900, y: 400}
   m_SizeDelta: {x: 90, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1158308967
@@ -31510,7 +31510,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh152270
+  m_Name: pb_Mesh1278548
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -37481,6 +37481,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myType: 9
+  Moveable: 0
+  Movement_Axis: 0
+  Target_Movement: 5
+  Movement_Speed: 1
+  InvertMovement: 0
   Gettable: 0
   Inventory_Scale: 1
   Special: 1
@@ -48308,6 +48313,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myType: 9
+  Moveable: 0
+  Movement_Axis: 0
+  Target_Movement: 5
+  Movement_Speed: 1
+  InvertMovement: 0
   Gettable: 0
   Inventory_Scale: 1
   Special: 1
@@ -75352,7 +75362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d1272818284f0646906f5a096836e56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myType: 7
+  myType: 8
   Moveable: 0
   Movement_Axis: 0
   Target_Movement: 5

@@ -17,6 +17,7 @@ public partial class Interactable : MonoBehaviour
     {
 
     }
+
     public enum ObjectType
     {
         None,
@@ -26,8 +27,10 @@ public partial class Interactable : MonoBehaviour
         Sink,
         Switch,
         PuzzleGuessWho,
+        PuzzleIsabellRoom,
         Mirror,
     }
+
     [SerializeField] protected ObjectType myType = ObjectType.None;
 
     private delegate void Do();

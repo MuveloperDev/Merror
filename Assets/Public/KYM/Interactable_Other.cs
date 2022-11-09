@@ -44,6 +44,11 @@ public partial class Interactable : MonoBehaviour
                     Do_Break_Mirror();
                     break;
                 }
+            case ObjectType.PuzzleDecryption:
+                {
+                    Do_Puzzle_Decryption();
+                    break;
+                }
         }
     }
     /// <summary>
@@ -107,6 +112,22 @@ public partial class Interactable : MonoBehaviour
         else
         {
             Debug.Log("This Object not have Mirror Script.");
+        }
+    }
+
+    public virtual void Do_Puzzle_Decryption()
+    {
+        if(TryGetComponent<Decryption_Puzzle>(out Decryption_Puzzle puzzleDecryption))
+        {
+            puzzleDecryption.SendMessage("VisibleUI",SendMessageOptions.DontRequireReceiver);
+        }
+        else if(TryGetComponent<ZoomInHint>(out ZoomInHint zoomInHint))
+        {
+            zoomInHint.SendMessage("ZoomIn",SendMessageOptions.DontRequireReceiver);
+        }
+        else
+        {
+            Debug.Log("This is not Puzzle Decryption");
         }
     }
 }

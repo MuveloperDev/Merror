@@ -10,6 +10,7 @@ using EPOOutline;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MyLibrary;
 
 public partial class Interactable : MonoBehaviour
 {
@@ -26,6 +27,7 @@ public partial class Interactable : MonoBehaviour
         PuzzleGuessWho,
         PuzzleIsabellRoom,
         Mirror,
+        PuzzleDecryption,
     }
 
     public bool IsLocked = false;

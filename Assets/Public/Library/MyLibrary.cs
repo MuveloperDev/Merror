@@ -223,10 +223,10 @@ namespace MyLibrary
                 enAes.Key = myKey;
                 enAes.IV = myIV;
 
-                // ¾ÏÈ£È­ º¯ÇüÀÇ ±âº» ÀÛ¾÷ ¼³Á¤
+                // ï¿½ï¿½È£È­ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½âº» ï¿½Û¾ï¿½ ï¿½ï¿½ï¿½ï¿½
                 ICryptoTransform encrypto = enAes.CreateEncryptor(enAes.Key, enAes.IV);
 
-                // ¹é¾÷ ÀúÀå¼Ò¸¦ ¸Þ¸ð¸®·Î ¸¸µë
+                // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ò¸ï¿½ ï¿½Þ¸ð¸®·ï¿½ ï¿½ï¿½ï¿½ï¿½
                 using (MemoryStream msEncryto = new MemoryStream())
                 {
                     using (CryptoStream enCrStream = new CryptoStream(msEncryto, encrypto, CryptoStreamMode.Write))

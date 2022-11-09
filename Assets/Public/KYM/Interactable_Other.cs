@@ -106,9 +106,14 @@ public partial class Interactable : MonoBehaviour
         {
             puzzleDecryption.SendMessage("VisibleUI",SendMessageOptions.DontRequireReceiver);
         }
+        else if(TryGetComponent<ZoomInHint>(out ZoomInHint zoomInHint))
+        {
+            zoomInHint.SendMessage("ZoomIn",SendMessageOptions.DontRequireReceiver);
+        }
         else
         {
             Debug.Log("This is not Puzzle Decryption");
         }
     }
+
 }

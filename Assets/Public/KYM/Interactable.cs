@@ -10,11 +10,11 @@ using EPOOutline;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MyLibrary;
 
 public partial class Interactable : MonoBehaviour
 {
     public Interactable() { }
-
     public enum ObjectType
     {
         None,
@@ -26,7 +26,7 @@ public partial class Interactable : MonoBehaviour
         PuzzleGuessWho,
         PuzzleIsabellRoom,
         Mirror,
-        PuzzleDecryption
+        PuzzleDecryption,
     }
 
     [SerializeField] protected ObjectType myType = ObjectType.None;

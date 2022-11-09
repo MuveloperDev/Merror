@@ -307,6 +307,7 @@ namespace MyLibrary
         private static RaycastHit currentHit; // Current hitting object
         private static bool isRayExit = false; // Is my ray point another one?
         private static Interactable interObj = null; // Can interactable object
+        public static Interactable GetInterObj() => interObj;
         public static bool IsRayExit { get { return isRayExit; } }
 
         private static CinemachineVirtualCamera startPointCam = null; // Starting point of camera

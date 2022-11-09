@@ -31,7 +31,9 @@ public partial class Interactable : MonoBehaviour
         Mirror,
     }
 
+    public bool IsLocked = false;
     [SerializeField] protected ObjectType myType = ObjectType.None;
+    public ObjectType GetMyType() => myType;
 
     private delegate void Do();
     private Do DoMyWork = null; // My Interaction
@@ -79,10 +81,12 @@ public partial class Interactable : MonoBehaviour
     /// </summary>
     public virtual void Do_Interact()
     {
+        if (IsLocked == false) return;
         DoMyWork(); // Do delegate chain
     }
     public virtual void Do_Inventory()
     {
         GameManager.Instance.GetInventory().InsertItem(this.gameObject, Inventory_Scale);
     }
+
 }

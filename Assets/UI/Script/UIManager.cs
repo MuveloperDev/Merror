@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using MyLibrary;
 
 public class UIManager : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class UIManager : MonoBehaviour
     public void UpdateStamina(float changed)
     {
         Stamina.value = changed;
+
+        //MyRay.GetInterObj().GetMyType();
     }
     #endregion
 }

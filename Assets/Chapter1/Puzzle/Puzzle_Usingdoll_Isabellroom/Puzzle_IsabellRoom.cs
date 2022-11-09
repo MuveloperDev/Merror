@@ -1,7 +1,5 @@
 using EPOOutline;
 using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class Puzzle_IsabellRoom : MonoBehaviour

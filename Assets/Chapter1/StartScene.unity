@@ -928,7 +928,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Instance_ID: 0
-  CutSceneClip: {fileID: 32900000, guid: b3e6252cbb0286549b77584dc371ecc0, type: 3}
+  CutSceneClip: {fileID: 0}
 --- !u!4 &453554241
 Transform:
   m_ObjectHideFlags: 0

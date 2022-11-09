@@ -27,6 +27,7 @@ public partial class Interactable : MonoBehaviour
         PuzzleIsabellRoom,
         Mirror,
     }
+
     public bool IsLocked = false;
     [SerializeField] protected ObjectType myType = ObjectType.None;
     public ObjectType GetMyType() => myType;

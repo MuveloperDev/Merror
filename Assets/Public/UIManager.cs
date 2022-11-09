@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using MyLibrary;
 
 public class UIManager : MonoBehaviour
 {
@@ -12,6 +13,25 @@ public class UIManager : MonoBehaviour
     public void UpdateStamina(float changed)
     {
         Stamina.value = changed;
+
+        //MyRay.GetInterObj().GetMyType();
     }
+<<<<<<<< HEAD:Assets/Public/UIManager.cs
+========
+
+
+    // Add Pointer Script
+
+
+    // Contact Mylibrary => interactable Script
+    private void ChangeAim()
+    {
+
+    }
+    
+
+
+
+>>>>>>>> origin/UI_SSH:Assets/UI/Script/UIManager.cs
     #endregion
 }

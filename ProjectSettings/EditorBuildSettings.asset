@@ -14,7 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Chapter1/LodingScene.unity
     guid: 7e309db0efa474b458633eac97b4fd8b
-  - enabled: 1
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
     path: Assets/Chapter1/Chapter1.unity
     guid: a7b77da491a9bd84e88b581398f994aa
   m_configObjects: {}

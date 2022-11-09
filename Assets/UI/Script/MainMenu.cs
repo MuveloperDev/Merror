@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
-
-public class MainMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+public class MainMenu : MonoBehaviour
 {
     GameObject soundManager = null;
-    //Image[] im = null;
-
+    
     Button[] transButton;
 
     GameObject button;
@@ -18,14 +18,12 @@ public class MainMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         soundManager = GameObject.Find("SoundOption");
         transButton = GameObject.Find("Menu").GetComponentsInChildren<Button>();
-        //button = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
     }
 
 
     // NewGameButton
     public void OnClickNewGame()
     {
-        Debug.Log("∞‘¿” Ω√¿€");
         // LodingScene AsyncLoad
         SceneManager.LoadSceneAsync("LodingScene");
     }
@@ -33,7 +31,6 @@ public class MainMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     // OptionButton
     public void OnClickOption()
     {
-        Debug.Log("ø…º«");
         // Activate SoundManager UI
         soundManager.SetActive(true);
     }
@@ -41,15 +38,16 @@ public class MainMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     // SaveButton
     public void OnClickSave()
     {
-        Debug.Log("∫“∑Øø¿±‚");
+        Debug.Log("Ï†ÄÏû•Îê®");
     }
 
     // ExitButton
     public void OnClickExit()
     {
+#if UNITY_EDITOR
         // Works only in UnityEditor
         UnityEditor.EditorApplication.isPlaying = false;
-
+#endif
         // Works only in Applications
         // Application.Quit();
     }
@@ -58,41 +56,5 @@ public class MainMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public void OnClickClose()
     {
         soundManager.SetActive(false);
-    }
-/*
-    public void PointerEnterHandler()
-    {
-        //NameCheck(button.name);
-        Debug.Log(UnityEngine.EventSystems.EventSystem.current.gameObject.name);
-        //UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.name;
-        //buttonImage.enabled = true;
-
-    }
-
-    public void PointerExitHandler()
-    {
-        Debug.Log("≥ª∑¡∞®");
-        //buttonImage.enabled = false;
-
-    }
-
-    private void NameCheck(string Name)
-    {
-        switch (Name)
-        {
-            case "StartButton":
-
-                break;
-        }
-    }
-*/
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        Debug.Log(gameObject.name);
-    }
-
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        Debug.Log(gameObject.name);
     }
 }

@@ -18,7 +18,11 @@ public partial class Interactable : MonoBehaviour
     public virtual void Do_Outline(bool value)
     {
         if (_Outlinable != null)
+        {
             _Outlinable.enabled = value;
+        }
+        
+        
     }
     /// <summary>
     /// Initialize Outline Component. Trying get component and if failed, create new component.

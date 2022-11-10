@@ -47,6 +47,11 @@ public class Puzzle_IsabellRoom : MonoBehaviour
             for (int i = 0; i < allDolls.Length; i++)
             {
                 Debug.Log("You are clicked wrong obj");
+                if (allDolls[i].name == "3_Duck")
+                {
+                    allDolls[i].GetComponentInChildren<LineRenderer>().enabled = false;
+                    continue;
+                }
                 allDolls[i].SendMessage("RenderLine", false, SendMessageOptions.DontRequireReceiver);
             }
             return;
@@ -105,7 +110,14 @@ public class Puzzle_IsabellRoom : MonoBehaviour
     {
         for(int i = 0; i < allDolls.Length; i++)
         {
+            if (allDolls[i].name == "3_Duck")
+            {
+                allDolls[i].GetComponentInChildren<LineRenderer>().enabled = false;
+                Destroy(allDolls[i].GetComponentInChildren<Interactable>());
+                continue;
+            }
             allDolls[i].GetComponent<LineRenderer>().enabled = false;
+
             Destroy(allDolls[i].GetComponent<Interactable>());
         }
         frame.AddComponent<Rigidbody>();

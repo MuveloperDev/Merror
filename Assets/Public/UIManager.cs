@@ -7,6 +7,9 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
+    [SerializeField]
+    GameObject aim;
+
     private UIManager() { }
     #region Player Stamina UI
     [SerializeField] private Slider Stamina = null;
@@ -19,11 +22,33 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
-        
+        // Move UI to front
+        aim.transform.SetAsLastSibling();
+        DontDestroyOnLoad(gameObject);
+    }
+
+    private void Start()
+    {
+        aim.SetActive(false);
+    }
+
+    // Add Pointer Script
+
+    private void Update()
+    {
+        if (gameObject.scene.name == "Chapter1")
+        {
+            aim.SetActive(true);
+        }
     }
 
 
-    // Add Pointer Script
+
+    // Raycast 분리 이후 
+    // *** ray -> Player : interactorable 판단 
+    // O : mytype -> 마우스 커서 변경
+    // X : default 마우스 커서로 변경
+    //---------------------------------------------------------------------
     // Contact Mylibrary => interactable Script
 
     /// <summary>
@@ -35,7 +60,7 @@ public class UIManager : MonoBehaviour
     {
         if (gameObject.scene.name == "Chapter1")
         {
-
+            aim.SetActive(!value);
         }
     }
 

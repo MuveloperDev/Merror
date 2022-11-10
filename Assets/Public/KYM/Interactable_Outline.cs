@@ -21,7 +21,6 @@ public partial class Interactable : MonoBehaviour
         {
             _Outlinable.enabled = value;
         }
-
         GameManager.Instance.GetUI().ChangeAimIcon(_Outlinable.name, value);
     }
     /// <summary>

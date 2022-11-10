@@ -81,6 +81,7 @@ public class BaseStateMachine : MonoBehaviour
         if(prevState != State.NONE) myAnimator.SetBool(prevState.ToString(), false);
         StopCoroutine(prevState.ToString() + "_STATE");
         prevState = State.IDLE;
+        isKill = false;
     }
 
 
@@ -89,30 +90,31 @@ public class BaseStateMachine : MonoBehaviour
 
     IEnumerator CHASE_STATE()
     {
-        
         transform.LookAt(target);
-
         navMeshAgent.enabled = true;
-
-        
-
         myAnimator.SetBool(State.CHASE.ToString(), true);
         navMeshAgent.acceleration = 50f;
+
         while (true)
         {
             yield return new WaitForFixedUpdate();
-            float desiredDir = Vector3.Distance(target.transform.position, transform.position);
-            if (desiredDir < 2f)
+
+            // Distance for catch player
+            float desiredDistance = Vector3.Distance(target.transform.position, transform.position);
+            if (desiredDistance < 2f)
             {
                 if (!isKill)
                 {
-                    target.SendMessage("Death", CameraState.CamState.PANIC, SendMessageOptions.DontRequireReceiver);
+                    target.SendMessage("Death", CameraState.CamState.DEATH, SendMessageOptions.DontRequireReceiver);
                     isKill = true;
                 }
                 TurnOffState();
                 TurnOnState(State.SCREAM);
             }
+            // Reset Destination
             if (navMeshAgent.enabled) navMeshAgent.SetDestination(target.position);
+
+            // Add Ray
         }
     }
 
@@ -140,6 +142,22 @@ public class BaseStateMachine : MonoBehaviour
         myAnimator.SetBool(State.SLEEPING.ToString(), true);
         // Add Audio
         yield return new WaitForFixedUpdate();
+
+        while (true)
+        {
+            yield return new WaitForFixedUpdate();
+            float desiredDistance = Vector3.Distance(target.transform.position, transform.position);
+            // Need condition for Check player silence mode
+            if (desiredDistance < 6f)
+            {
+                if (!isKill)
+                {
+                    target.SendMessage("Death", CameraState.CamState.DEATH, SendMessageOptions.DontRequireReceiver);
+                    isKill = true;
+                }
+                TurnOffState();
+            }
+        }
     }
 
     #endregion

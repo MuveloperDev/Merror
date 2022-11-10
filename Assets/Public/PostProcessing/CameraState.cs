@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
@@ -11,6 +12,7 @@ public class CameraState : MonoBehaviour
         PANIC,
         FADEIN,
         FADEOUT,
+        DEATH,
     }
 
     [Header("Directing Effects")]
@@ -25,9 +27,15 @@ public class CameraState : MonoBehaviour
     [Header("FadeIn&Out")]
     [SerializeField] private Image blackPanel = null;
     [SerializeField] private bool fadeInOut = false;
+    [SerializeField] private bool isProcess = false;
     [SerializeField] CamState prevState = CamState.NONE;
 
     float time = 0f;
+
+    // CallBackFunction After FadeOut
+    public Action DoFadeOutState;
+
+
     private void Awake()
     {
         postProcessVolume = GetComponent<PostProcessVolume>();
@@ -42,10 +50,15 @@ public class CameraState : MonoBehaviour
     void Start()
     { 
         Init();
-        //TurnOnState(CamState.FADEIN);
     }
 
-
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.H))
+            TurnOnState(CamState.FADEIN);
+        if (Input.GetKeyDown(KeyCode.J))
+            TurnOnState(CamState.FADEOUT);
+    }
     void Init()
     {
         ambientOcclusion.intensity.value = 0.5f;
@@ -55,11 +68,20 @@ public class CameraState : MonoBehaviour
         chromaticAberration.intensity.value = 0f;
         depthOfField.focusDistance.value = 2.3f;
         time = 0f;
+        blackPanel.gameObject.SetActive(false);
     }
 
 
     public void TurnOnState(CamState STATE)
     {
+        if (isProcess)
+        {
+            Debug.Log("Processing Camera State by MH");
+            return;
+        }
+
+        isProcess = true;
+
         Debug.Log("TurnOnState");
 
         // 상태해제 테스트용
@@ -68,20 +90,20 @@ public class CameraState : MonoBehaviour
             TurnOffState();
             return;
         }
-        //else if (prevState != CamState.NONE)
-        //{
-        //    TurnOffState();
-        //}
         prevState = STATE;
         StartCoroutine(STATE.ToString() + "_STATE");
     }
 
     public void TurnOffState()
     {
+        if (prevState == CamState.FADEOUT) DoFadeOutState();
+
         Debug.Log("TurnOffState");
         StopCoroutine(prevState.ToString() + "_STATE");
         prevState = CamState.NONE;
         Init();
+
+        isProcess = false;
     }
 
 
@@ -105,24 +127,30 @@ public class CameraState : MonoBehaviour
                 break;
             }    
         }
-
         TurnOffState();
+    }
+
+    IEnumerator DEATH_STATE()
+    {
+        yield return new WaitForFixedUpdate();
     }
 
     IEnumerator FADEIN_STATE()
     {
         Debug.Log("FADEIN");
-        yield return new WaitForFixedUpdate(); ;
+        fadeInOut = false;
         vignette.intensity.value = 1f;
         StartCoroutine(DirectingEffect_Panel());
+        yield return new WaitForFixedUpdate();
 
     }
     IEnumerator FADEOUT_STATE()
     {
         blackPanel.gameObject.SetActive(true);
+        fadeInOut = true;
         Debug.Log("FadeOut");
-        yield return new WaitForFixedUpdate(); ;
         StartCoroutine(DirectingEffect_Bloom());
+        yield return new WaitForFixedUpdate();
     }
 
 
@@ -186,11 +214,11 @@ public class CameraState : MonoBehaviour
 
     IEnumerator DirectingEffect_Vignette()
     {
-        float value = fadeInOut ? 0.001f : -0.002f;
+        float value = fadeInOut ? 0.01f : -0.01f;
         
         while (true)
         {
-            if (vignette.intensity.value <= 0.5f && !fadeInOut)
+            if (vignette.intensity.value <= 0.52f && !fadeInOut)
             {
                 // Fade in next directing effects
                 StartCoroutine(DirectingEffect_ChromaticAberration());

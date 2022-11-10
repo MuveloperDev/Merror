@@ -43,7 +43,14 @@ public class Puzzle_IsabellRoom : MonoBehaviour
     private void CheckDolls()
     {
         if (gameObject.GetComponent<Puzzle_IsabellRoom>().InteractableOK == false)
+        {
+            for (int i = 0; i < allDolls.Length; i++)
+            {
+                Debug.Log("You are clicked wrong obj");
+                allDolls[i].SendMessage("RenderLine", false, SendMessageOptions.DontRequireReceiver);
+            }
             return;
+        }
 
         switch (index)
         {
@@ -53,12 +60,12 @@ public class Puzzle_IsabellRoom : MonoBehaviour
             case 4:
             case 5:
             case 6:
-                RenderLine();
+                RenderLine(true);
                 nextObject.GetComponent<Puzzle_IsabellRoom>().InteractableOK = true;
                 break;
 
             case 7:
-                RenderLine();
+                RenderLine(true);
                 ActiveComponentsToFrame(true);
                 frame.AddComponent<BoxCollider>();
                 break;
@@ -69,8 +76,17 @@ public class Puzzle_IsabellRoom : MonoBehaviour
         }
     }
 
-    private void RenderLine()
+    private void RenderLine(bool active)
     {
+        if(active == false)
+        {
+            gameObject.GetComponent<LineRenderer>().enabled = false;
+            if(this.name != "1_RABBIT") 
+                InteractableOK = false;
+        }
+        else
+            gameObject.GetComponent<LineRenderer>().enabled = true;
+
         lr.startColor = new Color(1, 0, 0, 0.7f);
         lr.endColor = new Color(1, 0, 0, 0.7f);
         lr.startWidth = 0.05f;
@@ -104,7 +120,6 @@ public class Puzzle_IsabellRoom : MonoBehaviour
         for (int i = 0; i < allDolls.Length; i++)
         {
             allDolls[i].transform.LookAt(GameObject.FindGameObjectWithTag("Player").transform.position);
-            Debug.Log(allDolls[i].name + " 플레이어 쳐다봄");
         }
     }
 }

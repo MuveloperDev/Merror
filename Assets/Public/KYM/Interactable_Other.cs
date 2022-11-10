@@ -42,7 +42,6 @@ public partial class Interactable : MonoBehaviour
             case ObjectType.Mirror:
                 {
                     Do_Break_Mirror();
-                    Debug.Log("Added");
                     break;
                 }
             case ObjectType.PuzzleDecryption:

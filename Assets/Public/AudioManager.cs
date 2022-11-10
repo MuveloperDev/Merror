@@ -3,13 +3,7 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    // Singleton
-    #region Singleton
-    private static AudioManager instance = null;
-    public static AudioManager Inst{ get { return instance; } }
-    #endregion // Singleton
-    //-----------------------------------------------------------------------------
-
+    private AudioManager() { }
     [SerializeField] ScriptableObj PlayerObj;
     [SerializeField] ScriptableObj PropsObj;
     [SerializeField] ScriptableObj EnviromentObj;
@@ -22,9 +16,6 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
-        DontDestroyOnLoad(instance);
-
         AddAllClipsToDic(PlayerObj);
         AddAllClipsToDic(PropsObj);
         AddAllClipsToDic(EnviromentObj);
@@ -39,28 +30,28 @@ public class AudioManager : MonoBehaviour
     {
         switch (obj.name)
         {
-            case "PlayerObj":
+            case "PlayerSounds":
                 for (int i = 0; i < obj.Sounds.Length; i++)
                 {
                     PlayerClips.Add(PlayerObj.Sounds[i].name, PlayerObj.Sounds[i]);
                 }
                 break;
 
-            case "PropsObj":
+            case "PropsSounds":
                 for (int i = 0; i < obj.Sounds.Length; i++)
                 {
                     PropsClips.Add(PropsObj.Sounds[i].name, PropsObj.Sounds[i]);
                 }
                 break;
 
-            case "EnviromentObj":
+            case "EnvironmentSounds":
                 for (int i = 0; i < obj.Sounds.Length; i++)
                 {
                     EnviromentClips.Add(EnviromentObj.Sounds[i].name, EnviromentObj.Sounds[i]);
                 }
                 break;
 
-            case "DefaultObj":
+            case "DefaultSounds":
                 for (int i = 0; i < obj.Sounds.Length; i++)
                 {
                     DefaultClips.Add(DefaultObj.Sounds[i].name, DefaultObj.Sounds[i]);
@@ -78,6 +69,17 @@ public class AudioManager : MonoBehaviour
     public AudioClip GetClip(Interactable.SoundType soundType, string clipName)
     {
         return CheckType(soundType).ContainsKey(clipName) ? CheckType(soundType)[clipName] : null;
+    }
+
+    /// <summary>
+    /// return requested Audioclip for Player
+    /// </summary>
+    /// <param name="player">Player param</param>
+    /// <param name="clipName">The name of requested audioclip</param>
+    /// <returns></returns>
+    public AudioClip GetClip(Player player, string clipName)
+    {
+        return PlayerClips.ContainsKey(clipName) ? PlayerClips[clipName] : null;
     }
 
     /// <summary>

@@ -20,12 +20,11 @@ public class ZoomInHint : MonoBehaviour
         }
     }
 
-
     private void ZoomIn()
     {
         HintCanvas.gameObject.SetActive(true);
-        isZoomIn = true;
         TimeControl.Pause();
+        isZoomIn = true;
     }
 
     private void ZoomOut()

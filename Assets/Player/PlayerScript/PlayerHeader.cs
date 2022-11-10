@@ -25,7 +25,6 @@ public partial class Player : MonoBehaviour
 
     private Vector3 MoveVector;
 
-    private GameInput _Input = null;
     private Rigidbody _Rigidbody = null;
     private Animator _Animator = null;
 
@@ -34,6 +33,7 @@ public partial class Player : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera _MainCam = null;
     [SerializeField] private Transform OriginCamPos = null;
     [SerializeField] private Transform CrouchCamPos = null;
+    [SerializeField] private float RayDistance = 5f;
 
     private Coroutine StandUpCoroutine = null;
     private Coroutine StaminaDecreaseCoroutine = null;
@@ -44,7 +44,6 @@ public partial class Player : MonoBehaviour
     [SerializeField] private Transform Spine = null;
 
     [Header("Temp")]
-    [SerializeField] private UIManager _UI = null;
     [SerializeField] private bool Cheat = false;
     /// <summary>
     /// Initialize player's required components and values.
@@ -53,12 +52,8 @@ public partial class Player : MonoBehaviour
     {
         _Rigidbody = GetComponent<Rigidbody>();
         _Animator = GetComponent<Animator>();
-        _Input = GetComponent<GameInput>();
 
         Speed = MaxWalkSpeed;
         Stamina = MaxStamina;
-        //_UI.UpdateStamina(Stamina);
-
-        //_MainCam.
     }
 }

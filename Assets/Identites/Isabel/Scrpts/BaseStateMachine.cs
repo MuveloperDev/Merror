@@ -31,6 +31,7 @@ public class BaseStateMachine : MonoBehaviour
         myAnimator = GetComponent<Animator>();
         audioSource = GetComponentInChildren<AudioSource>();
         navMeshAgent = GetComponent<NavMeshAgent>();
+        target = GameObject.FindGameObjectWithTag("Player").transform;
 
         navMeshAgent.enabled = false;
         isKill = false;
@@ -88,7 +89,7 @@ public class BaseStateMachine : MonoBehaviour
 
     IEnumerator CHASE_STATE()
     {
-        if (target == null) target = GameObject.FindGameObjectWithTag("Player").transform;
+        
         transform.LookAt(target);
 
         navMeshAgent.enabled = true;
@@ -99,7 +100,7 @@ public class BaseStateMachine : MonoBehaviour
         navMeshAgent.acceleration = 50f;
         while (true)
         {
-            yield return null;
+            yield return new WaitForFixedUpdate();
             float desiredDir = Vector3.Distance(target.transform.position, transform.position);
             if (desiredDir < 2f)
             {
@@ -126,19 +127,19 @@ public class BaseStateMachine : MonoBehaviour
     {
         myAnimator.SetBool(State.FOCUS.ToString(), true);
         // Add Audio
-        yield return null;
+        yield return new WaitForFixedUpdate();
     }
     IEnumerator DEATH_STATE()
     {
         myAnimator.SetBool(State.DEATH.ToString(), true);
         // Add Audio
-        yield return null;
+        yield return new WaitForFixedUpdate();
     }
     IEnumerator SLEEPING_STATE()
     {
         myAnimator.SetBool(State.SLEEPING.ToString(), true);
         // Add Audio
-        yield return null;
+        yield return new WaitForFixedUpdate();
     }
 
     #endregion

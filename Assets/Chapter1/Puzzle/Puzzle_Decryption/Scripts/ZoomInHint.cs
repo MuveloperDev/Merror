@@ -29,8 +29,8 @@ public class ZoomInHint : MonoBehaviour
 
     private void ZoomOut()
     {
-        TimeControl.Play();
-        isZoomIn = false;
         HintCanvas.gameObject.SetActive(false);
+        isZoomIn = false;
+        TimeControl.Play();
     }
 }

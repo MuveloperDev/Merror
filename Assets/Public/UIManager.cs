@@ -6,9 +6,10 @@ using MyLibrary;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 
-public class UIManager : MonoBehaviour
+public class UIManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] GameObject aim;
+    [SerializeField] GameObject mainUI;
 
     Button[] transButtons;
 
@@ -19,7 +20,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] Image LoadButtonImage;
 
     GameObject soundManager = null;
-
 
     private UIManager() { }
     #region Player Stamina UI
@@ -38,7 +38,10 @@ public class UIManager : MonoBehaviour
 
         // Move UI to front
         aim.transform.SetAsLastSibling();
-        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(aim);
+
+        // Move mainUI to last
+        mainUI.transform.SetAsFirstSibling();
     }
 
     private void Start()
@@ -52,15 +55,21 @@ public class UIManager : MonoBehaviour
         //   Destroy(LoadButtonImage);
         //   transButtons[1].interactable = false;    
     }
+        
+    #region Button Event Trigger
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        Debug.Log("OnPointerEnter");
+        Debug.Log(gameObject.name);
+    }
 
-    // Add Pointer Script
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        Debug.Log("OnPointerExit");
+    }
+    #endregion // StartScene Envent Trigger
 
-
-
-
-
-
-
+    #region Button Click Event
     // NewGameButton
     public void OnClickNewGame()
     {
@@ -68,7 +77,7 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadSceneAsync("LodingScene");
     }
 
-    // OptionButton
+    // OptionButton 
     public void OnClickOption()
     {
         // Activate SoundManager UI
@@ -98,7 +107,7 @@ public class UIManager : MonoBehaviour
         soundManager.SetActive(false);
     }
 
-
+    #endregion
 
 
 
@@ -126,6 +135,7 @@ public class UIManager : MonoBehaviour
             aim.SetActive(!value);
         }
     }
+
 
     /*
         public virtual void Do_Outline(bool value)

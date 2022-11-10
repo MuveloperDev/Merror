@@ -8,13 +8,13 @@ public class ZoomInHint : MonoBehaviour
     [SerializeField] private Transform MainParent = null;
     [SerializeField] private Canvas HintCanvas = null;
     private bool isZoomIn = false;
- 
+
     private void Update()
     {
         if (isZoomIn == false)
             return;
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             ZoomOut();
         }
@@ -23,15 +23,15 @@ public class ZoomInHint : MonoBehaviour
 
     private void ZoomIn()
     {
-        TimeControl.Pause();
-        isZoomIn = true;
         HintCanvas.gameObject.SetActive(true);
+        isZoomIn = true;
+        TimeControl.Pause();
     }
 
     private void ZoomOut()
     {
-        TimeControl.Play();
-        isZoomIn = false;
         HintCanvas.gameObject.SetActive(false);
+        isZoomIn = false;
+        TimeControl.Play();
     }
 }

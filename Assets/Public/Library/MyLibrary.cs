@@ -317,6 +317,9 @@ namespace MyLibrary
         /// </summary>
         private static void ShootRay(float maxDistance, bool isClicked)
         {
+            if (Time.timeScale == 0f)
+                return;
+
             Vector3 direction;
             Vector3 startPos;
 
@@ -620,3 +623,4 @@ namespace MyLibrary
     }
 
 }
+ 

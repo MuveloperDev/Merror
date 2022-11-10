@@ -4,13 +4,19 @@ using UnityEngine;
 using UnityEngine.UI;
 using MyLibrary;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField]
-    GameObject aim;
+    [SerializeField] GameObject aim;
 
     Button[] transButtons;
+
+    // Button Children image gameobject
+    [SerializeField] Image buttonBackgroundImage;
+
+    // LoadGame Children image gameobject
+    [SerializeField] Image LoadButtonImage;
 
     GameObject soundManager = null;
 
@@ -38,9 +44,22 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         aim.SetActive(false);
+
+        // Load Game Data가 비었을 경우를 나타네는 bool 변수 필요
+        //Load Data : Null => Button interactable : false
+        //if (transButtons[1] == null)
+        //{
+        //   Destroy(LoadButtonImage);
+        //   transButtons[1].interactable = false;    
     }
 
     // Add Pointer Script
+
+
+
+
+
+
 
     // NewGameButton
     public void OnClickNewGame()
@@ -60,7 +79,6 @@ public class UIManager : MonoBehaviour
     public void OnClickLoadGame()
     {
         Debug.LogError("Load Game");
-        //transButtons[1]
     }
 
     // ExitButton
@@ -79,6 +97,11 @@ public class UIManager : MonoBehaviour
     {
         soundManager.SetActive(false);
     }
+
+
+
+
+
 
 
 
@@ -104,12 +127,12 @@ public class UIManager : MonoBehaviour
         }
     }
 
-/*
-    public virtual void Do_Outline(bool value)
-    {
-        if (_Outlinable != null)
-            _Outlinable.enabled = value;
-        GameManager.Instance.GetUI().ChangeIcon(myType, value);
-    }
-*/
+    /*
+        public virtual void Do_Outline(bool value)
+        {
+            if (_Outlinable != null)
+                _Outlinable.enabled = value;
+            GameManager.Instance.GetUI().ChangeIcon(myType, value);
+        }
+    */
 }

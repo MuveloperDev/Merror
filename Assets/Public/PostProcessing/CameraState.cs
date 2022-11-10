@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.UI;
@@ -77,16 +76,6 @@ public class CameraState : MonoBehaviour
         StartCoroutine(STATE.ToString() + "_STATE");
     }
 
-    public void OnFadeOut()
-    {
-        Debug.Log("OnFadeOut Call");
-        //fadeInOut = true;
-        //Color color = blackPanel.color;
-        //color.a = 0f;
-        //blackPanel.color = color;
-        TurnOnState(CamState.FADEOUT);
-    } 
-
     public void TurnOffState()
     {
         Debug.Log("TurnOffState");
@@ -102,7 +91,7 @@ public class CameraState : MonoBehaviour
 
         while (true)
         {
-            yield return null;
+            yield return new WaitForFixedUpdate();
             time += Time.deltaTime;
             vignette.intensity.value = Mathf.Clamp(time * 5f, 0.1f,0.8f);
             lensDistortion.intensity.value = Mathf.Clamp(time * 30f, 0f, 80f);
@@ -123,7 +112,7 @@ public class CameraState : MonoBehaviour
     IEnumerator FADEIN_STATE()
     {
         Debug.Log("FADEIN");
-        yield return null;
+        yield return new WaitForFixedUpdate(); ;
         vignette.intensity.value = 1f;
         StartCoroutine(DirectingEffect_Panel());
 
@@ -132,9 +121,12 @@ public class CameraState : MonoBehaviour
     {
         blackPanel.gameObject.SetActive(true);
         Debug.Log("FadeOut");
-        yield return null;
+        yield return new WaitForFixedUpdate(); ;
         StartCoroutine(DirectingEffect_Bloom());
     }
+
+
+
 
     #region Fade In & Out
     IEnumerator DirectingEffect_Panel()
@@ -161,7 +153,7 @@ public class CameraState : MonoBehaviour
 
             color.a = alpha;
             blackPanel.color = color;
-            yield return null;
+            yield return new WaitForFixedUpdate(); 
         }
     }
 
@@ -188,7 +180,7 @@ public class CameraState : MonoBehaviour
             }
 
             bloom.intensity.value += value;
-            yield return null;
+            yield return new WaitForFixedUpdate();
         }
     }
 
@@ -211,7 +203,7 @@ public class CameraState : MonoBehaviour
                 yield break;
             }
             vignette.intensity.value += value;
-            yield return null;
+            yield return new WaitForFixedUpdate();
         }
     }
 
@@ -220,7 +212,7 @@ public class CameraState : MonoBehaviour
         while (ambientOcclusion.intensity.value > 0.5f)
         {
             ambientOcclusion.intensity.value -= 0.05f;
-            yield return null;
+            yield return new WaitForFixedUpdate();
         }
     }
 
@@ -237,7 +229,7 @@ public class CameraState : MonoBehaviour
                 yield break;
             }
             chromaticAberration.intensity.value -= 0.0005f;
-            yield return null;
+            yield return new WaitForFixedUpdate();
         }
     }
 

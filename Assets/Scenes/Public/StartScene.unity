@@ -181,7 +181,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Laod Game
+  m_text: Load Game
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 20bd4e9f9915f594b905c13e260c2360, type: 2}
   m_sharedMaterial: {fileID: -858760330144286876, guid: 20bd4e9f9915f594b905c13e260c2360, type: 2}
@@ -421,8 +421,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 98, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -7.395, y: 0}
+  m_SizeDelta: {x: 78.156, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &72585588
 MonoBehaviour:
@@ -682,7 +682,7 @@ GameObject:
   - component: {fileID: 276038310}
   - component: {fileID: 276038313}
   m_Layer: 5
-  m_Name: SaveButton
+  m_Name: LoadButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -707,8 +707,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -718, y: -76}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -620.4134, y: -76}
+  m_SizeDelta: {x: 395.183, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &276038310
 MonoBehaviour:
@@ -754,9 +754,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 839091525}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: OnClickSave
+      - m_Target: {fileID: 453554243}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: OnClickLoadGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1523,8 +1523,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 839091525}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+      - m_Target: {fileID: 453554243}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: OnClickExit
         m_Mode: 1
         m_Arguments:
@@ -1925,7 +1925,6 @@ GameObject:
   - component: {fileID: 839091523}
   - component: {fileID: 839091522}
   - component: {fileID: 839091521}
-  - component: {fileID: 839091525}
   m_Layer: 5
   m_Name: Menu
   m_TagString: Untagged
@@ -2022,18 +2021,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &839091525
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 839091520}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b945f78faa4b3a645ad28c08a3c056be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &856036255
 GameObject:
   m_ObjectHideFlags: 0
@@ -2164,8 +2151,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -721, y: -189}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -672.19293, y: -189}
+  m_SizeDelta: {x: 297.614, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &911425018
 MonoBehaviour:
@@ -2211,8 +2198,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 839091525}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+      - m_Target: {fileID: 453554243}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: OnClickOption
         m_Mode: 1
         m_Arguments:
@@ -3170,8 +3157,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 56, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 21, y: 0}
+  m_SizeDelta: {x: 89.943, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1453856146
 MonoBehaviour:
@@ -3322,8 +3309,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 111, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 15.193, y: 0}
+  m_SizeDelta: {x: 91.618, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1525392174
 MonoBehaviour:
@@ -3895,8 +3882,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 11, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 26.837997, y: 0}
+  m_SizeDelta: {x: 88.899, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1875154000
 MonoBehaviour:
@@ -3975,8 +3962,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -718, y: 35}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -628.94635, y: 35}
+  m_SizeDelta: {x: 378.107, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1950896752
 MonoBehaviour:
@@ -4022,8 +4009,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 839091525}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+      - m_Target: {fileID: 453554243}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: OnClickNewGame
         m_Mode: 1
         m_Arguments:
@@ -4168,8 +4155,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 839091525}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+      - m_Target: {fileID: 453554243}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: OnClickClose
         m_Mode: 1
         m_Arguments:

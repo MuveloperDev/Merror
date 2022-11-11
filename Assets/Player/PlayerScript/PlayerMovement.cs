@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using MyLibrary;
 public partial class Player : MonoBehaviour
 {
     /// <summary>
@@ -15,8 +15,8 @@ public partial class Player : MonoBehaviour
         // Calculate move state
         IsMove = !Mathf.Approximately(Vertical, 0f) || !Mathf.Approximately(Horizontal, 0f);
         // Run state & Crouch State
-        IsRun = _Input.LeftShift;
-        IsCrouch = _Input.LeftCtrl;
+        IsRun = GameInput.LeftShift;
+        IsCrouch = GameInput.LeftCtrl;
         
         MovementLogic();
     }
@@ -52,7 +52,7 @@ public partial class Player : MonoBehaviour
             // Translate camera to crouched position.
             _MainCam.transform.position = Vector3.Lerp(_MainCam.transform.position, CrouchCamPos.position, Time.deltaTime * 6f);
         }
-        else if(_Input.LeftCtrlUp) // When cancel crouching. Called only once when key released.
+        else if(GameInput.LeftCtrlUp) // When cancel crouching. Called only once when key released.
         {
             if (StandUpCoroutine != null) // Is already running stand up coroutine?
             {
@@ -86,13 +86,13 @@ public partial class Player : MonoBehaviour
     /// </summary>
     private void RotatePlayer()
     {
-        transform.Rotate(new Vector3(0f, _Input.MouseX, 0f)); // Player Y
+        transform.Rotate(new Vector3(0f, GameInput.MouseX, 0f)); // Player Y
         _MainCam.transform.eulerAngles = new Vector3(
-            -_Input.Clamped_Delta_Mouse_Y, transform.eulerAngles.y, _MainCam.transform.eulerAngles.z);
+            -GameInput.Clamped_Delta_Mouse_Y, transform.eulerAngles.y, _MainCam.transform.eulerAngles.z);
     }
     private void RotatePlayerSpine()
     {
-        Spine.transform.eulerAngles = new Vector3(-6.638f + -_Input.Clamped_Delta_Mouse_Y, Spine.transform.eulerAngles.y, Spine.transform.eulerAngles.z);
+        Spine.transform.eulerAngles = new Vector3(-6.638f + -GameInput.Clamped_Delta_Mouse_Y, Spine.transform.eulerAngles.y, Spine.transform.eulerAngles.z);
     }
     /// <summary>
     /// Adjust player movement speed and stamina gage. Control coroutines adjusting values include camera shaking.
@@ -156,16 +156,17 @@ public partial class Player : MonoBehaviour
             }
             else
             {
-                Stamina -= StaminaDecreaseRate * Time.deltaTime;
-                if (_UI != null && !(Stamina < 0f) && !(Stamina > 100f))
-                    _UI.UpdateStamina(Stamina);
-                if (Stamina < 0f)
+                if (Stamina <= 100f)
                 {
-                    Stamina = 0f;
-                    if (_UI != null)
-                        _UI.UpdateStamina(Stamina);
-                    Debug.Log("Out Of Stamina");
-                    yield break;
+                    Stamina -= StaminaDecreaseRate * Time.deltaTime;
+                    GameManager.Instance.GetUI().UpdateStamina(Stamina);
+                    if (Stamina < 0f)
+                    {
+                        Stamina = 0f;
+                        GameManager.Instance.GetUI().UpdateStamina(Stamina);
+                        Debug.Log("Out Of Stamina");
+                        yield break;
+                    }
                 }
             }
 
@@ -177,13 +178,11 @@ public partial class Player : MonoBehaviour
         while (true)
         {
             Stamina += StaminaRecoverRate * Time.deltaTime;
-            if(_UI != null && !(Stamina < 0f) && !(Stamina > 100f))
-                _UI.UpdateStamina(Stamina);
-            if (Stamina > MaxStamina)
+            GameManager.Instance.GetUI().UpdateStamina(Stamina);
+            if (Stamina >= MaxStamina)
             {
                 Stamina = MaxStamina;
-                if (_UI != null)
-                    _UI.UpdateStamina(Stamina);
+                GameManager.Instance.GetUI().UpdateStamina(Stamina);
                 Debug.Log("Finished Recover Stamina");
                 yield break;
             }

@@ -8,7 +8,7 @@ public class TransAim : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //MyRay.
+
     }
 
     // Update is called once per frame
@@ -16,4 +16,6 @@ public class TransAim : MonoBehaviour
     {
         
     }
+
+
 }

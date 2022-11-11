@@ -6,13 +6,12 @@ using TMPro;
 
 public partial class Player : MonoBehaviour
 {
-    private void Awake()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-    }
+    [SerializeField] private CameraState cameraState;
+
     private void Start()
     {
         InitPlayer();
+        GameInput.Clamped_Delta_Mouse_Y = 0f;
     }
     private void FixedUpdate()
     {
@@ -21,7 +20,7 @@ public partial class Player : MonoBehaviour
     private void Update()
     {
         InitMovementValues();
-        MyRay.StartRay(_MainCam, 5f, Input.GetMouseButtonDown(0));
+        MyRay.StartRay(_MainCam, RayDistance, Input.GetMouseButtonDown(0));
         RotatePlayer();
         Crouch();
     }
@@ -32,5 +31,6 @@ public partial class Player : MonoBehaviour
     private void Death()
     {
         Debug.Log("Player : I'm Dead!!!");
+        cameraState.TurnOnState(CameraState.CamState.DEATH);
     }
 }

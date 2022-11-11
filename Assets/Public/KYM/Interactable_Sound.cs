@@ -56,11 +56,10 @@ public partial class Interactable : MonoBehaviour
     /// </summary>
     private void RequestMyClip()// (Param : Type myType, string clip name)
     {
-        string desired_Clip = "";
-        //_MyClip = AudioManager.Instance.GetClip(Type.myType, string desired_Clip_Name);
+        _MyClip = GameManager.Instance.GetAudio().GetClip(Type, Clip_Name);
         if(_MyClip == null)
         {
-            Debug.LogWarning(this.name + " : Failed to get audio clip - " + desired_Clip);
+            Debug.LogWarning(this.name + " : Failed to get audio clip - " + Clip_Name);
         }
     }
 }

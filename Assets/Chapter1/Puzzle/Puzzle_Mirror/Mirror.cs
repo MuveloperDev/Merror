@@ -4,25 +4,26 @@ using UnityEngine;
 
 public class Mirror : MonoBehaviour
 {
+    private MirrorManager mirrorManager = null;
     private GameObject pieces;
     private void Start()
     {
+        mirrorManager = GameObject.FindObjectOfType<MirrorManager>();
         pieces = this.transform.GetChild(0).gameObject;
         pieces.SetActive(false);
-        Debug.Log("MirrorInit");
     }
     /// <summary>
     /// Be Sent Message by player. Break mirror and fall pieces.
     /// </summary>
     private void Break()
     {
-        Debug.Log("Break");
         pieces.SetActive(true);
         pieces.transform.SetParent(null);
         for (int i = 0; i < pieces.transform.childCount; i++)
         {
             pieces.transform.GetChild(i).gameObject.GetComponent<Rigidbody>().isKinematic = false;
         }
+        mirrorManager.RemoveMirror(this);
         this.gameObject.SetActive(false);
         Invoke("PhysicsOff", 2f);
     }

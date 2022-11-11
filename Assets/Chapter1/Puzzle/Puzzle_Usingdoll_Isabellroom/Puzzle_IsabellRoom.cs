@@ -19,7 +19,7 @@ public class Puzzle_IsabellRoom : MonoBehaviour
     private bool? puzzleFinish;
     [SerializeField] public bool InteractableOK { get; set; } = false;
 
-    private void Awake()
+    private void Start()
     {
         // Receive this puzzle is Finished from GameManager
         // puzzleFinish = GameManager.Inst.~~~;
@@ -101,5 +101,10 @@ public class Puzzle_IsabellRoom : MonoBehaviour
     {
         Destroy(frame.GetComponent<Interactable>());
         ActiveComponentsToFrame(false);
+        for (int i = 0; i < allDolls.Length; i++)
+        {
+            allDolls[i].transform.LookAt(GameObject.FindGameObjectWithTag("Player").transform.position);
+            Debug.Log(allDolls[i].name + " 플레이어 쳐다봄");
+        }
     }
 }

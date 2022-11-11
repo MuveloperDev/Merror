@@ -13,6 +13,7 @@ public class CameraState : MonoBehaviour
         FADEIN,
         FADEOUT,
         DEATH,
+        LIGHTOUT
     }
 
     [Header("Directing Effects")]
@@ -60,6 +61,10 @@ public class CameraState : MonoBehaviour
         //    TurnOnState(CamState.FADEOUT);
         //if (Input.GetKeyDown(KeyCode.K))
         //    TurnOnState(CamState.DEATH);
+        if (Input.GetKeyDown(KeyCode.H))
+            TurnOnState(CamState.LIGHTOUT);
+        if (Input.GetKeyDown(KeyCode.Q))
+            TurnOffState();
     }
     void Init()
     {
@@ -110,7 +115,6 @@ public class CameraState : MonoBehaviour
 
         isProcess = false;
     }
-
 
     IEnumerator PANIC_STATE()
     {
@@ -172,7 +176,41 @@ public class CameraState : MonoBehaviour
         yield return new WaitForFixedUpdate();
     }
 
+    IEnumerator LIGHTOUT_STATE()
+    {
+        fadeInOutPanel.gameObject.SetActive(true);
+        PanelSetColor(0f);
 
+        StartCoroutine(SetLightOut(0.01f));
+        yield return new WaitForSecondsRealtime(5f);
+        StartCoroutine(SetLightOut(-0.1f));
+
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(SetLightOut(0.1f));
+        yield return new WaitForSeconds(1.5f);
+        StartCoroutine(SetLightOut(-0.1f));
+        yield return new WaitForSeconds(0.5f);
+        StartCoroutine(SetLightOut(0.1f));
+        yield return new WaitForSeconds(1.5f);
+        StartCoroutine(SetLightOut(-0.1f));
+
+        PanelSetColor(1f);
+        Invoke("TurnOffState", 5f);
+    }
+
+
+    IEnumerator SetLightOut(float value)
+    {
+        Color color = fadeInOutPanel.color;
+        while (true)
+        {
+            color.a += value;
+            fadeInOutPanel.color = color;
+            yield return new WaitForFixedUpdate();
+            if (fadeInOutPanel.color.a >= 1f || fadeInOutPanel.color.a == 0)
+                break;
+        }
+    }
 
 
     #region Fade In & Out

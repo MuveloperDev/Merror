@@ -6,6 +6,8 @@ using TMPro;
 
 public partial class Player : MonoBehaviour
 {
+    [SerializeField] private CameraState cameraState;
+
     private void Start()
     {
         InitPlayer();
@@ -29,5 +31,6 @@ public partial class Player : MonoBehaviour
     private void Death()
     {
         Debug.Log("Player : I'm Dead!!!");
+        cameraState.TurnOnState(CameraState.CamState.DEATH);
     }
 }

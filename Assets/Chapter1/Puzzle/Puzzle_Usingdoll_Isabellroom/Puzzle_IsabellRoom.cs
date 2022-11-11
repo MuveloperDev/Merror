@@ -1,6 +1,8 @@
 using EPOOutline;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
+using static CameraState;
 
 public class Puzzle_IsabellRoom : MonoBehaviour
 {
@@ -18,6 +20,13 @@ public class Puzzle_IsabellRoom : MonoBehaviour
 
     private bool? puzzleFinish;
     [SerializeField] public bool InteractableOK { get; set; } = false;
+
+    private GameObject player = null;
+
+    private void Awake()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
 
     private void Start()
     {
@@ -49,7 +58,7 @@ public class Puzzle_IsabellRoom : MonoBehaviour
                 Debug.Log("You are clicked wrong obj");
                 if (allDolls[i].name == "3_Duck")
                 {
-                    allDolls[i].GetComponentInChildren<LineRenderer>().enabled = false;
+                    allDolls[i].GetComponentInChildren<Puzzle_IsabellRoom>().RenderLine(false);
                     continue;
                 }
                 allDolls[i].SendMessage("RenderLine", false, SendMessageOptions.DontRequireReceiver);
@@ -86,8 +95,10 @@ public class Puzzle_IsabellRoom : MonoBehaviour
         if(active == false)
         {
             gameObject.GetComponent<LineRenderer>().enabled = false;
-            if(this.name != "1_RABBIT") 
+            if(this.name != "1_RABBIT")
+            {
                 InteractableOK = false;
+            }
         }
         else
             gameObject.GetComponent<LineRenderer>().enabled = true;
@@ -121,17 +132,38 @@ public class Puzzle_IsabellRoom : MonoBehaviour
             Destroy(allDolls[i].GetComponent<Interactable>());
         }
         frame.AddComponent<Rigidbody>();
-        Invoke("DelayDestroy", 2f);
+        frame.GetComponent<Rigidbody>().AddForce(0,0,-10f, ForceMode.Impulse);
+        ActiveComponentsToFrame(false);
+        Destroy(frame.GetComponent<Interactable>());
+        Destroy(frame.GetComponent<Outlinable>());
+        //Invoke("DelayDestroy", 2f);
+        StartCoroutine(Do_Eff());
         yield return null;
     }
 
-    private void DelayDestroy()
+   IEnumerator Do_Eff()
     {
-        Destroy(frame.GetComponent<Interactable>());
-        ActiveComponentsToFrame(false);
+        yield return new WaitForSeconds(2f);
+        Destroy(frame);
+        Debug.Log("페이드아웃 실행");
+        GameObject.Find("PostProcess").GetComponent<CameraState>().TurnOnState(CamState.FADEOUT);
+        yield return new WaitForSeconds(5f);
         for (int i = 0; i < allDolls.Length; i++)
         {
-            allDolls[i].transform.LookAt(GameObject.FindGameObjectWithTag("Player").transform.position);
+            allDolls[i].transform.LookAt(player.transform.position);
         }
+        Debug.Log("페이드인 실행");
+        GameObject.Find("PostProcess").GetComponent<CameraState>().TurnOnState(CamState.FADEIN);
     }
+
+    //private void DelayDestroy()
+    //{
+    //    Destroy(frame.GetComponent<Interactable>());
+    //    ActiveComponentsToFrame(false);
+    //    for (int i = 0; i < allDolls.Length; i++)
+    //    {
+    //        allDolls[i].transform.LookAt(GameObject.FindGameObjectWithTag("Player").transform.position);
+    //        GameObject.Find("PostProcess").GetComponent<CameraState>().TurnOnState(CamState.FADEOUT);
+    //    }
+    //}
 }

@@ -59,12 +59,12 @@ public class CameraState : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.H))
-            TurnOnState(CamState.FADEIN);
-        if (Input.GetKeyDown(KeyCode.J))
-            TurnOnState(CamState.FADEOUT);
-        if (Input.GetKeyDown(KeyCode.K))
-            TurnOnState(CamState.DEATH);
+        //if (Input.GetKeyDown(KeyCode.H))
+        //    TurnOnState(CamState.FADEIN);
+        //if (Input.GetKeyDown(KeyCode.J))
+        //    TurnOnState(CamState.FADEOUT);
+        //if (Input.GetKeyDown(KeyCode.K))
+        //    TurnOnState(CamState.DEATH);
         //if (Input.GetKeyDown(KeyCode.H))
         //    TurnOnState(CamState.LIGHTOUT);
         //if (Input.GetKeyDown(KeyCode.Q))

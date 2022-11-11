@@ -124,7 +124,7 @@ public class GameManager : Singleton<GameManager>
     public AudioManager GetAudio() => _AudioManager;
     #endregion
     #region UI Management
-    private UIManager _UIManager = null;
+    [SerializeField]private UIManager _UIManager = null;
     private void InitUIManager() => _UIManager = GetComponent<UIManager>();
     public UIManager GetUI() => _UIManager;
     #endregion

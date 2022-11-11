@@ -6,7 +6,7 @@ using MyLibrary;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 
-public class UIManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class UIManager : MonoBehaviour
 {
     [SerializeField] GameObject aim;
     [SerializeField] GameObject mainUI;
@@ -39,9 +39,6 @@ public class UIManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         // Move UI to front
         aim.transform.SetAsLastSibling();
         DontDestroyOnLoad(aim);
-
-        // Move mainUI to last
-        mainUI.transform.SetAsFirstSibling();
     }
 
     private void Start()
@@ -56,18 +53,18 @@ public class UIManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         //   transButtons[1].interactable = false;    
     }
         
-    #region Button Event Trigger
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        Debug.Log("OnPointerEnter");
-        Debug.Log(gameObject.name);
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        Debug.Log("OnPointerExit");
-    }
-    #endregion // StartScene Envent Trigger
+    //#region Button Event Trigger
+    //public void OnPointerEnter(PointerEventData eventData)
+    //{
+    //    Debug.Log("OnPointerEnter");
+    //    Debug.Log(gameObject.name);
+    //}
+    //
+    //public void OnPointerExit(PointerEventData eventData)
+    //{
+    //    Debug.Log("OnPointerExit");
+    //}
+    //#endregion // StartScene Envent Trigger
 
     #region Button Click Event
     // NewGameButton

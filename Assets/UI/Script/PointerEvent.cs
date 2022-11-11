@@ -21,13 +21,6 @@ public class PointerEvent : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
-        
-        //Debug.Log(EventSystem.FindObjectOfType<Button>().gameObject.name);
-        Debug.Log(gameObject.name);
-        //if (EventSystem.current.currentInputModule.gameObject.name == "StartButton")
-        //{
-        //    Debug.Log(EventSystem.current.gameObject.name);
-        //}
         buttonBackgroundImage[1].enabled = true;
         StartCoroutine(ChangeFilled());
     }

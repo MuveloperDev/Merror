@@ -32,6 +32,7 @@ public class GameManager : Singleton<GameManager>
                 default: { ToggleCursor(false); break; }
                 case "Chapter1": { InitChapter(1); break; }
                 case "Chapter2": { InitChapter(2); break; }
+                case "Chapter1_KYM": { InitChapter(1); break; } // test
             }
         }
     }
@@ -81,9 +82,10 @@ public class GameManager : Singleton<GameManager>
     /// </summary>
     public void InitInventory()
     {
-        Notice = GameObject.Find("notice").GetComponent<TextMeshProUGUI>();
-        InventoryCanvas = Notice.transform.parent.GetComponent<Canvas>();
-        MyInventory = new Inventory(Notice, InventoryCanvas);
+        TryGetComponent<Inventory>(out Inventory inventory);
+        MyInventory = inventory == null ? null : inventory;
+        MyInventory ??= this.AddComponent<Inventory>();
+        MyInventory.InitInventory();
     }
     /// <summary>
     /// Input key 'I', player can toggle inventory UI.

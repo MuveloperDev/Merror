@@ -28,6 +28,7 @@ public partial class Interactable : MonoBehaviour
         PuzzleIsabellRoom,
         Mirror,
         PuzzleDecryption,
+        Door,
     }
 
     public bool IsLocked = false;

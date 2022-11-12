@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using Unity.VisualScripting;
 
 public partial class Player : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public partial class Player : MonoBehaviour
 
     private Rigidbody _Rigidbody = null;
     private Animator _Animator = null;
+    private MyRay myRay = null;
 
     [Header("Player Camera")]
     //[SerializeField] private Camera _MainCam = null;
@@ -52,6 +54,7 @@ public partial class Player : MonoBehaviour
     {
         _Rigidbody = GetComponent<Rigidbody>();
         _Animator = GetComponent<Animator>();
+        myRay ??= new MyRay();
 
         Speed = MaxWalkSpeed;
         Stamina = MaxStamina;

@@ -17,7 +17,7 @@ public class BaseStateMachine : MonoBehaviour
         DEATH,
         SLEEPING,
     }
-
+    protected MyRay myRay = null;
     protected Animator myAnimator = null;
     protected NavMeshAgent navMeshAgent = null;
     protected Transform target = null;
@@ -28,7 +28,8 @@ public class BaseStateMachine : MonoBehaviour
     private State prevState = State.NONE;
 
     protected virtual void Init()
-    { 
+    {
+        myRay ??= new MyRay();
         myAnimator = GetComponent<Animator>();
         audioSource = GetComponentInChildren<AudioSource>();
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -106,7 +107,7 @@ public class BaseStateMachine : MonoBehaviour
         while (true)
         {
             yield return new WaitForFixedUpdate();
-
+            myRay.ShootAIRay(transform, 3f, Vector3.up * 0.5f);
             // Distance for catch player
             float desiredDistance = Vector3.Distance(target.transform.position, transform.position);
             if (desiredDistance < 2f)

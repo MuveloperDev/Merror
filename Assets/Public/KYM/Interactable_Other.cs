@@ -49,6 +49,7 @@ public partial class Interactable : MonoBehaviour
                     Do_Puzzle_Decryption();
                     break;
                 }
+            default: break;
         }
     }
     /// <summary>

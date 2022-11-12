@@ -1,16 +1,10 @@
+using Cinemachine;
+using MyLibrary;
 using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Cinemachine;
-using UnityEngine.Rendering;
-using EPOOutline;
-using UnityEditor;
-using MyLibrary;
-using TMPro;
-using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine.Video;
-using UnityEngine.Networking;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -19,6 +13,7 @@ public class GameManager : Singleton<GameManager>
         InitAudioManager();
         InitUIManager();
         InitPuzzleManager();
+        InitVideoPlayerManager();
         //InitCutScenePlayer();
         SceneManager.activeSceneChanged -= OnSceneChanged;
         SceneManager.activeSceneChanged += OnSceneChanged;
@@ -134,6 +129,9 @@ public class GameManager : Singleton<GameManager>
     public PuzzleManager GetPuzzle() => _Puzzle;
     #endregion
     #region Cut Scene
+    private VideoPlayerManager _VideoPlayer = null;
+    private void InitVideoPlayerManager() => _VideoPlayer = GetComponent<VideoPlayerManager>();
+    public VideoPlayerManager GetVideoPlayer() => _VideoPlayer;
     private VideoPlayer CutScenePlayer = null;
     public VideoClip CutSceneClip = null;
     private void InitCutScenePlayer()

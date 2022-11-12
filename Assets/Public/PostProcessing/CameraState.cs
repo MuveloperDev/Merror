@@ -5,8 +5,10 @@ using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.UI;
 using UnityEngine.Video;
 
+
 public class CameraState : MonoBehaviour
 {
+    
     public enum CamState
     {
         NONE,
@@ -33,8 +35,6 @@ public class CameraState : MonoBehaviour
     [SerializeField] private bool isProcess = false;
     [SerializeField] CamState prevState = CamState.NONE;
 
-    [Header("UI_VideoPlayer")]
-    [SerializeField] private VideoPlayer videoPlayer;
 
     private float time = 0f;
 
@@ -123,26 +123,7 @@ public class CameraState : MonoBehaviour
     void CallBackEndFadeOut()
     {
         Debug.Log("CallBackFadeOut");
-        StartCoroutine(PlayVideo());
-        
     }
-    IEnumerator PlayVideo()
-    {
-        videoPlayer.gameObject.SetActive(true);
-
-        videoPlayer.loopPointReached += (VideoPlayer vp) => {
-            videoPlayer.Stop();
-            TurnOffState();
-            videoPlayer.gameObject.SetActive(false);
-            TurnOnState(CamState.FADEIN);
-        };
-
-        videoPlayer.Prepare();
-        yield return new WaitUntil(() => videoPlayer.isPrepared == true);
-        videoPlayer.Play();
-    }
-
-
 
     void CallBackEndFadeIn()
     {
@@ -172,6 +153,7 @@ public class CameraState : MonoBehaviour
 
     IEnumerator DEATH_STATE()
     {
+        Debug.Log("DEath!!!!");
         yield return new WaitForFixedUpdate();
         Color color = Color.white;
         vignette.color.value = Color.red;
@@ -186,14 +168,23 @@ public class CameraState : MonoBehaviour
                 break;
             }
         }
-        StartCoroutine(FADEOUT_STATE());
+        PanelSetAlpha(1f);
+        //fadeInOutPanel.gameObject.SetActive(true);
 
+        GameManager.Instance.GetVideoPlayer().CallPlayVideo(
+            GameManager.Instance.GetVideoPlayer().getVideoClips.getChapter1.DeathVideo, () => {
+                Debug.Log("Action1");
+                TurnOffState();
+                // For Test
+                Debug.Log("Action2");
+                TurnOnState(CamState.FADEIN);
+            }, 2f);
     }
-
+    
     IEnumerator FADEIN_STATE()
     {
         fadeInOut = false;
-        PanelSetColor(1f);
+        PanelSetAlpha(1f);
         fadeInOutPanel.gameObject.SetActive(true);
         vignette.intensity.value = 1f;
         StartCoroutine(DirectingEffect_Panel());
@@ -203,7 +194,7 @@ public class CameraState : MonoBehaviour
     IEnumerator FADEOUT_STATE()
     {
         fadeInOutPanel.gameObject.SetActive(true);
-        PanelSetColor(0f);
+        PanelSetAlpha(0f);
         fadeInOut = true;
         StartCoroutine(DirectingEffect_Bloom());
         yield return new WaitForFixedUpdate();
@@ -212,7 +203,7 @@ public class CameraState : MonoBehaviour
     IEnumerator LIGHTOUT_STATE()
     {
         fadeInOutPanel.gameObject.SetActive(true);
-        PanelSetColor(0f);
+        PanelSetAlpha(0f);
 
         StartCoroutine(SetLightOut(0.01f));
         yield return new WaitForSecondsRealtime(5f);
@@ -227,7 +218,7 @@ public class CameraState : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         StartCoroutine(SetLightOut(-0.1f));
 
-        PanelSetColor(1f);
+        PanelSetAlpha(1f);
         Invoke("TurnOffState", 5f);
     }
 
@@ -351,7 +342,7 @@ public class CameraState : MonoBehaviour
         }
     }
 
-    void PanelSetColor(float value)
+    void PanelSetAlpha(float value)
     {
         Color color = fadeInOutPanel.color;
         color.a = value;

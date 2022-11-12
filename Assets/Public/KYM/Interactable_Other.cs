@@ -49,9 +49,9 @@ public partial class Interactable : MonoBehaviour
                     Do_Puzzle_Decryption();
                     break;
                 }
-            case ObjectType.PuzzleBlackboard:
+            case ObjectType.PuzzleFreemasonCipher:
                 {
-                    Do_PuzzleBlackboard();
+                    Do_PuzzleFreemasonCipher();
                     break;
                 }
 
@@ -137,8 +137,18 @@ public partial class Interactable : MonoBehaviour
         }
     }
 
-    public virtual void Do_PuzzleBlackboard()
+    public virtual void Do_PuzzleFreemasonCipher()
     {
+        if (TryGetComponent<FreemasonCipher>(out FreemasonCipher freemasonCipher))
+        {
+            freemasonCipher.SendMessage("inputBoard", SendMessageOptions.DontRequireReceiver);
+        }
+        
+        else
+        {
+            Debug.LogError("Require to CMJ & SSH");
+        }
+
 
     }
 }

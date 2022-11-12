@@ -10,6 +10,7 @@ public partial class Player : MonoBehaviour
 
     private void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         InitPlayer();
         GameInput.Clamped_Delta_Mouse_Y = 0f;
     }

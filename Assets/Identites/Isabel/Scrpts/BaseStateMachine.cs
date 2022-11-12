@@ -22,6 +22,7 @@ public class BaseStateMachine : MonoBehaviour
     protected NavMeshAgent navMeshAgent = null;
     protected Transform target = null;
     protected AudioSource audioSource = null;
+    protected AudioClip myclip = null;
 
     protected bool isKill = false;
     private State prevState = State.NONE;
@@ -32,6 +33,10 @@ public class BaseStateMachine : MonoBehaviour
         audioSource = GetComponentInChildren<AudioSource>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
+
+        myclip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Identity, "Isabel_Run");
+
+        Debug.Log(myclip.name);
 
         navMeshAgent.enabled = false;
         isKill = false;

@@ -5,10 +5,10 @@ public class AudioManager : MonoBehaviour
 {
     public enum Type { Identity};
     private AudioManager() { }
-    [SerializeField] ScriptableObj PlayerObj;
-    [SerializeField] ScriptableObj PropsObj;
-    [SerializeField] ScriptableObj EnviromentObj;
-    [SerializeField] ScriptableObj DefaultObj;
+    [SerializeField] ScriptableObj PlayerObj = null;
+    [SerializeField] ScriptableObj PropsObj = null;
+    [SerializeField] ScriptableObj EnviromentObj = null;
+    [SerializeField] ScriptableObj IdentityObj = null;
 
     private Dictionary<string, AudioClip> PlayerClips = new Dictionary<string, AudioClip>();
     private Dictionary<string, AudioClip> PropsClips = new Dictionary<string, AudioClip>();
@@ -20,7 +20,9 @@ public class AudioManager : MonoBehaviour
         AddAllClipsToDic(PlayerObj);
         AddAllClipsToDic(PropsObj);
         AddAllClipsToDic(EnviromentObj);
-        AddAllClipsToDic(DefaultObj);
+        AddAllClipsToDic(IdentityObj);
+
+        Debug.Log(IdentiyuClips.Count);
     }
 
     /// <summary>
@@ -52,10 +54,10 @@ public class AudioManager : MonoBehaviour
                 }
                 break;
 
-            case "DefaultSounds":
+            case "Identity":
                 for (int i = 0; i < obj.Sounds.Length; i++)
                 {
-                    IdentiyuClips.Add(DefaultObj.Sounds[i].name, DefaultObj.Sounds[i]);
+                    IdentiyuClips.Add(IdentityObj.Sounds[i].name, IdentityObj.Sounds[i]);
                 }
                 break;
         }
@@ -134,7 +136,7 @@ public class AudioManager : MonoBehaviour
         switch (soundType)
         {
             case Type.Identity:
-                curdic = PlayerClips;
+                curdic = IdentiyuClips;
                 break;
         }
 

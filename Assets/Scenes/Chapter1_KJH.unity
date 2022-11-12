@@ -75616,6 +75616,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2146252219}
     m_Modifications:
+    - target: {fileID: 2765936203546974651, guid: 2bef914d688e34741b5c34eea04c1fd4, type: 3}
+      propertyPath: Clip_Name
+      value: sp-underthestairs
+      objectReference: {fileID: 0}
+    - target: {fileID: 2765936203546974651, guid: 2bef914d688e34741b5c34eea04c1fd4, type: 3}
+      propertyPath: Audio_Playable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6377153122314936556, guid: 2bef914d688e34741b5c34eea04c1fd4, type: 3}
       propertyPath: m_RootOrder
       value: 0

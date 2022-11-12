@@ -49,6 +49,12 @@ public partial class Interactable : MonoBehaviour
                     Do_Puzzle_Decryption();
                     break;
                 }
+            case ObjectType.PuzzleBlackboard:
+                {
+                    Do_PuzzleBlackboard();
+                    break;
+                }
+
         }
     }
     /// <summary>
@@ -129,5 +135,10 @@ public partial class Interactable : MonoBehaviour
         {
             Debug.Log("This is not Puzzle Decryption");
         }
+    }
+
+    public virtual void Do_PuzzleBlackboard()
+    {
+
     }
 }

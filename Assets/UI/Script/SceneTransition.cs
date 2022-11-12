@@ -9,6 +9,8 @@ public class SceneTransition : MonoBehaviour
     [SerializeField] Image Logo;
     public AsyncOperation loadAO;
 
+    float fillAmountBar = 0.01f;
+    float timer = 0.01f;
     bool isloading = false;
 
     private void Awake()
@@ -19,20 +21,52 @@ public class SceneTransition : MonoBehaviour
         Logo.fillAmount = 0;
     }
 
-    //private void Start()
-    //{
-    //    //StartCoroutine(AllowScene());
-    //}
+    private void Start()
+    {
+        StartCoroutine(FillLoadingBar());
+    }
+
 
     private void Update()
     {
-        Logo.fillAmount = loadAO.progress;
-
-
         if (loadAO.isDone == true)
         {
-            SceneManager.UnloadScene("LodingScene");
+            SceneManager.UnloadSceneAsync("LodingScene");
             loadAO.allowSceneActivation = true;
+        }
+    }
+
+    IEnumerator FillLoadingBar()
+    {
+        yield return new WaitForFixedUpdate();
+
+        while (!loadAO.isDone)
+        {
+            yield return new WaitForSeconds(0.02f);
+            Debug.Log("while문 들어옴");
+            Debug.Log(loadAO.progress);
+
+            timer += fillAmountBar;
+
+            if (loadAO.progress <= 0.9)
+            {
+                Debug.Log("if문 도는 중"+ Logo.fillAmount);
+
+                if (timer < 0.5f)
+                {
+                    Logo.fillAmount += fillAmountBar;
+                }
+
+                else if (timer >= 0.5f)
+                {
+                    Logo.fillAmount = 0.9f;
+                }
+            }
+
+            else
+            {
+                Debug.Log("로딩 완료");
+            }
         }
     }
 

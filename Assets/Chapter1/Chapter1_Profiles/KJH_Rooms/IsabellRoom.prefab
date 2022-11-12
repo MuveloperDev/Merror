@@ -748,7 +748,6 @@ MonoBehaviour:
   Reset_Speed: 50
   Audio_Playable: 0
   _MyClip: {fileID: 0}
-  Type: 2
   Clip_Name: 
 --- !u!65 &2259024378666398558
 BoxCollider:
@@ -1248,7 +1247,6 @@ MonoBehaviour:
   Reset_Speed: 50
   Audio_Playable: 0
   _MyClip: {fileID: 0}
-  Type: 2
   Clip_Name: 
 --- !u!65 &2765936203546974650
 BoxCollider:
@@ -1582,7 +1580,6 @@ MonoBehaviour:
   Reset_Speed: 50
   Audio_Playable: 0
   _MyClip: {fileID: 0}
-  Type: 2
   Clip_Name: 
 --- !u!65 &2808380094990509625
 BoxCollider:
@@ -2474,7 +2471,6 @@ MonoBehaviour:
   Reset_Speed: 50
   Audio_Playable: 0
   _MyClip: {fileID: 0}
-  Type: 2
   Clip_Name: 
 --- !u!65 &4337341570706104180
 BoxCollider:
@@ -4463,7 +4459,6 @@ MonoBehaviour:
   Reset_Speed: 50
   Audio_Playable: 0
   _MyClip: {fileID: 0}
-  Type: 3
   Clip_Name: 
 --- !u!1 &4724206009862601992
 GameObject:
@@ -4743,7 +4738,6 @@ MonoBehaviour:
   Reset_Speed: 50
   Audio_Playable: 0
   _MyClip: {fileID: 0}
-  Type: 2
   Clip_Name: 
 --- !u!65 &4854857503788327981
 BoxCollider:
@@ -5401,7 +5395,6 @@ MonoBehaviour:
   Reset_Speed: 50
   Audio_Playable: 0
   _MyClip: {fileID: 0}
-  Type: 2
   Clip_Name: 
 --- !u!114 &1987658796906956015
 MonoBehaviour:
@@ -5735,7 +5728,6 @@ MonoBehaviour:
   Reset_Speed: 50
   Audio_Playable: 0
   _MyClip: {fileID: 0}
-  Type: 2
   Clip_Name: 
 --- !u!65 &5505843405394829613
 BoxCollider:
@@ -7947,7 +7939,6 @@ MonoBehaviour:
   Reset_Speed: 50
   Audio_Playable: 0
   _MyClip: {fileID: 0}
-  Type: 2
   Clip_Name: 
 --- !u!65 &8574284769593079348
 BoxCollider:

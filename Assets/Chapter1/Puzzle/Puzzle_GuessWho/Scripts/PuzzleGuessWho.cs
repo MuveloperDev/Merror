@@ -10,11 +10,8 @@ public class PuzzleGuessWho : MonoBehaviour
 
     private void OnEnable() => Init();
 
-    public void Init()
-    {
-        player = GameObject.FindObjectOfType<Player>();
-        hintObj.SetActive(false);
-    }
+    public void Init() => player = GameObject.FindObjectOfType<Player>();
+
 
     
     void CheckAnswer()

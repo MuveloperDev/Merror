@@ -1,16 +1,11 @@
+using Cinemachine;
+using MyLibrary;
 using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Cinemachine;
-using UnityEngine.Rendering;
-using EPOOutline;
-using UnityEditor;
-using MyLibrary;
-using TMPro;
-using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine.Video;
-using UnityEngine.Networking;
+using Unity.VisualScripting;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -19,6 +14,7 @@ public class GameManager : Singleton<GameManager>
         InitAudioManager();
         InitUIManager();
         InitPuzzleManager();
+        InitVideoPlayerManager();
         //InitCutScenePlayer();
         SceneManager.activeSceneChanged -= OnSceneChanged;
         SceneManager.activeSceneChanged += OnSceneChanged;
@@ -37,6 +33,7 @@ public class GameManager : Singleton<GameManager>
                 default: { ToggleCursor(false); break; }
                 case "Chapter1": { InitChapter(1); break; }
                 case "Chapter2": { InitChapter(2); break; }
+                case "Chapter1_KYM": { InitChapter(1); break; } // test
             }
         }
     }
@@ -86,9 +83,10 @@ public class GameManager : Singleton<GameManager>
     /// </summary>
     public void InitInventory()
     {
-        Notice = GameObject.Find("notice").GetComponent<TextMeshProUGUI>();
-        InventoryCanvas = Notice.transform.parent.GetComponent<Canvas>();
-        MyInventory = new Inventory(Notice, InventoryCanvas);
+        TryGetComponent<Inventory>(out Inventory inventory);
+        MyInventory = inventory == null ? null : inventory;
+        MyInventory ??= this.AddComponent<Inventory>();
+        MyInventory.InitInventory();
     }
     /// <summary>
     /// Input key 'I', player can toggle inventory UI.
@@ -134,6 +132,9 @@ public class GameManager : Singleton<GameManager>
     public PuzzleManager GetPuzzle() => _Puzzle;
     #endregion
     #region Cut Scene
+    private VideoPlayerManager _VideoPlayer = null;
+    private void InitVideoPlayerManager() => _VideoPlayer = GetComponent<VideoPlayerManager>();
+    public VideoPlayerManager GetVideoPlayer() => _VideoPlayer;
     private VideoPlayer CutScenePlayer = null;
     public VideoClip CutSceneClip = null;
     private void InitCutScenePlayer()

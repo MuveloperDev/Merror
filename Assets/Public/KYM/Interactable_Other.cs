@@ -55,6 +55,7 @@ public partial class Interactable : MonoBehaviour
                     break;
                 }
 
+            default: break;
         }
     }
     /// <summary>

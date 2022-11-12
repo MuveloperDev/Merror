@@ -1009,6 +1009,7 @@ GameObject:
   - component: {fileID: 453554243}
   - component: {fileID: 453554244}
   - component: {fileID: 453554245}
+  - component: {fileID: 453554246}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1127,6 +1128,24 @@ VideoPlayer:
   m_WaitForFirstFrame: 1
   m_FrameReadyEventEnabled: 0
   m_VideoShaders: []
+--- !u!114 &453554246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 453554239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85b0e89040a7b4b4a8652e20555728c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  videoClips:
+    chapter1:
+      deathVideo: {fileID: 32900000, guid: 6b4105c95b8871d4db60b2a8e214f9e7, type: 3}
+      endVideo: {fileID: 0}
+      isabelRoomVideo: {fileID: 0}
+  videoPlayer: {fileID: 0}
 --- !u!1 &490044334
 GameObject:
   m_ObjectHideFlags: 0

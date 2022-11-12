@@ -9,6 +9,7 @@ public partial class Player : MonoBehaviour
     {
         _Animator.SetFloat("HorizontalSpeed", Speed * Horizontal);
         _Animator.SetFloat("VerticalSpeed", Speed * Vertical);
+        _Animator.SetBool("IsMove", IsMove);
     }
     private void Anim_Crouch()
     {

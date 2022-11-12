@@ -17,7 +17,7 @@ public class BaseStateMachine : MonoBehaviour
         DEATH,
         SLEEPING,
     }
-
+    protected MyRay myRay = null;
     protected Animator myAnimator = null;
     protected NavMeshAgent navMeshAgent = null;
     protected Transform target = null;
@@ -28,13 +28,12 @@ public class BaseStateMachine : MonoBehaviour
     private State prevState = State.NONE;
 
     protected virtual void Init()
-    { 
+    {
+        myRay ??= new MyRay();
         myAnimator = GetComponent<Animator>();
         audioSource = GetComponentInChildren<AudioSource>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
-
-        myclip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Identity, "Isabel_Run");
 
         Debug.Log(myclip.name);
 
@@ -82,6 +81,7 @@ public class BaseStateMachine : MonoBehaviour
             navMeshAgent.enabled = false;
         } 
        
+        audioSource.Stop();
         // False animation of previous state and Stop coroutine.
         if(prevState != State.NONE) myAnimator.SetBool(prevState.ToString(), false);
         StopCoroutine(prevState.ToString() + "_STATE");
@@ -100,10 +100,12 @@ public class BaseStateMachine : MonoBehaviour
         myAnimator.SetBool(State.CHASE.ToString(), true);
         navMeshAgent.acceleration = 50f;
 
+        PlaySound(ClipChanger("Isabel_Run"),true);
+        
         while (true)
         {
             yield return new WaitForFixedUpdate();
-
+            myRay.ShootAIRay(transform, 3f, Vector3.up * 0.5f);
             // Distance for catch player
             float desiredDistance = Vector3.Distance(target.transform.position, transform.position);
             if (desiredDistance < 2f)
@@ -133,6 +135,7 @@ public class BaseStateMachine : MonoBehaviour
     IEnumerator FOCUS_STATE()
     {
         myAnimator.SetBool(State.FOCUS.ToString(), true);
+        PlaySound(ClipChanger("Isabel_Gigle"), true);
         // Add Audio
         yield return new WaitForFixedUpdate();
     }
@@ -166,4 +169,13 @@ public class BaseStateMachine : MonoBehaviour
     }
 
     #endregion
+
+    AudioClip ClipChanger(string clipName) => myclip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Identity, clipName);
+    void PlaySound(AudioClip clip, bool loop)
+    {
+        audioSource.loop = loop;
+        audioSource.Stop();
+        audioSource.clip = clip;
+        audioSource.Play();
+    }
 }

@@ -2999,7 +2999,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8121137556175670162}
-  - component: {fileID: 8935074835262804244}
   - component: {fileID: 8935074835262804245}
   - component: {fileID: 8935074835262804246}
   - component: {fileID: 8935074835262804247}
@@ -3037,18 +3036,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8935074835262804244
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8935074835262804264}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8081c13b64781114db018de027ac0e56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &8935074835262804245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3061,6 +3048,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6daf9e3a556f84a4eb42464d1edc1b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraState: {fileID: 0}
   Speed: 1
   MaxWalkSpeed: 3
   MaxRunSpeed: 5
@@ -3071,8 +3059,8 @@ MonoBehaviour:
   _MainCam: {fileID: 2408514796481766017}
   OriginCamPos: {fileID: 8592493058604006896}
   CrouchCamPos: {fileID: 8592493057121399745}
+  RayDistance: 5
   Spine: {fileID: 4074834690499631253}
-  _UI: {fileID: 0}
   Cheat: 1
 --- !u!54 &8935074835262804246
 Rigidbody:

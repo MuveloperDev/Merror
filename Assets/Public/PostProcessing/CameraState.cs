@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class CameraState : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class CameraState : MonoBehaviour
         FADEIN,
         FADEOUT,
         DEATH,
+        LIGHTOUT
     }
 
     [Header("Directing Effects")]
@@ -31,7 +33,10 @@ public class CameraState : MonoBehaviour
     [SerializeField] private bool isProcess = false;
     [SerializeField] CamState prevState = CamState.NONE;
 
-    float time = 0f;
+    [Header("UI_VideoPlayer")]
+    [SerializeField] private VideoPlayer videoPlayer;
+
+    private float time = 0f;
 
     // CallBackFunction After FadeOut
     public Action DoFadeOutState;
@@ -60,6 +65,10 @@ public class CameraState : MonoBehaviour
         //    TurnOnState(CamState.FADEOUT);
         //if (Input.GetKeyDown(KeyCode.K))
         //    TurnOnState(CamState.DEATH);
+        //if (Input.GetKeyDown(KeyCode.H))
+        //    TurnOnState(CamState.LIGHTOUT);
+        //if (Input.GetKeyDown(KeyCode.Q))
+        //    TurnOffState();
     }
     void Init()
     {
@@ -111,6 +120,34 @@ public class CameraState : MonoBehaviour
         isProcess = false;
     }
 
+    void CallBackEndFadeOut()
+    {
+        Debug.Log("CallBackFadeOut");
+        StartCoroutine(PlayVideo());
+        
+    }
+    IEnumerator PlayVideo()
+    {
+        videoPlayer.gameObject.SetActive(true);
+
+        videoPlayer.loopPointReached += (VideoPlayer vp) => {
+            videoPlayer.Stop();
+            TurnOffState();
+            videoPlayer.gameObject.SetActive(false);
+            TurnOnState(CamState.FADEIN);
+        };
+
+        videoPlayer.Prepare();
+        yield return new WaitUntil(() => videoPlayer.isPrepared == true);
+        videoPlayer.Play();
+    }
+
+
+
+    void CallBackEndFadeIn()
+    {
+        Debug.Log("CallBackEndFadeIn");
+    }
 
     IEnumerator PANIC_STATE()
     {
@@ -172,7 +209,41 @@ public class CameraState : MonoBehaviour
         yield return new WaitForFixedUpdate();
     }
 
+    IEnumerator LIGHTOUT_STATE()
+    {
+        fadeInOutPanel.gameObject.SetActive(true);
+        PanelSetColor(0f);
 
+        StartCoroutine(SetLightOut(0.01f));
+        yield return new WaitForSecondsRealtime(5f);
+        StartCoroutine(SetLightOut(-0.1f));
+
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(SetLightOut(0.1f));
+        yield return new WaitForSeconds(1.5f);
+        StartCoroutine(SetLightOut(-0.1f));
+        yield return new WaitForSeconds(0.5f);
+        StartCoroutine(SetLightOut(0.1f));
+        yield return new WaitForSeconds(1.5f);
+        StartCoroutine(SetLightOut(-0.1f));
+
+        PanelSetColor(1f);
+        Invoke("TurnOffState", 5f);
+    }
+
+
+    IEnumerator SetLightOut(float value)
+    {
+        Color color = fadeInOutPanel.color;
+        while (true)
+        {
+            color.a += value;
+            fadeInOutPanel.color = color;
+            yield return new WaitForFixedUpdate();
+            if (fadeInOutPanel.color.a >= 1f || fadeInOutPanel.color.a == 0)
+                break;
+        }
+    }
 
 
     #region Fade In & Out
@@ -193,7 +264,8 @@ public class CameraState : MonoBehaviour
             if (fadeInOutPanel.color.a >= 1f && fadeInOut)
             {
                 fadeInOut = !fadeInOut;
-                TurnOffState();
+                CallBackEndFadeOut();
+                //TurnOffState();
                 yield break;
             }
 
@@ -270,6 +342,7 @@ public class CameraState : MonoBehaviour
             {
                 fadeInOut = !fadeInOut;
                 fadeInOutPanel.gameObject.SetActive(false);
+                CallBackEndFadeIn();
                 TurnOffState();
                 yield break;
             }
@@ -284,5 +357,7 @@ public class CameraState : MonoBehaviour
         color.a = value;
         fadeInOutPanel.color = color;
     }
+
+
     #endregion
 }

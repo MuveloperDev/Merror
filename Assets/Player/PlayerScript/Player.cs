@@ -24,6 +24,7 @@ public partial class Player : MonoBehaviour
         GameManager.Instance.ToggleInventory();
         RotatePlayer();
         Crouch();
+        Equip();
     }
     private void LateUpdate()
     {

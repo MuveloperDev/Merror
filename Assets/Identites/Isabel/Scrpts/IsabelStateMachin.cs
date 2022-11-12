@@ -11,18 +11,18 @@ public class IsabelStateMachin : BaseStateMachine
     void Update()
     {
 
-        //if (Input.GetKeyDown(KeyCode.H))
-        //{
-        //    TurnOnState(State.CHASE);
-        //}
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            TurnOnState(State.CHASE);
+        }
         //if (Input.GetKeyDown(KeyCode.J))
         //{
         //    TurnOnState(State.SCREAM);
         //}
-        //if (Input.GetKeyDown(KeyCode.K))
-        //{
-        //    TurnOnState(State.FOCUS);
-        //}
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            TurnOnState(State.FOCUS);
+        }
         //if (Input.GetKeyDown(KeyCode.L))
         //{
         //    TurnOnState(State.DEATH);

@@ -169,14 +169,13 @@ public class CameraState : MonoBehaviour
             }
         }
         PanelSetAlpha(1f);
-        //fadeInOutPanel.gameObject.SetActive(true);
+        fadeInOutPanel.gameObject.SetActive(true);
 
         GameManager.Instance.GetVideoPlayer().CallPlayVideo(
             GameManager.Instance.GetVideoPlayer().getVideoClips.getChapter1.DeathVideo, () => {
-                Debug.Log("Action1");
+
                 TurnOffState();
                 // For Test
-                Debug.Log("Action2");
                 TurnOnState(CamState.FADEIN);
             }, 2f);
     }

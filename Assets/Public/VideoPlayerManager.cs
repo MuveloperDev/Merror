@@ -47,19 +47,19 @@ public class VideoPlayerManager : MonoBehaviour
 
     IEnumerator PlayVideo(VideoClip clip, Action func)
     {
-        Debug.Log("CallPlayVideo");
         if (videoPlayer.targetCamera != Camera.main) videoPlayer.targetCamera = Camera.main;
         videoPlayer.clip = clip;
-        videoPlayer.gameObject.SetActive(true);
-        
+
         videoPlayer.loopPointReached += (VideoPlayer vp) => {
-            Debug.Log("µî·Ï");
             func();
             videoPlayer.Stop();
         };
         
         videoPlayer.Prepare();
         yield return new WaitUntil(() => videoPlayer.isPrepared == true);
+        if (GameObject.Find("FadeInOutPanel") != null) 
+            GameObject.Find("FadeInOutPanel").gameObject.SetActive(false);
+
         videoPlayer.Play();
     }
 

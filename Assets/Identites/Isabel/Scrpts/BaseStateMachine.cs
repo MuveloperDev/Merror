@@ -35,8 +35,6 @@ public class BaseStateMachine : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
 
-        myclip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Identity, "Isabel_Run");
-
         Debug.Log(myclip.name);
 
         navMeshAgent.enabled = false;

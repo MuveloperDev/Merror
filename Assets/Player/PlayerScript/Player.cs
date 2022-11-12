@@ -9,6 +9,7 @@ public partial class Player : MonoBehaviour
     [SerializeField] private CameraState cameraState;
     private void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         InitPlayer();
         GameInput.Clamped_Delta_Mouse_Y = 0f;
     }

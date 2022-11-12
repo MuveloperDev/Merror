@@ -1606,8 +1606,10 @@ MonoBehaviour:
   bloom: {fileID: 0}
   lensDistortion: {fileID: 0}
   depthOfField: {fileID: 0}
-  blackPanel: {fileID: 0}
+  colorGrading: {fileID: 0}
+  fadeInOutPanel: {fileID: 0}
   fadeInOut: 0
+  isProcess: 0
   prevState: 0
 --- !u!114 &99742358
 MonoBehaviour:

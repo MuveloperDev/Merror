@@ -40,13 +40,13 @@ public class Singleton<T> : MonoBehaviour where T : Singleton<T>
             Instance_ID = GetInstanceID();
             Debug.Log("Awake singleton class <" + this.name + ">, Instance ID : " + Instance_ID);
             instance = this as T;
+            DontDestroyOnLoad(this.gameObject);
         }
         if (instance != this)
         {
             Debug.LogWarning(this.name + " : There are 2 same singleton class. Force delete this one.");
             DestroyImmediate(this.gameObject);
         }
-        DontDestroyOnLoad(this.gameObject);
     }
     protected virtual void OnDestroy()
     {

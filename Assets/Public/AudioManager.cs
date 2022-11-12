@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    public enum Type { Identity};
+    public enum Type { Player, Identity};
     private AudioManager() { }
     [SerializeField] ScriptableObj PlayerObj = null;
     [SerializeField] ScriptableObj PropsObj = null;
@@ -64,7 +64,7 @@ public class AudioManager : MonoBehaviour
     }
 
     /// <summary>
-    /// return requested Audioclip
+    /// return requested Audioclip for interactableObj
     /// </summary>
     /// <param name="soundType"> The type containing the audio clip to request. </param>
     /// <param name="clipName"> The name of requested audioclip </param>
@@ -75,16 +75,11 @@ public class AudioManager : MonoBehaviour
     }
 
     /// <summary>
-    /// return requested Audioclip for Player
+    /// return requested Audioclip for others
     /// </summary>
-    /// <param name="player">Player param</param>
+    /// <param name="type">The type in AudioManager containing the audio clip to request.</param>
     /// <param name="clipName">The name of requested audioclip</param>
     /// <returns></returns>
-    public AudioClip GetClip(Player player, string clipName)
-    {
-        return PlayerClips.ContainsKey(clipName) ? PlayerClips[clipName] : null;
-    }
-
     public AudioClip GetClip(Type type, string clipName)
     {
         return CheckType(type).ContainsKey(clipName) ? CheckType(type)[clipName] : null;
@@ -137,6 +132,10 @@ public class AudioManager : MonoBehaviour
         {
             case Type.Identity:
                 curdic = IdentiyuClips;
+                break;
+
+            case Type.Player:
+                curdic = PlayerClips;
                 break;
         }
 

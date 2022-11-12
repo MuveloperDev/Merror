@@ -1616,6 +1616,7 @@ MonoBehaviour:
   fadeInOut: 0
   isProcess: 0
   prevState: 0
+  videoPlayer: {fileID: 0}
 --- !u!114 &99742358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75755,6 +75756,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 8.75
       objectReference: {fileID: 0}
+    - target: {fileID: 4337341570260303137, guid: 2bef914d688e34741b5c34eea04c1fd4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4337341570706104074, guid: 2bef914d688e34741b5c34eea04c1fd4, type: 3}
       propertyPath: m_Loop
       value: 1
@@ -79106,6 +79111,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2146252219}
     m_Modifications:
+    - target: {fileID: 3084562759032543789, guid: 8221a6fd222b6144193a88ff4f15ceda, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7983435261484304225, guid: 8221a6fd222b6144193a88ff4f15ceda, type: 3}
       propertyPath: m_Name
       value: ParentRoom

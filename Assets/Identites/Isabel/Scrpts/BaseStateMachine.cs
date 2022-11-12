@@ -83,6 +83,7 @@ public class BaseStateMachine : MonoBehaviour
             navMeshAgent.enabled = false;
         } 
        
+        audioSource.Stop();
         // False animation of previous state and Stop coroutine.
         if(prevState != State.NONE) myAnimator.SetBool(prevState.ToString(), false);
         StopCoroutine(prevState.ToString() + "_STATE");
@@ -101,6 +102,8 @@ public class BaseStateMachine : MonoBehaviour
         myAnimator.SetBool(State.CHASE.ToString(), true);
         navMeshAgent.acceleration = 50f;
 
+        PlaySound(ClipChanger("Isabel_Run"),true);
+        
         while (true)
         {
             yield return new WaitForFixedUpdate();
@@ -134,6 +137,7 @@ public class BaseStateMachine : MonoBehaviour
     IEnumerator FOCUS_STATE()
     {
         myAnimator.SetBool(State.FOCUS.ToString(), true);
+        PlaySound(ClipChanger("Isabel_Gigle"), true);
         // Add Audio
         yield return new WaitForFixedUpdate();
     }
@@ -167,4 +171,13 @@ public class BaseStateMachine : MonoBehaviour
     }
 
     #endregion
+
+    AudioClip ClipChanger(string clipName) => myclip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Identity, clipName);
+    void PlaySound(AudioClip clip, bool loop)
+    {
+        audioSource.loop = loop;
+        audioSource.Stop();
+        audioSource.clip = clip;
+        audioSource.Play();
+    }
 }

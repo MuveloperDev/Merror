@@ -19,10 +19,10 @@ public class IsabelStateMachin : BaseStateMachine
         //{
         //    TurnOnState(State.SCREAM);
         //}
-        //if (Input.GetKeyDown(KeyCode.K))
-        //{
-        //    TurnOnState(State.FOCUS);
-        //}
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            TurnOnState(State.FOCUS);
+        }
         //if (Input.GetKeyDown(KeyCode.L))
         //{
         //    TurnOnState(State.DEATH);

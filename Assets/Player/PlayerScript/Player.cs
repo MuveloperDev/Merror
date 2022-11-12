@@ -7,7 +7,6 @@ using TMPro;
 public partial class Player : MonoBehaviour
 {
     [SerializeField] private CameraState cameraState;
-
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -21,7 +20,8 @@ public partial class Player : MonoBehaviour
     private void Update()
     {
         InitMovementValues();
-        MyRay.StartRay(_MainCam, RayDistance, Input.GetMouseButtonDown(0));
+        myRay.StartRay(_MainCam.transform, RayDistance, Input.GetMouseButtonDown(0));
+        GameManager.Instance.ToggleInventory();
         RotatePlayer();
         Crouch();
     }

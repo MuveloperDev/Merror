@@ -300,110 +300,6 @@ namespace MyLibrary
             };
         }
     }
-
-    public static class MyRay
-    {
-        private static RaycastHit? lastHit = null; // Last hit object
-        private static RaycastHit currentHit; // Current hitting object
-        private static bool isRayExit = false; // Is my ray point another one?
-        private static Interactable interObj = null; // Can interactable object
-        public static Interactable GetInterObj() => interObj;
-        public static bool IsRayExit { get { return isRayExit; } }
-
-        private static CinemachineVirtualCamera startPointCam = null; // Starting point of camera
-
-        /// <summary>
-        /// Shoot Ray Main Logic
-        /// </summary>
-        private static void ShootRay(float maxDistance, bool isClicked)
-        {
-            if (Time.timeScale == 0f)
-                return;
-
-            Vector3 direction;
-            Vector3 startPos;
-
-            if (startPointCam != null) // If received camera information
-            {
-                startPos = startPointCam.gameObject.transform.position;
-                direction = startPointCam.gameObject.transform.forward;
-            }
-            else // Just for main camera
-            {
-                startPos = Camera.main.transform.position;
-                direction = Camera.main.transform.forward;
-            }
-            Debug.DrawRay(startPos, direction * maxDistance, Color.red);
-            if (Physics.Raycast(startPos, direction, out currentHit, maxDistance)) // Hit something
-            { 
-
-                if (lastHit == null) // When game start at first
-                {
-                    isRayExit = true;
-                    lastHit = currentHit;
-                }
-                else // When playing,
-                {
-                    if (isRayExit = !(lastHit.Equals(currentHit))) // Something have changes
-                    {
-                        // Turn off the outline last object's. if it can interactable.
-                        if (lastHit.Value.transform.TryGetComponent<Interactable>(out interObj))
-                        {
-                            interObj.SendMessage("Do_Outline", false, SendMessageOptions.DontRequireReceiver);
-                        }
-                        // Turn on the outline new object's. if it can interactable.
-                        if (currentHit.transform.TryGetComponent<Interactable>(out interObj))
-                        {
-                            interObj.SendMessage("Do_Outline", true, SendMessageOptions.DontRequireReceiver);
-                        }
-                    }
-                }
-                if (isClicked == true && interObj != null) // Click down and can interactable
-                {
-                    // Do something
-                    interObj.SendMessage("Do_Interact", SendMessageOptions.DontRequireReceiver);
-                }
-                lastHit = currentHit; // Initialize
-            }
-            else // Ray didn't hit anything.
-            {
-                if (lastHit != null) // If have last hit information,
-                {
-                    // Turn off last one.
-                    if (lastHit.Value.transform.TryGetComponent<Interactable>(out interObj))
-                    {
-                        interObj.SendMessage("Do_Outline", false, SendMessageOptions.DontRequireReceiver);
-                    }
-                }
-                isRayExit = true; // Ray is exit.
-                lastHit = null; // Initialize
-            }
-        }
-
-        /// <summary>
-        /// Default Ray(Start Main Camera)
-        /// </summary>
-        /// <param name="maxDistance"> Raycast Max distance </param>
-        /// <param name="isClicked"> Is input costom Key (Keyboard or Mouse) </param>
-        public static void StartRay(float maxDistance, bool isClicked)
-        {
-            startPointCam = null;
-            ShootRay(maxDistance, isClicked);
-        }
-
-        /// <summary>
-        /// Custom Ray(Start Param's Cinemachine Virtual Camera)
-        /// </summary>
-        /// <param name="pointCamera"> Starting Point Camera </param>
-        /// <param name="maxDistance"> Raycast Max distance </param>
-        /// <param name="isClicked"> Is input costom Key (Keyboard or Mouse) </param>
-        public static void StartRay(CinemachineVirtualCamera pointCam, float maxDistance, bool isClicked)
-        {
-            startPointCam = pointCam;
-            ShootRay(maxDistance, isClicked);
-        }
-    }
-
     /// <summary>
     /// GameObject Inventory Class
     /// </summary>
@@ -418,20 +314,17 @@ namespace MyLibrary
         public int GetItemCount { get { return inven.Count; } }
         private int count = 0;
 
-        /// <summary>
-        /// Class Constructor Initializing Members
-        /// </summary>
-        /// <param name="notice"> Notice Noting in inventory TMP </param>
-        /// <param name="canvas"> BackGround Canvas (Background Panel and Notice in the Canvas) </param>
-        /// <param name="InventoryLayer"> Inventory Layer's Value </param>
-        public Inventory(TextMeshProUGUI notice, Canvas canvas)
+        public void InitInventory()
         {
+            notice = GameObject.Find("notice").GetComponent<TextMeshProUGUI>();
+            canvas = notice.transform.parent.GetComponent<Canvas>();
             inven = new List<GameObject>();
 
             // UI Camera is Show only Inventory UI
             // Main Camera is Shouldn't Show Inventory UI
             if (uiCamera == null)
             {
+                Debug.Log("Create UI CAM");
                 uiCamera = new GameObject("UICAM").AddComponent<Camera>();
                 uiCamera.clearFlags = CameraClearFlags.Depth;
                 uiCamera.cullingMask = 0;
@@ -443,14 +336,24 @@ namespace MyLibrary
                 Camera.main.cullingMask = Camera.main.cullingMask & ~(1 << LayerMask.NameToLayer("UI"));
             }
 
-            this.notice = notice;
-            this.canvas = canvas;
             InventoryLayer = LayerMask.NameToLayer("Inventory");
 
             canvas.planeDistance = 6;
             canvas.renderMode = RenderMode.ScreenSpaceCamera;
             canvas.worldCamera = uiCamera;
             canvas.gameObject.SetActive(false);
+        }
+        /// <summary>
+        /// Class Constructor Initializing Members
+        /// </summary>
+        /// <param name="notice"> Notice Noting in inventory TMP </param>
+        /// <param name="canvas"> BackGround Canvas (Background Panel and Notice in the Canvas) </param>
+        /// <param name="InventoryLayer"> Inventory Layer's Value </param>
+        public Inventory(TextMeshProUGUI notice, Canvas canvas)
+        {
+            
+
+
         }
 
 

@@ -20,6 +20,7 @@ public partial class Interactable : MonoBehaviour
     [SerializeField] protected bool Invert = false; // Invert rotation angle
     [Tooltip("The object was rotated at least once.")]
     [SerializeField] protected bool IsUsed = false; // Check this object is used at least once
+    public bool GetUsedState() => IsUsed;
     [SerializeField] protected bool AutoReset = false; // Automatically reset rotation
     [SerializeField] protected float ResetTimer = 0f; // Reset Delay
     [SerializeField] protected float Reset_Speed = 50f; // Reseting speed

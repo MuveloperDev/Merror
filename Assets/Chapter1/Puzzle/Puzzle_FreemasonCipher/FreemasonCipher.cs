@@ -5,13 +5,15 @@ using MyLibrary;
 using UnityEngine.UI;
 using TMPro;
 using EPOOutline;
-using System.Text;
 
 public class FreemasonCipher : MonoBehaviour
 {
     [SerializeField] GameObject BlackBoardBackground;
     [SerializeField] Button CloseButton;
     [SerializeField] GameObject[] HintPaper;
+    [SerializeField] TextMeshProUGUI inputStr;
+
+    private string answerString = "DESTROYDOLL";
 
     private void Awake()
     {
@@ -44,4 +46,15 @@ public class FreemasonCipher : MonoBehaviour
         }
     }
 
+    public void OnValueChange()
+    {
+        inputStr.text.ToUpper();
+
+        Debug.Log(inputStr.text);
+
+        if (answerString.CompareTo(inputStr.text) == 0)
+        {
+            ClickCloseButton();
+        }
+    }
 }

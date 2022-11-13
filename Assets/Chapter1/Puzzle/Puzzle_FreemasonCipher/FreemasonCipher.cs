@@ -9,6 +9,7 @@ using EPOOutline;
 public class FreemasonCipher : MonoBehaviour
 {
     [SerializeField] GameObject BlackBoardBackground;
+    [SerializeField] Button CloseButton;
 
     private void Awake()
     {
@@ -23,6 +24,13 @@ public class FreemasonCipher : MonoBehaviour
         BlackBoardBackground.SetActive(true);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+    }
 
+    public void ClickCloseButton()
+    {
+        BlackBoardBackground.SetActive(false);
+        TimeControl.Play();
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }

@@ -5,11 +5,13 @@ using MyLibrary;
 using UnityEngine.UI;
 using TMPro;
 using EPOOutline;
+using System.Text;
 
 public class FreemasonCipher : MonoBehaviour
 {
     [SerializeField] GameObject BlackBoardBackground;
     [SerializeField] Button CloseButton;
+    [SerializeField] GameObject[] HintPaper;
 
     private void Awake()
     {
@@ -33,4 +35,13 @@ public class FreemasonCipher : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
+
+    public void SolvedPuzzle()
+    {
+        foreach (GameObject hint in HintPaper)
+        {
+            hint.SetActive(false);
+        }
+    }
+
 }

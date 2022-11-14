@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.UI;
 using UnityEngine.Video;
+using static CameraState;
 
 
 public class CameraState : MonoBehaviour
@@ -130,6 +131,7 @@ public class CameraState : MonoBehaviour
         Debug.Log("CallBackEndFadeIn");
     }
 
+    public Action callBackPanic;
     IEnumerator PANIC_STATE()
     {
         while (true)
@@ -148,8 +150,11 @@ public class CameraState : MonoBehaviour
                 break;
             }    
         }
+        callBackPanic();
         TurnOffState();
     }
+
+
 
     IEnumerator DEATH_STATE()
     {

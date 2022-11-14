@@ -63,10 +63,9 @@ public class Puzzle_IsabellRoom : MonoBehaviour
                 if (allDolls[i].name == "3_Duck")
                 {
                     allDolls[i].GetComponentInChildren<Puzzle_IsabellRoom>().RenderLine(false);
-                    allDolls[i].GetComponentInChildren<Puzzle_IsabellRoom>().StartCoroutine(Rotate(nextObject.transform, 2f, false));
                     continue;
                 }
-                allDolls[i].GetComponent<Puzzle_IsabellRoom>().StartCoroutine(Rotate(nextObject.transform, 2f, false));
+                Rotate(nextObject.transform, 0.5f, false);
             }
             return;
         }
@@ -80,6 +79,7 @@ public class Puzzle_IsabellRoom : MonoBehaviour
             case 5:
             case 6:
                 StartCoroutine(Rotate(frame.transform, 2f, true));
+                nextObject.GetComponent<Puzzle_IsabellRoom>().InteractableOK = true;
                 break;
 
             case 7:
@@ -162,12 +162,17 @@ public class Puzzle_IsabellRoom : MonoBehaviour
         Vector3 dir;
         while (time > 0)
         {
-            Debug.Log("회전 실행중");
             if (gameObject.name == "3_DuckObj")
+            {
                 dir = target.transform.position - allDolls[2].transform.position;
+                allDolls[2].transform.rotation = Quaternion.Lerp(allDolls[2].transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * 2f);
+            }
+            else
+            {
+                dir = target.transform.position - transform.position;
+                this.transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * 2f);
+            }
 
-            dir = target.transform.position - transform.position;
-            this.transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * 2f);
             time -= Time.deltaTime;
             yield return new WaitForFixedUpdate();
         }

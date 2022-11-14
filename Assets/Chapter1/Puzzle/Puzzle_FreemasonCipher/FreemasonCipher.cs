@@ -8,6 +8,7 @@ using EPOOutline;
 
 public class FreemasonCipher : MonoBehaviour
 {
+    [SerializeField] AudioClip[] ChalkSound = null;
     [SerializeField] GameObject BlackBoardBackground;
     [SerializeField] Button CloseButton;
     [SerializeField] GameObject[] HintPaper;
@@ -17,8 +18,22 @@ public class FreemasonCipher : MonoBehaviour
 
     private void Awake()
     {
+        ChalkSound = new AudioClip[5]
+        {
+        GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Interactable, "ChalkSound1"),
+        GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Interactable, "ChalkSound2"),
+        GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Interactable, "ChalkSound3"),
+        GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Interactable, "ChalkSound4"),
+        GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Interactable, "ChalkSound5")
+        };
         //BlackBoardBackground.enabled = true;
         //BlackBoardBackground.sortingOrder = 1;
+
+        Debug.Log(ChalkSound[0].name);
+        Debug.Log(ChalkSound[1].name);
+        Debug.Log(ChalkSound[2].name);
+        Debug.Log(ChalkSound[3].name);
+        Debug.Log(ChalkSound[4].name);
     }
 
     private void inputBoard()
@@ -50,15 +65,18 @@ public class FreemasonCipher : MonoBehaviour
     {
         string input = inputStr.text.ToUpper();
 
-        for (int i = 0; i < input.Length-1; i++)
+        for (int i = 0; i < input.Length - 1; i++)
         {
             if (input[i] == answerString[i]) continue;
             else return;
         }
+        Debug.Log("여기좀 들어오게 해주세요");
+        ClickCloseButton();
+    }
 
-
-            Debug.Log("여기좀 들어오게 해주세요");
-            ClickCloseButton();
+    private void SetChalkSound()
+    {
+        
     }
 }
 

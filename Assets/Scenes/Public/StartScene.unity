@@ -961,6 +961,7 @@ MonoBehaviour:
   PropsObj: {fileID: 11400000, guid: 734f466531c878b4caab5c8aedd8c374, type: 2}
   EnviromentObj: {fileID: 11400000, guid: 0ccd0179a9cd46e4388ca3a9674b8457, type: 2}
   IdentityObj: {fileID: 11400000, guid: 2f1c6ee091a85594fbf8d56b17db59af, type: 2}
+  HorrorEvnetsObj: {fileID: 11400000, guid: 9f320ad142cd97349850d8c122c0e420, type: 2}
 --- !u!114 &453554243
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -3,17 +3,19 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    public enum Type { Player, Identity};
+    public enum Type { Player, Identity, HorrorEvnets};
     private AudioManager() { }
     [SerializeField] ScriptableObj PlayerObj = null;
     [SerializeField] ScriptableObj PropsObj = null;
     [SerializeField] ScriptableObj EnviromentObj = null;
     [SerializeField] ScriptableObj IdentityObj = null;
+    [SerializeField] ScriptableObj HorrorEvnetsObj = null;
 
     private Dictionary<string, AudioClip> PlayerClips = new Dictionary<string, AudioClip>();
     private Dictionary<string, AudioClip> PropsClips = new Dictionary<string, AudioClip>();
     private Dictionary<string, AudioClip> EnviromentClips = new Dictionary<string, AudioClip>();
     private Dictionary<string, AudioClip> IdentiyuClips = new Dictionary<string, AudioClip>();
+    private Dictionary<string, AudioClip> HorrorEvnetsClips = new Dictionary<string, AudioClip>();
 
     private void Awake()
     {
@@ -21,6 +23,7 @@ public class AudioManager : MonoBehaviour
         AddAllClipsToDic(PropsObj);
         AddAllClipsToDic(EnviromentObj);
         AddAllClipsToDic(IdentityObj);
+        AddAllClipsToDic(HorrorEvnetsObj);
 
         Debug.Log(IdentiyuClips.Count);
     }
@@ -58,6 +61,12 @@ public class AudioManager : MonoBehaviour
                 for (int i = 0; i < obj.Sounds.Length; i++)
                 {
                     IdentiyuClips.Add(IdentityObj.Sounds[i].name, IdentityObj.Sounds[i]);
+                }
+                break;
+            case "HorrorEventSounds":
+                for (int i = 0; i < obj.Sounds.Length; i++)
+                {
+                    HorrorEvnetsClips.Add(HorrorEvnetsObj.Sounds[i].name, HorrorEvnetsObj.Sounds[i]);
                 }
                 break;
         }
@@ -136,6 +145,9 @@ public class AudioManager : MonoBehaviour
 
             case Type.Player:
                 curdic = PlayerClips;
+                break;
+            case Type.HorrorEvnets:
+                curdic = HorrorEvnetsClips;
                 break;
         }
 

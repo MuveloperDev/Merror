@@ -17,14 +17,13 @@ public class PuzzleGuessWho : MonoBehaviour
     void CheckAnswer()
     {
         if (gameObject.name == "Isabel") DropKey();
-        else player.SendMessage("Death", CameraState.CamState.PANIC, SendMessageOptions.DontRequireReceiver);
+        else player.SendMessage("Death", CameraState.CamState.DEATH, SendMessageOptions.DontRequireReceiver);
     }
 
     void DropKey()
     { 
         Debug.Log("Drop key by BK ObjectsPool");
         hintObj.SetActive(true);
-        gameObject.SetActive(false);
     }
 
 }

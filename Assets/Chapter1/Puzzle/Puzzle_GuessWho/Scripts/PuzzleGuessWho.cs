@@ -7,11 +7,13 @@ public class PuzzleGuessWho : MonoBehaviour
 {
     [SerializeField] private Player player = null;
     [SerializeField] private GameObject hintObj = null;
+    [SerializeField] private Material changedMaterial = null;
+    [SerializeField] private MeshRenderer drawing = null;
+    [SerializeField] private AudioSource audioSource = null;
 
     private void OnEnable() => Init();
 
-    public void Init() => player = GameObject.FindObjectOfType<Player>();
-
+    void Init() => player = GameObject.FindObjectOfType<Player>();
 
     
     void CheckAnswer()
@@ -23,7 +25,13 @@ public class PuzzleGuessWho : MonoBehaviour
     void DropKey()
     { 
         Debug.Log("Drop key by BK ObjectsPool");
+        audioSource.clip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Puzzle, "GuessWho_Scream");
+        audioSource.Play();
+        Debug.Log(audioSource.clip.name);
+        drawing.material = changedMaterial;
         hintObj.SetActive(true);
+        Invoke("AudioourceDisable", 2f);
     }
 
+    void AudioourceDisable() => audioSource.gameObject.SetActive(false);
 }

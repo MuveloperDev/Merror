@@ -748,7 +748,6 @@ MonoBehaviour:
   Reset_Speed: 50
   Audio_Playable: 0
   _MyClip: {fileID: 0}
-  Type: 2
   Clip_Name: 
 --- !u!65 &2259024378666398558
 BoxCollider:
@@ -1248,7 +1247,6 @@ MonoBehaviour:
   Reset_Speed: 50
   Audio_Playable: 0
   _MyClip: {fileID: 0}
-  Type: 2
   Clip_Name: 
 --- !u!65 &2765936203546974650
 BoxCollider:
@@ -1582,7 +1580,6 @@ MonoBehaviour:
   Reset_Speed: 50
   Audio_Playable: 0
   _MyClip: {fileID: 0}
-  Type: 2
   Clip_Name: 
 --- !u!65 &2808380094990509625
 BoxCollider:
@@ -2474,7 +2471,6 @@ MonoBehaviour:
   Reset_Speed: 50
   Audio_Playable: 0
   _MyClip: {fileID: 0}
-  Type: 2
   Clip_Name: 
 --- !u!65 &4337341570706104180
 BoxCollider:
@@ -3512,8 +3508,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4337341571613269102}
   m_LocalRotation: {x: 0.000000015454313, y: 0.70710677, z: 0.00000001545431, w: 0.7071068}
-  m_LocalPosition: {x: -2.987, y: -0.4038, z: 1.86}
-  m_LocalScale: {x: -1, y: 1.0411, z: -1}
+  m_LocalPosition: {x: -2.987, y: 0.1427, z: 1.86}
+  m_LocalScale: {x: -1, y: 0.9630175, z: -1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4337341572068610460}
@@ -4463,7 +4459,6 @@ MonoBehaviour:
   Reset_Speed: 50
   Audio_Playable: 0
   _MyClip: {fileID: 0}
-  Type: 3
   Clip_Name: 
 --- !u!1 &4724206009862601992
 GameObject:
@@ -4743,7 +4738,6 @@ MonoBehaviour:
   Reset_Speed: 50
   Audio_Playable: 0
   _MyClip: {fileID: 0}
-  Type: 2
   Clip_Name: 
 --- !u!65 &4854857503788327981
 BoxCollider:
@@ -5401,7 +5395,6 @@ MonoBehaviour:
   Reset_Speed: 50
   Audio_Playable: 0
   _MyClip: {fileID: 0}
-  Type: 2
   Clip_Name: 
 --- !u!114 &1987658796906956015
 MonoBehaviour:
@@ -5735,7 +5728,6 @@ MonoBehaviour:
   Reset_Speed: 50
   Audio_Playable: 0
   _MyClip: {fileID: 0}
-  Type: 2
   Clip_Name: 
 --- !u!65 &5505843405394829613
 BoxCollider:
@@ -6522,7 +6514,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6377153122736166384}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 35.76, y: 8, z: 8}
+  m_LocalPosition: {x: 35.76, y: 7.999, z: 8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7947,7 +7939,6 @@ MonoBehaviour:
   Reset_Speed: 50
   Audio_Playable: 0
   _MyClip: {fileID: 0}
-  Type: 2
   Clip_Name: 
 --- !u!65 &8574284769593079348
 BoxCollider:

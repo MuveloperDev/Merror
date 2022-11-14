@@ -21,8 +21,7 @@ public partial class Interactable : MonoBehaviour
         {
             _Outlinable.enabled = value;
         }
-        
-        
+        GameManager.Instance.GetUI().ChangeAimIcon(_Outlinable.name, value);
     }
     /// <summary>
     /// Initialize Outline Component. Trying get component and if failed, create new component.

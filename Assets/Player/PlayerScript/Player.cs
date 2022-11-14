@@ -16,7 +16,8 @@ public partial class Player : MonoBehaviour
         // Test op video 
         GameManager.Instance.GetVideoPlayer().CallPlayVideo(
             GameManager.Instance.GetVideoPlayer().getVideoClips.getChapter1.OP,
-            () => {
+            () =>
+            {
                 Debug.Log("OPVideOff");
             });
     }

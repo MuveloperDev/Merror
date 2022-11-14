@@ -48,13 +48,16 @@ public class FreemasonCipher : MonoBehaviour
 
     public void OnValueChange()
     {
-        inputStr.text.ToUpper();
+        string input = inputStr.text.ToUpper();
 
-        Debug.Log(inputStr.text);
-
-        if (answerString.CompareTo(inputStr.text) == 0)
+        for (int i = 0; i < input.Length-1; i++)
         {
-            ClickCloseButton();
+            if (input[i] == answerString[i]) continue;
+            else return;
         }
+
+
+            Debug.Log("여기좀 들어오게 해주세요");
+            ClickCloseButton();
     }
 }

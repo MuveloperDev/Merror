@@ -1036,6 +1036,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   videoClips:
     chapter1:
+      op: {fileID: 32900000, guid: 2e71e538db84ca94699f3e96f8731c6d, type: 3}
       deathVideo: {fileID: 32900000, guid: 6b4105c95b8871d4db60b2a8e214f9e7, type: 3}
       endVideo: {fileID: 0}
       isabelRoomVideo: {fileID: 0}

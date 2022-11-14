@@ -17,10 +17,12 @@ public class VideoPlayerManager : MonoBehaviour
         [Serializable]
         public class Chapter1
         {
+            [SerializeField] private VideoClip op = null;
             [SerializeField] private VideoClip deathVideo = null;
             [SerializeField] private VideoClip endVideo = null;
             [SerializeField] private VideoClip isabelRoomVideo = null;
 
+            public VideoClip OP { get { return op; } }
             public VideoClip DeathVideo { get { return deathVideo; } }
             public VideoClip EndVideo { get { return deathVideo; } }
             public VideoClip IsabelRoomVideo { get { return deathVideo; } }

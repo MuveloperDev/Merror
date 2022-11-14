@@ -61,3 +61,4 @@ public class FreemasonCipher : MonoBehaviour
             ClickCloseButton();
     }
 }
+

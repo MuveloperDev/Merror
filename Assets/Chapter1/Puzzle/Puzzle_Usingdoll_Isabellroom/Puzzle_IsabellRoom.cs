@@ -66,7 +66,6 @@ public class Puzzle_IsabellRoom : MonoBehaviour
                     allDolls[i].GetComponentInChildren<Puzzle_IsabellRoom>().StartCoroutine(Rotate(nextObject.transform, 2f, false));
                     continue;
                 }
-                //allDolls[i].SendMessage("RenderLine", false, SendMessageOptions.DontRequireReceiver);
                 allDolls[i].GetComponent<Puzzle_IsabellRoom>().StartCoroutine(Rotate(nextObject.transform, 2f, false));
             }
             return;
@@ -80,7 +79,6 @@ public class Puzzle_IsabellRoom : MonoBehaviour
             case 4:
             case 5:
             case 6:
-                nextObject.GetComponent<Puzzle_IsabellRoom>().InteractableOK = true;
                 StartCoroutine(Rotate(frame.transform, 2f, true));
                 break;
 
@@ -161,10 +159,14 @@ public class Puzzle_IsabellRoom : MonoBehaviour
 
     IEnumerator Rotate(Transform target, float time, bool correct)
     {
+        Vector3 dir;
         while (time > 0)
         {
             Debug.Log("회전 실행중");
-            Vector3 dir = target.transform.position - transform.position;
+            if (gameObject.name == "3_DuckObj")
+                dir = target.transform.position - allDolls[2].transform.position;
+
+            dir = target.transform.position - transform.position;
             this.transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * 2f);
             time -= Time.deltaTime;
             yield return new WaitForFixedUpdate();

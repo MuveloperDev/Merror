@@ -1005,6 +1005,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  hintObj: {fileID: 0}
 --- !u!114 &42794264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1707,7 +1708,6 @@ MonoBehaviour:
   fadeInOut: 0
   isProcess: 0
   prevState: 0
-  videoPlayer: {fileID: 1479117122}
 --- !u!114 &99742358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40991,6 +40991,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  hintObj: {fileID: 0}
 --- !u!65 &1927672086
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -44136,6 +44137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  hintObj: {fileID: 0}
 --- !u!65 &2047079352
 BoxCollider:
   m_ObjectHideFlags: 0

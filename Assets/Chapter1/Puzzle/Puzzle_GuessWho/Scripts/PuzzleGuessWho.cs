@@ -17,7 +17,7 @@ public class PuzzleGuessWho : MonoBehaviour
     void CheckAnswer()
     {
         if (gameObject.name == "Isabel") DropKey();
-        else player.SendMessage("Death", CameraState.CamState.PANIC, SendMessageOptions.DontRequireReceiver);
+        else player.SendMessage("Death", CameraState.CamState.DEATH, SendMessageOptions.DontRequireReceiver);
     }
 
     void DropKey()

@@ -57,8 +57,9 @@ public class VideoPlayerManager : MonoBehaviour
         
         videoPlayer.Prepare();
         yield return new WaitUntil(() => videoPlayer.isPrepared == true);
-        if (GameObject.Find("FadeInOutPanel") != null) 
-            GameObject.Find("FadeInOutPanel").gameObject.SetActive(false);
+        GameObject fadeInOutPanel = GameObject.Find("FadeInOutPanel");
+        if (fadeInOutPanel != null)
+            fadeInOutPanel.SetActive(false);
 
         videoPlayer.Play();
     }

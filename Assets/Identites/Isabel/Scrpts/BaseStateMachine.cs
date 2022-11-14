@@ -35,7 +35,6 @@ public class BaseStateMachine : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
 
-        Debug.Log(myclip.name);
 
         navMeshAgent.enabled = false;
         isKill = false;

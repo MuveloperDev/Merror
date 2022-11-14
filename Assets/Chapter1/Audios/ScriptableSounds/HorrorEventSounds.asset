@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 110e9857e097d0c49ada4946d7499d98, type: 3}
+  m_Name: HorrorEventSounds
+  m_EditorClassIdentifier: 
+  Sounds:
+  - {fileID: 8300000, guid: fde1386c466a37c4cbcb62877b271fe5, type: 3}
+  - {fileID: 8300000, guid: 983d243af274b744e82e09b4b8ace672, type: 3}

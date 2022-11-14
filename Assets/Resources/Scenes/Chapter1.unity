@@ -47489,7 +47489,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0.58176094, g: 0.62535435, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.099999905, b: 1, a: 1}
   m_Intensity: 0.48
   m_Range: 10
   m_SpotAngle: 30
@@ -53804,7 +53804,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 8.306, y: 2.347}
+  m_AnchoredPosition: {x: 8.306, y: 3.644}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2141074501
@@ -79101,10 +79101,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 846293457564985816, guid: 8b55ec0b3f3be6b4db7e4223dc22f860, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 846293457232741641, guid: 8b55ec0b3f3be6b4db7e4223dc22f860, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -79113,6 +79109,10 @@ PrefabInstance:
       propertyPath: cameraToLookAt
       value: 
       objectReference: {fileID: 647815927}
+    - target: {fileID: 846293457564985816, guid: 8b55ec0b3f3be6b4db7e4223dc22f860, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8121137556175670162, guid: 8b55ec0b3f3be6b4db7e4223dc22f860, type: 3}
       propertyPath: m_RootOrder
       value: 22

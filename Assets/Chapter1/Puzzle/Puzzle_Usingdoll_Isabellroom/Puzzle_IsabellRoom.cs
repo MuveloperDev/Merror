@@ -63,9 +63,10 @@ public class Puzzle_IsabellRoom : MonoBehaviour
                 if (allDolls[i].name == "3_Duck")
                 {
                     allDolls[i].GetComponentInChildren<Puzzle_IsabellRoom>().RenderLine(false);
+                    allDolls[i].GetComponentInChildren<Puzzle_IsabellRoom>().StartCoroutine(Rotate(nextObject.transform, 2f, false));
                     continue;
                 }
-                allDolls[i].SendMessage("RenderLine", false, SendMessageOptions.DontRequireReceiver);
+                allDolls[i].GetComponent<Puzzle_IsabellRoom>().StartCoroutine(Rotate(nextObject.transform, 2f, false));
             }
             return;
         }
@@ -78,8 +79,7 @@ public class Puzzle_IsabellRoom : MonoBehaviour
             case 4:
             case 5:
             case 6:
-                RenderLine(true);
-                nextObject.GetComponent<Puzzle_IsabellRoom>().InteractableOK = true;
+                StartCoroutine(Rotate(frame.transform, 2f, true));
                 break;
 
             case 7:
@@ -109,8 +109,8 @@ public class Puzzle_IsabellRoom : MonoBehaviour
 
         lr.startColor = new Color(1, 0, 0, 0.7f);
         lr.endColor = new Color(1, 0, 0, 0.7f);
-        lr.startWidth = 0.05f;
-        lr.endWidth = 0.05f;
+        lr.startWidth = 0.01f;
+        lr.endWidth = 0.01f;
         lr.SetPosition(0, startPos.position);
         lr.SetPosition(1, endPos.position);
     }
@@ -119,16 +119,6 @@ public class Puzzle_IsabellRoom : MonoBehaviour
     {
         frame.GetComponentInChildren<Interactable>().enabled = active;
         frame.GetComponentInChildren<Outlinable>().enabled = active;
-    }
-
-    IEnumerator Rotate()
-    {
-        yield return null;
-
-        while (true)
-        {
-
-        }
     }
 
     IEnumerator FinishPuzzle()
@@ -151,18 +141,38 @@ public class Puzzle_IsabellRoom : MonoBehaviour
         Destroy(frame.GetComponent<Interactable>());
         Destroy(frame.GetComponent<Outlinable>());
         StartCoroutine(Do_Eff());
-        yield return null;
+        yield return new WaitForFixedUpdate();
     }
 
    IEnumerator Do_Eff()
     {
         yield return new WaitForSeconds(2f);
+        GameObject.Find("PostProcess").GetComponent<CameraState>().TurnOnState(CamState.LIGHTOUT);
+        yield return new WaitForSeconds(2f);
         Destroy(frame);
-        GameObject.Find("PostProcess").GetComponent<CameraState>().TurnOnState(CamState.FADEOUT);
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(3f);
         for (int i = 0; i < allDolls.Length; i++)
         {
             allDolls[i].transform.LookAt(player.transform.position);
         }
+    }
+
+    IEnumerator Rotate(Transform target, float time, bool correct)
+    {
+        Vector3 dir;
+        while (time > 0)
+        {
+            Debug.Log("회전 실행중");
+            if (gameObject.name == "3_DuckObj")
+                dir = target.transform.position - allDolls[2].transform.position;
+
+            dir = target.transform.position - transform.position;
+            this.transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * 2f);
+            time -= Time.deltaTime;
+            yield return new WaitForFixedUpdate();
+        }
+
+        yield return new WaitForSeconds(time);
+        RenderLine(correct);
     }
 }

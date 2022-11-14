@@ -6,18 +6,10 @@ using UnityEngine;
 
 public partial class Interactable : MonoBehaviour
 {
-    public enum SoundType
-    {
-        Player,
-        Enviroment,
-        Props,
-        Default,
-    }
     [Header("::Audio::")]
     [Tooltip("Is this object have to play any sound?")]
     [SerializeField] private bool Audio_Playable = false;
     [SerializeField] private AudioClip _MyClip = null;
-    [SerializeField] private SoundType Type = SoundType.Default;
     [SerializeField] private string Clip_Name = "";
 
     private AudioSource _MySource = null;
@@ -56,7 +48,7 @@ public partial class Interactable : MonoBehaviour
     /// </summary>
     private void RequestMyClip()// (Param : Type myType, string clip name)
     {
-        _MyClip = GameManager.Instance.GetAudio().GetClip(Type, Clip_Name);
+        _MyClip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Interactable, Clip_Name);
         if(_MyClip == null)
         {
             Debug.LogWarning(this.name + " : Failed to get audio clip - " + Clip_Name);

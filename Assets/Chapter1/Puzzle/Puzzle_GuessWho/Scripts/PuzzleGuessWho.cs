@@ -24,6 +24,7 @@ public class PuzzleGuessWho : MonoBehaviour
     { 
         Debug.Log("Drop key by BK ObjectsPool");
         hintObj.SetActive(true);
+        gameObject.SetActive(false);
     }
 
 }

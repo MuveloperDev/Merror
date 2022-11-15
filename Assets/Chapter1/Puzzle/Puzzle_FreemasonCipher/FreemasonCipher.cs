@@ -93,7 +93,8 @@ public class FreemasonCipher : MonoBehaviour
 
         if (input == answerString)
         {
-            StartCoroutine(DestroyInteractable());
+            DeleteOutline();
+            //StartCoroutine(DestroyInteractable());
             SolvedPuzzle();
             ClickCloseButton();
         }
@@ -118,7 +119,7 @@ public class FreemasonCipher : MonoBehaviour
 
         float plusAlpha = 1f;
 
-        Debug.Log("���Ͷ�");
+        Debug.Log("DestroyInteractable 들어옴");
 
         while (plusAlpha > 0f)
         {
@@ -130,10 +131,15 @@ public class FreemasonCipher : MonoBehaviour
             yield return new WaitForSeconds(0.05f);
         }
 
-        Debug.Log("���Ϲ� Ż��");
         BlackBoardBackground.SetActive(false);
 
         yield break;
+    }
+
+    private void DeleteOutline()
+    {
+        Destroy(BlackBoard.GetComponent<Outlinable>());
+        Destroy(BlackBoard.GetComponent<Interactable>());
     }
 }
 

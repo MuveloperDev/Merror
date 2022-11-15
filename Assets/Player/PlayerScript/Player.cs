@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using MyLibrary;
+using UnityEngine.AI;
 
 public partial class Player : MonoBehaviour
 {
@@ -39,7 +40,7 @@ public partial class Player : MonoBehaviour
     }
     private void Death()
     {
-        Debug.Log("Player : I'm Dead!!!");
         cameraState.TurnOnState(CameraState.CamState.DEATH);
+        GameManager.Instance.GetIdentityManager().GetIdentity().WaitForDisable(6f);
     }
 }

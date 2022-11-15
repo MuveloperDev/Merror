@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
 using static VideoPlayerManager;
+using MyLibrary;
 
 public class VideoPlayerManager : MonoBehaviour
 {
@@ -53,6 +54,7 @@ public class VideoPlayerManager : MonoBehaviour
         videoPlayer.clip = clip;
 
         videoPlayer.loopPointReached += (VideoPlayer vp) => {
+            TimeControl.Play();
             func();
             videoPlayer.Stop();
         };
@@ -62,7 +64,7 @@ public class VideoPlayerManager : MonoBehaviour
         GameObject fadeInOutPanel = GameObject.Find("FadeInOutPanel");
         if (fadeInOutPanel != null)
             fadeInOutPanel.SetActive(false);
-
+        TimeControl.Pause();
         videoPlayer.Play();
     }
 

@@ -14,10 +14,14 @@ public class FreemasonCipher : MonoBehaviour
     [SerializeField] GameObject[] HintPaper;
     [SerializeField] TextMeshProUGUI inputStr;
 
+    private AudioSource playChalkSound = null;
+
     private string answerString = "DESTROYDOLL";
 
     private void Awake()
     {
+        playChalkSound = GetComponent<AudioSource>();
+
         ChalkSound = new AudioClip[5]
         {
         GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Interactable, "ChalkSound1"),
@@ -57,7 +61,7 @@ public class FreemasonCipher : MonoBehaviour
     {
         if (HintPaper != null)
         {
-            for(int i = 0; i < HintPaper.Length; i++)
+            for (int i = 0; i < HintPaper.Length; i++)
             {
                 HintPaper[i].SetActive(false);
             }
@@ -73,15 +77,18 @@ public class FreemasonCipher : MonoBehaviour
             if (input[i] == answerString[i]) continue;
             else return;
         }
-        Debug.Log("여기좀 들어오게 해주세요");
-
         SolvedPuzzle();
         ClickCloseButton();
     }
 
-    private void SetChalkSound()
+    public void PalyChalkSound()
     {
-
+        if (ChalkSound != null)
+        {
+            int playRandomClip = Random.Range(0, 4);
+            playChalkSound.clip = ChalkSound[playRandomClip];
+            playChalkSound.Play();
+        }
     }
 }
 

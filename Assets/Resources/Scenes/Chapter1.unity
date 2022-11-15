@@ -12945,7 +12945,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 119
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &565242766
 Transform:
   m_ObjectHideFlags: 0
@@ -17738,7 +17738,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 119
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &712498040
 Transform:
   m_ObjectHideFlags: 0
@@ -27452,7 +27452,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5577653480190442478, guid: 7cb71fa216eae6e4a9efce30aa3c9002, type: 3}
       propertyPath: m_Name
-      value: FreemasonCipher (1)
+      value: FreemasonCipher
       objectReference: {fileID: 0}
     - target: {fileID: 5577653480190442479, guid: 7cb71fa216eae6e4a9efce30aa3c9002, type: 3}
       propertyPath: m_RootOrder
@@ -36351,7 +36351,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 119
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1387041845
 Transform:
   m_ObjectHideFlags: 0
@@ -42641,7 +42641,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 398482411982298467, guid: a94dd97236514844e99f866e86682b8b, type: 3}
       propertyPath: m_Name
-      value: CMJ_Rooms (1)
+      value: CMJ_Rooms
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a94dd97236514844e99f866e86682b8b, type: 3}
@@ -83438,7 +83438,7 @@ MonoBehaviour:
   drawingMode: 1
   outlineLayer: 0
   outlineTargets:
-  - IsVisible: 1
+  - IsVisible: 0
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
@@ -83454,7 +83454,7 @@ MonoBehaviour:
     cutoutTextureName: 
     DilateRenderingMode: 0
     cutoutTextureIndex: 0
-  - IsVisible: 1
+  - IsVisible: 0
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
@@ -83470,7 +83470,7 @@ MonoBehaviour:
     cutoutTextureName: 
     DilateRenderingMode: 0
     cutoutTextureIndex: 0
-  - IsVisible: 1
+  - IsVisible: 0
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
@@ -83486,7 +83486,7 @@ MonoBehaviour:
     cutoutTextureName: 
     DilateRenderingMode: 0
     cutoutTextureIndex: 0
-  - IsVisible: 1
+  - IsVisible: 0
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
@@ -83502,7 +83502,7 @@ MonoBehaviour:
     cutoutTextureName: 
     DilateRenderingMode: 0
     cutoutTextureIndex: 0
-  - IsVisible: 1
+  - IsVisible: 0
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5

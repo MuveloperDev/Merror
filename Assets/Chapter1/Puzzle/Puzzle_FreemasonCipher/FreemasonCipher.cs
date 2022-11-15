@@ -74,11 +74,14 @@ public class FreemasonCipher : MonoBehaviour
 
         for (int i = 0; i < input.Length - 1; i++)
         {
-            if (input[i] == answerString[i]) continue;
+            if (input[i] == answerString[i])
+            {
+                SolvedPuzzle();
+                ClickCloseButton();
+                continue;
+            }
             else return;
         }
-        SolvedPuzzle();
-        ClickCloseButton();
     }
 
     public void PalyChalkSound()

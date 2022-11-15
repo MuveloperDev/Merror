@@ -7,6 +7,8 @@ using TMPro;
 public class PuzzleCanvasManagement : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI inputStr;
+    [SerializeField] FreemasonCipher freemasonCipher;
+
 
 
     // ¿€º∫¡ﬂ
@@ -32,6 +34,8 @@ public class PuzzleCanvasManagement : MonoBehaviour
                 }
             }
             input = new string(convertCharArray).Remove(convertCharArray.Length - 1);
+            freemasonCipher.CompareAnswer(input);
         }
+
     }
 }

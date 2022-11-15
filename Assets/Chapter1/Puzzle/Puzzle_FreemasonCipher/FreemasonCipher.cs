@@ -55,9 +55,12 @@ public class FreemasonCipher : MonoBehaviour
 
     public void SolvedPuzzle()
     {
-        foreach (GameObject hint in HintPaper)
+        if (HintPaper != null)
         {
-            hint.SetActive(false);
+            for(int i = 0; i < HintPaper.Length; i++)
+            {
+                HintPaper[i].SetActive(false);
+            }
         }
     }
 
@@ -71,12 +74,14 @@ public class FreemasonCipher : MonoBehaviour
             else return;
         }
         Debug.Log("여기좀 들어오게 해주세요");
+
+        SolvedPuzzle();
         ClickCloseButton();
     }
 
     private void SetChalkSound()
     {
-        
+
     }
 }
 

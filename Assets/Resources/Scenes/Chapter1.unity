@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.041250892, g: 0.07305416, b: 0.12561989, a: 1}
+  m_IndirectSpecularColor: {r: 0.0412504, g: 0.07305349, b: 0.12561938, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2314,7 +2314,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 583063568}
-  m_RootOrder: 11
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &106439778
 BoxCollider:
@@ -13317,6 +13317,8 @@ Transform:
   - {fileID: 6259221915376518943}
   - {fileID: 866338810}
   - {fileID: 8613527141497492553}
+  - {fileID: 1653044528}
+  - {fileID: 1107441243}
   - {fileID: 7565930753225721514}
   - {fileID: 106439777}
   m_Father: {fileID: 0}
@@ -27437,6 +27439,72 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 8.000001, y: 0.31369385, z: 3.9999995}
   m_Center: {x: 3.9999995, y: -0.14684479, z: 1.9999998}
+--- !u!1001 &1107441242
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 583063568}
+    m_Modifications:
+    - target: {fileID: 5577653480071326736, guid: 7cb71fa216eae6e4a9efce30aa3c9002, type: 3}
+      propertyPath: ChalkSound.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5577653480190442478, guid: 7cb71fa216eae6e4a9efce30aa3c9002, type: 3}
+      propertyPath: m_Name
+      value: FreemasonCipher (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5577653480190442479, guid: 7cb71fa216eae6e4a9efce30aa3c9002, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5577653480190442479, guid: 7cb71fa216eae6e4a9efce30aa3c9002, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5577653480190442479, guid: 7cb71fa216eae6e4a9efce30aa3c9002, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5577653480190442479, guid: 7cb71fa216eae6e4a9efce30aa3c9002, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5577653480190442479, guid: 7cb71fa216eae6e4a9efce30aa3c9002, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5577653480190442479, guid: 7cb71fa216eae6e4a9efce30aa3c9002, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5577653480190442479, guid: 7cb71fa216eae6e4a9efce30aa3c9002, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5577653480190442479, guid: 7cb71fa216eae6e4a9efce30aa3c9002, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5577653480190442479, guid: 7cb71fa216eae6e4a9efce30aa3c9002, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5577653480190442479, guid: 7cb71fa216eae6e4a9efce30aa3c9002, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5577653480190442479, guid: 7cb71fa216eae6e4a9efce30aa3c9002, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7cb71fa216eae6e4a9efce30aa3c9002, type: 3}
+--- !u!4 &1107441243 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5577653480190442479, guid: 7cb71fa216eae6e4a9efce30aa3c9002, type: 3}
+  m_PrefabInstance: {fileID: 1107441242}
+  m_PrefabAsset: {fileID: 0}
 --- !u!33 &1116236511
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -42520,6 +42588,68 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1001 &1653044527
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 583063568}
+    m_Modifications:
+    - target: {fileID: 398482411982298464, guid: a94dd97236514844e99f866e86682b8b, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 398482411982298464, guid: a94dd97236514844e99f866e86682b8b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 398482411982298464, guid: a94dd97236514844e99f866e86682b8b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 398482411982298464, guid: a94dd97236514844e99f866e86682b8b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 398482411982298464, guid: a94dd97236514844e99f866e86682b8b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 398482411982298464, guid: a94dd97236514844e99f866e86682b8b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 398482411982298464, guid: a94dd97236514844e99f866e86682b8b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 398482411982298464, guid: a94dd97236514844e99f866e86682b8b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 398482411982298464, guid: a94dd97236514844e99f866e86682b8b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 398482411982298464, guid: a94dd97236514844e99f866e86682b8b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 398482411982298464, guid: a94dd97236514844e99f866e86682b8b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 398482411982298467, guid: a94dd97236514844e99f866e86682b8b, type: 3}
+      propertyPath: m_Name
+      value: CMJ_Rooms (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a94dd97236514844e99f866e86682b8b, type: 3}
+--- !u!4 &1653044528 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 398482411982298464, guid: a94dd97236514844e99f866e86682b8b, type: 3}
+  m_PrefabInstance: {fileID: 1653044527}
+  m_PrefabAsset: {fileID: 0}
 --- !u!33 &1653662258
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -83308,7 +83438,7 @@ MonoBehaviour:
   drawingMode: 1
   outlineLayer: 0
   outlineTargets:
-  - IsVisible: 0
+  - IsVisible: 1
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
@@ -83324,7 +83454,7 @@ MonoBehaviour:
     cutoutTextureName: 
     DilateRenderingMode: 0
     cutoutTextureIndex: 0
-  - IsVisible: 0
+  - IsVisible: 1
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
@@ -83340,7 +83470,7 @@ MonoBehaviour:
     cutoutTextureName: 
     DilateRenderingMode: 0
     cutoutTextureIndex: 0
-  - IsVisible: 0
+  - IsVisible: 1
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
@@ -83356,7 +83486,7 @@ MonoBehaviour:
     cutoutTextureName: 
     DilateRenderingMode: 0
     cutoutTextureIndex: 0
-  - IsVisible: 0
+  - IsVisible: 1
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
@@ -83372,7 +83502,7 @@ MonoBehaviour:
     cutoutTextureName: 
     DilateRenderingMode: 0
     cutoutTextureIndex: 0
-  - IsVisible: 0
+  - IsVisible: 1
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
@@ -89135,7 +89265,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ChalkSound: []
   BlackBoardBackground: {fileID: 7565930753072992606}
-  CloseButton: {fileID: 0}
   HintPaper: []
   inputStr: {fileID: 0}
 --- !u!114 &4477170615529906029
@@ -89154,7 +89283,7 @@ MonoBehaviour:
   drawingMode: 1
   outlineLayer: 0
   outlineTargets:
-  - IsVisible: 1
+  - IsVisible: 0
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
@@ -104984,7 +105113,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ChalkSound: []
   BlackBoardBackground: {fileID: 7565930753072992606}
-  CloseButton: {fileID: 7565930754569686113}
   HintPaper:
   - {fileID: 0}
   - {fileID: 0}
@@ -105161,7 +105289,7 @@ Transform:
   - {fileID: 4477170615529906039}
   - {fileID: 7565930753072992593}
   m_Father: {fileID: 583063568}
-  m_RootOrder: 10
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7565930753225721515
 GameObject:
@@ -105178,7 +105306,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &7565930753439190090
 GameObject:
   m_ObjectHideFlags: 0
@@ -109031,7 +109159,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &8613527141524665760
 MeshRenderer:
   m_ObjectHideFlags: 0

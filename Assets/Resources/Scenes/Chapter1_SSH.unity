@@ -27447,6 +27447,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 583063568}
     m_Modifications:
     - target: {fileID: 5577653480071326736, guid: 7cb71fa216eae6e4a9efce30aa3c9002, type: 3}
+      propertyPath: BlackBoard
+      value: 
+      objectReference: {fileID: 1928291696}
+    - target: {fileID: 5577653480071326736, guid: 7cb71fa216eae6e4a9efce30aa3c9002, type: 3}
       propertyPath: ChalkSound.Array.size
       value: 5
       objectReference: {fileID: 0}
@@ -50438,6 +50442,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 1, z: 0.5}
   m_Center: {x: -0.63276666, y: -0.10848664, z: 0}
+--- !u!1 &1928291696 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1997981209071287745, guid: 7cb71fa216eae6e4a9efce30aa3c9002, type: 3}
+  m_PrefabInstance: {fileID: 1107441242}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1929731507
 GameObject:
   m_ObjectHideFlags: 0
@@ -89272,6 +89281,7 @@ MonoBehaviour:
   BlackBoardBackground: {fileID: 7565930753072992606}
   HintPaper: []
   inputStr: {fileID: 0}
+  BlackBoard: {fileID: 0}
 --- !u!114 &4477170615529906029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105121,6 +105131,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   inputStr: {fileID: 7565930753714618616}
+  BlackBoard: {fileID: 0}
 --- !u!1 &7565930753072992606
 GameObject:
   m_ObjectHideFlags: 0

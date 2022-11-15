@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEditor;
+using UnityEngine;
 
 [CustomEditor (typeof(Interactable), true), CanEditMultipleObjects]
 public class Interactable_Editor : Editor
@@ -34,7 +34,7 @@ public class Interactable_Editor : Editor
         };
         Audio_Menu = new string[]
         {
-            "_MyClip", "Type", "Clip_Name"
+            "_MyClip", "Clip_Name"
         };
         Light_Menu = new string[]
         {
@@ -82,7 +82,7 @@ public class Interactable_Editor : Editor
             do
             {
                 bool visible = true;
-                foreach(var audioMenu in Audio) // Check in audio menu
+                foreach(SerializedProperty audioMenu in Audio) // Check in audio menu
                 {
                     if(iterator.name == audioMenu.name) // If audio menu,
                     {

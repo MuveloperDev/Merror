@@ -86,7 +86,7 @@ public class GameManager : Singleton<GameManager>
         TryGetComponent<Inventory>(out Inventory inventory);
         MyInventory = inventory == null ? null : inventory;
         MyInventory ??= this.AddComponent<Inventory>();
-        //MyInventory.InitInventory();
+        MyInventory.InitInventory();
     }
     /// <summary>
     /// Input key 'I', player can toggle inventory UI.
@@ -117,7 +117,9 @@ public class GameManager : Singleton<GameManager>
     }
     public void ClearPuzzle(GameObject puzzleItem, float scale)
     {
-        MyInventory.InsertItem(puzzleItem, scale);
+        GameObject obj = Instantiate(puzzleItem, Vector3.zero, Quaternion.identity);
+        Debug.Log(obj.name);
+        MyInventory.InsertItem(obj, scale);
     }
     #endregion // Set inventory
     #region Audio Management

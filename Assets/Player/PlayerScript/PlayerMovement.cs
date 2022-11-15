@@ -33,7 +33,11 @@ public partial class Player : MonoBehaviour
             MoveVector = (Vertical * transform.forward + Horizontal * transform.right).normalized;
             //_Rigidbody.position += Speed * Time.deltaTime * MoveVector;
             _Rigidbody.MovePosition(Speed * Time.deltaTime * MoveVector + _Rigidbody.position);
+            if(!_AudioSource.isPlaying)
+                PlaySound(walkClip);
         }
+        else
+            _AudioSource.Stop();
     }
     /// <summary>
     /// Crouch player. This crouching method is that the camera postion translate to under crouched position.

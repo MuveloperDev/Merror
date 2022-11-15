@@ -387,20 +387,6 @@ namespace MyLibrary
             canvas.worldCamera = uiCamera;
             canvas.gameObject.SetActive(false);
         }
-        /// <summary>
-        /// Class Constructor Initializing Members
-        /// </summary>
-        /// <param name="notice"> Notice Noting in inventory TMP </param>
-        /// <param name="canvas"> BackGround Canvas (Background Panel and Notice in the Canvas) </param>
-        /// <param name="InventoryLayer"> Inventory Layer's Value </param>
-        public Inventory(TextMeshProUGUI notice, Canvas canvas)
-        {
-            
-
-
-        }
-
-
 
         /// <summary>
         /// Get Item and insert inventory list

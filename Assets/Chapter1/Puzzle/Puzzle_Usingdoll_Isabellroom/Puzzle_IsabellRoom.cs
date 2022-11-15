@@ -60,13 +60,13 @@ public class Puzzle_IsabellRoom : MonoBehaviour
             for (int i = 0; i < allDolls.Length; i++)
             {
                 Debug.Log("You are clicked wrong obj");
-                if (gameObject.name == "3_Duck")
+                if (i == 2)
                 {
-                    allDolls[2].GetComponentInChildren<Puzzle_IsabellRoom>().StartCoroutine(Rotate(nextObject.transform, 0.5f, false));
+                    allDolls[2].GetComponentInChildren<Puzzle_IsabellRoom>().StartCoroutine(Rotate(nextObject.transform, 2f, false));
                     continue;
                 }
                 else
-                    allDolls[i].GetComponent<Puzzle_IsabellRoom>().StartCoroutine(Rotate(nextObject.transform, 0.5f, false));
+                    allDolls[i].GetComponent<Puzzle_IsabellRoom>().StartCoroutine(Rotate(nextObject.transform, 2f, false));
             }
             allDolls[0].GetComponent<Puzzle_IsabellRoom>().InteractableOK = true;
             return;

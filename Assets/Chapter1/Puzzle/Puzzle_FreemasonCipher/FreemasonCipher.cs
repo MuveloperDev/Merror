@@ -9,6 +9,7 @@ using EPOOutline;
 public class FreemasonCipher : MonoBehaviour
 {
     [SerializeField] AudioClip[] ChalkSound = null;
+
     [SerializeField] GameObject BlackBoardBackground;
     //[SerializeField] Button CloseButton;
     [SerializeField] GameObject[] HintPaper;
@@ -89,11 +90,32 @@ public class FreemasonCipher : MonoBehaviour
         
         Debug.Log(input);
 
+        // 분리 필요
         if (input == answerString)
         {
             Debug.Log("퍼즐 풀이 성공");
             blackBoard.CallChangeBlackBoardAlpha();
             //gameObject.SendMessage("ChangeBlackBoardAlpha", SendMessageOptions.DontRequireReceiver);
+            DeleteOutline();
+            SolvedPuzzle();
+            ClickCloseButton();
+        }
+    }
+    
+    // 추가 중
+    public void CompareAnswer(string inStr)
+    {
+
+        if (inStr == null)
+        {
+            return;
+        }
+
+        else if (inStr == answerString)
+        {
+            Debug.Log("퍼즐 정답");
+
+            blackBoard.CallChangeBlackBoardAlpha();
             DeleteOutline();
             SolvedPuzzle();
             ClickCloseButton();

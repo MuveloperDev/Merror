@@ -5,20 +5,34 @@ using UnityEngine;
 public class MirrorManager : MonoBehaviour
 {
     private List<Mirror> Mirrors = new List<Mirror>();
+    [SerializeField] private int maxMirrorCount;
+    [SerializeField] private GameObject janeText = null;
     private void Awake()
     {
-        Mirrors.AddRange(GameObject.FindObjectsOfType<Mirror>());
-    }
-    public void RemoveMirror(Mirror gameobject)
-    {
-        Mirrors.Remove(gameobject);
-        CheckMirrorCount();
-    }
-    private void CheckMirrorCount()
-    {
-        if (Mirrors.Count == 0)
+        for(int i = 1; i <= maxMirrorCount; i++)
         {
-            GameManager.Instance.GetPuzzle().SetClear("Mirror", true);
+            Mirrors.Add(GameObject.Find("Mirror" + i).GetComponent<Mirror>());
         }
+    }
+    public void RemoveMirror(Mirror mir)
+    {
+        if(CheckMirrorCount())
+        {
+            Instantiate(janeText, mir.transform.position, Quaternion.LookRotation(-mir.transform.right));
+        }
+        Mirrors.Remove(mir);
+        if(Mirrors.Count == 0)
+        {
+            Destroy(this.gameObject);
+        }
+    }
+    private bool CheckMirrorCount()
+    {
+        if (Mirrors.Count == 1)
+        {
+            //GameManager.Instance.GetPuzzle().SetClear("Mirror", true);
+            return true;
+        }
+        return false;
     }
 }

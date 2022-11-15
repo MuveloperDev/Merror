@@ -47,6 +47,10 @@ public partial class Interactable : MonoBehaviour
 
     public virtual void Start()
     {
+        if (Special)
+        {
+            DoMyWork += Do_Special;
+        }
         if (Outlinable)
         {
             InitOutlineComponent();
@@ -68,17 +72,21 @@ public partial class Interactable : MonoBehaviour
         {
             DoMyWork += Do_Inventory;
         }
-        if (Special)
-        {
-            DoMyWork += Do_Special;
-        }
     }
     /// <summary>
     /// Interact with object. Like rotation, getting an item, play sound, do something.
     /// </summary>
     public virtual void Do_Interact()
     {
-        if (IsLocked == true) return;
+        if (IsLocked == true) 
+        {
+            if(myType == ObjectType.Door)
+            {
+                //Play Clip
+
+            }
+            return;
+        } 
         DoMyWork(); // Do delegate chain
     }
     public virtual void Do_Inventory()

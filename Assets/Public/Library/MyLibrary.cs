@@ -145,6 +145,7 @@ namespace MyLibrary
         public ChapterPuzzles[] puzzles;
         public Door[] isDoorOpen;
         public string[] invenItems;
+        public bool[] isBroken;
     }
 
     [System.Serializable]

@@ -52,6 +52,13 @@ public partial class Player : MonoBehaviour
 
     [Header("Temp")]
     [SerializeField] private bool Cheat = false;
+
+    [Header("Player Audio")]
+    [SerializeField] private AudioSource _AudioSource = null;
+    [SerializeField] private AudioClip lighterOpenClip = null;
+    [SerializeField] private AudioClip lighterCloseClip = null;
+    [SerializeField] private AudioClip lighterFireClip = null;
+    [SerializeField] private AudioClip walkClip = null;
     /// <summary>
     /// Initialize player's required components and values.
     /// </summary>
@@ -65,13 +72,32 @@ public partial class Player : MonoBehaviour
         Stamina = MaxStamina;
 
         Lighter.SetActive(false);
+        lighterOpenClip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Player, "Lighter_Open");
+        lighterCloseClip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Player, "Lighter_Close");
+        lighterFireClip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Player, "Lighter_Fire");
     }
     private void Equip()
     {
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
             _Animator.SetBool("IsLighter", !Lighter.activeSelf);
+            LighterSound(!Lighter.activeSelf);
             Lighter.SetActive(!Lighter.activeSelf);
+        }
+    }
+    private void LighterSound(bool active)
+    {
+        if(active == true)
+        {
+            _AudioSource.clip = lighterOpenClip;
+            _AudioSource.Play();
+            _AudioSource.clip = lighterFireClip;
+            _AudioSource.Play();
+        }
+        else
+        {
+            _AudioSource.clip = lighterCloseClip;
+            _AudioSource.Play();
         }
     }
 }

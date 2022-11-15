@@ -59,7 +59,6 @@ public class Puzzle_IsabellRoom : MonoBehaviour
     {
         if (gameObject.GetComponent<Puzzle_IsabellRoom>().interactableok == false)
         {
-            Debug.Log("틀렸어 임마 돌아가");
             for(int i = 0; i < allDolls.Length; i++)
             {
                 if (i == 2)
@@ -146,11 +145,16 @@ public class Puzzle_IsabellRoom : MonoBehaviour
         yield return new WaitForFixedUpdate();
     }
 
-   IEnumerator Do_Eff()
+    IEnumerator Do_Eff()
     {
+        CameraState cameraState = FindObjectOfType<CameraState>();
+        cameraState.TurnOnState(CameraState.CamState.FADEOUT);
         yield return new WaitForSeconds(2f);
         GameManager.Instance.GetVideoPlayer().CallPlayVideo(GameManager.Instance.GetVideoPlayer().getVideoClips.getChapter1.IsabelRoomVideo,
-            () => { Debug.Log("EndVideo"); });
+            () => {
+                cameraState.TurnOnState(CameraState.CamState.FADEIN);
+                Debug.Log("EndVideo"); 
+            });
         yield return new WaitForSeconds(2f);
         Destroy(frame);
         for (int i = 0; i < allDolls.Length; i++)

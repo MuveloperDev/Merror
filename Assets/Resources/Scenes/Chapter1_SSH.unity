@@ -1222,6 +1222,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   hintObj: {fileID: 6132148041765048789}
+  changedMaterial: {fileID: 0}
+  drawing: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!114 &42794264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12905,9 +12908,9 @@ Transform:
   - {fileID: 1559786115}
   - {fileID: 2146252219}
   - {fileID: 6259221915376518943}
+  - {fileID: 866338810}
   - {fileID: 1818318064}
   - {fileID: 1158172571}
-  - {fileID: 866338810}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -19357,7 +19360,7 @@ Transform:
   - {fileID: 1040722961}
   - {fileID: 655346362}
   m_Father: {fileID: 583063568}
-  m_RootOrder: 10
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &867201858
 PrefabInstance:
@@ -47944,6 +47947,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   hintObj: {fileID: 0}
+  changedMaterial: {fileID: 0}
+  drawing: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!65 &1927672086
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -51274,6 +51280,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   hintObj: {fileID: 0}
+  changedMaterial: {fileID: 0}
+  drawing: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!65 &2047079352
 BoxCollider:
   m_ObjectHideFlags: 0

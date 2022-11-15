@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class IsabelStateMachin : BaseStateMachine
+public class IdentityStateMachine : BaseStateMachine
 {
     
     void OnEnable() => Init();
@@ -33,7 +33,7 @@ public class IsabelStateMachin : BaseStateMachine
         //}
     }
 
-    protected override void TurnOnState(State STATE) => base.TurnOnState(STATE);
-    protected override void TurnOffState() => base.TurnOffState();
+    public override void TurnOnState(State STATE) => base.TurnOnState(STATE);
+    public override void TurnOffState() => base.TurnOffState();
 
 }

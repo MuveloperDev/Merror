@@ -1191,8 +1191,8 @@ GameObject:
   - component: {fileID: 6790323404207405338}
   - component: {fileID: 638455600164922208}
   - component: {fileID: 6464541599938439669}
+  - component: {fileID: 7530296574899412054}
   - component: {fileID: 6464541599938439670}
-  - component: {fileID: 6464541599938439673}
   - component: {fileID: 6464541599938439668}
   m_Layer: 0
   m_Name: Isabel
@@ -1255,6 +1255,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 1
+--- !u!114 &7530296574899412054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6158605988422083488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 581f7977df428f54ab5d31de647938f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &6464541599938439670
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1269,18 +1281,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &6464541599938439673
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6158605988422083488}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 581f7977df428f54ab5d31de647938f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!195 &6464541599938439668
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1296,7 +1296,7 @@ NavMeshAgent:
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 4.24
-  m_AutoTraverseOffMeshLink: 1
+  m_AutoTraverseOffMeshLink: 0
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2

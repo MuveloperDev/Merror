@@ -42,6 +42,8 @@ public class PuzzleGuessWho : MonoBehaviour
         drawing.material = changedMaterial;
 
         GameManager.Instance.ClearPuzzle(hintObj,7f);
+        GameManager.Instance.GetIdentityManager().OnEnableIdentity(new Vector3(34.5f, 9f, 14f), BaseStateMachine.State.SLEEPING);
+
         
         Invoke("AudioourceDisable", 2f);
     }

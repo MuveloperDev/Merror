@@ -16,6 +16,7 @@ public class GameManager : Singleton<GameManager>
         InitUIManager();
         InitPuzzleManager();
         InitVideoPlayerManager();
+        InitIdentityManager();
         DefaultInit();
         //InitCutScenePlayer();
         SceneManager.activeSceneChanged -= OnSceneChanged;
@@ -45,6 +46,7 @@ public class GameManager : Singleton<GameManager>
     /// <param name="chapterNum">Chapter number</param>
 
     private int chapterNum;
+    public int ChapterNum { get { return chapterNum; } }
     private IEnumerator InitChapter(int chapterNum)
     {
         ToggleCursor(true); // Lock cursor
@@ -53,6 +55,7 @@ public class GameManager : Singleton<GameManager>
         InitInventory(); // Init inventory
         _Puzzle.InitPuzzle(chapterNum); // Init puzzles
         this.chapterNum = chapterNum;
+       
         
         if(isFirstPlay == false)
         {
@@ -69,6 +72,7 @@ public class GameManager : Singleton<GameManager>
         yield return InitChapter(chapterNum);
         TimeControl.Play();
         Debug.Log("PLAY");
+        _IdentityManager.InstIdentity();
     }
     #endregion
     #region Player & Camera Management
@@ -334,10 +338,15 @@ public class GameManager : Singleton<GameManager>
                 doors[i].GetComponent<Interactable>().IsLocked = true;
         }
     }
-    
+
 
     #endregion
+    #region IdentityManagement
+    private IdentitiesManager _IdentityManager = null;
+    public void InitIdentityManager() => _IdentityManager = GetComponent<IdentitiesManager>();
+    public IdentitiesManager GetIdentityManager() => _IdentityManager;
 
+    #endregion
 
 
 

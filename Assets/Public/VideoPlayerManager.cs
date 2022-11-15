@@ -62,6 +62,7 @@ public class VideoPlayerManager : MonoBehaviour
         videoPlayer.Prepare();
         yield return new WaitUntil(() => videoPlayer.isPrepared == true);
         GameObject fadeInOutPanel = GameObject.Find("FadeInOutPanel");
+        //Del & Add Aim UI 
         if (fadeInOutPanel != null)
             fadeInOutPanel.SetActive(false);
         TimeControl.Pause();

@@ -55,10 +55,11 @@ public partial class Player : MonoBehaviour
 
     [Header("Player Audio")]
     [SerializeField] private AudioSource _AudioSource = null;
+    [SerializeField] private AudioSource _AudioSourceLighter = null;
     [SerializeField] private AudioClip lighterOpenClip = null;
     [SerializeField] private AudioClip lighterCloseClip = null;
-    [SerializeField] private AudioClip lighterFireClip = null;
     [SerializeField] private AudioClip walkClip = null;
+    [SerializeField] private AudioClip roughBreathClip = null;
     /// <summary>
     /// Initialize player's required components and values.
     /// </summary>
@@ -72,9 +73,10 @@ public partial class Player : MonoBehaviour
         Stamina = MaxStamina;
 
         Lighter.SetActive(false);
-        lighterOpenClip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Player, "Lighter_Open");
+        lighterOpenClip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Player, "Lighter_On");
         lighterCloseClip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Player, "Lighter_Close");
-        lighterFireClip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Player, "Lighter_Fire");
+        walkClip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Player, "Player_Walk");
+        roughBreathClip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Player, "female-breathing-heavily");
     }
     private void Equip()
     {
@@ -82,22 +84,30 @@ public partial class Player : MonoBehaviour
         {
             _Animator.SetBool("IsLighter", !Lighter.activeSelf);
             LighterSound(!Lighter.activeSelf);
-            Lighter.SetActive(!Lighter.activeSelf);
+            //Lighter.SetActive(!Lighter.activeSelf);
+            if(!Lighter.activeSelf)
+                Invoke("DelayActive", 1f);
+            else
+                Lighter.SetActive(!Lighter.activeSelf);
         }
     }
     private void LighterSound(bool active)
     {
         if(active == true)
         {
-            _AudioSource.clip = lighterOpenClip;
-            _AudioSource.Play();
-            _AudioSource.clip = lighterFireClip;
-            _AudioSource.Play();
+            _AudioSourceLighter.clip = lighterOpenClip;
+            _AudioSourceLighter.Play();
         }
         else
         {
-            _AudioSource.clip = lighterCloseClip;
-            _AudioSource.Play();
+            _AudioSourceLighter.clip = lighterCloseClip;
+            _AudioSourceLighter.Play();
         }
     }
+    private void PlaySound(AudioClip playClip)
+    {
+        _AudioSource.clip = playClip;
+        _AudioSource.Play();
+    }
+    private void DelayActive() => Lighter.SetActive(!Lighter.activeSelf);
 }

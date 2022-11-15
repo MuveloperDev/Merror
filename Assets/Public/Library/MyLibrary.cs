@@ -398,8 +398,11 @@ namespace MyLibrary
 
             if (item.TryGetComponent<Interactable>(out interObj) == true)
             {
-                Debug.Log(InventoryLayer);
-                item.layer = InventoryLayer;
+                Transform[] items = item.GetComponentsInChildren<Transform>();
+                for (int i = 0; i < items.Length; i++)
+                {
+                    items[i].gameObject.layer = InventoryLayer;
+                }
                 item.transform.localScale = new Vector3(scale, scale, scale);
                 item.transform.SetParent(uiCamera.transform, false);
                 Destroy(interObj);

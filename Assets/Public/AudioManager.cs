@@ -3,19 +3,21 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    public enum Type { Player, Identity, HorrorEvnets, Interactable, Environment};
+    public enum Type { Player, Identity, HorrorEvnets, Interactable, Environment, Puzzle};
     private AudioManager() { }
     [SerializeField] ScriptableObj PlayerObj = null;
     [SerializeField] ScriptableObj InteractableObj = null;
     [SerializeField] ScriptableObj EnviromentObj = null;
     [SerializeField] ScriptableObj IdentityObj = null;
     [SerializeField] ScriptableObj HorrorEvnetsObj = null;
+    [SerializeField] ScriptableObj PuzzleObj = null;
 
     private Dictionary<string, AudioClip> PlayerClips = new Dictionary<string, AudioClip>();
     private Dictionary<string, AudioClip> InteractableClips = new Dictionary<string, AudioClip>();
     private Dictionary<string, AudioClip> EnviromentClips = new Dictionary<string, AudioClip>();
     private Dictionary<string, AudioClip> IdentiyuClips = new Dictionary<string, AudioClip>();
     private Dictionary<string, AudioClip> HorrorEvnetsClips = new Dictionary<string, AudioClip>();
+    private Dictionary<string, AudioClip> PuzzleClips = new Dictionary<string, AudioClip>();
 
     private void Awake()
     {
@@ -24,6 +26,7 @@ public class AudioManager : MonoBehaviour
         AddAllClipsToDic(EnviromentObj);
         AddAllClipsToDic(IdentityObj);
         AddAllClipsToDic(HorrorEvnetsObj);
+        AddAllClipsToDic(PuzzleObj);
     }
 
     /// <summary>
@@ -65,6 +68,12 @@ public class AudioManager : MonoBehaviour
                 for (int i = 0; i < obj.Sounds.Length; i++)
                 {
                     HorrorEvnetsClips.Add(HorrorEvnetsObj.Sounds[i].name, HorrorEvnetsObj.Sounds[i]);
+                }
+                break;
+            case "Puzzle":
+                for (int i = 0; i < obj.Sounds.Length; i++)
+                {
+                    PuzzleClips.Add(PuzzleObj.Sounds[i].name, PuzzleObj.Sounds[i]);
                 }
                 break;
         }
@@ -109,6 +118,9 @@ public class AudioManager : MonoBehaviour
 
             case Type.Environment:
                 curdic = EnviromentClips;
+                break;
+            case Type.Puzzle:
+                curdic = PuzzleClips;
                 break;
         }
 

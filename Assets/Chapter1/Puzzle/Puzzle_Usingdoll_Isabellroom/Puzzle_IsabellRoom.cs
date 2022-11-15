@@ -64,12 +64,13 @@ public class Puzzle_IsabellRoom : MonoBehaviour
                 if (i == 2)
                 {
                     allDolls[i].transform.GetChild(0).GetComponent<Puzzle_IsabellRoom>().RenderLine(false);
-                    allDolls[i].transform.GetChild(0).GetComponent<Puzzle_IsabellRoom>().StartCoroutine(Rotate(allDolls[i].transform.GetChild(0).GetComponent<Puzzle_IsabellRoom>().nextObject.transform, 2f, false));
+                    allDolls[i].transform.GetChild(0).GetComponent<Puzzle_IsabellRoom>().interactableok = false;
                     continue;
                 }
                 allDolls[i].GetComponent<Puzzle_IsabellRoom>().RenderLine(false);
-                allDolls[i].GetComponent<Puzzle_IsabellRoom>().StartCoroutine(Rotate(allDolls[i].GetComponent<Puzzle_IsabellRoom>().nextObject.transform, 2f, false));
+                allDolls[i].GetComponent<Puzzle_IsabellRoom>().interactableok = false;
             }
+            allDolls[0].GetComponent<Puzzle_IsabellRoom>().interactableok = true;
             return;
         }
 
@@ -154,9 +155,14 @@ public class Puzzle_IsabellRoom : MonoBehaviour
         }
     }
 
+    void RotateSM(Transform target, float time, bool delayRender)
+    {
+        StartCoroutine(Rotate(target, time, delayRender));
+    }
+
     IEnumerator Rotate(Transform target, float time, bool delayRender)
     {
-        Debug.Log("Do Rotate : " + target.gameObject.name);
+        Debug.Log(" Do Rotate : " + target.gameObject.name);
         Vector3 dir;
         while (time > 0)
         {

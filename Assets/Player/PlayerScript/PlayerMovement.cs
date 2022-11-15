@@ -34,7 +34,7 @@ public partial class Player : MonoBehaviour
             //_Rigidbody.position += Speed * Time.deltaTime * MoveVector;
             _Rigidbody.MovePosition(Speed * Time.deltaTime * MoveVector + _Rigidbody.position);
             if(!_AudioSource.isPlaying)
-                PlaySound(walkClip);
+                PlaySound(walkClip,1f);
         }
         else
             _AudioSource.Stop();
@@ -122,6 +122,8 @@ public partial class Player : MonoBehaviour
         if (IsCrouch) // Player is crouching
         {
             Speed = MaxCrouchSpeed; // Set speed to crouched speed.
+            if (!_AudioSource.isPlaying && IsMove)
+                PlaySound(walkClip, 0.5f);
             return; // Crouching is primary.
         }
         if (IsMove) // Player has movement.
@@ -137,6 +139,8 @@ public partial class Player : MonoBehaviour
                     Debug.Log("Stop Recover");
                     StaminaRecoverCoroutine = null;
                 }
+                if (!_AudioSource.isPlaying)
+                    PlaySound(walkClip, 2f);
                 StaminaDecreaseCoroutine ??= StartCoroutine(DecreaseStamina()); // Decrease stamina.
             }
             else

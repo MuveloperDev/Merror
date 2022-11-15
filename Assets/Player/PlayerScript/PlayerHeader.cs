@@ -104,9 +104,10 @@ public partial class Player : MonoBehaviour
             _AudioSourceLighter.Play();
         }
     }
-    private void PlaySound(AudioClip playClip)
+    private void PlaySound(AudioClip playClip, float speed)
     {
         _AudioSource.clip = playClip;
+        _AudioSource.pitch = speed;
         _AudioSource.Play();
     }
     private void DelayActive() => Lighter.SetActive(!Lighter.activeSelf);

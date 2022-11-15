@@ -1006,6 +1006,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   hintObj: {fileID: 0}
+  changedMaterial: {fileID: 0}
+  drawing: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!114 &42794264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40987,6 +40990,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   hintObj: {fileID: 0}
+  changedMaterial: {fileID: 0}
+  drawing: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!65 &1927672086
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -44133,6 +44139,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   hintObj: {fileID: 0}
+  changedMaterial: {fileID: 0}
+  drawing: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!65 &2047079352
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -82511,6 +82520,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2146252219}
     m_Modifications:
+    - target: {fileID: 2259024378666398559, guid: 2bef914d688e34741b5c34eea04c1fd4, type: 3}
+      propertyPath: Audio_Playable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6377153122314936556, guid: 2bef914d688e34741b5c34eea04c1fd4, type: 3}
       propertyPath: m_RootOrder
       value: 0

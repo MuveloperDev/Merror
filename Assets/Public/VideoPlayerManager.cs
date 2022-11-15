@@ -25,8 +25,8 @@ public class VideoPlayerManager : MonoBehaviour
 
             public VideoClip OP { get { return op; } }
             public VideoClip DeathVideo { get { return deathVideo; } }
-            public VideoClip EndVideo { get { return deathVideo; } }
-            public VideoClip IsabelRoomVideo { get { return deathVideo; } }
+            public VideoClip EndVideo { get { return endVideo; } }
+            public VideoClip IsabelRoomVideo { get { return isabelRoomVideo; } }
         }
     }
 

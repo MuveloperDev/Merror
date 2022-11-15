@@ -10,16 +10,28 @@ public class PuzzleGuessWho : MonoBehaviour
     [SerializeField] private Material changedMaterial = null;
     [SerializeField] private MeshRenderer drawing = null;
     [SerializeField] private AudioSource audioSource = null;
+    [SerializeField] private PuzzleGuessWho[] Objs = null;
+    [SerializeField] private bool isClear = false;
 
     private void OnEnable() => Init();
 
-    void Init() => player = GameObject.FindObjectOfType<Player>();
+    void Init()
+    {
+        Objs = GameObject.FindObjectsOfType<PuzzleGuessWho>();
+        player = GameObject.FindObjectOfType<Player>();
+    }
 
     
     void CheckAnswer()
     {
-        if (gameObject.name == "Isabel") DropKey();
+        if (gameObject.name == "Isabel")
+        {
+            DropKey();
+            isClear = true;
+        }
         else player.SendMessage("Death", CameraState.CamState.DEATH, SendMessageOptions.DontRequireReceiver);
+
+        if (isClear) foreach (var obj in Objs) Destroy(obj.GetComponent<Interactable>());
     }
 
     void DropKey()
@@ -29,7 +41,7 @@ public class PuzzleGuessWho : MonoBehaviour
         audioSource.Play();
         drawing.material = changedMaterial;
 
-        GameManager.Instance.ClearPuzzle(hintObj,1f);
+        GameManager.Instance.ClearPuzzle(hintObj,7f);
         
         Invoke("AudioourceDisable", 2f);
     }

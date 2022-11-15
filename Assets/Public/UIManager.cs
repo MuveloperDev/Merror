@@ -84,6 +84,8 @@ public class UIManager : MonoBehaviour
     // SaveButton
     public void OnClickLoadGame()
     {
+        GameManager.Instance.Load();
+        SceneManager.LoadSceneAsync("LodingScene");
         Debug.LogError("Load Game");
     }
 

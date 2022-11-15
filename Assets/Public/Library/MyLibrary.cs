@@ -136,26 +136,32 @@ namespace MyLibrary
 
     }
 
+    [System.Serializable]
     public struct SaveData
     {
-        public string chapter;
+        public int chapter;
         public Vector3 playerPos;
         public Quaternion playerRot;
-        public ChpterPuzzles puzzles;
+        public ChapterPuzzles[] puzzles;
         public Door[] isDoorOpen;
         public string[] invenItems;
     }
 
-    public struct ChpterPuzzles 
+    [System.Serializable]
+    public struct ChapterPuzzles 
     {
-        public bool[] isCleared;
+        public string puzzleName;
+        public bool isCleared;
 
-        public ChpterPuzzles(int count)
+        public ChapterPuzzles(string name, bool isCleared)
         {
-            isCleared = new bool[count];
+            this.puzzleName = name;
+            this.isCleared = isCleared;
         }
+
     }
 
+    [System.Serializable]
     public struct Door 
     {
         public string doorName;
@@ -197,9 +203,9 @@ namespace MyLibrary
         {
             string json = JsonUtility.ToJson(data);
             json = json.Replace(",", "$");
+            Debug.Log("JSON : " + json);
             json = Convert.ToBase64String(Encryption(myKey, myIV, json));
             json = json.Replace("=", "@");
-
             System.Diagnostics.Process.Start(savePath, json).WaitForExit();
         }
 
@@ -236,6 +242,9 @@ namespace MyLibrary
 
             encodingString = Descryption(myKey, myIV, Convert.FromBase64String(encodingString));
             data = JsonUtility.FromJson<SaveData>(encodingString.Replace("$", ","));
+            Debug.Log(encodingString);
+
+            SaveData ia = (SaveData)data;
 
             return data;
         }
@@ -345,6 +354,7 @@ namespace MyLibrary
 
         private List<GameObject> inven = null;
         public int GetItemCount { get { return inven.Count; } }
+        public GameObject GetInvenItem(int index) => inven[index];
         private int count = 0;
 
         public List<GameObject> GetInventoryItem()
@@ -388,6 +398,7 @@ namespace MyLibrary
             canvas.gameObject.SetActive(false);
         }
 
+
         /// <summary>
         /// Get Item and insert inventory list
         /// </summary>
@@ -399,7 +410,7 @@ namespace MyLibrary
             if (item.TryGetComponent<Interactable>(out interObj) == true)
             {
                 Transform[] items = item.GetComponentsInChildren<Transform>();
-                for (int i = 0; i < items.Length; i++)
+                for(int i = 0; i < items.Length; i++)
                 {
                     items[i].gameObject.layer = InventoryLayer;
                 }

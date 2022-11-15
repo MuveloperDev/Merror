@@ -1,6 +1,7 @@
 using Cinemachine;
 using MyLibrary;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -15,6 +16,7 @@ public class GameManager : Singleton<GameManager>
         InitUIManager();
         InitPuzzleManager();
         InitVideoPlayerManager();
+        DefaultInit();
         //InitCutScenePlayer();
         SceneManager.activeSceneChanged -= OnSceneChanged;
         SceneManager.activeSceneChanged += OnSceneChanged;
@@ -31,9 +33,9 @@ public class GameManager : Singleton<GameManager>
             switch (current.name)
             {
                 default: { ToggleCursor(false); break; }
-                case "Chapter1": { InitChapter(1); break; }
-                case "Chapter2": { InitChapter(2); break; }
-                case "Chapter1_KYM": { InitChapter(1); break; } // test
+                case "Chapter1": { StartCoroutine(WaitLoad(1)); break; }
+                case "Chapter2": { StartCoroutine(WaitLoad(2)); break; }
+                //case "Chapter1_KYM": { InitChapter(1); break; } // test
             }
         }
     }
@@ -41,13 +43,32 @@ public class GameManager : Singleton<GameManager>
     /// Initialize chapter information by chapter number
     /// </summary>
     /// <param name="chapterNum">Chapter number</param>
-    private void InitChapter(int chapterNum)
+
+    private int chapterNum;
+    private IEnumerator InitChapter(int chapterNum)
     {
         ToggleCursor(true); // Lock cursor
         FindPlayer(); // Find my player
         FindPlayerCamera(); // Find camera
         InitInventory(); // Init inventory
         _Puzzle.InitPuzzle(chapterNum); // Init puzzles
+        this.chapterNum = chapterNum;
+        
+        if(isFirstPlay == false)
+        {
+            LoadData(chapterNum);
+        }
+        
+        yield return null;
+    }
+
+    private IEnumerator WaitLoad(int chapterNum)
+    {
+        TimeControl.Pause();
+        Debug.Log("PAUSE");
+        yield return InitChapter(chapterNum);
+        TimeControl.Play();
+        Debug.Log("PLAY");
     }
     #endregion
     #region Player & Camera Management
@@ -128,7 +149,7 @@ public class GameManager : Singleton<GameManager>
     public AudioManager GetAudio() => _AudioManager;
     #endregion
     #region UI Management
-    [SerializeField]private UIManager _UIManager = null;
+    [SerializeField] private UIManager _UIManager = null;
     private void InitUIManager() => _UIManager = GetComponent<UIManager>();
     public UIManager GetUI() => _UIManager;
     #endregion
@@ -136,6 +157,13 @@ public class GameManager : Singleton<GameManager>
     private PuzzleManager _Puzzle = null;
     private void InitPuzzleManager() => _Puzzle = GetComponent<PuzzleManager>();
     public PuzzleManager GetPuzzle() => _Puzzle;
+
+    public void SetClear(string puzzleName)
+    {
+        _Puzzle.SetClear(puzzleName, true);
+    }
+
+    
     #endregion
     #region Cut Scene
     private VideoPlayerManager _VideoPlayer = null;
@@ -155,7 +183,7 @@ public class GameManager : Singleton<GameManager>
         CutScenePlayer.enabled = true;
         CutScenePlayer.targetCamera = Camera.main;
         CutScenePlayer.clip = CutSceneClip;
-        if(CutSceneClip == null) { Debug.Log("There's no cut scene clip."); return; }
+        if (CutSceneClip == null) { Debug.Log("There's no cut scene clip."); return; }
         CutScenePlayer.Play();
         StartCoroutine(WhenCutSceneEnd());
     }
@@ -175,6 +203,142 @@ public class GameManager : Singleton<GameManager>
         }
     }
     #endregion
+    #region SaveLoad Management
+    private SaveData Data;
+    public SaveData GetData() => Data;
+    private bool isFirstPlay = true;
+    public void Save()
+    {
+        if(SetSaveData() == true)
+            SaveLoad.Save(Data);
+        else
+        {
+            Debug.LogError("Can Not Save Data Request BK");
+            return;
+        }
+    }
+
+    public void Load()
+    {
+        SaveData? loadData = SaveLoad.Load();
+
+        if (loadData != null)
+        {
+            Data = (SaveData)loadData;
+            isFirstPlay = false;
+            Debug.Log("Load Complete");
+        }
+        else
+        {
+            isFirstPlay = true;
+            return;
+        }
+    }
+
+    private void DefaultInit()
+    {
+        Data.chapter = 1;
+    }
+
+    private bool SetSaveData() 
+    {
+        Data = new SaveData();
+        GameObject Player = FindObjectOfType<Player>().gameObject;
+
+        Data.chapter = chapterNum; 
+        if (Player == null)
+            return false;
+        Data.playerPos = Player.transform.position;
+        Data.playerRot = Player.transform.rotation;
+
+        if (_Puzzle == null)
+            return false;
+        Data.puzzles = _Puzzle.GetCurrentPuzzle().chapterPuzzleDatas;
+        SetSaveDoorDatas();
+        SetSaveInvenItems();
+        return true;
+    }
+
+    private void SetSaveDoorDatas()
+    {
+        GameObject[] doors = GameObject.FindGameObjectsWithTag("Door");
+        Data.isDoorOpen = new Door[doors.Length];
+        
+        for(int i = 0; i < doors.Length; i++)
+        {
+            Data.isDoorOpen[i].doorName = doors[i].name;
+            Data.isDoorOpen[i].isOpened = doors[i].GetComponent<Interactable>().IsLocked;
+        }
+    }
+
+    private void SetSaveInvenItems()
+    {
+        Data.invenItems = new string[MyInventory.GetItemCount];
+        
+        for(int i = 0; i < MyInventory.GetItemCount; i++)
+        {
+            Data.invenItems[i] = MyInventory.GetInvenItem(i).name;
+        }
+    }
+
+    private void LoadData(int chapterNum)
+    {
+        MyPlayer.transform.position = Data.playerPos;
+        MyPlayer.transform.rotation = Data.playerRot;
+        LoadInvenItems();
+        LoadPuzzleItmes(chapterNum);
+        LoadDoor();
+    }
+
+    private void LoadInvenItems()
+    {
+        for(int i = 0; i < Data.invenItems.Length; i++)
+        {
+            GameObject item = GameObject.Find(Data.invenItems[i]);
+            if (item != null)
+                MyInventory.InsertItem(item, item.GetComponent<Interactable>().GetInvenScale());
+            else
+                Debug.LogError("Can not found '" + Data.invenItems[i] + "'");
+        }
+    }
+
+    private void LoadPuzzleItmes(int chapterNum)
+    {
+        for(int i = 0; i < Data.puzzles.Length; i++)
+        {
+            if (Data.puzzles[i].isCleared == true)
+            {
+                GameObject obj = _Puzzle.FindClearPuzzleObj(chapterNum,Data.puzzles[i].puzzleName);
+                _Puzzle.GetCurrentPuzzle().chapterPuzzleDatas[i].isCleared = true;
+                Interactable inter = null;
+                if (obj.TryGetComponent<Interactable>(out inter) == true)
+                {
+                    inter.SetSpecial(false);
+                    inter.NonInteractable();
+                    Debug.Log("NonIterAct");
+                }
+                
+            }
+        }
+    }
+
+    private void LoadDoor()
+    {
+        GameObject[] doors = GameObject.FindGameObjectsWithTag("Door");
+
+        for (int i = 0; i < doors.Length; i++)
+        {
+            if (Data.isDoorOpen[i].isOpened == true)
+                doors[i].GetComponent<Interactable>().IsLocked = false;
+            else
+                doors[i].GetComponent<Interactable>().IsLocked = true;
+        }
+    }
+    
+
+    #endregion
+
+
     /// <summary>
     /// Toggle cursor lock state.
     /// </summary>

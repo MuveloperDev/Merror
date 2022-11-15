@@ -18,18 +18,16 @@ public class Decryption_Puzzle : MonoBehaviour
     private void VisibleUI()
     {
         TimeControl.Pause();
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
+        GameManager.Instance.ToggleCursor(false);
         DecryptionUI.gameObject.SetActive(true);
     }
 
     private void DisVisibleUI()
     {
-        resultTXT.text = "";
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-        DecryptionUI.gameObject.SetActive(false);
         TimeControl.Play();
+        resultTXT.text = "";
+        GameManager.Instance.ToggleCursor(true);
+        DecryptionUI.gameObject.SetActive(false);
     }
 
     public void OnInputEnter(string value)
@@ -87,6 +85,8 @@ public class Decryption_Puzzle : MonoBehaviour
         interactable.SetSpecial(false);
         interactable.NonInteractable();
         DisVisibleUI();
+        GameManager.Instance.SetClear("Decryption_Puzzle");
+        GameManager.Instance.Save();
         // Do_Something
     }
 }

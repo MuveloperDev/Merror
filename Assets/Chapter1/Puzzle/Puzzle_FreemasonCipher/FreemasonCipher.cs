@@ -14,6 +14,8 @@ public class FreemasonCipher : MonoBehaviour
     [SerializeField] GameObject[] HintPaper;
     [SerializeField] TextMeshProUGUI inputStr;
     [SerializeField] GameObject BlackBoard;
+    Material changeAlpha;
+    
 
     private AudioSource playChalkSound = null;
 
@@ -32,11 +34,9 @@ public class FreemasonCipher : MonoBehaviour
         GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Interactable, "ChalkSound5")
         };
 
-        Debug.Log(ChalkSound[0].name);
-        Debug.Log(ChalkSound[1].name);
-        Debug.Log(ChalkSound[2].name);
-        Debug.Log(ChalkSound[3].name);
-        Debug.Log(ChalkSound[4].name);
+        changeAlpha.color = BlackBoard.GetComponent<MeshRenderer>().material.color;
+
+        //changeAlpha = GameObject.Find("Tableau").GetComponent<MeshRenderer>().material;
     }
 
     private void inputBoard()
@@ -91,9 +91,9 @@ public class FreemasonCipher : MonoBehaviour
             input = new string(convertCharArray).Remove(convertCharArray.Length - 1);
         }
 
-
         if (input == answerString)
         {
+            StartCoroutine(DestroyInteractable());
             SolvedPuzzle();
             ClickCloseButton();
         }
@@ -111,7 +111,28 @@ public class FreemasonCipher : MonoBehaviour
 
     IEnumerator DestroyInteractable()
     {
-        BlackBoard.TryGetComponent<Renderer>(Material);
+        if (BlackBoard == null)
+        {
+            yield break;
+        }
+
+        float plusAlpha = 1f;
+
+        Debug.Log("들어와라");
+
+        while (plusAlpha > 0f)
+        {
+            Debug.Log("DestroyInteractable : " + plusAlpha);
+            plusAlpha -= 0.05f;
+
+            changeAlpha.color = new Color(1f, 1f, 1f, plusAlpha);
+
+            yield return new WaitForSeconds(0.05f);
+        }
+
+        Debug.Log("와일문 탈출");
+        BlackBoardBackground.SetActive(false);
+
         yield break;
     }
 }

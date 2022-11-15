@@ -27447,6 +27447,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 583063568}
     m_Modifications:
     - target: {fileID: 5577653480071326736, guid: 7cb71fa216eae6e4a9efce30aa3c9002, type: 3}
+      propertyPath: AAA
+      value: 
+      objectReference: {fileID: 1928291696}
+    - target: {fileID: 5577653480071326736, guid: 7cb71fa216eae6e4a9efce30aa3c9002, type: 3}
       propertyPath: BlackBoard
       value: 
       objectReference: {fileID: 1928291696}
@@ -68824,6 +68828,7 @@ MonoBehaviour:
   - {fileID: 1504820976958061150}
   - {fileID: 3347893557378609981}
   - {fileID: 5175638062353267123}
+  interactableok: 0
 --- !u!120 &1506627377172325608
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -70858,6 +70863,7 @@ MonoBehaviour:
   - {fileID: 1504820976958061150}
   - {fileID: 3347893557378609981}
   - {fileID: 5175638062353267123}
+  interactableok: 0
 --- !u!120 &2008563477919113704
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -79959,6 +79965,7 @@ MonoBehaviour:
   - {fileID: 1504820976958061150}
   - {fileID: 3347893557378609981}
   - {fileID: 5175638062353267123}
+  interactableok: 0
 --- !u!120 &3350054063225140225
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -89282,6 +89289,7 @@ MonoBehaviour:
   HintPaper: []
   inputStr: {fileID: 0}
   BlackBoard: {fileID: 0}
+  AAA: {fileID: 0}
 --- !u!114 &4477170615529906029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90339,6 +90347,7 @@ MonoBehaviour:
   - {fileID: 1504820976958061150}
   - {fileID: 3347893557378609981}
   - {fileID: 5175638062353267123}
+  interactableok: 0
 --- !u!23 &4836600762131071736
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -92232,6 +92241,7 @@ MonoBehaviour:
   - {fileID: 1504820976958061150}
   - {fileID: 3347893557378609981}
   - {fileID: 5175638062353267123}
+  interactableok: 0
 --- !u!120 &5177336707600348823
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -102393,6 +102403,7 @@ MonoBehaviour:
   - {fileID: 1504820976958061150}
   - {fileID: 3347893557378609981}
   - {fileID: 5175638062353267123}
+  interactableok: 0
 --- !u!120 &7255694650759486145
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -105132,6 +105143,7 @@ MonoBehaviour:
   - {fileID: 0}
   inputStr: {fileID: 7565930753714618616}
   BlackBoard: {fileID: 0}
+  AAA: {fileID: 0}
 --- !u!1 &7565930753072992606
 GameObject:
   m_ObjectHideFlags: 0
@@ -110866,6 +110878,7 @@ MonoBehaviour:
   - {fileID: 1504820976958061150}
   - {fileID: 3347893557378609981}
   - {fileID: 5175638062353267123}
+  interactableok: 0
 --- !u!120 &9113434253746480116
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -111720,6 +111733,7 @@ MonoBehaviour:
   - {fileID: 1504820976958061150}
   - {fileID: 3347893557378609981}
   - {fileID: 5175638062353267123}
+  interactableok: 0
 --- !u!120 &9143053436240993395
 LineRenderer:
   m_ObjectHideFlags: 0

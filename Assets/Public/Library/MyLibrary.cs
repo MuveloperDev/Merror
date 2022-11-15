@@ -136,11 +136,43 @@ namespace MyLibrary
 
     }
 
+    public struct SaveData
+    {
+        public string chapter;
+        public Vector3 playerPos;
+        public Quaternion playerRot;
+        public ChpterPuzzles puzzles;
+        public Door[] isDoorOpen;
+        public string[] invenItems;
+    }
+
+    public struct ChpterPuzzles 
+    {
+        public bool[] isCleared;
+
+        public ChpterPuzzles(int count)
+        {
+            isCleared = new bool[count];
+        }
+    }
+
+    public struct Door 
+    {
+        public string doorName;
+        public bool isOpened;
+
+        public Door(string doorName,bool isOpened)
+        {
+            this.doorName = doorName;
+            this.isOpened = isOpened;
+        }
+    }
+
     /// <summary>
     /// Save Load By Bat File 
     /// </summary>
-    /// <typeparam name="T"> Constraint : T -> ScriptableObject </typeparam>
-    public static class SaveLoad<T> where T : ScriptableObject
+    /// <typeparam name="SaveData"> Constraint : T -> ScriptableObject </typeparam>
+    public static class SaveLoad
     {
         private static readonly string defaultPath = System.IO.Directory.GetCurrentDirectory();
         private static readonly string savePath = defaultPath + "/MakeFile.bat";
@@ -155,12 +187,13 @@ namespace MyLibrary
             myIV = Convert.FromBase64String("ZL4IxFBvQzlnirk5wZVIxw==");
         }
 
+
         /// <summary>
         /// Save File in SaveData Folder
         /// Data Type is Json
         /// </summary>
         /// <param name="data"> Data to Save  </param>
-        public static void Save(T data)
+        public static void Save(SaveData data)
         {
             string json = JsonUtility.ToJson(data);
             json = json.Replace(",", "$");
@@ -175,7 +208,7 @@ namespace MyLibrary
         /// </summary>
         /// <param name="myData"> OverWritten Player Current Data </param>
         /// <returns> OverWritten Scriptable Object </returns>
-        public static T Load(T myData)
+        public static SaveData? Load()
         {
             System.Diagnostics.ProcessStartInfo psi = new System.Diagnostics.ProcessStartInfo();
             psi.FileName = loadPath;
@@ -197,12 +230,12 @@ namespace MyLibrary
                     break;
 
             }
-            T data = myData;
+            SaveData? data = null;
 
             encodingString = encodingString.Replace("@", "=");
 
             encodingString = Descryption(myKey, myIV, Convert.FromBase64String(encodingString));
-            JsonUtility.FromJsonOverwrite(encodingString.Replace("$", ","), data);
+            data = JsonUtility.FromJson<SaveData>(encodingString.Replace("$", ","));
 
             return data;
         }
@@ -417,6 +450,11 @@ namespace MyLibrary
         private List<GameObject> inven = null;
         public int GetItemCount { get { return inven.Count; } }
         private int count = 0;
+
+        public List<GameObject> GetInventoryItem()
+        {
+            return inven;
+        }
 
         /// <summary>
         /// Class Constructor Initializing Members

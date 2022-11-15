@@ -12,24 +12,29 @@ public class SceneTransition : MonoBehaviour
     float fillAmountBar = 0.01f;
     float timer = 0.01f;
     bool isloading = false;
+    private delegate IEnumerator Del_FillLoadingBar(int ChapterNum);
+    private Del_FillLoadingBar fillLoading;
 
     private void Awake()
     {
+        fillLoading = FillLoadingBar;
+        if (fillLoading != null)
+            StartCoroutine(fillLoading(GameManager.Instance.GetData().chapter));
+        else
+            Debug.LogError("Can not found FillLoading Coroutine");
         // Play ingame Scene 
         // SceneManager.LoadScene("Chapter1");
-        loadAO = SceneManager.LoadSceneAsync("Chapter1", LoadSceneMode.Additive);
+
         //loadAO = SceneManager.LoadSceneAsync("Chapter1_SSH", LoadSceneMode.Additive);
         Logo.fillAmount = 0;
-    }
-
-    private void Start()
-    {
-        StartCoroutine(FillLoadingBar());
     }
 
 
     private void Update()
     {
+        if (loadAO == null)
+            return;
+
         if (loadAO.isDone == true)
         {
             SceneManager.UnloadSceneAsync("LodingScene");
@@ -37,21 +42,50 @@ public class SceneTransition : MonoBehaviour
         }
     }
 
-    IEnumerator FillLoadingBar()
+    IEnumerator FillLoadingBar(int ChapterNum)
     {
+        string chapter = null;
+        switch (ChapterNum)
+        {
+            case 1:
+                chapter = "Chapter1";
+                break;
+            case 2:
+                chapter = "Chapter2";
+                break;
+            case 3:
+                chapter = "Chapter3";
+                break;
+            case 4:
+                chapter = "Chapter4";
+                break;
+            case 5:
+                chapter = "Chapter5";
+                break;
+            default:
+                Debug.LogError("Chapter Number Error");
+                break;
+        }
+
+        if (chapter == null)
+        {
+            Debug.LogError("Chapter string is null");
+            yield break;
+        }
+
+        loadAO = SceneManager.LoadSceneAsync(chapter, LoadSceneMode.Additive);
+
+
         yield return new WaitForFixedUpdate();
 
         while (!loadAO.isDone)
         {
             yield return new WaitForSeconds(0.02f);
-            Debug.Log("while¹® µé¾î¿È");
-            Debug.Log(loadAO.progress);
 
             timer += fillAmountBar;
 
             if (loadAO.progress <= 0.9)
             {
-                Debug.Log("if¹® µµ´Â Áß"+ Logo.fillAmount);
 
                 if (timer < 0.5f)
                 {
@@ -63,29 +97,10 @@ public class SceneTransition : MonoBehaviour
                     Logo.fillAmount = 0.9f;
                 }
             }
-
             else
             {
-                Debug.Log("·Îµù ¿Ï·á");
+                Debug.Log("ï¿½Îµï¿½ ï¿½Ï·ï¿½");
             }
         }
     }
-
-
-
-    //IEnumerator AllowScene()
-    //{
-    //    Debug.Log("AllowScene");
-    //    while (loadAO.isDone == true)
-    //    {
-    //        if (loadAO.progress == 1)
-    //        {
-    //            Debug.Log(loadAO.isDone);
-    //            // Start Chapter1 Scene when ready
-    //            SceneManager.UnloadScene("LodingScene");
-    //            loadAO.allowSceneActivation = true;
-    //        }
-    //    }
-    //    yield return null;
-    //}
 }

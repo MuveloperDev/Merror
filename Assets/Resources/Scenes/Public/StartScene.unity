@@ -1146,8 +1146,8 @@ MonoBehaviour:
     chapter1:
       op: {fileID: 32900000, guid: 2e71e538db84ca94699f3e96f8731c6d, type: 3}
       deathVideo: {fileID: 32900000, guid: 6b4105c95b8871d4db60b2a8e214f9e7, type: 3}
-      endVideo: {fileID: 0}
-      isabelRoomVideo: {fileID: 0}
+      endVideo: {fileID: 32900000, guid: cefb4ba55f3c52d42a466b12e7ced373, type: 3}
+      isabelRoomVideo: {fileID: 32900000, guid: bc890f83eadfc5644a2220e8cfb4bc70, type: 3}
   videoPlayer: {fileID: 0}
 --- !u!1 &490044334
 GameObject:

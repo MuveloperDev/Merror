@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using MyLibrary;
 using TMPro;
+using UnityEngine.Timeline;
 
 public partial class Player : MonoBehaviour
 {
@@ -13,13 +14,15 @@ public partial class Player : MonoBehaviour
         InitPlayer();
         GameInput.Clamped_Delta_Mouse_Y = 0f;
 
+        TimeControl.Pause();
         // Test op video 
         GameManager.Instance.GetVideoPlayer().CallPlayVideo(
             GameManager.Instance.GetVideoPlayer().getVideoClips.getChapter1.OP,
-            () =>
-            {
+        () =>
+        {
+                TimeControl.Play();
                 Debug.Log("OPVideOff");
-            });
+        });
     }
     private void FixedUpdate()
     {

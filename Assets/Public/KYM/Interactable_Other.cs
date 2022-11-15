@@ -9,8 +9,12 @@ public partial class Interactable : MonoBehaviour
     [SerializeField] private bool Gettable = false;
     [SerializeField] private float Inventory_Scale = 1f;
     [SerializeField] private bool Special = false;
-    public void SetSpecial(bool value) => Special = value;
+    [SerializeField] private bool isPuzzle = false;
     [SerializeField] private Light _Light = null;
+    public float GetInvenScale() => Inventory_Scale;
+    public bool GetIsSpecial() => Special;
+    public void SetSpecial(bool value) => Special = value;
+    public bool GetIsPuzzle() => isPuzzle;
 
     /// <summary>
     /// Do something special fuction.

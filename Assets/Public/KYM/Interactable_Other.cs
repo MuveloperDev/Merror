@@ -54,6 +54,11 @@ public partial class Interactable : MonoBehaviour
                     Do_PuzzleFreemasonCipher();
                     break;
                 }
+            case ObjectType.JukeBox:
+                {
+                    Do_JukeBox();
+                    break;
+                }
 
             default: break;
         }
@@ -149,7 +154,12 @@ public partial class Interactable : MonoBehaviour
         {
             Debug.LogError("Require to CMJ & SSH");
         }
+    }
 
-
+    public virtual void Do_JukeBox()
+    { 
+        CameraState cameraState = FindObjectOfType<CameraState>();
+        cameraState.TurnOnState(CameraState.CamState.PANIC);
+        cameraState.callBackPanic = () => { Debug.Log("Call Isabel"); };
     }
 }

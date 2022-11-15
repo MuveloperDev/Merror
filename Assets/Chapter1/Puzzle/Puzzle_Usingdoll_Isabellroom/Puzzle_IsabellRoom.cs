@@ -2,6 +2,7 @@ using EPOOutline;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 using static CameraState;
 
 public class Puzzle_IsabellRoom : MonoBehaviour
@@ -65,9 +66,11 @@ public class Puzzle_IsabellRoom : MonoBehaviour
                 {
                     allDolls[i].transform.GetChild(0).GetComponent<Puzzle_IsabellRoom>().RenderLine(false);
                     allDolls[i].transform.GetChild(0).GetComponent<Puzzle_IsabellRoom>().interactableok = false;
+                    allDolls[i].transform.GetChild(0).GetComponent<Puzzle_IsabellRoom>().RotateSM(allDolls[i].transform.GetChild(0).GetComponent<Puzzle_IsabellRoom>().nextObject.transform, 1f, false);
                     continue;
                 }
                 allDolls[i].GetComponent<Puzzle_IsabellRoom>().RenderLine(false);
+                allDolls[i].GetComponent<Puzzle_IsabellRoom>().RotateSM(allDolls[i].GetComponent<Puzzle_IsabellRoom>().nextObject.transform, 1f, false);
                 allDolls[i].GetComponent<Puzzle_IsabellRoom>().interactableok = false;
             }
             allDolls[0].GetComponent<Puzzle_IsabellRoom>().interactableok = true;
@@ -82,7 +85,7 @@ public class Puzzle_IsabellRoom : MonoBehaviour
             case 4:
             case 5:
             case 6:
-                StartCoroutine(Rotate(frame.transform, 2f, true));
+                StartCoroutine(Rotate(frame.transform, 1f, true));
                 nextObject.GetComponent<Puzzle_IsabellRoom>().interactableok = true;
                 break;
 
@@ -146,7 +149,8 @@ public class Puzzle_IsabellRoom : MonoBehaviour
    IEnumerator Do_Eff()
     {
         yield return new WaitForSeconds(2f);
-        GameObject.Find("PostProcess").GetComponent<CameraState>().TurnOnState(CamState.LIGHTOUT);
+        GameManager.Instance.GetVideoPlayer().CallPlayVideo(GameManager.Instance.GetVideoPlayer().getVideoClips.getChapter1.IsabelRoomVideo,
+            () => { Debug.Log("EndVideo"); });
         yield return new WaitForSeconds(2f);
         Destroy(frame);
         for (int i = 0; i < allDolls.Length; i++)
@@ -177,7 +181,7 @@ public class Puzzle_IsabellRoom : MonoBehaviour
                 this.transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * 2f);
             }
 
-            time -= Time.deltaTime;
+            time -= Time.fixedDeltaTime;
             yield return new WaitForFixedUpdate();
         }
 

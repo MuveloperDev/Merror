@@ -6,6 +6,7 @@ public class HospitalTrigger : MonoBehaviour
 {
     [SerializeField] private GameObject hospitalRoom = null;
     [SerializeField] private GameObject wall = null;
+    [SerializeField] private AudioSource audioSource = null;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -13,7 +14,11 @@ public class HospitalTrigger : MonoBehaviour
         {
             wall.SetActive(true);
             hospitalRoom.SetActive(false);
-            gameObject.SetActive(false);
+            audioSource.Play();
+            Invoke("DisableObj", 2f);
         }
     }
+
+    void DisableObj() => gameObject.SetActive(false);
+
 }

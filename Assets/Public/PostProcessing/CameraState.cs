@@ -138,6 +138,7 @@ public class CameraState : MonoBehaviour
         {
             yield return new WaitForFixedUpdate();
             time += Time.deltaTime;
+            vignette.color.value = Color.red;
             vignette.intensity.value = Mathf.Clamp(time * 5f, 0.1f,0.8f);
             lensDistortion.intensity.value = Mathf.Clamp(time * 30f, 0f, 80f);
             chromaticAberration.intensity.value = Mathf.Clamp(time * 5f, 0.1f, 1f);
@@ -150,7 +151,7 @@ public class CameraState : MonoBehaviour
                 break;
             }    
         }
-        callBackPanic();
+        if (callBackPanic != null) callBackPanic();
         TurnOffState();
     }
 

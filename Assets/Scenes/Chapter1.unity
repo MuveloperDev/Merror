@@ -9368,6 +9368,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 7140354358845414370, guid: 41e1513d90b39054b8ccf8042f568b95, type: 3}
+      propertyPath: m_TagString
+      value: Door
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41e1513d90b39054b8ccf8042f568b95, type: 3}
 --- !u!1001 &392652559
@@ -13933,6 +13937,10 @@ PrefabInstance:
       propertyPath: IsUsed
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4126375854037848394, guid: 41e1513d90b39054b8ccf8042f568b95, type: 3}
+      propertyPath: IsLocked
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4456438982523820485, guid: 41e1513d90b39054b8ccf8042f568b95, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -13980,6 +13988,10 @@ PrefabInstance:
     - target: {fileID: 7140354358845414370, guid: 41e1513d90b39054b8ccf8042f568b95, type: 3}
       propertyPath: m_Name
       value: Door (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140354358845414370, guid: 41e1513d90b39054b8ccf8042f568b95, type: 3}
+      propertyPath: m_TagString
+      value: Door
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41e1513d90b39054b8ccf8042f568b95, type: 3}
@@ -21518,6 +21530,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 7140354358845414370, guid: 41e1513d90b39054b8ccf8042f568b95, type: 3}
+      propertyPath: m_TagString
+      value: Door
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41e1513d90b39054b8ccf8042f568b95, type: 3}
 --- !u!23 &887080352
@@ -26651,6 +26667,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 7140354358845414370, guid: 41e1513d90b39054b8ccf8042f568b95, type: 3}
+      propertyPath: m_TagString
+      value: Door
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41e1513d90b39054b8ccf8042f568b95, type: 3}
 --- !u!1001 &1061980868
@@ -31735,6 +31755,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 7140354358845414370, guid: 41e1513d90b39054b8ccf8042f568b95, type: 3}
+      propertyPath: m_TagString
+      value: Door
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41e1513d90b39054b8ccf8042f568b95, type: 3}
 --- !u!23 &1242447648
@@ -33427,6 +33451,10 @@ PrefabInstance:
     - target: {fileID: 7140354358845414370, guid: 41e1513d90b39054b8ccf8042f568b95, type: 3}
       propertyPath: m_Name
       value: Door (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140354358845414370, guid: 41e1513d90b39054b8ccf8042f568b95, type: 3}
+      propertyPath: m_TagString
+      value: Door
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41e1513d90b39054b8ccf8042f568b95, type: 3}
@@ -38642,6 +38670,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 7140354358845414370, guid: 41e1513d90b39054b8ccf8042f568b95, type: 3}
+      propertyPath: m_TagString
+      value: Door
+      objectReference: {fileID: 0}
     - target: {fileID: 7472390236830934107, guid: 41e1513d90b39054b8ccf8042f568b95, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.067
@@ -39335,6 +39367,10 @@ PrefabInstance:
     - target: {fileID: 7140354358845414370, guid: 41e1513d90b39054b8ccf8042f568b95, type: 3}
       propertyPath: m_Name
       value: Door (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140354358845414370, guid: 41e1513d90b39054b8ccf8042f568b95, type: 3}
+      propertyPath: m_TagString
+      value: Door
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41e1513d90b39054b8ccf8042f568b95, type: 3}
@@ -47890,6 +47926,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4126375854037848394, guid: 41e1513d90b39054b8ccf8042f568b95, type: 3}
+      propertyPath: IsLocked
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4456438982523820485, guid: 41e1513d90b39054b8ccf8042f568b95, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -47941,6 +47981,10 @@ PrefabInstance:
     - target: {fileID: 7140354358845414370, guid: 41e1513d90b39054b8ccf8042f568b95, type: 3}
       propertyPath: m_Name
       value: Door (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140354358845414370, guid: 41e1513d90b39054b8ccf8042f568b95, type: 3}
+      propertyPath: m_TagString
+      value: Door
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41e1513d90b39054b8ccf8042f568b95, type: 3}
@@ -56100,6 +56144,10 @@ PrefabInstance:
     - target: {fileID: 7140354358845414370, guid: 41e1513d90b39054b8ccf8042f568b95, type: 3}
       propertyPath: m_Name
       value: Door (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140354358845414370, guid: 41e1513d90b39054b8ccf8042f568b95, type: 3}
+      propertyPath: m_TagString
+      value: Door
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41e1513d90b39054b8ccf8042f568b95, type: 3}

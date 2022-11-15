@@ -118,7 +118,7 @@ public class FreemasonCipher : MonoBehaviour
 
         float plusAlpha = 1f;
 
-        Debug.Log("µé¾î¿Í¶ó");
+        Debug.Log("ï¿½ï¿½ï¿½Í¶ï¿½");
 
         while (plusAlpha > 0f)
         {
@@ -130,7 +130,7 @@ public class FreemasonCipher : MonoBehaviour
             yield return new WaitForSeconds(0.05f);
         }
 
-        Debug.Log("¿ÍÀÏ¹® Å»Ãâ");
+        Debug.Log("ï¿½ï¿½ï¿½Ï¹ï¿½ Å»ï¿½ï¿½");
         BlackBoardBackground.SetActive(false);
 
         yield break;

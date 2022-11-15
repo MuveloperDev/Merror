@@ -358,7 +358,7 @@ namespace MyLibrary
         /// <param name="notice"> Notice Noting in inventory TMP </param>
         /// <param name="canvas"> BackGround Canvas (Background Panel and Notice in the Canvas) </param>
         /// <param name="InventoryLayer"> Inventory Layer's Value </param>
-        public Inventory(TextMeshProUGUI notice, Canvas canvas)
+        public void InitInventory()
         {
             notice = GameObject.Find("notice").GetComponent<TextMeshProUGUI>();
             canvas = notice.transform.parent.GetComponent<Canvas>();
@@ -438,7 +438,7 @@ namespace MyLibrary
                 notice.gameObject.SetActive(false);
                 inven[count].SetActive(true);
                 inven[count].transform.localPosition = new Vector3(0, 0, 5);
-                inven[count].transform.rotation = Quaternion.identity;
+                inven[count].transform.localRotation = Quaternion.identity;
             }
             else
             {

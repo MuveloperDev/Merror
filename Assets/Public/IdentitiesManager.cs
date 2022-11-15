@@ -13,7 +13,6 @@ public class IdentitiesManager : MonoBehaviour
 	[SerializeField] private GameObject[] identities;
 
 	private Vector3 offsetPos = new Vector3(18f, 1.5f, 1.4f);
-	public void UpdateIdentity() => identity = identities[GameManager.Instance.ChapterNum-1].GetComponent<IdentityStateMachine>();
 
 	public IdentityStateMachine GetIdentity() => identity;
 	public void InstIdentity()
@@ -29,11 +28,13 @@ public class IdentitiesManager : MonoBehaviour
 		identity.TurnOnState(BaseStateMachine.State.CHASE);
 
     }
-    public void OnEnableIdentity(Vector3 pos, BaseStateMachine.State state)
+    public void OnEnableIdentity(Vector3 pos, Quaternion quaternion, BaseStateMachine.State state)
     {
-        identity.transform.position = offsetPos;
-		
+        identity.transform.position = pos;
+        identity.transform.rotation = quaternion;
         identity.gameObject.SetActive(true);
+		if (state == BaseStateMachine.State.SLEEPING) identity.GetComponent<NavMeshAgent>().enabled = false;
+
         identity.TurnOnState(state);
     }
 }

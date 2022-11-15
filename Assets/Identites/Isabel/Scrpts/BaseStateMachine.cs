@@ -36,11 +36,10 @@ public class BaseStateMachine : MonoBehaviour
         target = GameObject.FindGameObjectWithTag("Player").transform;
 
 
-        navMeshAgent.enabled = false;
+        navMeshAgent.enabled = true;
         isKill = false;
     }
 
-    
     // Assign state.
     public virtual void TurnOnState(State STATE)
     {

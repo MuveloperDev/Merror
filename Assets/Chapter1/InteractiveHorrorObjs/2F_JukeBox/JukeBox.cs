@@ -15,7 +15,8 @@ public class JukeBox : MonoBehaviour
         Destroy(GetComponent<Interactable>());
         Destroy(GetComponent<Outlinable>());
         cameraState.TurnOnState(CameraState.CamState.PANIC);
-        cameraState.callBackPanic = () => { Debug.Log("Call Isabel"); };
+        // Call Isabel
+        cameraState.callBackPanic = () => { GameManager.Instance.GetIdentityManager().ChaseIdentity(); };
         terrace.GetComponentInChildren<TerraceExit>().ExitCallback = () => {
             Destroy(GetComponent<AudioSource>());
         };

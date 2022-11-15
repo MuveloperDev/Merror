@@ -71,6 +71,7 @@ MonoBehaviour:
   Gettable: 0
   Inventory_Scale: 1
   Special: 1
+  isPuzzle: 0
   _Light: {fileID: 0}
   Outlinable: 1
   Rotatable: 1
@@ -330,6 +331,7 @@ GameObject:
   - component: {fileID: 7478310741671753999}
   - component: {fileID: 7488572257428589235}
   - component: {fileID: 3493664102313767421}
+  - component: {fileID: 2136802771381582084}
   m_Layer: 0
   m_Name: Door_Main1
   m_TagString: Untagged
@@ -414,6 +416,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!208 &2136802771381582084
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7475688581948957895}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.61800003, y: 1.2240001, z: 0.047000002}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1.2210001, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &7475688581954686655
 GameObject:
   m_ObjectHideFlags: 0

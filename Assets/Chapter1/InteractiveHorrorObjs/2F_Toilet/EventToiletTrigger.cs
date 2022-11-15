@@ -8,6 +8,7 @@ public class EventToiletTrigger : MonoBehaviour
     [SerializeField] private CameraState cameraState = null;
     [SerializeField] private AudioSource[] audios = null;
     [SerializeField] private AudioClip myClip = null;
+    [SerializeField] private Transform terrace = null;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -17,7 +18,11 @@ public class EventToiletTrigger : MonoBehaviour
             cameraState.TurnOnState(CameraState.CamState.PANIC);
             PlaySound(audios[0], ClipChanger("2FToilet_Clack"), true);
             PlaySound(audios[1], ClipChanger("2FToilet_Laughing"), false);
-            cameraState.callBackPanic = () => { eventObjs.gameObject.SetActive(false); };
+            cameraState.callBackPanic = () => { 
+                eventObjs.gameObject.SetActive(false);
+                GameManager.Instance.GetIdentityManager().ChaseIdentity();
+            };
+            terrace.gameObject.SetActive(true);
             gameObject.SetActive(false);
         }
     }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using MyLibrary;
+using Newtonsoft.Json.Linq;
 
 public class PuzzleGuessWho : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class PuzzleGuessWho : MonoBehaviour
     [SerializeField] private GameObject hintObj = null;
     [SerializeField] private AudioSource audioSource = null;
     [SerializeField] private PuzzleGuessWho[] Objs = null;
+    [SerializeField] private MeshRenderer draw = null;
+    [SerializeField] private Material changingDraw= null;
     [SerializeField] private bool isClear = false;
 
     private void OnEnable() => Init();
@@ -35,11 +38,11 @@ public class PuzzleGuessWho : MonoBehaviour
     void DropKey()
     { 
         Debug.Log("Drop key by BK ObjectsPool");
-        audioSource.clip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Puzzle, "GuessWho_Scream");
+        audioSource.clip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Identity, "Isabel_Gigle");
         audioSource.Play();
-
+        draw.material = changingDraw;
         GameManager.Instance.ClearPuzzle(hintObj,7f);
-        GameManager.Instance.GetIdentityManager().OnEnableIdentity(new Vector3(35f, 9f, 14f), Quaternion.Euler(0, -120f, 0),BaseStateMachine.State.SLEEPING);
+        GameManager.Instance.GetIdentityManager().OnEnableIdentity(new Vector3(41f, 8.5f, 14f), Quaternion.Euler(0, 53f, 0),BaseStateMachine.State.SITTINGANDFOCUS);
 
         
         Invoke("AudioourceDisable", 2f);

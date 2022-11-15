@@ -43,6 +43,8 @@ public partial class Player : MonoBehaviour
     /// Crouch player. This crouching method is that the camera postion translate to under crouched position.
     /// Additionally, Play crouching animations.
     /// </summary>
+    private bool isSitting = false;
+    public bool IsSitting { get { return isSitting; } }
     private void Crouch()
     {
         Anim_Crouch();
@@ -53,6 +55,8 @@ public partial class Player : MonoBehaviour
                 StopCoroutine(StandUpCoroutine); // Then, stop.
                 StandUpCoroutine = null;
             }
+            isSitting = true;
+            Debug.Log("isSItting : " + isSitting);
             // Translate camera to crouched position.
             _MainCam.transform.position = Vector3.Lerp(_MainCam.transform.position, CrouchCamPos.position, Time.deltaTime * 6f);
         }
@@ -63,6 +67,8 @@ public partial class Player : MonoBehaviour
                 StopCoroutine(StandUpCoroutine); // Then, stop.
                 StandUpCoroutine = null;
             }
+            isSitting = false;
+            Debug.Log("isSItting : " + isSitting);
             StandUpCoroutine = StartCoroutine(StandUp()); // Run stand up coroutine.
             Debug.Log("Start Stand Up - Coroutine State : " + StandUpCoroutine);
         }

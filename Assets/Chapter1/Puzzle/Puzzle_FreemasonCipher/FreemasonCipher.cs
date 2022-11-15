@@ -8,17 +8,36 @@ using EPOOutline;
 
 public class FreemasonCipher : MonoBehaviour
 {
+    [SerializeField] AudioClip[] ChalkSound = null;
     [SerializeField] GameObject BlackBoardBackground;
     [SerializeField] Button CloseButton;
     [SerializeField] GameObject[] HintPaper;
     [SerializeField] TextMeshProUGUI inputStr;
 
+    private AudioSource playChalkSound = null;
+
     private string answerString = "DESTROYDOLL";
 
     private void Awake()
     {
+        playChalkSound = GetComponent<AudioSource>();
+
+        ChalkSound = new AudioClip[5]
+        {
+        GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Interactable, "ChalkSound1"),
+        GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Interactable, "ChalkSound2"),
+        GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Interactable, "ChalkSound3"),
+        GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Interactable, "ChalkSound4"),
+        GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Interactable, "ChalkSound5")
+        };
         //BlackBoardBackground.enabled = true;
         //BlackBoardBackground.sortingOrder = 1;
+
+        Debug.Log(ChalkSound[0].name);
+        Debug.Log(ChalkSound[1].name);
+        Debug.Log(ChalkSound[2].name);
+        Debug.Log(ChalkSound[3].name);
+        Debug.Log(ChalkSound[4].name);
     }
 
     private void inputBoard()
@@ -40,9 +59,12 @@ public class FreemasonCipher : MonoBehaviour
 
     public void SolvedPuzzle()
     {
-        foreach (GameObject hint in HintPaper)
+        if (HintPaper != null)
         {
-            hint.SetActive(false);
+            for (int i = 0; i < HintPaper.Length; i++)
+            {
+                HintPaper[i].SetActive(false);
+            }
         }
     }
 
@@ -50,15 +72,23 @@ public class FreemasonCipher : MonoBehaviour
     {
         string input = inputStr.text.ToUpper();
 
-        for (int i = 0; i < input.Length-1; i++)
+        for (int i = 0; i < input.Length - 1; i++)
         {
             if (input[i] == answerString[i]) continue;
             else return;
         }
+        SolvedPuzzle();
+        ClickCloseButton();
+    }
 
-
-            Debug.Log("여기좀 들어오게 해주세요");
-            ClickCloseButton();
+    public void PalyChalkSound()
+    {
+        if (ChalkSound != null)
+        {
+            int playRandomClip = Random.Range(0, 4);
+            playChalkSound.clip = ChalkSound[playRandomClip];
+            playChalkSound.Play();
+        }
     }
 }
 

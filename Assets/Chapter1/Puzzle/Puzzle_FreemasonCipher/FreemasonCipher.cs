@@ -95,7 +95,7 @@ public class FreemasonCipher : MonoBehaviour
         {
             Debug.Log("퍼즐 풀이 성공");
             blackBoard.CallChangeBlackBoardAlpha();
-            //gameObject.SendMessage("ChangeBlackBoardAlpha", SendMessageOptions.DontRequireReceiver);
+            //gameObject.SendMessage("CallChangeBlackBoardAlpha", SendMessageOptions.DontRequireReceiver);
             DeleteOutline();
             SolvedPuzzle();
             ClickCloseButton();

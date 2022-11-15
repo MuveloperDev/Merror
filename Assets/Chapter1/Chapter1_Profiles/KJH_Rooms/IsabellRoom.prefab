@@ -735,6 +735,7 @@ MonoBehaviour:
   Gettable: 0
   Inventory_Scale: 1
   Special: 1
+  isPuzzle: 0
   _Light: {fileID: 0}
   Outlinable: 1
   Rotatable: 0
@@ -788,6 +789,7 @@ MonoBehaviour:
   - {fileID: 5503962032566992789}
   - {fileID: 8572084612608472822}
   - {fileID: 2257356330833476728}
+  interactableok: 0
 --- !u!120 &2259024378666398556
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -1234,6 +1236,7 @@ MonoBehaviour:
   Gettable: 0
   Inventory_Scale: 1
   Special: 1
+  isPuzzle: 0
   _Light: {fileID: 0}
   Outlinable: 1
   Rotatable: 0
@@ -1287,6 +1290,7 @@ MonoBehaviour:
   - {fileID: 5503962032566992789}
   - {fileID: 8572084612608472822}
   - {fileID: 2257356330833476728}
+  interactableok: 0
 --- !u!120 &2765936203546974648
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -1567,6 +1571,7 @@ MonoBehaviour:
   Gettable: 0
   Inventory_Scale: 1
   Special: 1
+  isPuzzle: 0
   _Light: {fileID: 0}
   Outlinable: 1
   Rotatable: 0
@@ -1620,6 +1625,7 @@ MonoBehaviour:
   - {fileID: 5503962032566992789}
   - {fileID: 8572084612608472822}
   - {fileID: 2257356330833476728}
+  interactableok: 0
 --- !u!120 &2808380094990509631
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -2458,6 +2464,7 @@ MonoBehaviour:
   Gettable: 0
   Inventory_Scale: 1
   Special: 1
+  isPuzzle: 0
   _Light: {fileID: 0}
   Outlinable: 1
   Rotatable: 0
@@ -2511,6 +2518,7 @@ MonoBehaviour:
   - {fileID: 5503962032566992789}
   - {fileID: 8572084612608472822}
   - {fileID: 2257356330833476728}
+  interactableok: 0
 --- !u!120 &4337341570706104074
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -4446,6 +4454,7 @@ MonoBehaviour:
   Gettable: 0
   Inventory_Scale: 1
   Special: 0
+  isPuzzle: 0
   _Light: {fileID: 0}
   Outlinable: 1
   Rotatable: 1
@@ -4725,6 +4734,7 @@ MonoBehaviour:
   Gettable: 0
   Inventory_Scale: 1
   Special: 1
+  isPuzzle: 0
   _Light: {fileID: 0}
   Outlinable: 1
   Rotatable: 0
@@ -4778,6 +4788,7 @@ MonoBehaviour:
   - {fileID: 5503962032566992789}
   - {fileID: 8572084612608472822}
   - {fileID: 2257356330833476728}
+  interactableok: 0
 --- !u!120 &4854857503788327971
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -5382,6 +5393,7 @@ MonoBehaviour:
   Gettable: 0
   Inventory_Scale: 1
   Special: 1
+  isPuzzle: 0
   _Light: {fileID: 0}
   Outlinable: 1
   Rotatable: 0
@@ -5422,6 +5434,7 @@ MonoBehaviour:
   - {fileID: 5503962032566992789}
   - {fileID: 8572084612608472822}
   - {fileID: 2257356330833476728}
+  interactableok: 0
 --- !u!1 &5266499834413900334
 GameObject:
   m_ObjectHideFlags: 0
@@ -5715,6 +5728,7 @@ MonoBehaviour:
   Gettable: 0
   Inventory_Scale: 1
   Special: 1
+  isPuzzle: 0
   _Light: {fileID: 0}
   Outlinable: 1
   Rotatable: 0
@@ -5768,6 +5782,7 @@ MonoBehaviour:
   - {fileID: 5503962032566992789}
   - {fileID: 8572084612608472822}
   - {fileID: 2257356330833476728}
+  interactableok: 0
 --- !u!120 &5505843405394829603
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -7926,6 +7941,7 @@ MonoBehaviour:
   Gettable: 0
   Inventory_Scale: 1
   Special: 1
+  isPuzzle: 0
   _Light: {fileID: 0}
   Outlinable: 1
   Rotatable: 0
@@ -7979,6 +7995,7 @@ MonoBehaviour:
   - {fileID: 5503962032566992789}
   - {fileID: 8572084612608472822}
   - {fileID: 2257356330833476728}
+  interactableok: 0
 --- !u!120 &8574284769593078218
 LineRenderer:
   m_ObjectHideFlags: 0

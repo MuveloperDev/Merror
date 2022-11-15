@@ -34,7 +34,7 @@ public class Interactable_Editor : Editor
         };
         Audio_Menu = new string[]
         {
-            "_MyClip", "Type", "Clip_Name"
+            "_MyClip", "Clip_Name"
         };
         Light_Menu = new string[]
         {

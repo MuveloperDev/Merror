@@ -1061,6 +1061,8 @@ MonoBehaviour:
   changedMaterial: {fileID: 2100000, guid: 0d8b3f36eb163194aba64fbbd3100445, type: 2}
   drawing: {fileID: 2117997252}
   audioSource: {fileID: 340518672}
+  Objs: []
+  isClear: 0
 --- !u!114 &42794264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50278,6 +50280,8 @@ MonoBehaviour:
   changedMaterial: {fileID: 0}
   drawing: {fileID: 0}
   audioSource: {fileID: 0}
+  Objs: []
+  isClear: 0
 --- !u!65 &1927672086
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -53749,6 +53753,8 @@ MonoBehaviour:
   changedMaterial: {fileID: 0}
   drawing: {fileID: 0}
   audioSource: {fileID: 0}
+  Objs: []
+  isClear: 0
 --- !u!65 &2047079352
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -89282,6 +89288,7 @@ MonoBehaviour:
   BlackBoardBackground: {fileID: 7565930753072992606}
   HintPaper: []
   inputStr: {fileID: 0}
+  BlackBoard: {fileID: 0}
 --- !u!114 &4477170615529906029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105051,6 +105058,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   inputStr: {fileID: 7565930753714618616}
+  BlackBoard: {fileID: 0}
 --- !u!1 &7565930753072992606
 GameObject:
   m_ObjectHideFlags: 0

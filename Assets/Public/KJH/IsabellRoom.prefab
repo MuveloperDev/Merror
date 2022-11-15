@@ -838,6 +838,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d1272818284f0646906f5a096836e56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsLocked: 0
   myType: 7
   Moveable: 0
   Movement_Axis: 0
@@ -860,7 +861,6 @@ MonoBehaviour:
   Reset_Speed: 50
   Audio_Playable: 1
   _MyClip: {fileID: 0}
-  Type: 2
   Clip_Name: sp-underthestairs
 --- !u!65 &2036534633008067288
 BoxCollider:
@@ -894,6 +894,7 @@ MonoBehaviour:
   nextObject: {fileID: 8497587142377355412}
   frame: {fileID: 2498862166457452540}
   allDolls: []
+  interactableok: 0
 --- !u!120 &2036534633008067878
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -1195,6 +1196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d1272818284f0646906f5a096836e56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsLocked: 0
   myType: 7
   Moveable: 0
   Movement_Axis: 0
@@ -1217,7 +1219,6 @@ MonoBehaviour:
   Reset_Speed: 50
   Audio_Playable: 1
   _MyClip: {fileID: 0}
-  Type: 2
   Clip_Name: sp-underthestairs
 --- !u!114 &8154706940028190723
 MonoBehaviour:
@@ -1245,6 +1246,7 @@ MonoBehaviour:
   - {fileID: 2800328203699141497}
   - {fileID: 2038136586943885850}
   - {fileID: 8497587142377355412}
+  interactableok: 0
 --- !u!1 &2569477682110539458
 GameObject:
   m_ObjectHideFlags: 0
@@ -1623,6 +1625,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d1272818284f0646906f5a096836e56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsLocked: 0
   myType: 7
   Moveable: 0
   Movement_Axis: 0
@@ -1645,7 +1648,6 @@ MonoBehaviour:
   Reset_Speed: 50
   Audio_Playable: 1
   _MyClip: {fileID: 0}
-  Type: 2
   Clip_Name: sp-underthestairs
 --- !u!65 &2798543529509823937
 BoxCollider:
@@ -1679,6 +1681,7 @@ MonoBehaviour:
   nextObject: {fileID: 2038136586943885850}
   frame: {fileID: 2498862166457452540}
   allDolls: []
+  interactableok: 0
 --- !u!120 &2798543529509823951
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -1948,6 +1951,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d1272818284f0646906f5a096836e56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsLocked: 0
   myType: 7
   Moveable: 0
   Movement_Axis: 0
@@ -1970,7 +1974,6 @@ MonoBehaviour:
   Reset_Speed: 50
   Audio_Playable: 1
   _MyClip: {fileID: 0}
-  Type: 2
   Clip_Name: sp-underthestairs
 --- !u!65 &3017738072825241793
 BoxCollider:
@@ -2004,6 +2007,7 @@ MonoBehaviour:
   nextObject: {fileID: 2800328203699141497}
   frame: {fileID: 2498862166457452540}
   allDolls: []
+  interactableok: 0
 --- !u!120 &3017738072825241807
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -4569,6 +4573,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d1272818284f0646906f5a096836e56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsLocked: 0
   myType: 7
   Moveable: 0
   Movement_Axis: 0
@@ -4591,7 +4596,6 @@ MonoBehaviour:
   Reset_Speed: 50
   Audio_Playable: 1
   _MyClip: {fileID: 0}
-  Type: 2
   Clip_Name: sp-underthestairs
 --- !u!65 &5496534723598820053
 BoxCollider:
@@ -4625,6 +4629,7 @@ MonoBehaviour:
   nextObject: {fileID: 6237369799179189660}
   frame: {fileID: 2498862166457452540}
   allDolls: []
+  interactableok: 0
 --- !u!120 &5496534723598820051
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -4894,6 +4899,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d1272818284f0646906f5a096836e56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsLocked: 0
   myType: 7
   Moveable: 0
   Movement_Axis: 0
@@ -4916,7 +4922,6 @@ MonoBehaviour:
   Reset_Speed: 50
   Audio_Playable: 1
   _MyClip: {fileID: 0}
-  Type: 2
   Clip_Name: sp-underthestairs
 --- !u!65 &5538398081899666774
 BoxCollider:
@@ -4950,6 +4955,7 @@ MonoBehaviour:
   nextObject: {fileID: 5499984365923729221}
   frame: {fileID: 2498862166457452540}
   allDolls: []
+  interactableok: 0
 --- !u!120 &5538398081899666772
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -5279,6 +5285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d1272818284f0646906f5a096836e56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsLocked: 0
   myType: 0
   Moveable: 0
   Movement_Axis: 0
@@ -5301,7 +5308,6 @@ MonoBehaviour:
   Reset_Speed: 50
   Audio_Playable: 0
   _MyClip: {fileID: 0}
-  Type: 3
   Clip_Name: 
 --- !u!1 &6235626609894091326
 GameObject:
@@ -6045,6 +6051,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d1272818284f0646906f5a096836e56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsLocked: 0
   myType: 7
   Moveable: 0
   Movement_Axis: 0
@@ -6067,7 +6074,6 @@ MonoBehaviour:
   Reset_Speed: 50
   Audio_Playable: 1
   _MyClip: {fileID: 0}
-  Type: 2
   Clip_Name: sp-underthestairs
 --- !u!65 &6237369799180163992
 BoxCollider:
@@ -6101,6 +6107,7 @@ MonoBehaviour:
   nextObject: {fileID: 3020650758312902655}
   frame: {fileID: 2498862166457452540}
   allDolls: []
+  interactableok: 0
 --- !u!120 &6237369799180164070
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -8179,6 +8186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d1272818284f0646906f5a096836e56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsLocked: 0
   myType: 7
   Moveable: 0
   Movement_Axis: 0
@@ -8201,7 +8209,6 @@ MonoBehaviour:
   Reset_Speed: 50
   Audio_Playable: 1
   _MyClip: {fileID: 0}
-  Type: 2
   Clip_Name: sp-underthestairs
 --- !u!65 &8495875017442162610
 BoxCollider:
@@ -8235,6 +8242,7 @@ MonoBehaviour:
   nextObject: {fileID: 0}
   frame: {fileID: 2498862166457452540}
   allDolls: []
+  interactableok: 0
 --- !u!120 &8495875017442162608
 LineRenderer:
   m_ObjectHideFlags: 0

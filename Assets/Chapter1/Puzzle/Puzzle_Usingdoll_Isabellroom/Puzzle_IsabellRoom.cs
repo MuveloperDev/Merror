@@ -145,9 +145,9 @@ public class Puzzle_IsabellRoom : MonoBehaviour
         yield return new WaitForFixedUpdate();
     }
 
-    CameraState cameraState = FindObjectOfType<CameraState>();
     IEnumerator Do_Eff()
     {
+        CameraState cameraState = FindObjectOfType<CameraState>();
         cameraState.TurnOnState(CameraState.CamState.FADEOUT);
         yield return new WaitForSeconds(2f);
         GameManager.Instance.GetVideoPlayer().CallPlayVideo(GameManager.Instance.GetVideoPlayer().getVideoClips.getChapter1.IsabelRoomVideo,

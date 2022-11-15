@@ -4,10 +4,10 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - PlayerClips: {fileID: 11400000, guid: 0360f75da60f0b845ab88378747da9b6, type: 2}
-  - BGMClips: {fileID: 11400000, guid: 73e964fe779b40a479582d1c97a2f4fa, type: 2}
-  - EnvironmentClips: {fileID: 11400000, guid: 7d1f085ec179ec441b6c504c0eabefff, type: 2}
-  - InGameClips: {fileID: 11400000, guid: 00eab7462c53b404081b28b32c838e65, type: 2}
+  - PlayerObj: {instanceID: 0}
+  - PropsObj: {instanceID: 0}
+  - EnviromentObj: {instanceID: 0}
+  - IdentityObj: {fileID: 11400000, guid: 2f1c6ee091a85594fbf8d56b17db59af, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

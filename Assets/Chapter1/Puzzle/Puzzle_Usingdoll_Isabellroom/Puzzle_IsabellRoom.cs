@@ -1,9 +1,12 @@
 using EPOOutline;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
+using static CameraState;
 
 public class Puzzle_IsabellRoom : MonoBehaviour
 {
+    #region Refefences
     [SerializeField] int index;
 
     [SerializeField] LineRenderer lr;
@@ -16,8 +19,18 @@ public class Puzzle_IsabellRoom : MonoBehaviour
     [SerializeField] GameObject frame;
     [SerializeField] GameObject[] allDolls;
 
-    private bool? puzzleFinish;
     [SerializeField] public bool InteractableOK { get; set; } = false;
+    #endregion
+    
+    private bool? puzzleFinish;
+
+    // Player
+    private GameObject player = null;
+
+    private void Awake()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
 
     private void Start()
     {
@@ -43,7 +56,19 @@ public class Puzzle_IsabellRoom : MonoBehaviour
     private void CheckDolls()
     {
         if (gameObject.GetComponent<Puzzle_IsabellRoom>().InteractableOK == false)
+        {
+            for (int i = 0; i < allDolls.Length; i++)
+            {
+                Debug.Log("You are clicked wrong obj");
+                if (allDolls[i].name == "3_Duck")
+                {
+                    allDolls[i].GetComponentInChildren<Puzzle_IsabellRoom>().RenderLine(false);
+                    continue;
+                }
+                Rotate(nextObject.transform, 0.5f, false);
+            }
             return;
+        }
 
         switch (index)
         {
@@ -53,12 +78,12 @@ public class Puzzle_IsabellRoom : MonoBehaviour
             case 4:
             case 5:
             case 6:
-                RenderLine();
+                StartCoroutine(Rotate(frame.transform, 2f, true));
                 nextObject.GetComponent<Puzzle_IsabellRoom>().InteractableOK = true;
                 break;
 
             case 7:
-                RenderLine();
+                RenderLine(true);
                 ActiveComponentsToFrame(true);
                 frame.AddComponent<BoxCollider>();
                 break;
@@ -69,12 +94,23 @@ public class Puzzle_IsabellRoom : MonoBehaviour
         }
     }
 
-    private void RenderLine()
+    private void RenderLine(bool active)
     {
+        if(active == false)
+        {
+            gameObject.GetComponent<LineRenderer>().enabled = false;
+            if(this.name != "1_RABBIT")
+            {
+                InteractableOK = false;
+            }
+        }
+        else
+            gameObject.GetComponent<LineRenderer>().enabled = true;
+
         lr.startColor = new Color(1, 0, 0, 0.7f);
         lr.endColor = new Color(1, 0, 0, 0.7f);
-        lr.startWidth = 0.05f;
-        lr.endWidth = 0.05f;
+        lr.startWidth = 0.01f;
+        lr.endWidth = 0.01f;
         lr.SetPosition(0, startPos.position);
         lr.SetPosition(1, endPos.position);
     }
@@ -89,22 +125,59 @@ public class Puzzle_IsabellRoom : MonoBehaviour
     {
         for(int i = 0; i < allDolls.Length; i++)
         {
+            if (allDolls[i].name == "3_Duck")
+            {
+                allDolls[i].GetComponentInChildren<LineRenderer>().enabled = false;
+                Destroy(allDolls[i].GetComponentInChildren<Interactable>());
+                continue;
+            }
             allDolls[i].GetComponent<LineRenderer>().enabled = false;
+
             Destroy(allDolls[i].GetComponent<Interactable>());
         }
         frame.AddComponent<Rigidbody>();
-        Invoke("DelayDestroy", 2f);
-        yield return null;
+        frame.GetComponent<Rigidbody>().AddForce(0,0,-10f, ForceMode.Impulse);
+        ActiveComponentsToFrame(false);
+        Destroy(frame.GetComponent<Interactable>());
+        Destroy(frame.GetComponent<Outlinable>());
+        StartCoroutine(Do_Eff());
+        yield return new WaitForFixedUpdate();
     }
 
-    private void DelayDestroy()
+   IEnumerator Do_Eff()
     {
-        Destroy(frame.GetComponent<Interactable>());
-        ActiveComponentsToFrame(false);
+        yield return new WaitForSeconds(2f);
+        GameObject.Find("PostProcess").GetComponent<CameraState>().TurnOnState(CamState.LIGHTOUT);
+        yield return new WaitForSeconds(2f);
+        Destroy(frame);
+        yield return new WaitForSeconds(3f);
         for (int i = 0; i < allDolls.Length; i++)
         {
-            allDolls[i].transform.LookAt(GameObject.FindGameObjectWithTag("Player").transform.position);
-            Debug.Log(allDolls[i].name + " 플레이어 쳐다봄");
+            allDolls[i].transform.LookAt(player.transform.position);
         }
+    }
+
+    IEnumerator Rotate(Transform target, float time, bool correct)
+    {
+        Vector3 dir;
+        while (time > 0)
+        {
+            if (gameObject.name == "3_DuckObj")
+            {
+                dir = target.transform.position - allDolls[2].transform.position;
+                allDolls[2].transform.rotation = Quaternion.Lerp(allDolls[2].transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * 2f);
+            }
+            else
+            {
+                dir = target.transform.position - transform.position;
+                this.transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * 2f);
+            }
+
+            time -= Time.deltaTime;
+            yield return new WaitForFixedUpdate();
+        }
+
+        yield return new WaitForSeconds(time);
+        RenderLine(correct);
     }
 }

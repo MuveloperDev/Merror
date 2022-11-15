@@ -3,23 +3,30 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+    public enum Type { Player, Identity, HorrorEvnets, Interactable, Environment, Puzzle};
     private AudioManager() { }
-    [SerializeField] ScriptableObj PlayerObj;
-    [SerializeField] ScriptableObj PropsObj;
-    [SerializeField] ScriptableObj EnviromentObj;
-    [SerializeField] ScriptableObj DefaultObj;
+    [SerializeField] ScriptableObj PlayerObj = null;
+    [SerializeField] ScriptableObj InteractableObj = null;
+    [SerializeField] ScriptableObj EnviromentObj = null;
+    [SerializeField] ScriptableObj IdentityObj = null;
+    [SerializeField] ScriptableObj HorrorEvnetsObj = null;
+    [SerializeField] ScriptableObj PuzzleObj = null;
 
     private Dictionary<string, AudioClip> PlayerClips = new Dictionary<string, AudioClip>();
-    private Dictionary<string, AudioClip> PropsClips = new Dictionary<string, AudioClip>();
+    private Dictionary<string, AudioClip> InteractableClips = new Dictionary<string, AudioClip>();
     private Dictionary<string, AudioClip> EnviromentClips = new Dictionary<string, AudioClip>();
-    private Dictionary<string, AudioClip> DefaultClips = new Dictionary<string, AudioClip>();
+    private Dictionary<string, AudioClip> IdentiyuClips = new Dictionary<string, AudioClip>();
+    private Dictionary<string, AudioClip> HorrorEvnetsClips = new Dictionary<string, AudioClip>();
+    private Dictionary<string, AudioClip> PuzzleClips = new Dictionary<string, AudioClip>();
 
     private void Awake()
     {
         AddAllClipsToDic(PlayerObj);
-        AddAllClipsToDic(PropsObj);
+        AddAllClipsToDic(InteractableObj);
         AddAllClipsToDic(EnviromentObj);
-        AddAllClipsToDic(DefaultObj);
+        AddAllClipsToDic(IdentityObj);
+        AddAllClipsToDic(HorrorEvnetsObj);
+        AddAllClipsToDic(PuzzleObj);
     }
 
     /// <summary>
@@ -30,56 +37,57 @@ public class AudioManager : MonoBehaviour
     {
         switch (obj.name)
         {
-            case "PlayerSounds":
+            case "Player":
                 for (int i = 0; i < obj.Sounds.Length; i++)
                 {
                     PlayerClips.Add(PlayerObj.Sounds[i].name, PlayerObj.Sounds[i]);
                 }
                 break;
 
-            case "PropsSounds":
+            case "Interactable":
                 for (int i = 0; i < obj.Sounds.Length; i++)
                 {
-                    PropsClips.Add(PropsObj.Sounds[i].name, PropsObj.Sounds[i]);
+                    InteractableClips.Add(InteractableObj.Sounds[i].name, InteractableObj.Sounds[i]);
                 }
                 break;
 
-            case "EnvironmentSounds":
+            case "Environment":
                 for (int i = 0; i < obj.Sounds.Length; i++)
                 {
                     EnviromentClips.Add(EnviromentObj.Sounds[i].name, EnviromentObj.Sounds[i]);
                 }
                 break;
 
-            case "DefaultSounds":
+            case "Identity":
                 for (int i = 0; i < obj.Sounds.Length; i++)
                 {
-                    DefaultClips.Add(DefaultObj.Sounds[i].name, DefaultObj.Sounds[i]);
+                    IdentiyuClips.Add(IdentityObj.Sounds[i].name, IdentityObj.Sounds[i]);
+                }
+                break;
+            case "HorrorEventSounds":
+                for (int i = 0; i < obj.Sounds.Length; i++)
+                {
+                    HorrorEvnetsClips.Add(HorrorEvnetsObj.Sounds[i].name, HorrorEvnetsObj.Sounds[i]);
+                }
+                break;
+            case "Puzzle":
+                for (int i = 0; i < obj.Sounds.Length; i++)
+                {
+                    PuzzleClips.Add(PuzzleObj.Sounds[i].name, PuzzleObj.Sounds[i]);
                 }
                 break;
         }
     }
 
     /// <summary>
-    /// return requested Audioclip
+    /// return requested Audioclip for others
     /// </summary>
-    /// <param name="soundType"> The type containing the audio clip to request. </param>
-    /// <param name="clipName"> The name of requested audioclip </param>
-    /// <returns></returns>
-    public AudioClip GetClip(Interactable.SoundType soundType, string clipName)
-    {
-        return CheckType(soundType).ContainsKey(clipName) ? CheckType(soundType)[clipName] : null;
-    }
-
-    /// <summary>
-    /// return requested Audioclip for Player
-    /// </summary>
-    /// <param name="player">Player param</param>
+    /// <param name="type">The type in AudioManager containing the audio clip to request.</param>
     /// <param name="clipName">The name of requested audioclip</param>
     /// <returns></returns>
-    public AudioClip GetClip(Player player, string clipName)
+    public AudioClip GetClip(Type type, string clipName)
     {
-        return PlayerClips.ContainsKey(clipName) ? PlayerClips[clipName] : null;
+        return CheckType(type).ContainsKey(clipName) ? CheckType(type)[clipName] : null;
     }
 
     /// <summary>
@@ -87,25 +95,32 @@ public class AudioManager : MonoBehaviour
     /// </summary>
     /// <param name="soundType"> The type containing the audio clip to request. </param>
     /// <returns></returns>
-    private Dictionary<string, AudioClip> CheckType(Interactable.SoundType soundType)
+    private Dictionary<string, AudioClip> CheckType(Type soundType)
     {
         Dictionary<string, AudioClip> curdic = new Dictionary<string, AudioClip>();
         switch (soundType)
         {
-            case Interactable.SoundType.Player:
+            case Type.Identity:
+                curdic = IdentiyuClips;
+                break;
+
+            case Type.Player:
                 curdic = PlayerClips;
                 break;
 
-            case Interactable.SoundType.Props:
-                curdic = PropsClips;
+            case Type.HorrorEvnets:
+                curdic = HorrorEvnetsClips;
                 break;
 
-            case Interactable.SoundType.Enviroment:
-                curdic= EnviromentClips;
+            case Type.Interactable:
+                curdic = InteractableClips;
                 break;
 
-            case Interactable.SoundType.Default:
-                curdic = DefaultClips;
+            case Type.Environment:
+                curdic = EnviromentClips;
+                break;
+            case Type.Puzzle:
+                curdic = PuzzleClips;
                 break;
         }
 

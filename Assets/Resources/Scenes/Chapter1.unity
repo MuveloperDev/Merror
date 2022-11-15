@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0412504, g: 0.07305349, b: 0.12561938, a: 1}
+  m_IndirectSpecularColor: {r: 0.041250892, g: 0.07305416, b: 0.12561989, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -11356,6 +11356,7 @@ GameObject:
   - component: {fileID: 237819443746322404}
   - component: {fileID: 237819443746322406}
   - component: {fileID: 237819443746322405}
+  - component: {fileID: 237819443746322407}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -11372,7 +11373,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 475154070}
-  - component: {fileID: 3739856482522488649}
   m_Layer: 0
   m_Name: Door 2
   m_TagString: Untagged
@@ -57218,7 +57218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsLocked: 0
-  myType: 0
+  myType: 11
   Moveable: 0
   Movement_Axis: 0
   Target_Movement: 5
@@ -57226,7 +57226,7 @@ MonoBehaviour:
   InvertMovement: 0
   Gettable: 0
   Inventory_Scale: 1
-  Special: 0
+  Special: 1
   _Light: {fileID: 0}
   Outlinable: 1
   Rotatable: 1
@@ -57238,8 +57238,8 @@ MonoBehaviour:
   AutoReset: 0
   ResetTimer: 0
   Reset_Speed: 50
-  Audio_Playable: 0
-  _MyClip: {fileID: 0}
+  Audio_Playable: 1
+  _MyClip: {fileID: 8300000, guid: 7819fdcf2b71cf345a5ed212d47fcef3, type: 3}
   Clip_Name: 
 --- !u!114 &237819443746322405
 MonoBehaviour:
@@ -57342,6 +57342,102 @@ MonoBehaviour:
     fillPass:
       shader: {fileID: 0}
       serializedProperties: []
+--- !u!82 &237819443746322407
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 475344466}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!23 &240797834573542121
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -81443,23 +81539,6 @@ Transform:
   m_Father: {fileID: 5861294547630945717}
   m_RootOrder: 127
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!111 &3739856482522488649
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 475399232}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 1827226128182048838, guid: 2ee1a6fb7a579dc4bb57f72ebc7c4141, type: 3}
-  m_Animations:
-  - {fileID: 1827226128182048838, guid: 2ee1a6fb7a579dc4bb57f72ebc7c4141, type: 3}
-  - {fileID: -5405653242291790180, guid: 2ee1a6fb7a579dc4bb57f72ebc7c4141, type: 3}
-  m_WrapMode: 0
-  m_PlayAutomatically: 0
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!4 &3743287462975513393
 Transform:
   m_ObjectHideFlags: 0

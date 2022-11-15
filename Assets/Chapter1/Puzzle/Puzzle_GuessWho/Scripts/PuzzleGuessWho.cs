@@ -27,9 +27,9 @@ public class PuzzleGuessWho : MonoBehaviour
         Debug.Log("Drop key by BK ObjectsPool");
         audioSource.clip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Puzzle, "GuessWho_Scream");
         audioSource.Play();
-        Debug.Log(audioSource.clip.name);
         drawing.material = changedMaterial;
-        hintObj.SetActive(true);
+
+        GameManager.Instance.ClearPuzzle(hintObj,1f);
         Invoke("AudioourceDisable", 2f);
     }
 

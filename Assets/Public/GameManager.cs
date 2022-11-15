@@ -115,12 +115,10 @@ public class GameManager : Singleton<GameManager>
             }
         }
     }
-
     public void ClearPuzzle(GameObject puzzleItem, float scale)
     {
         MyInventory.InsertItem(puzzleItem, scale);
     }
-
     #endregion // Set inventory
     #region Audio Management
     private AudioManager _AudioManager = null;

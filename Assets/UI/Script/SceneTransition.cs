@@ -17,8 +17,8 @@ public class SceneTransition : MonoBehaviour
     {
         // Play ingame Scene 
         // SceneManager.LoadScene("Chapter1");
-        loadAO = SceneManager.LoadSceneAsync("Chapter1", LoadSceneMode.Additive);
-        //loadAO = SceneManager.LoadSceneAsync("Chapter1_SSH", LoadSceneMode.Additive);
+        //loadAO = SceneManager.LoadSceneAsync("Chapter1", LoadSceneMode.Additive);
+        loadAO = SceneManager.LoadSceneAsync("Chapter1_SSH", LoadSceneMode.Additive);
         Logo.fillAmount = 0;
     }
 

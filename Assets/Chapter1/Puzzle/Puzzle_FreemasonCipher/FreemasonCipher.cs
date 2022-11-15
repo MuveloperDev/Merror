@@ -16,7 +16,7 @@ public class FreemasonCipher : MonoBehaviour
 
     private AudioSource playChalkSound = null;
 
-    private string answerString = "DESTROYDOLL";
+    private const string answerString = "DESTROYDOLL";
 
     private void Awake()
     {
@@ -70,10 +70,20 @@ public class FreemasonCipher : MonoBehaviour
 
     public void OnValueChange()
     {
-        string input = inputStr.text.ToUpper();
+
+        //string input = inputStr.text.ToUpper();
+        string input = inputStr.text;
+
+        Debug.Log((int)input[0]);
+
 
         for (int i = 0; i < input.Length - 1; i++)
         {
+            
+
+
+            // if (answerString.CompareTo(input) == 0)
+
             if (input[i] == answerString[i])
             {
                 SolvedPuzzle();
@@ -81,6 +91,7 @@ public class FreemasonCipher : MonoBehaviour
                 continue;
             }
             else return;
+
         }
     }
 

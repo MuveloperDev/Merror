@@ -14,8 +14,7 @@ public class FreemasonCipher : MonoBehaviour
     [SerializeField] GameObject[] HintPaper;
     [SerializeField] TextMeshProUGUI inputStr;
     [SerializeField] GameObject BlackBoard;
-    [field: SerializeField] Material changeAlpha;
-    
+    [SerializeField] BlackBoard blackBoard;
 
     private AudioSource playChalkSound = null;
 
@@ -34,21 +33,8 @@ public class FreemasonCipher : MonoBehaviour
         GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Interactable, "ChalkSound5")
         };
 
-        Debug.Log(BlackBoard.GetComponent<MeshRenderer>().material);
-        Debug.Log(BlackBoard.GetComponent<MeshRenderer>().materials[0]);
-
-        //changeAlpha = GameObject.Find("Tableau").GetComponent<MeshRenderer>().material;
     }
 
-    private void OnEnable()
-    {
-        if (BlackBoard.GetComponent<MeshRenderer>() != null)
-        {
-            changeAlpha = BlackBoard.GetComponent<MeshRenderer>().material;
-            Debug.Log(BlackBoard.GetComponent<MeshRenderer>().material);
-            Debug.Log(BlackBoard.GetComponent<MeshRenderer>().materials[0]);
-        }
-    }
     private void inputBoard()
     {
         Debug.Log("inputBoard");
@@ -100,12 +86,15 @@ public class FreemasonCipher : MonoBehaviour
             }
             input = new string(convertCharArray).Remove(convertCharArray.Length - 1);
         }
-        changeAlpha = BlackBoard.GetComponent<MeshRenderer>().material;
+        
+        Debug.Log(input);
 
         if (input == answerString)
         {
+            Debug.Log("퍼즐 풀이 성공");
+            blackBoard.CallChangeBlackBoardAlpha();
+            //gameObject.SendMessage("ChangeBlackBoardAlpha", SendMessageOptions.DontRequireReceiver);
             DeleteOutline();
-            StartCoroutine(DestroyInteractable());
             SolvedPuzzle();
             ClickCloseButton();
         }
@@ -119,32 +108,6 @@ public class FreemasonCipher : MonoBehaviour
             playChalkSound.clip = ChalkSound[playRandomClip];
             playChalkSound.Play();
         }
-    }
-
-    IEnumerator DestroyInteractable()
-    {
-        if (BlackBoard == null)
-        {
-            yield break;
-        }
-
-        float plusAlpha = 1f;
-
-        Debug.Log("DestroyInteractable 들어옴");
-
-        while (plusAlpha > 0f)
-        {
-            Debug.Log("DestroyInteractable : " + plusAlpha);
-            plusAlpha -= 0.05f;
-
-            changeAlpha.color = new Color(1f, 1f, 1f, plusAlpha);
-
-            Debug.Log("DestroyInteractable2 : " + changeAlpha.color.a);
-
-            yield return new WaitForSeconds(0.05f);
-            Debug.Log("DestroyInteractable3 : " + plusAlpha);
-        }
-        yield break;
     }
 
     private void DeleteOutline()

@@ -1249,6 +1249,7 @@ MonoBehaviour:
   Gettable: 0
   Inventory_Scale: 1
   Special: 1
+  isPuzzle: 0
   _Light: {fileID: 0}
   Outlinable: 0
   Rotatable: 0
@@ -5026,6 +5027,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 185596480}
   m_Mesh: {fileID: 4300006, guid: bb06d490cdab16b48b82d466f97f5f48, type: 3}
+--- !u!1 &188708611 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5913576964028983013, guid: 7cb71fa216eae6e4a9efce30aa3c9002, type: 3}
+  m_PrefabInstance: {fileID: 1107441242}
+  m_PrefabAsset: {fileID: 0}
 --- !u!23 &189667314
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -10362,6 +10368,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &446865340 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5577653480637398461, guid: 7cb71fa216eae6e4a9efce30aa3c9002, type: 3}
+  m_PrefabInstance: {fileID: 1107441242}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!64 &447331397
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12655,6 +12672,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 525195927}
   m_Mesh: {fileID: 4300004, guid: 1ea5ad505437e9a4f802fb6a24c402cf, type: 3}
+--- !u!1 &531085628 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5913576962907125555, guid: 7cb71fa216eae6e4a9efce30aa3c9002, type: 3}
+  m_PrefabInstance: {fileID: 1107441242}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &532784338 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2401457379689008638, guid: aadd5ab11f82fd44aa34f5b91dbfe651, type: 3}
@@ -14974,7 +14996,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-458622
+  m_Name: pb_Mesh-593132
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -15470,7 +15492,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-458638
+  m_Name: pb_Mesh-593148
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -16437,6 +16459,11 @@ PrefabInstance:
       objectReference: {fileID: 668918954}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7c91f7b986b0f543acb9b771984a082, type: 3}
+--- !u!1 &674700390 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5913576964201272863, guid: 7cb71fa216eae6e4a9efce30aa3c9002, type: 3}
+  m_PrefabInstance: {fileID: 1107441242}
+  m_PrefabAsset: {fileID: 0}
 --- !u!33 &679966001
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -17059,7 +17086,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-458552
+  m_Name: pb_Mesh-593062
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -19477,7 +19504,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-458590
+  m_Name: pb_Mesh-593100
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -27449,13 +27476,41 @@ PrefabInstance:
     m_TransformParent: {fileID: 583063568}
     m_Modifications:
     - target: {fileID: 1997981209073541673, guid: 7cb71fa216eae6e4a9efce30aa3c9002, type: 3}
+      propertyPath: inputStr
+      value: 
+      objectReference: {fileID: 446865340}
+    - target: {fileID: 1997981209073541673, guid: 7cb71fa216eae6e4a9efce30aa3c9002, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1997981209073541673, guid: 7cb71fa216eae6e4a9efce30aa3c9002, type: 3}
       propertyPath: BlackBoard
       value: 
       objectReference: {fileID: 1928291696}
+    - target: {fileID: 1997981209073541673, guid: 7cb71fa216eae6e4a9efce30aa3c9002, type: 3}
+      propertyPath: HintPaper.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997981209073541673, guid: 7cb71fa216eae6e4a9efce30aa3c9002, type: 3}
+      propertyPath: ChalkSound.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997981209073541673, guid: 7cb71fa216eae6e4a9efce30aa3c9002, type: 3}
+      propertyPath: HintPaper.Array.data[0]
+      value: 
+      objectReference: {fileID: 674700390}
+    - target: {fileID: 1997981209073541673, guid: 7cb71fa216eae6e4a9efce30aa3c9002, type: 3}
+      propertyPath: HintPaper.Array.data[1]
+      value: 
+      objectReference: {fileID: 188708611}
+    - target: {fileID: 1997981209073541673, guid: 7cb71fa216eae6e4a9efce30aa3c9002, type: 3}
+      propertyPath: HintPaper.Array.data[2]
+      value: 
+      objectReference: {fileID: 531085628}
+    - target: {fileID: 1997981209073541673, guid: 7cb71fa216eae6e4a9efce30aa3c9002, type: 3}
+      propertyPath: HintPaper.Array.data[3]
+      value: 
+      objectReference: {fileID: 1374452091}
     - target: {fileID: 5577653480071326736, guid: 7cb71fa216eae6e4a9efce30aa3c9002, type: 3}
       propertyPath: AAA
       value: 
@@ -27464,6 +27519,10 @@ PrefabInstance:
       propertyPath: BlackBoard
       value: 
       objectReference: {fileID: 1928291696}
+    - target: {fileID: 5577653480071326736, guid: 7cb71fa216eae6e4a9efce30aa3c9002, type: 3}
+      propertyPath: blackBoard
+      value: 
+      objectReference: {fileID: 1107441245}
     - target: {fileID: 5577653480071326736, guid: 7cb71fa216eae6e4a9efce30aa3c9002, type: 3}
       propertyPath: ChalkSound.Array.size
       value: 5
@@ -27531,6 +27590,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5577653480190442479, guid: 7cb71fa216eae6e4a9efce30aa3c9002, type: 3}
   m_PrefabInstance: {fileID: 1107441242}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1107441244 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5577653480190442478, guid: 7cb71fa216eae6e4a9efce30aa3c9002, type: 3}
+  m_PrefabInstance: {fileID: 1107441242}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1107441245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107441244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14cba4cf71a46414f970f3ca75f3fa9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blackBoard: {fileID: 1928291696}
+  blackBoardMaterial: {fileID: 0}
 --- !u!33 &1116236511
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -27988,7 +28066,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-458574
+  m_Name: pb_Mesh-593084
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -32994,7 +33072,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-458606
+  m_Name: pb_Mesh-593116
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -35556,6 +35634,11 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &1374452091 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5913576963346934182, guid: 7cb71fa216eae6e4a9efce30aa3c9002, type: 3}
+  m_PrefabInstance: {fileID: 1107441242}
+  m_PrefabAsset: {fileID: 0}
 --- !u!33 &1374523091
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -47028,6 +47111,7 @@ MonoBehaviour:
   Gettable: 0
   Inventory_Scale: 1
   Special: 1
+  isPuzzle: 0
   _Light: {fileID: 0}
   Outlinable: 1
   Rotatable: 0
@@ -50412,6 +50496,7 @@ MonoBehaviour:
   Gettable: 0
   Inventory_Scale: 1
   Special: 1
+  isPuzzle: 0
   _Light: {fileID: 0}
   Outlinable: 0
   Rotatable: 0
@@ -53814,6 +53899,7 @@ MonoBehaviour:
   Gettable: 0
   Inventory_Scale: 1
   Special: 1
+  isPuzzle: 0
   _Light: {fileID: 0}
   Outlinable: 0
   Rotatable: 0
@@ -55342,7 +55428,7 @@ PrefabInstance:
       objectReference: {fileID: 1132994168}
     - target: {fileID: 953353264988636270, guid: 225e584c47cc8704aab81ac550e6681d, type: 3}
       propertyPath: m_VersionIndex
-      value: 17
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3926199657158667824, guid: 225e584c47cc8704aab81ac550e6681d, type: 3}
       propertyPath: m_Mesh
@@ -55350,7 +55436,7 @@ PrefabInstance:
       objectReference: {fileID: 700874968}
     - target: {fileID: 3926199657158667824, guid: 225e584c47cc8704aab81ac550e6681d, type: 3}
       propertyPath: m_VersionIndex
-      value: 16
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 3926199657158667827, guid: 225e584c47cc8704aab81ac550e6681d, type: 3}
       propertyPath: m_Name
@@ -55418,7 +55504,7 @@ PrefabInstance:
       objectReference: {fileID: 802459653}
     - target: {fileID: 6972945470397174061, guid: 225e584c47cc8704aab81ac550e6681d, type: 3}
       propertyPath: m_VersionIndex
-      value: 17
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6972945470516939225, guid: 225e584c47cc8704aab81ac550e6681d, type: 3}
       propertyPath: m_Mesh
@@ -55430,7 +55516,7 @@ PrefabInstance:
       objectReference: {fileID: 644117445}
     - target: {fileID: 6972945470516939226, guid: 225e584c47cc8704aab81ac550e6681d, type: 3}
       propertyPath: m_VersionIndex
-      value: 17
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6972945470516939229, guid: 225e584c47cc8704aab81ac550e6681d, type: 3}
       propertyPath: m_Mesh
@@ -55450,7 +55536,7 @@ PrefabInstance:
       objectReference: {fileID: 1290072090}
     - target: {fileID: 6972945470745723758, guid: 225e584c47cc8704aab81ac550e6681d, type: 3}
       propertyPath: m_VersionIndex
-      value: 17
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6972945472030410337, guid: 225e584c47cc8704aab81ac550e6681d, type: 3}
       propertyPath: m_Mesh
@@ -55462,7 +55548,7 @@ PrefabInstance:
       objectReference: {fileID: 652783940}
     - target: {fileID: 6972945472030410338, guid: 225e584c47cc8704aab81ac550e6681d, type: 3}
       propertyPath: m_VersionIndex
-      value: 17
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6972945472030410341, guid: 225e584c47cc8704aab81ac550e6681d, type: 3}
       propertyPath: m_Mesh
@@ -56928,6 +57014,7 @@ MonoBehaviour:
   Gettable: 0
   Inventory_Scale: 1
   Special: 1
+  isPuzzle: 0
   _Light: {fileID: 0}
   Outlinable: 1
   Rotatable: 0
@@ -57262,6 +57349,7 @@ MonoBehaviour:
   Gettable: 0
   Inventory_Scale: 1
   Special: 0
+  isPuzzle: 0
   _Light: {fileID: 0}
   Outlinable: 1
   Rotatable: 1
@@ -67670,6 +67758,7 @@ MonoBehaviour:
   Gettable: 0
   Inventory_Scale: 1
   Special: 0
+  isPuzzle: 0
   _Light: {fileID: 0}
   Outlinable: 1
   Rotatable: 1
@@ -68008,6 +68097,7 @@ MonoBehaviour:
   Gettable: 0
   Inventory_Scale: 1
   Special: 0
+  isPuzzle: 0
   _Light: {fileID: 0}
   Outlinable: 1
   Rotatable: 1
@@ -68227,6 +68317,7 @@ MonoBehaviour:
   Gettable: 0
   Inventory_Scale: 1
   Special: 0
+  isPuzzle: 0
   _Light: {fileID: 0}
   Outlinable: 1
   Rotatable: 1
@@ -68360,6 +68451,7 @@ MonoBehaviour:
   Gettable: 0
   Inventory_Scale: 1
   Special: 0
+  isPuzzle: 0
   _Light: {fileID: 0}
   Outlinable: 1
   Rotatable: 1
@@ -68789,6 +68881,7 @@ MonoBehaviour:
   Gettable: 0
   Inventory_Scale: 1
   Special: 1
+  isPuzzle: 0
   _Light: {fileID: 0}
   Outlinable: 1
   Rotatable: 0
@@ -70824,6 +70917,7 @@ MonoBehaviour:
   Gettable: 0
   Inventory_Scale: 1
   Special: 1
+  isPuzzle: 0
   _Light: {fileID: 0}
   Outlinable: 1
   Rotatable: 0
@@ -75890,6 +75984,7 @@ MonoBehaviour:
   Gettable: 0
   Inventory_Scale: 1
   Special: 0
+  isPuzzle: 0
   _Light: {fileID: 0}
   Outlinable: 1
   Rotatable: 1
@@ -79926,6 +80021,7 @@ MonoBehaviour:
   Gettable: 0
   Inventory_Scale: 1
   Special: 1
+  isPuzzle: 0
   _Light: {fileID: 0}
   Outlinable: 1
   Rotatable: 0
@@ -83616,6 +83712,7 @@ MonoBehaviour:
   Gettable: 0
   Inventory_Scale: 1
   Special: 1
+  isPuzzle: 0
   _Light: {fileID: 0}
   Outlinable: 1
   Rotatable: 0
@@ -88433,6 +88530,7 @@ MonoBehaviour:
   Gettable: 0
   Inventory_Scale: 1
   Special: 0
+  isPuzzle: 0
   _Light: {fileID: 0}
   Outlinable: 1
   Rotatable: 1
@@ -88678,6 +88776,7 @@ MonoBehaviour:
   Gettable: 0
   Inventory_Scale: 1
   Special: 0
+  isPuzzle: 0
   _Light: {fileID: 0}
   Outlinable: 1
   Rotatable: 1
@@ -88760,6 +88859,7 @@ MonoBehaviour:
   Gettable: 0
   Inventory_Scale: 1
   Special: 0
+  isPuzzle: 0
   _Light: {fileID: 0}
   Outlinable: 1
   Rotatable: 1
@@ -89247,6 +89347,7 @@ MonoBehaviour:
   Gettable: 0
   Inventory_Scale: 1
   Special: 1
+  isPuzzle: 0
   _Light: {fileID: 0}
   Outlinable: 1
   Rotatable: 0
@@ -89303,7 +89404,7 @@ MonoBehaviour:
   HintPaper: []
   inputStr: {fileID: 0}
   BlackBoard: {fileID: 0}
-  changeAlpha: {fileID: 0}
+  blackBoard: {fileID: 0}
 --- !u!114 &4477170615529906029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90220,6 +90321,7 @@ MonoBehaviour:
   Gettable: 0
   Inventory_Scale: 1
   Special: 1
+  isPuzzle: 0
   _Light: {fileID: 0}
   Outlinable: 1
   Rotatable: 0
@@ -92202,6 +92304,7 @@ MonoBehaviour:
   Gettable: 0
   Inventory_Scale: 1
   Special: 1
+  isPuzzle: 0
   _Light: {fileID: 0}
   Outlinable: 1
   Rotatable: 0
@@ -92696,6 +92799,7 @@ MonoBehaviour:
   Gettable: 0
   Inventory_Scale: 1
   Special: 0
+  isPuzzle: 0
   _Light: {fileID: 0}
   Outlinable: 1
   Rotatable: 1
@@ -93965,6 +94069,7 @@ MonoBehaviour:
   Gettable: 0
   Inventory_Scale: 1
   Special: 0
+  isPuzzle: 0
   _Light: {fileID: 0}
   Outlinable: 1
   Rotatable: 1
@@ -102714,6 +102819,7 @@ MonoBehaviour:
   Gettable: 0
   Inventory_Scale: 1
   Special: 1
+  isPuzzle: 0
   _Light: {fileID: 0}
   Outlinable: 1
   Rotatable: 0
@@ -104306,6 +104412,7 @@ MonoBehaviour:
   Gettable: 0
   Inventory_Scale: 1
   Special: 0
+  isPuzzle: 0
   _Light: {fileID: 0}
   Outlinable: 1
   Rotatable: 1
@@ -105507,7 +105614,7 @@ MonoBehaviour:
   - {fileID: 0}
   inputStr: {fileID: 7565930753714618616}
   BlackBoard: {fileID: 0}
-  changeAlpha: {fileID: 0}
+  blackBoard: {fileID: 0}
 --- !u!1 &7565930753072992606
 GameObject:
   m_ObjectHideFlags: 0
@@ -107564,6 +107671,7 @@ MonoBehaviour:
   Gettable: 0
   Inventory_Scale: 1
   Special: 0
+  isPuzzle: 0
   _Light: {fileID: 0}
   Outlinable: 0
   Rotatable: 1
@@ -110202,6 +110310,7 @@ MonoBehaviour:
   Gettable: 0
   Inventory_Scale: 1
   Special: 0
+  isPuzzle: 0
   _Light: {fileID: 0}
   Outlinable: 1
   Rotatable: 1
@@ -111189,6 +111298,7 @@ MonoBehaviour:
   Gettable: 0
   Inventory_Scale: 1
   Special: 1
+  isPuzzle: 0
   _Light: {fileID: 0}
   Outlinable: 1
   Rotatable: 0
@@ -112044,6 +112154,7 @@ MonoBehaviour:
   Gettable: 0
   Inventory_Scale: 1
   Special: 1
+  isPuzzle: 0
   _Light: {fileID: 0}
   Outlinable: 1
   Rotatable: 0

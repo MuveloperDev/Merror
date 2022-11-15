@@ -34,7 +34,10 @@ public class FreemasonCipher : MonoBehaviour
         GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Interactable, "ChalkSound5")
         };
 
-        changeAlpha.color = BlackBoard.GetComponent<MeshRenderer>().material.color;
+        if(BlackBoard.GetComponent<MeshRenderer>() != null)
+        {
+            changeAlpha.color = BlackBoard.GetComponent<MeshRenderer>().material.color;
+        }
 
         //changeAlpha = GameObject.Find("Tableau").GetComponent<MeshRenderer>().material;
     }
@@ -94,7 +97,7 @@ public class FreemasonCipher : MonoBehaviour
         if (input == answerString)
         {
             DeleteOutline();
-            //StartCoroutine(DestroyInteractable());
+            StartCoroutine(DestroyInteractable());
             SolvedPuzzle();
             ClickCloseButton();
         }
@@ -127,12 +130,11 @@ public class FreemasonCipher : MonoBehaviour
             plusAlpha -= 0.05f;
 
             changeAlpha.color = new Color(1f, 1f, 1f, plusAlpha);
+            Debug.Log("DestroyInteractable2 : " + changeAlpha.color.a);
 
             yield return new WaitForSeconds(0.05f);
+            Debug.Log("DestroyInteractable3 : " + plusAlpha);
         }
-
-        BlackBoardBackground.SetActive(false);
-
         yield break;
     }
 

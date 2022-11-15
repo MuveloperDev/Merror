@@ -27448,6 +27448,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 583063568}
     m_Modifications:
+    - target: {fileID: 1997981209073541673, guid: 7cb71fa216eae6e4a9efce30aa3c9002, type: 3}
+      propertyPath: BlackBoard
+      value: 
+      objectReference: {fileID: 1928291696}
     - target: {fileID: 5577653480071326736, guid: 7cb71fa216eae6e4a9efce30aa3c9002, type: 3}
       propertyPath: AAA
       value: 

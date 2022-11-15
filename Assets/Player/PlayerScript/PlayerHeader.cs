@@ -48,6 +48,7 @@ public partial class Player : MonoBehaviour
     [Header("Player Item")]
     private bool CanLight = false;
     [SerializeField] private GameObject Lighter = null;
+    public GameObject GetLight() => Lighter;
 
     [Header("Temp")]
     [SerializeField] private bool Cheat = false;

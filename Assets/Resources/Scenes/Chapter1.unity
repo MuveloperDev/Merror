@@ -68839,6 +68839,7 @@ MonoBehaviour:
   - {fileID: 1504820976958061150}
   - {fileID: 3347893557378609981}
   - {fileID: 5175638062353267123}
+  interactableok: 0
 --- !u!120 &1506627377172325608
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -70873,6 +70874,7 @@ MonoBehaviour:
   - {fileID: 1504820976958061150}
   - {fileID: 3347893557378609981}
   - {fileID: 5175638062353267123}
+  interactableok: 0
 --- !u!120 &2008563477919113704
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -79974,6 +79976,7 @@ MonoBehaviour:
   - {fileID: 1504820976958061150}
   - {fileID: 3347893557378609981}
   - {fileID: 5175638062353267123}
+  interactableok: 0
 --- !u!120 &3350054063225140225
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -90336,6 +90339,7 @@ MonoBehaviour:
   - {fileID: 1504820976958061150}
   - {fileID: 3347893557378609981}
   - {fileID: 5175638062353267123}
+  interactableok: 0
 --- !u!23 &4836600762131071736
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -92229,6 +92233,7 @@ MonoBehaviour:
   - {fileID: 1504820976958061150}
   - {fileID: 3347893557378609981}
   - {fileID: 5175638062353267123}
+  interactableok: 0
 --- !u!120 &5177336707600348823
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -102307,6 +102312,7 @@ MonoBehaviour:
   - {fileID: 1504820976958061150}
   - {fileID: 3347893557378609981}
   - {fileID: 5175638062353267123}
+  interactableok: 0
 --- !u!120 &7255694650759486145
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -110779,6 +110785,7 @@ MonoBehaviour:
   - {fileID: 1504820976958061150}
   - {fileID: 3347893557378609981}
   - {fileID: 5175638062353267123}
+  interactableok: 0
 --- !u!120 &9113434253746480116
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -111633,6 +111640,7 @@ MonoBehaviour:
   - {fileID: 1504820976958061150}
   - {fileID: 3347893557378609981}
   - {fileID: 5175638062353267123}
+  interactableok: 0
 --- !u!120 &9143053436240993395
 LineRenderer:
   m_ObjectHideFlags: 0

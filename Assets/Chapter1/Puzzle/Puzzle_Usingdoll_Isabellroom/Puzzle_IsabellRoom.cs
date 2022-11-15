@@ -2,6 +2,7 @@ using EPOOutline;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 using static CameraState;
 
 public class Puzzle_IsabellRoom : MonoBehaviour
@@ -19,7 +20,8 @@ public class Puzzle_IsabellRoom : MonoBehaviour
     [SerializeField] GameObject frame;
     [SerializeField] GameObject[] allDolls;
 
-    [SerializeField] public bool InteractableOK { get; set; } = false;
+    //public bool InteractableOK { get { return interactableok; } set { interactableok = InteractableOK; } }
+    [SerializeField] bool interactableok = false;
     #endregion
     
     private bool? puzzleFinish;
@@ -50,25 +52,28 @@ public class Puzzle_IsabellRoom : MonoBehaviour
             // ~~~
         }
 
-        if (gameObject.name == "1_RABBIT" || gameObject.name == "Frame_Finish") InteractableOK = true;
+        if (gameObject.name == "1_RABBIT" || gameObject.name == "Frame_Finish") interactableok = true;
     }
 
     private void CheckDolls()
     {
-        if (gameObject.GetComponent<Puzzle_IsabellRoom>().InteractableOK == false)
+        if (gameObject.GetComponent<Puzzle_IsabellRoom>().interactableok == false)
         {
-            for (int i = 0; i < allDolls.Length; i++)
+            Debug.Log("틀렸어 임마 돌아가");
+            for(int i = 0; i < allDolls.Length; i++)
             {
-                Debug.Log("You are clicked wrong obj");
                 if (i == 2)
                 {
-                    allDolls[2].GetComponentInChildren<Puzzle_IsabellRoom>().StartCoroutine(Rotate(nextObject.transform, 2f, false));
+                    allDolls[i].transform.GetChild(0).GetComponent<Puzzle_IsabellRoom>().RenderLine(false);
+                    allDolls[i].transform.GetChild(0).GetComponent<Puzzle_IsabellRoom>().interactableok = false;
+                    allDolls[i].transform.GetChild(0).GetComponent<Puzzle_IsabellRoom>().RotateSM(allDolls[i].transform.GetChild(0).GetComponent<Puzzle_IsabellRoom>().nextObject.transform, 1f, false);
                     continue;
                 }
-                else
-                    allDolls[i].GetComponent<Puzzle_IsabellRoom>().StartCoroutine(Rotate(nextObject.transform, 2f, false));
+                allDolls[i].GetComponent<Puzzle_IsabellRoom>().RenderLine(false);
+                allDolls[i].GetComponent<Puzzle_IsabellRoom>().RotateSM(allDolls[i].GetComponent<Puzzle_IsabellRoom>().nextObject.transform, 1f, false);
+                allDolls[i].GetComponent<Puzzle_IsabellRoom>().interactableok = false;
             }
-            allDolls[0].GetComponent<Puzzle_IsabellRoom>().InteractableOK = true;
+            allDolls[0].GetComponent<Puzzle_IsabellRoom>().interactableok = true;
             return;
         }
 
@@ -80,8 +85,8 @@ public class Puzzle_IsabellRoom : MonoBehaviour
             case 4:
             case 5:
             case 6:
-                StartCoroutine(Rotate(frame.transform, 2f, true));
-                nextObject.GetComponent<Puzzle_IsabellRoom>().InteractableOK = true;
+                StartCoroutine(Rotate(frame.transform, 1f, true));
+                nextObject.GetComponent<Puzzle_IsabellRoom>().interactableok = true;
                 break;
 
             case 7:
@@ -94,6 +99,7 @@ public class Puzzle_IsabellRoom : MonoBehaviour
                 StartCoroutine(FinishPuzzle());
                 break;
         }
+
     }
 
     private void RenderLine(bool active)
@@ -143,18 +149,24 @@ public class Puzzle_IsabellRoom : MonoBehaviour
    IEnumerator Do_Eff()
     {
         yield return new WaitForSeconds(2f);
-        GameObject.Find("PostProcess").GetComponent<CameraState>().TurnOnState(CamState.LIGHTOUT);
+        GameManager.Instance.GetVideoPlayer().CallPlayVideo(GameManager.Instance.GetVideoPlayer().getVideoClips.getChapter1.IsabelRoomVideo,
+            () => { Debug.Log("EndVideo"); });
         yield return new WaitForSeconds(2f);
         Destroy(frame);
-        yield return new WaitForSeconds(3f);
         for (int i = 0; i < allDolls.Length; i++)
         {
             allDolls[i].transform.LookAt(player.transform.position);
         }
     }
 
-    IEnumerator Rotate(Transform target, float time, bool correct)
+    void RotateSM(Transform target, float time, bool delayRender)
     {
+        StartCoroutine(Rotate(target, time, delayRender));
+    }
+
+    IEnumerator Rotate(Transform target, float time, bool delayRender)
+    {
+        Debug.Log(" Do Rotate : " + target.gameObject.name);
         Vector3 dir;
         while (time > 0)
         {
@@ -169,11 +181,11 @@ public class Puzzle_IsabellRoom : MonoBehaviour
                 this.transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * 2f);
             }
 
-            time -= Time.deltaTime;
+            time -= Time.fixedDeltaTime;
             yield return new WaitForFixedUpdate();
         }
 
-        yield return new WaitForSeconds(time);
-        RenderLine(correct);
+        if (delayRender == true)
+            RenderLine(true);
     }
 }

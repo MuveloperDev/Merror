@@ -13,10 +13,11 @@ public class FreemasonCipher : MonoBehaviour
     //[SerializeField] Button CloseButton;
     [SerializeField] GameObject[] HintPaper;
     [SerializeField] TextMeshProUGUI inputStr;
+    [SerializeField] GameObject BlackBoard;
 
     private AudioSource playChalkSound = null;
 
-    private string answerString = "DESTROYDOLL";
+    private const string answerString = "DESTROYDOLL";
 
     private void Awake()
     {
@@ -30,8 +31,6 @@ public class FreemasonCipher : MonoBehaviour
         GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Interactable, "ChalkSound4"),
         GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Interactable, "ChalkSound5")
         };
-        //BlackBoardBackground.enabled = true;
-        //BlackBoardBackground.sortingOrder = 1;
 
         Debug.Log(ChalkSound[0].name);
         Debug.Log(ChalkSound[1].name);
@@ -70,17 +69,33 @@ public class FreemasonCipher : MonoBehaviour
 
     public void OnValueChange()
     {
-        string input = inputStr.text.ToUpper();
+        string input = inputStr.text;
 
-        for (int i = 0; i < input.Length - 1; i++)
+        char[] convertCharArray = input.ToCharArray();
+
+        if (input != null)
         {
-            if (input[i] == answerString[i])
+            for (int i = 0; i < input.Length - 1; i++)
             {
-                SolvedPuzzle();
-                ClickCloseButton();
-                continue;
+                int toInt = (int)input[i];
+                if (toInt > 96)
+                {
+                    convertCharArray[i] = (char)(toInt - 32);
+                }
+
+                else if (toInt < 96)
+                {
+                    convertCharArray[i] = (char)toInt;
+                }
             }
-            else return;
+            input = new string(convertCharArray).Remove(convertCharArray.Length - 1);
+        }
+
+
+        if (input == answerString)
+        {
+            SolvedPuzzle();
+            ClickCloseButton();
         }
     }
 
@@ -93,5 +108,11 @@ public class FreemasonCipher : MonoBehaviour
             playChalkSound.Play();
         }
     }
+
+    //IEnumerator DestroyInteractable()
+    //{
+    //    BlackBoard.TryGetComponent<Renderer>(Material);
+    //    yield break;
+    //}
 }
 

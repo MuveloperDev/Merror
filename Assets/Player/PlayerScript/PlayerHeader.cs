@@ -71,17 +71,32 @@ public partial class Player : MonoBehaviour
         Stamina = MaxStamina;
 
         Lighter.SetActive(false);
+        lighterOpenClip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Player, "Lighter_Open");
+        lighterCloseClip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Player, "Lighter_Close");
+        lighterFireClip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Player, "Lighter_Fire");
     }
     private void Equip()
     {
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
             _Animator.SetBool("IsLighter", !Lighter.activeSelf);
+            LighterSound(!Lighter.activeSelf);
             Lighter.SetActive(!Lighter.activeSelf);
         }
     }
-    private void LighterOn(string clipName)
+    private void LighterSound(bool active)
     {
-        _AudioSource.Play();
+        if(active == true)
+        {
+            _AudioSource.clip = lighterOpenClip;
+            _AudioSource.Play();
+            _AudioSource.clip = lighterFireClip;
+            _AudioSource.Play();
+        }
+        else
+        {
+            _AudioSource.clip = lighterCloseClip;
+            _AudioSource.Play();
+        }
     }
 }

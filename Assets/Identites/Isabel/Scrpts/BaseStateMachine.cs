@@ -7,7 +7,7 @@ using UnityEngine.AI;
 public class BaseStateMachine : MonoBehaviour
 {
     // STATES
-    protected enum State
+    public enum State
     {
         NONE,
         IDLE,
@@ -36,13 +36,12 @@ public class BaseStateMachine : MonoBehaviour
         target = GameObject.FindGameObjectWithTag("Player").transform;
 
 
-        navMeshAgent.enabled = false;
+        navMeshAgent.enabled = true;
         isKill = false;
     }
 
-    
     // Assign state.
-    protected virtual void TurnOnState(State STATE)
+    public virtual void TurnOnState(State STATE)
     {
         #region error
         if (myAnimator == null)
@@ -72,7 +71,7 @@ public class BaseStateMachine : MonoBehaviour
 
 
     // Deallocate state.
-    protected virtual void TurnOffState()
+    public virtual void TurnOffState()
     {
         if (navMeshAgent != null && navMeshAgent.enabled)
         { 

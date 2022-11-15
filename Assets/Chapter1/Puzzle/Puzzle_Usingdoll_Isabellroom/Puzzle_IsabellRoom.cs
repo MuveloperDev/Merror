@@ -64,9 +64,11 @@ public class Puzzle_IsabellRoom : MonoBehaviour
                 if (i == 2)
                 {
                     allDolls[i].transform.GetChild(0).GetComponent<Puzzle_IsabellRoom>().RenderLine(false);
+                    allDolls[i].transform.GetChild(0).GetComponent<Puzzle_IsabellRoom>().StartCoroutine(Rotate(allDolls[i].transform.GetChild(0).GetComponent<Puzzle_IsabellRoom>().nextObject.transform, 2f, false));
                     continue;
                 }
                 allDolls[i].GetComponent<Puzzle_IsabellRoom>().RenderLine(false);
+                allDolls[i].GetComponent<Puzzle_IsabellRoom>().StartCoroutine(Rotate(allDolls[i].GetComponent<Puzzle_IsabellRoom>().nextObject.transform, 2f, false));
             }
             return;
         }

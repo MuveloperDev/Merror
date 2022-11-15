@@ -162,10 +162,17 @@ public partial class Interactable : MonoBehaviour
     }
 
     protected virtual void Do_JukeBox()
-    { 
-        CameraState cameraState = FindObjectOfType<CameraState>();
-        cameraState.TurnOnState(CameraState.CamState.PANIC);
-        cameraState.callBackPanic = () => { Debug.Log("Call Isabel"); };
+    {
+        if (TryGetComponent<JukeBox>(out JukeBox jukeBox))
+        {
+            jukeBox.SendMessage("Interactable", SendMessageOptions.DontRequireReceiver);
+        }
+
+        else
+        {
+            Debug.LogError("Require to JukeBox");
+        }
+
     }
 
     protected virtual void Do_Door()

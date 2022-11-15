@@ -9,11 +9,13 @@ using EPOOutline;
 public class FreemasonCipher : MonoBehaviour
 {
     [SerializeField] AudioClip[] ChalkSound = null;
+
     [SerializeField] GameObject BlackBoardBackground;
     //[SerializeField] Button CloseButton;
     [SerializeField] GameObject[] HintPaper;
     [SerializeField] TextMeshProUGUI inputStr;
     [SerializeField] GameObject BlackBoard;
+    [SerializeField] BlackBoard blackBoard;
 
     private AudioSource playChalkSound = null;
 
@@ -32,11 +34,6 @@ public class FreemasonCipher : MonoBehaviour
         GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Interactable, "ChalkSound5")
         };
 
-        Debug.Log(ChalkSound[0].name);
-        Debug.Log(ChalkSound[1].name);
-        Debug.Log(ChalkSound[2].name);
-        Debug.Log(ChalkSound[3].name);
-        Debug.Log(ChalkSound[4].name);
     }
 
     private void inputBoard()
@@ -90,10 +87,36 @@ public class FreemasonCipher : MonoBehaviour
             }
             input = new string(convertCharArray).Remove(convertCharArray.Length - 1);
         }
+        
+        Debug.Log(input);
 
-
+        // 분리 필요
         if (input == answerString)
         {
+            Debug.Log("퍼즐 풀이 성공");
+            blackBoard.CallChangeBlackBoardAlpha();
+            //gameObject.SendMessage("CallChangeBlackBoardAlpha", SendMessageOptions.DontRequireReceiver);
+            DeleteOutline();
+            SolvedPuzzle();
+            ClickCloseButton();
+        }
+    }
+    
+    // 추가 중
+    public void CompareAnswer(string inStr)
+    {
+
+        if (inStr == null)
+        {
+            return;
+        }
+
+        else if (inStr == answerString)
+        {
+            Debug.Log("퍼즐 정답");
+
+            blackBoard.CallChangeBlackBoardAlpha();
+            DeleteOutline();
             SolvedPuzzle();
             ClickCloseButton();
         }
@@ -109,10 +132,10 @@ public class FreemasonCipher : MonoBehaviour
         }
     }
 
-    //IEnumerator DestroyInteractable()
-    //{
-    //    BlackBoard.TryGetComponent<Renderer>(Material);
-    //    yield break;
-    //}
+    private void DeleteOutline()
+    {
+        Destroy(BlackBoard.GetComponent<Outlinable>());
+        Destroy(BlackBoard.GetComponent<Interactable>());
+    }
 }
 

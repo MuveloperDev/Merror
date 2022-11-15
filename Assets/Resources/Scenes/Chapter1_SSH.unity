@@ -27449,6 +27449,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 583063568}
     m_Modifications:
     - target: {fileID: 1997981209073541673, guid: 7cb71fa216eae6e4a9efce30aa3c9002, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997981209073541673, guid: 7cb71fa216eae6e4a9efce30aa3c9002, type: 3}
       propertyPath: BlackBoard
       value: 
       objectReference: {fileID: 1928291696}
@@ -27466,7 +27470,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5577653480190442478, guid: 7cb71fa216eae6e4a9efce30aa3c9002, type: 3}
       propertyPath: m_Name
-      value: FreemasonCipher (1)
+      value: FreemasonCipher
       objectReference: {fileID: 0}
     - target: {fileID: 5577653480190442479, guid: 7cb71fa216eae6e4a9efce30aa3c9002, type: 3}
       propertyPath: m_RootOrder
@@ -42663,7 +42667,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 398482411982298467, guid: a94dd97236514844e99f866e86682b8b, type: 3}
       propertyPath: m_Name
-      value: CMJ_Rooms (1)
+      value: CMJ_Rooms
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a94dd97236514844e99f866e86682b8b, type: 3}
@@ -89299,6 +89303,7 @@ MonoBehaviour:
   HintPaper: []
   inputStr: {fileID: 0}
   BlackBoard: {fileID: 0}
+  changeAlpha: {fileID: 0}
 --- !u!114 &4477170615529906029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105502,6 +105507,7 @@ MonoBehaviour:
   - {fileID: 0}
   inputStr: {fileID: 7565930753714618616}
   BlackBoard: {fileID: 0}
+  changeAlpha: {fileID: 0}
 --- !u!1 &7565930753072992606
 GameObject:
   m_ObjectHideFlags: 0

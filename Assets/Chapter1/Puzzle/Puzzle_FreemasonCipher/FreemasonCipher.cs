@@ -14,7 +14,7 @@ public class FreemasonCipher : MonoBehaviour
     [SerializeField] GameObject[] HintPaper;
     [SerializeField] TextMeshProUGUI inputStr;
     [SerializeField] GameObject BlackBoard;
-    Material changeAlpha;
+    [field: SerializeField] Material changeAlpha;
     
 
     private AudioSource playChalkSound = null;
@@ -34,14 +34,21 @@ public class FreemasonCipher : MonoBehaviour
         GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Interactable, "ChalkSound5")
         };
 
-        if(BlackBoard.GetComponent<MeshRenderer>() != null)
-        {
-            changeAlpha.color = BlackBoard.GetComponent<MeshRenderer>().material.color;
-        }
+        Debug.Log(BlackBoard.GetComponent<MeshRenderer>().material);
+        Debug.Log(BlackBoard.GetComponent<MeshRenderer>().materials[0]);
 
         //changeAlpha = GameObject.Find("Tableau").GetComponent<MeshRenderer>().material;
     }
 
+    private void OnEnable()
+    {
+        if (BlackBoard.GetComponent<MeshRenderer>() != null)
+        {
+            changeAlpha = BlackBoard.GetComponent<MeshRenderer>().material;
+            Debug.Log(BlackBoard.GetComponent<MeshRenderer>().material);
+            Debug.Log(BlackBoard.GetComponent<MeshRenderer>().materials[0]);
+        }
+    }
     private void inputBoard()
     {
         Debug.Log("inputBoard");
@@ -93,6 +100,7 @@ public class FreemasonCipher : MonoBehaviour
             }
             input = new string(convertCharArray).Remove(convertCharArray.Length - 1);
         }
+        changeAlpha = BlackBoard.GetComponent<MeshRenderer>().material;
 
         if (input == answerString)
         {
@@ -130,6 +138,7 @@ public class FreemasonCipher : MonoBehaviour
             plusAlpha -= 0.05f;
 
             changeAlpha.color = new Color(1f, 1f, 1f, plusAlpha);
+
             Debug.Log("DestroyInteractable2 : " + changeAlpha.color.a);
 
             yield return new WaitForSeconds(0.05f);

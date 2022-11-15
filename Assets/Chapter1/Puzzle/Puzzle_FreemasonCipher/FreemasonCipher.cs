@@ -10,7 +10,7 @@ public class FreemasonCipher : MonoBehaviour
 {
     [SerializeField] AudioClip[] ChalkSound = null;
     [SerializeField] GameObject BlackBoardBackground;
-    [SerializeField] Button CloseButton;
+    //[SerializeField] Button CloseButton;
     [SerializeField] GameObject[] HintPaper;
     [SerializeField] TextMeshProUGUI inputStr;
 

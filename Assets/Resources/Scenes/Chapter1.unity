@@ -68677,6 +68677,7 @@ MonoBehaviour:
   - {fileID: 1504820976958061150}
   - {fileID: 3347893557378609981}
   - {fileID: 5175638062353267123}
+  interactableok: 0
 --- !u!120 &1506627377172325608
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -70711,6 +70712,7 @@ MonoBehaviour:
   - {fileID: 1504820976958061150}
   - {fileID: 3347893557378609981}
   - {fileID: 5175638062353267123}
+  interactableok: 0
 --- !u!120 &2008563477919113704
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -79812,6 +79814,7 @@ MonoBehaviour:
   - {fileID: 1504820976958061150}
   - {fileID: 3347893557378609981}
   - {fileID: 5175638062353267123}
+  interactableok: 0
 --- !u!120 &3350054063225140225
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -89130,6 +89133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4755407faa650ae478a821710d8ba2b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ChalkSound: []
   BlackBoardBackground: {fileID: 7565930753072992606}
   CloseButton: {fileID: 0}
   HintPaper: []
@@ -90191,6 +90195,7 @@ MonoBehaviour:
   - {fileID: 1504820976958061150}
   - {fileID: 3347893557378609981}
   - {fileID: 5175638062353267123}
+  interactableok: 0
 --- !u!23 &4836600762131071736
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -92084,6 +92089,7 @@ MonoBehaviour:
   - {fileID: 1504820976958061150}
   - {fileID: 3347893557378609981}
   - {fileID: 5175638062353267123}
+  interactableok: 0
 --- !u!120 &5177336707600348823
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -102245,6 +102251,7 @@ MonoBehaviour:
   - {fileID: 1504820976958061150}
   - {fileID: 3347893557378609981}
   - {fileID: 5175638062353267123}
+  interactableok: 0
 --- !u!120 &7255694650759486145
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -104975,6 +104982,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4755407faa650ae478a821710d8ba2b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ChalkSound: []
   BlackBoardBackground: {fileID: 7565930753072992606}
   CloseButton: {fileID: 7565930754569686113}
   HintPaper:
@@ -110717,6 +110725,7 @@ MonoBehaviour:
   - {fileID: 1504820976958061150}
   - {fileID: 3347893557378609981}
   - {fileID: 5175638062353267123}
+  interactableok: 0
 --- !u!120 &9113434253746480116
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -111571,6 +111580,7 @@ MonoBehaviour:
   - {fileID: 1504820976958061150}
   - {fileID: 3347893557378609981}
   - {fileID: 5175638062353267123}
+  interactableok: 0
 --- !u!120 &9143053436240993395
 LineRenderer:
   m_ObjectHideFlags: 0

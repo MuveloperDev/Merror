@@ -58,29 +58,19 @@ public class Puzzle_IsabellRoom : MonoBehaviour
     {
         if (gameObject.GetComponent<Puzzle_IsabellRoom>().interactableok == false)
         {
+            Debug.Log("틀렸어 임마 돌아가");
             for(int i = 0; i < allDolls.Length; i++)
             {
-                if(i == 2)
+                if (i == 2)
                 {
-                    allDolls[2].transform.GetChild(0).GetComponent<Puzzle_IsabellRoom>().interactableok = false;
-                    allDolls[2].transform.GetChild(0).GetComponent<Puzzle_IsabellRoom>().StartCoroutine(Rotate(allDolls[2].transform.GetChild(0).GetComponent<Puzzle_IsabellRoom>().nextObject.transform, 2f));
-                    allDolls[2].transform.GetChild(0).GetComponent<Puzzle_IsabellRoom>().RenderLine(false);
+                    allDolls[i].transform.GetChild(0).GetComponent<Puzzle_IsabellRoom>().RenderLine(false);
+                    continue;
                 }
-                else
-                {
-                    allDolls[i].GetComponent<Puzzle_IsabellRoom>().interactableok = false;
-                    allDolls[i].GetComponent<Puzzle_IsabellRoom>().StartCoroutine(Rotate(allDolls[i].GetComponent<Puzzle_IsabellRoom>().nextObject.transform, 2f));
-                    allDolls[i].GetComponent<Puzzle_IsabellRoom>().RenderLine(false);
-                }
-       
+                allDolls[i].GetComponent<Puzzle_IsabellRoom>().RenderLine(false);
             }
-            allDolls[1].GetComponent<Puzzle_IsabellRoom>().interactableok = true;
-
             return;
         }
 
-
-        Debug.Log("Correct next process on");
         switch (index)
         {
             case 1:
@@ -89,7 +79,7 @@ public class Puzzle_IsabellRoom : MonoBehaviour
             case 4:
             case 5:
             case 6:
-                StartCoroutine(Rotate(frame.transform, 2f));
+                StartCoroutine(Rotate(frame.transform, 2f, true));
                 nextObject.GetComponent<Puzzle_IsabellRoom>().interactableok = true;
                 break;
 
@@ -162,7 +152,7 @@ public class Puzzle_IsabellRoom : MonoBehaviour
         }
     }
 
-    IEnumerator Rotate(Transform target, float time)
+    IEnumerator Rotate(Transform target, float time, bool delayRender)
     {
         Debug.Log("Do Rotate : " + target.gameObject.name);
         Vector3 dir;
@@ -183,6 +173,7 @@ public class Puzzle_IsabellRoom : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
 
-        RenderLine(true);
+        if (delayRender == true)
+            RenderLine(true);
     }
 }

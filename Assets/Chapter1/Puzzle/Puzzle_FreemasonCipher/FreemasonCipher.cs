@@ -8,17 +8,35 @@ using EPOOutline;
 
 public class FreemasonCipher : MonoBehaviour
 {
+    [SerializeField] AudioClip[] ChalkSound = null;
     [SerializeField] GameObject BlackBoardBackground;
-    [SerializeField] Button CloseButton;
+    //[SerializeField] Button CloseButton;
     [SerializeField] GameObject[] HintPaper;
     [SerializeField] TextMeshProUGUI inputStr;
+    [SerializeField] GameObject BlackBoard;
 
-    private string answerString = "DESTROYDOLL";
+    private AudioSource playChalkSound = null;
+
+    private const string answerString = "DESTROYDOLL";
 
     private void Awake()
     {
-        //BlackBoardBackground.enabled = true;
-        //BlackBoardBackground.sortingOrder = 1;
+        playChalkSound = GetComponent<AudioSource>();
+
+        ChalkSound = new AudioClip[5]
+        {
+        GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Interactable, "ChalkSound1"),
+        GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Interactable, "ChalkSound2"),
+        GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Interactable, "ChalkSound3"),
+        GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Interactable, "ChalkSound4"),
+        GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Interactable, "ChalkSound5")
+        };
+
+        Debug.Log(ChalkSound[0].name);
+        Debug.Log(ChalkSound[1].name);
+        Debug.Log(ChalkSound[2].name);
+        Debug.Log(ChalkSound[3].name);
+        Debug.Log(ChalkSound[4].name);
     }
 
     private void inputBoard()
@@ -40,25 +58,61 @@ public class FreemasonCipher : MonoBehaviour
 
     public void SolvedPuzzle()
     {
-        foreach (GameObject hint in HintPaper)
+        if (HintPaper != null)
         {
-            hint.SetActive(false);
+            for (int i = 0; i < HintPaper.Length; i++)
+            {
+                HintPaper[i].SetActive(false);
+            }
         }
     }
 
     public void OnValueChange()
     {
-        string input = inputStr.text.ToUpper();
+        string input = inputStr.text;
 
-        for (int i = 0; i < input.Length-1; i++)
+        char[] convertCharArray = input.ToCharArray();
+
+        if (input != null)
         {
-            if (input[i] == answerString[i]) continue;
-            else return;
+            for (int i = 0; i < input.Length - 1; i++)
+            {
+                int toInt = (int)input[i];
+                if (toInt > 96)
+                {
+                    convertCharArray[i] = (char)(toInt - 32);
+                }
+
+                else if (toInt < 96)
+                {
+                    convertCharArray[i] = (char)toInt;
+                }
+            }
+            input = new string(convertCharArray).Remove(convertCharArray.Length - 1);
         }
 
 
-            Debug.Log("여기좀 들어오게 해주세요");
+        if (input == answerString)
+        {
+            SolvedPuzzle();
             ClickCloseButton();
+        }
     }
+
+    public void PalyChalkSound()
+    {
+        if (ChalkSound != null)
+        {
+            int playRandomClip = Random.Range(0, 4);
+            playChalkSound.clip = ChalkSound[playRandomClip];
+            playChalkSound.Play();
+        }
+    }
+
+    //IEnumerator DestroyInteractable()
+    //{
+    //    BlackBoard.TryGetComponent<Renderer>(Material);
+    //    yield break;
+    //}
 }
 

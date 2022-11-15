@@ -99,7 +99,7 @@ public class SceneTransition : MonoBehaviour
             }
             else
             {
-                Debug.Log("·Îµù ¿Ï·á");
+                Debug.Log("ï¿½Îµï¿½ ï¿½Ï·ï¿½");
             }
         }
     }

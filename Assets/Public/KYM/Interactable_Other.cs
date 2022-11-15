@@ -28,6 +28,11 @@ public partial class Interactable : MonoBehaviour
                     Do_Flush();
                     break;
                 }
+            case ObjectType.Door:
+                {
+                    Do_Door();
+                    break;
+                }
             case ObjectType.Switch:
                 {
                     Do_Light();
@@ -56,6 +61,11 @@ public partial class Interactable : MonoBehaviour
             case ObjectType.PuzzleFreemasonCipher:
                 {
                     Do_PuzzleFreemasonCipher();
+                    break;
+                }
+            case ObjectType.JukeBox:
+                {
+                    Do_JukeBox();
                     break;
                 }
 
@@ -113,7 +123,7 @@ public partial class Interactable : MonoBehaviour
             Debug.Log("This Object not have Puzzle_IsabellRoom Script.");
         }
     }
-    public void Do_Break_Mirror()
+    protected void Do_Break_Mirror()
     {
         if (TryGetComponent<Mirror>(out Mirror mirror))
         {
@@ -126,7 +136,7 @@ public partial class Interactable : MonoBehaviour
         }
     }
 
-    public virtual void Do_Puzzle_Decryption()
+    protected virtual void Do_Puzzle_Decryption()
     {
         if(TryGetComponent<Decryption_Puzzle>(out Decryption_Puzzle puzzleDecryption))
         {
@@ -142,7 +152,7 @@ public partial class Interactable : MonoBehaviour
         }
     }
 
-    public virtual void Do_PuzzleFreemasonCipher()
+    protected virtual void Do_PuzzleFreemasonCipher()
     {
         if (TryGetComponent<FreemasonCipher>(out FreemasonCipher freemasonCipher))
         {
@@ -153,7 +163,29 @@ public partial class Interactable : MonoBehaviour
         {
             Debug.LogError("Require to CMJ & SSH");
         }
+    }
 
+    protected virtual void Do_JukeBox()
+    {
+        if (TryGetComponent<JukeBox>(out JukeBox jukeBox))
+        {
+            jukeBox.SendMessage("Interactable", SendMessageOptions.DontRequireReceiver);
+        }
 
+        else
+        {
+            Debug.LogError("Require to JukeBox");
+        }
+
+    }
+
+    protected virtual void Do_Door()
+    {
+        _MySource.Stop();
+        if (IsUsed) _MyClip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Interactable, "Door_Close");
+        else _MyClip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Interactable, "Door_Open");
+
+        _MySource.clip = _MyClip;
+        _MySource.Play();
     }
 }

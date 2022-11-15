@@ -448,7 +448,7 @@ namespace MyLibrary
                 notice.gameObject.SetActive(false);
                 inven[count].SetActive(true);
                 inven[count].transform.localPosition = new Vector3(0, 0, 5);
-                inven[count].transform.rotation = Quaternion.identity;
+                inven[count].transform.localRotation = Quaternion.identity;
             }
             else
             {

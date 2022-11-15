@@ -1060,6 +1060,8 @@ MonoBehaviour:
   hintObj: {fileID: 2849733170565474736, guid: bea8cc209ff38ee49be54fd59b12408e, type: 3}
   audioSource: {fileID: 340518672}
   Objs: []
+  draw: {fileID: 2081973195}
+  changingDraw: {fileID: 2100000, guid: 0d8b3f36eb163194aba64fbbd3100445, type: 2}
   isClear: 0
 --- !u!114 &42794264
 MonoBehaviour:
@@ -2083,7 +2085,7 @@ MonoBehaviour:
   lensDistortion: {fileID: 0}
   depthOfField: {fileID: 0}
   colorGrading: {fileID: 0}
-  fadeInOutPanel: {fileID: 0}
+  fadeInOutPanel: {fileID: 1068169205}
   fadeInOut: 0
   isProcess: 0
   prevState: 0
@@ -18962,6 +18964,7 @@ MonoBehaviour:
   - {fileID: 1187354795}
   - {fileID: 1818186230}
   myClip: {fileID: 0}
+  terrace: {fileID: 1291898205}
 --- !u!1 &777266364
 GameObject:
   m_ObjectHideFlags: 0
@@ -50303,6 +50306,8 @@ MonoBehaviour:
   hintObj: {fileID: 0}
   audioSource: {fileID: 0}
   Objs: []
+  draw: {fileID: 0}
+  changingDraw: {fileID: 0}
   isClear: 0
 --- !u!65 &1927672086
 BoxCollider:
@@ -53776,6 +53781,8 @@ MonoBehaviour:
   hintObj: {fileID: 0}
   audioSource: {fileID: 0}
   Objs: []
+  draw: {fileID: 0}
+  changingDraw: {fileID: 0}
   isClear: 0
 --- !u!65 &2047079352
 BoxCollider:
@@ -54659,6 +54666,11 @@ PrefabInstance:
 --- !u!4 &2081973194 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2116664281982926571, guid: ca39b6ba54f3db040919dc0155683af2, type: 3}
+  m_PrefabInstance: {fileID: 2081973193}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &2081973195 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2116664283006527132, guid: ca39b6ba54f3db040919dc0155683af2, type: 3}
   m_PrefabInstance: {fileID: 2081973193}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2082007518

@@ -16,6 +16,7 @@ public class BaseStateMachine : MonoBehaviour
         FOCUS,
         DEATH,
         SLEEPING,
+        SITTINGANDFOCUS,
     }
     protected MyRay myRay = null;
     protected Animator myAnimator = null;
@@ -112,9 +113,10 @@ public class BaseStateMachine : MonoBehaviour
                 {
                     target.SendMessage("Death", CameraState.CamState.DEATH, SendMessageOptions.DontRequireReceiver);
                     isKill = true;
+                    transform.LookAt(target);
+                    TurnOffState();
                 }
-                TurnOffState();
-                TurnOnState(State.SCREAM);
+                
             }
             // Reset Destination
             if (navMeshAgent.enabled) navMeshAgent.SetDestination(target.position);
@@ -165,7 +167,32 @@ public class BaseStateMachine : MonoBehaviour
             }
         }
     }
+    IEnumerator SITTINGANDFOCUS_STATE()
+    {
+        PlaySound(ClipChanger("Isabel_Gigle"), true);
+        myAnimator.SetBool(State.SITTINGANDFOCUS.ToString(), true);
+        Player player = null;
+        if (target != null) player = target.GetComponent<Player>();
+        else player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 
+        while (true)
+        {
+            yield return new WaitForFixedUpdate();
+            // Distance for catch player
+            float desiredDistance = Vector3.Distance(target.transform.position, transform.position);
+            if (desiredDistance < 5f && !player.IsSitting)
+            {
+                if (!isKill)
+                {
+                    target.SendMessage("Death", CameraState.CamState.DEATH, SendMessageOptions.DontRequireReceiver);
+                    isKill = true;
+                    transform.LookAt(target);
+                    TurnOffState();
+                }
+
+            }
+        }
+    }
     #endregion
 
     AudioClip ClipChanger(string clipName) => myclip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Identity, clipName);

@@ -68,6 +68,11 @@ public partial class Interactable : MonoBehaviour
                     Do_JukeBox();
                     break;
                 }
+            case ObjectType.Key:
+                {
+                    Do_Key();
+                    break;
+                }
 
             default: break;
         }
@@ -177,6 +182,19 @@ public partial class Interactable : MonoBehaviour
             Debug.LogError("Require to JukeBox");
         }
 
+    }
+
+    protected virtual void Do_Key()
+    {
+        if (TryGetComponent<Key>(out Key key))
+        {
+            key.SendMessage("UnLockDoor", SendMessageOptions.RequireReceiver);
+        }
+
+        else
+        {
+            Debug.LogError("Require to Key");
+        }
     }
 
     protected virtual void Do_Door()

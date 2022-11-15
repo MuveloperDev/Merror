@@ -267,7 +267,7 @@ public class GameManager : Singleton<GameManager>
         for(int i = 0; i < doors.Length; i++)
         {
             Data.isDoorOpen[i].doorName = doors[i].name;
-            Data.isDoorOpen[i].isOpened = doors[i].GetComponent<Interactable>().IsLocked;
+            Data.isDoorOpen[i].isOpened = !doors[i].GetComponent<Interactable>().IsLocked;
         }
     }
 
@@ -337,6 +337,9 @@ public class GameManager : Singleton<GameManager>
     
 
     #endregion
+
+
+
 
 
     /// <summary>

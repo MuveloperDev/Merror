@@ -30,6 +30,7 @@ public class PuzzleGuessWho : MonoBehaviour
         drawing.material = changedMaterial;
 
         GameManager.Instance.ClearPuzzle(hintObj,1f);
+        
         Invoke("AudioourceDisable", 2f);
     }
 

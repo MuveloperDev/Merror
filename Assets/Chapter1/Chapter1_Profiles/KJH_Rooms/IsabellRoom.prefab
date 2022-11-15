@@ -778,7 +778,7 @@ MonoBehaviour:
   lr: {fileID: 2259024378666398556}
   startPos: {fileID: 120946293}
   endPos: {fileID: 6826912118619891906}
-  nextObject: {fileID: 0}
+  nextObject: {fileID: 5193633343245566736}
   frame: {fileID: 5193633343245566736}
   allDolls:
   - {fileID: 2752945434087458692}

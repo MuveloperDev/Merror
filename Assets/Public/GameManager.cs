@@ -107,7 +107,7 @@ public class GameManager : Singleton<GameManager>
         TryGetComponent<Inventory>(out Inventory inventory);
         MyInventory = inventory == null ? null : inventory;
         MyInventory ??= this.AddComponent<Inventory>();
-        MyInventory.InitInventory();
+        //MyInventory.InitInventory();
     }
     /// <summary>
     /// Input key 'I', player can toggle inventory UI.

@@ -109,10 +109,10 @@ public class FreemasonCipher : MonoBehaviour
         }
     }
 
-    IEnumerator DestroyInteractable()
-    {
-        BlackBoard.TryGetComponent<Renderer>(Material);
-        yield break;
-    }
+    //IEnumerator DestroyInteractable()
+    //{
+    //    BlackBoard.TryGetComponent<Renderer>(Material);
+    //    yield break;
+    //}
 }
 

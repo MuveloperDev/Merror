@@ -33,8 +33,9 @@ public partial class Player : MonoBehaviour
             MoveVector = (Vertical * transform.forward + Horizontal * transform.right).normalized;
             //_Rigidbody.position += Speed * Time.deltaTime * MoveVector;
             _Rigidbody.MovePosition(Speed * Time.deltaTime * MoveVector + _Rigidbody.position);
+
             if(!_AudioSource.isPlaying)
-                PlaySound(walkClip,1f);
+                PlaySound(walkClip);
         }
         else
             _AudioSource.Stop();
@@ -122,25 +123,24 @@ public partial class Player : MonoBehaviour
         if (IsCrouch) // Player is crouching
         {
             Speed = MaxCrouchSpeed; // Set speed to crouched speed.
-            if (!_AudioSource.isPlaying && IsMove)
-                PlaySound(walkClip, 0.5f);
+            _AudioSource.pitch = Speed * 0.6f;
             return; // Crouching is primary.
         }
         if (IsMove) // Player has movement.
         {
             Speed = MaxWalkSpeed;
+            _AudioSource.pitch = Speed * 0.33f;
             if (IsRun && Stamina > 0f) // Player has movement, is running and have enough stamina.
             {
                 RunningShakeCoroutine ??= StartCoroutine(RunningCamShake());
                 Speed = MaxRunSpeed; // Set speed to running speed.
+                _AudioSource.pitch = Speed * 0.33f;
                 if (StaminaRecoverCoroutine != null) // If recover coroutine already running,
                 {
                     StopCoroutine(StaminaRecoverCoroutine); // Stop recover.
                     Debug.Log("Stop Recover");
                     StaminaRecoverCoroutine = null;
                 }
-                if (!_AudioSource.isPlaying)
-                    PlaySound(walkClip, 2f);
                 StaminaDecreaseCoroutine ??= StartCoroutine(DecreaseStamina()); // Decrease stamina.
             }
             else

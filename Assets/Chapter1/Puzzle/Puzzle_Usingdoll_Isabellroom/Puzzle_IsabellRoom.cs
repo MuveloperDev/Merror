@@ -19,7 +19,7 @@ public class Puzzle_IsabellRoom : MonoBehaviour
     [SerializeField] GameObject frame;
     [SerializeField] GameObject[] allDolls;
 
-    public bool InteractableOK { get { return interactableok; } set { interactableok = InteractableOK; } }
+    //public bool InteractableOK { get { return interactableok; } set { interactableok = InteractableOK; } }
     [SerializeField] bool interactableok = false;
     #endregion
     
@@ -51,54 +51,59 @@ public class Puzzle_IsabellRoom : MonoBehaviour
             // ~~~
         }
 
-        if (gameObject.name == "1_RABBIT" || gameObject.name == "Frame_Finish") InteractableOK = true;
+        if (gameObject.name == "1_RABBIT" || gameObject.name == "Frame_Finish") interactableok = true;
     }
 
     private void CheckDolls()
     {
-        if (gameObject.GetComponent<Puzzle_IsabellRoom>().InteractableOK == false)
+        if (gameObject.GetComponent<Puzzle_IsabellRoom>().interactableok == false)
         {
             for(int i = 0; i < allDolls.Length; i++)
             {
                 if(i == 2)
                 {
-                    allDolls[2].transform.GetChild(0).GetComponent<Puzzle_IsabellRoom>().InteractableOK = false;
+                    allDolls[2].transform.GetChild(0).GetComponent<Puzzle_IsabellRoom>().interactableok = false;
                     allDolls[2].transform.GetChild(0).GetComponent<Puzzle_IsabellRoom>().StartCoroutine(Rotate(allDolls[2].transform.GetChild(0).GetComponent<Puzzle_IsabellRoom>().nextObject.transform, 2f));
+                    allDolls[2].transform.GetChild(0).GetComponent<Puzzle_IsabellRoom>().RenderLine(false);
                 }
                 else
                 {
-                    allDolls[i].GetComponent<Puzzle_IsabellRoom>().InteractableOK = false;
+                    allDolls[i].GetComponent<Puzzle_IsabellRoom>().interactableok = false;
                     allDolls[i].GetComponent<Puzzle_IsabellRoom>().StartCoroutine(Rotate(allDolls[i].GetComponent<Puzzle_IsabellRoom>().nextObject.transform, 2f));
+                    allDolls[i].GetComponent<Puzzle_IsabellRoom>().RenderLine(false);
                 }
-                allDolls[i].GetComponent<Puzzle_IsabellRoom>().RenderLine(false);
+       
             }
-            allDolls[1].GetComponent<Puzzle_IsabellRoom>().InteractableOK = true;
+            allDolls[1].GetComponent<Puzzle_IsabellRoom>().interactableok = true;
+
+            return;
         }
-        else
+
+
+        Debug.Log("Correct next process on");
+        switch (index)
         {
-            switch (index)
-            {
-                case 1:
-                case 2:
-                case 3:
-                case 4:
-                case 5:
-                case 6:
-                    StartCoroutine(Rotate(frame.transform, 2f));
-                    nextObject.GetComponent<Puzzle_IsabellRoom>().InteractableOK = true;
-                    break;
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+                StartCoroutine(Rotate(frame.transform, 2f));
+                nextObject.GetComponent<Puzzle_IsabellRoom>().interactableok = true;
+                break;
 
-                case 7:
-                    RenderLine(true);
-                    ActiveComponentsToFrame(true);
-                    frame.AddComponent<BoxCollider>();
-                    break;
+            case 7:
+                RenderLine(true);
+                ActiveComponentsToFrame(true);
+                frame.AddComponent<BoxCollider>();
+                break;
 
-                case 8:
-                    StartCoroutine(FinishPuzzle());
-                    break;
-            }
+            case 8:
+                StartCoroutine(FinishPuzzle());
+                break;
         }
+
     }
 
     private void RenderLine(bool active)
@@ -178,7 +183,6 @@ public class Puzzle_IsabellRoom : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
 
-        //yield return new WaitForSeconds(time);
         RenderLine(true);
     }
 }

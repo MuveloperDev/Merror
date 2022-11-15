@@ -51,6 +51,13 @@ public partial class Player : MonoBehaviour
 
     [Header("Temp")]
     [SerializeField] private bool Cheat = false;
+
+    [Header("Player Audio")]
+    [SerializeField] private AudioSource _AudioSource = null;
+    [SerializeField] private AudioClip lighterOpenClip = null;
+    [SerializeField] private AudioClip lighterCloseClip = null;
+    [SerializeField] private AudioClip lighterFireClip = null;
+    [SerializeField] private AudioClip walkClip = null;
     /// <summary>
     /// Initialize player's required components and values.
     /// </summary>
@@ -72,5 +79,9 @@ public partial class Player : MonoBehaviour
             _Animator.SetBool("IsLighter", !Lighter.activeSelf);
             Lighter.SetActive(!Lighter.activeSelf);
         }
+    }
+    private void LighterOn(string clipName)
+    {
+        _AudioSource.Play();
     }
 }

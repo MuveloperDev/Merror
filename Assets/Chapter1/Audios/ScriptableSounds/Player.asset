@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: Player
   m_EditorClassIdentifier: 
   Sounds:
-  - {fileID: 8300000, guid: eb701f797a6d8724c98fab869ab5f84e, type: 3}
+  - {fileID: 8300000, guid: 6991d909916085a4da426d58dac534c8, type: 3}
+  - {fileID: 8300000, guid: 04b6f45bfc8f1cc448f764796bd91019, type: 3}
+  - {fileID: 8300000, guid: 7338ce15d8ad8bc4082ce8cc37c19f4a, type: 3}
+  - {fileID: 8300000, guid: aee14aa63d9a7bf4c96dd491fcfe2eed, type: 3}

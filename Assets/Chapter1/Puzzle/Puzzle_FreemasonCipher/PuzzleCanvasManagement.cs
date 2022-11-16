@@ -10,7 +10,6 @@ public class PuzzleCanvasManagement : MonoBehaviour
     [SerializeField] FreemasonCipher freemasonCipher;
 
 
-
     // ¿€º∫¡ﬂ
     public void OnValueChange()
     {

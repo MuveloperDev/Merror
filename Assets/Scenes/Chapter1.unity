@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0412504, g: 0.07305349, b: 0.12561938, a: 1}
+  m_IndirectSpecularColor: {r: 0.041250892, g: 0.07305416, b: 0.12561989, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -18399,6 +18399,66 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 727405416}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &732036903
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 732036904}
+  - component: {fileID: 732036906}
+  - component: {fileID: 732036905}
+  m_Layer: 0
+  m_Name: LighterCheckTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &732036904
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732036903}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 5.022, y: 0.209, z: 11.282}
+  m_LocalScale: {x: 1.7020997, y: 0.5, z: 0.49999988}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1754355812}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &732036905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732036903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 492a8357e1ba12f4b8c8e282f25b1923, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hospitalRoom: {fileID: 237819443746322404}
+  GetLighter: {fileID: 2806419062093290682}
+--- !u!65 &732036906
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732036903}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.2028157, y: 1, z: 7.5274267}
+  m_Center: {x: -0.101407364, y: 0, z: -3.2637134}
 --- !u!4 &738304247 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2401457379689008638, guid: aadd5ab11f82fd44aa34f5b91dbfe651, type: 3}
@@ -44985,6 +45045,7 @@ Transform:
   - {fileID: 901391864}
   - {fileID: 1320239313}
   - {fileID: 1448719689}
+  - {fileID: 732036904}
   m_Father: {fileID: 1559786115}
   m_RootOrder: 55
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -56791,7 +56852,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d1272818284f0646906f5a096836e56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsLocked: 0
+  IsLocked: 1
   myType: 11
   Moveable: 0
   Movement_Axis: 0
@@ -75498,6 +75559,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3645543086721425339, guid: 95789ea3734d3ff4f8beec10795e5713, type: 3}
+      propertyPath: Inventory_Scale
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 5052579554333702172, guid: 95789ea3734d3ff4f8beec10795e5713, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -75564,6 +75629,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 95789ea3734d3ff4f8beec10795e5713, type: 3}
+--- !u!1 &2806419062093290682 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5052579554333702173, guid: 95789ea3734d3ff4f8beec10795e5713, type: 3}
+  m_PrefabInstance: {fileID: 2806419062093290681}
+  m_PrefabAsset: {fileID: 0}
 --- !u!23 &2815681742776577671
 MeshRenderer:
   m_ObjectHideFlags: 0

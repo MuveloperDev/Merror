@@ -146,6 +146,8 @@ namespace MyLibrary
         public Door[] isDoorOpen;
         public string[] invenItems;
         public bool[] isBroken;
+        public bool CanLight;
+        public bool CanHamer;
     }
 
     [System.Serializable]
@@ -467,7 +469,8 @@ namespace MyLibrary
         /// </summary>
         public void HideInventory()
         {
-            inven[count].SetActive(false);
+            if(inven.Count != 0)
+                inven[count].SetActive(false);
             count = 0;
             uiCamera.gameObject.SetActive(false);
             canvas.gameObject.SetActive(false);

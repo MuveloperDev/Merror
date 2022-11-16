@@ -48,7 +48,7 @@ public partial class Player : MonoBehaviour
     [SerializeField] private Transform Spine = null;
 
     [Header("Player Item")]
-    private bool CanLight = false;
+    public bool CanLight = false;
     [SerializeField] private GameObject Lighter = null;
     [SerializeField] private GameObject GetLighter = null;
     [SerializeField] private GameObject LighterMesh = null;
@@ -86,7 +86,7 @@ public partial class Player : MonoBehaviour
     }
     private void Equip()
     {
-        if(Input.GetKeyDown(KeyCode.Alpha1) && GameManager.Instance.GetInventory().FindInInven(GetLighter) == true)
+        if(Input.GetKeyDown(KeyCode.Alpha1) && CanLight == true)
         {
             _Animator.SetBool("IsLighter", !LighterMesh.activeSelf);
             PlayLighterSound(!LighterMesh.activeSelf);

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.041250892, g: 0.07305416, b: 0.12561989, a: 1}
+  m_IndirectSpecularColor: {r: 0.0412504, g: 0.07305349, b: 0.12561938, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -15300,7 +15300,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-505970
+  m_Name: pb_Mesh-682326
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -15796,7 +15796,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-505986
+  m_Name: pb_Mesh-682342
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -17326,7 +17326,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-505898
+  m_Name: pb_Mesh-682254
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -19662,7 +19662,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-505938
+  m_Name: pb_Mesh-682294
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -28090,7 +28090,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-505922
+  m_Name: pb_Mesh-682278
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -33052,7 +33052,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-505954
+  m_Name: pb_Mesh-682310
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -55450,7 +55450,7 @@ PrefabInstance:
       objectReference: {fileID: 1132994168}
     - target: {fileID: 953353264988636270, guid: 225e584c47cc8704aab81ac550e6681d, type: 3}
       propertyPath: m_VersionIndex
-      value: 20
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 3926199657158667824, guid: 225e584c47cc8704aab81ac550e6681d, type: 3}
       propertyPath: m_Mesh
@@ -55458,7 +55458,7 @@ PrefabInstance:
       objectReference: {fileID: 700874968}
     - target: {fileID: 3926199657158667824, guid: 225e584c47cc8704aab81ac550e6681d, type: 3}
       propertyPath: m_VersionIndex
-      value: 19
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 3926199657158667827, guid: 225e584c47cc8704aab81ac550e6681d, type: 3}
       propertyPath: m_Name
@@ -55526,7 +55526,7 @@ PrefabInstance:
       objectReference: {fileID: 802459653}
     - target: {fileID: 6972945470397174061, guid: 225e584c47cc8704aab81ac550e6681d, type: 3}
       propertyPath: m_VersionIndex
-      value: 20
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 6972945470516939225, guid: 225e584c47cc8704aab81ac550e6681d, type: 3}
       propertyPath: m_Mesh
@@ -55538,7 +55538,7 @@ PrefabInstance:
       objectReference: {fileID: 644117445}
     - target: {fileID: 6972945470516939226, guid: 225e584c47cc8704aab81ac550e6681d, type: 3}
       propertyPath: m_VersionIndex
-      value: 20
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 6972945470516939229, guid: 225e584c47cc8704aab81ac550e6681d, type: 3}
       propertyPath: m_Mesh
@@ -55558,7 +55558,7 @@ PrefabInstance:
       objectReference: {fileID: 1290072090}
     - target: {fileID: 6972945470745723758, guid: 225e584c47cc8704aab81ac550e6681d, type: 3}
       propertyPath: m_VersionIndex
-      value: 20
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 6972945472030410337, guid: 225e584c47cc8704aab81ac550e6681d, type: 3}
       propertyPath: m_Mesh
@@ -55570,7 +55570,7 @@ PrefabInstance:
       objectReference: {fileID: 652783940}
     - target: {fileID: 6972945472030410338, guid: 225e584c47cc8704aab81ac550e6681d, type: 3}
       propertyPath: m_VersionIndex
-      value: 20
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 6972945472030410341, guid: 225e584c47cc8704aab81ac550e6681d, type: 3}
       propertyPath: m_Mesh
@@ -75953,6 +75953,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3645543086721425339, guid: 95789ea3734d3ff4f8beec10795e5713, type: 3}
+      propertyPath: myType
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645543086721425339, guid: 95789ea3734d3ff4f8beec10795e5713, type: 3}
+      propertyPath: Special
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645543086721425339, guid: 95789ea3734d3ff4f8beec10795e5713, type: 3}
       propertyPath: Inventory_Scale
       value: 0.1
       objectReference: {fileID: 0}
@@ -79960,7 +79968,7 @@ MonoBehaviour:
   drawingMode: 1
   outlineLayer: 0
   outlineTargets:
-  - IsVisible: 0
+  - IsVisible: 1
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
@@ -79976,7 +79984,7 @@ MonoBehaviour:
     cutoutTextureName: 
     DilateRenderingMode: 0
     cutoutTextureIndex: 0
-  - IsVisible: 0
+  - IsVisible: 1
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
@@ -79992,7 +80000,7 @@ MonoBehaviour:
     cutoutTextureName: 
     DilateRenderingMode: 0
     cutoutTextureIndex: 0
-  - IsVisible: 0
+  - IsVisible: 1
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
@@ -80008,7 +80016,7 @@ MonoBehaviour:
     cutoutTextureName: 
     DilateRenderingMode: 0
     cutoutTextureIndex: 0
-  - IsVisible: 0
+  - IsVisible: 1
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
@@ -80024,7 +80032,7 @@ MonoBehaviour:
     cutoutTextureName: 
     DilateRenderingMode: 0
     cutoutTextureIndex: 0
-  - IsVisible: 0
+  - IsVisible: 1
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
@@ -80040,7 +80048,7 @@ MonoBehaviour:
     cutoutTextureName: 
     DilateRenderingMode: 0
     cutoutTextureIndex: 0
-  - IsVisible: 0
+  - IsVisible: 1
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
@@ -87083,7 +87091,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8305443266983098333, guid: bb1e68c4f4e887147ae9c8aa1b3587a3, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8305443266983098333, guid: bb1e68c4f4e887147ae9c8aa1b3587a3, type: 3}
       propertyPath: m_LocalPosition.x

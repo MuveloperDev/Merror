@@ -28,7 +28,9 @@ public partial class Player : MonoBehaviour
     private void Update()
     {
         InitMovementValues();
-        myRay.StartRay(_MainCam.transform, RayDistance, Input.GetMouseButtonDown(0));
+        if(Time.timeScale != 0)
+            myRay.StartRay(_MainCam.transform, RayDistance, Input.GetMouseButtonDown(0));
+        
         GameManager.Instance.ToggleInventory();
 
         if(GameManager.Instance.ShowInven == true)

@@ -173,12 +173,12 @@ public class Puzzle_IsabellRoom : MonoBehaviour
             if (gameObject.name == "3_DuckObj")
             {
                 dir = target.transform.position - allDolls[2].transform.position;
-                allDolls[2].transform.rotation = Quaternion.Lerp(allDolls[2].transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * 2f);
+                allDolls[2].transform.rotation = Quaternion.Lerp(allDolls[2].transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * 3f);
             }
             else
             {
                 dir = target.transform.position - transform.position;
-                this.transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * 2f);
+                this.transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * 3f);
             }
 
             time -= Time.fixedDeltaTime;

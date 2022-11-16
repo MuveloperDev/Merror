@@ -26,7 +26,7 @@ public class TerraceExit : MonoBehaviour
         {
             if (terraceDoor.GetUsedState() == false)
             {
-                GameManager.Instance.GetIdentityManager().GetIdentity().TurnOffState();
+                //GameManager.Instance.GetIdentityManager().GetIdentity().TurnOffState();
                 // Isabel scream sound play
                 PlaySound(GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Identity, "Isabel_KnockingDoor"));
                 yield return new WaitForSecondsRealtime(1f);

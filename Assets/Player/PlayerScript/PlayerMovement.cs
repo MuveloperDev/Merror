@@ -143,7 +143,7 @@ public partial class Player : MonoBehaviour
                 RunningShakeCoroutine ??= StartCoroutine(RunningCamShake());
                 Speed = MaxRunSpeed; // Set speed to running speed.
 
-                if (!Neck.GetComponent<AudioSource>())
+                if (!Neck.GetComponent<AudioSource>().isPlaying)
                 {
                     Neck.GetComponent<AudioSource>().clip = roughBreathClip;
                     Neck.GetComponent<AudioSource>().Play();

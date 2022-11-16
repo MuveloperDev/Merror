@@ -8,6 +8,7 @@ public class Horror3F : MonoBehaviour
     [SerializeField] private Light spot = null;
     [SerializeField] private GameObject shadow = null;
     [SerializeField] private GameObject real = null;
+    [SerializeField] private Transform terrace = null;
     private void Start()
     {
         horrorObj.SetActive(false);
@@ -20,6 +21,7 @@ public class Horror3F : MonoBehaviour
             real.SetActive(false);
             StartCoroutine(StartHorror());
             Destroy(this.GetComponent<Collider>());
+            terrace.gameObject.SetActive(true);
         }
     }
     private IEnumerator StartHorror()
@@ -32,5 +34,6 @@ public class Horror3F : MonoBehaviour
         yield return new WaitForSecondsRealtime(1.5f);
         Destroy(horrorObj);
         Destroy(this.gameObject);
+        GameManager.Instance.GetIdentityManager().WaitForChaseIdentity(6f);
     }
 }

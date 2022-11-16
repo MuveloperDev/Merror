@@ -22,6 +22,7 @@ public class Puzzle_IsabellRoom : MonoBehaviour
 
     //public bool InteractableOK { get { return interactableok; } set { interactableok = InteractableOK; } }
     [SerializeField] bool interactableok = false;
+    [SerializeField] GameObject Hint1 = null;
     #endregion
     
     private bool? puzzleFinish;
@@ -124,7 +125,8 @@ public class Puzzle_IsabellRoom : MonoBehaviour
 
     IEnumerator FinishPuzzle()
     {
-        for(int i = 0; i < allDolls.Length; i++)
+        puzzleFinish = true;
+        for (int i = 0; i < allDolls.Length; i++)
         {
             if (allDolls[i].name == "3_Duck")
             {
@@ -150,6 +152,7 @@ public class Puzzle_IsabellRoom : MonoBehaviour
         CameraState cameraState = FindObjectOfType<CameraState>();
         cameraState.TurnOnState(CameraState.CamState.FADEOUT);
         yield return new WaitForSeconds(2f);
+        GameManager.Instance.ClearPuzzle("Puzzle_IsabellRoom", Hint1, 7f);
         GameManager.Instance.GetVideoPlayer().CallPlayVideo(GameManager.Instance.GetVideoPlayer().getVideoClips.getChapter1.IsabelRoomVideo,
             () => {
                 cameraState.TurnOnState(CameraState.CamState.FADEIN);

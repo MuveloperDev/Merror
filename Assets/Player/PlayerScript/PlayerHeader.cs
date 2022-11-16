@@ -48,14 +48,15 @@ public partial class Player : MonoBehaviour
     [Header("Player Item")]
     private bool CanLight = false;
     [SerializeField] private GameObject Lighter = null;
+    [SerializeField] private GameObject LighterMesh = null;
     public GameObject GetLight() => Lighter;
 
     [Header("Temp")]
     [SerializeField] private bool Cheat = false;
+    [SerializeField] private GameObject leg = null;
 
     [Header("Player Audio")]
     [SerializeField] private AudioSource _AudioSource = null;
-    [SerializeField] private AudioSource _AudioSourceLighter = null;
     [SerializeField] private AudioClip lighterOpenClip = null;
     [SerializeField] private AudioClip lighterCloseClip = null;
     [SerializeField] private AudioClip walkClip = null;
@@ -72,42 +73,41 @@ public partial class Player : MonoBehaviour
         Speed = MaxWalkSpeed;
         Stamina = MaxStamina;
 
-        Lighter.SetActive(false);
+        Lighter.transform.GetChild(0).gameObject.SetActive(false);
         lighterOpenClip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Player, "Lighter_On");
         lighterCloseClip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Player, "Lighter_Close");
         walkClip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Player, "Player_Walk");
-        roughBreathClip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Player, "female-breathing-heavily");
+        roughBreathClip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Player, "Player_RoughBreathing");
     }
     private void Equip()
     {
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
-            _Animator.SetBool("IsLighter", !Lighter.activeSelf);
-            LighterSound(!Lighter.activeSelf);
-            //Lighter.SetActive(!Lighter.activeSelf);
-            if(!Lighter.activeSelf)
+            _Animator.SetBool("IsLighter", !LighterMesh.activeSelf);
+            PlayLighterSound(!LighterMesh.activeSelf);
+            if(!LighterMesh.activeSelf)
                 Invoke("DelayActive", 1f);
             else
-                Lighter.SetActive(!Lighter.activeSelf);
+                LighterMesh.SetActive(!LighterMesh.activeSelf);
         }
     }
-    private void LighterSound(bool active)
+    private void PlayLighterSound(bool active)
     {
         if(active == true)
         {
-            _AudioSourceLighter.clip = lighterOpenClip;
-            _AudioSourceLighter.Play();
+            Lighter.GetComponent<AudioSource>().clip = lighterOpenClip;
+            Lighter.GetComponent<AudioSource>().Play();
         }
         else
         {
-            _AudioSourceLighter.clip = lighterCloseClip;
-            _AudioSourceLighter.Play();
+            Lighter.GetComponent<AudioSource>().clip = lighterCloseClip;
+            Lighter.GetComponent<AudioSource>().Play();
         }
     }
-    private void PlaySound(AudioClip playClip)
+    private void PlayWalkSound(AudioClip playClip)
     {
-        _AudioSource.clip = playClip;       
-        _AudioSource.Play();
+        leg.GetComponent<AudioSource>().clip = playClip;
+        leg.GetComponent<AudioSource>().Play();
     }
-    private void DelayActive() => Lighter.SetActive(!Lighter.activeSelf);
+    private void DelayActive() => LighterMesh.SetActive(!LighterMesh.activeSelf);
 }

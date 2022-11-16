@@ -41,7 +41,7 @@ public class PuzzleGuessWho : MonoBehaviour
         audioSource.clip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Identity, "Isabel_Gigle");
         audioSource.Play();
         draw.material = changingDraw;
-        GameManager.Instance.ClearPuzzle("PuzzleGuessWho",hintObj,7f);
+        GameManager.Instance.ClearPuzzle("PuzzleGuessWho", hintObj,7f);
         GameManager.Instance.GetIdentityManager().OnEnableIdentity(new Vector3(41f, 8.5f, 14f), Quaternion.Euler(0, 53f, 0),BaseStateMachine.State.SITTINGANDFOCUS);
 
         

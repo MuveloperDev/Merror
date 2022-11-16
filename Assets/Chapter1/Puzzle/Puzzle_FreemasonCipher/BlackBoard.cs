@@ -28,19 +28,13 @@ public class BlackBoard : MonoBehaviour
 
         float plusAlpha = 1f;
 
-        Debug.Log("DestroyInteractable µé¾î¿È");
-
         while (plusAlpha > 0f)
         {
-            Debug.Log("DestroyInteractable : " + plusAlpha);
             plusAlpha -= 0.03f;
 
             blackBoardMaterial.color = new Color(1f, 1f, 1f, plusAlpha);
 
-            Debug.Log("DestroyInteractable2 : " + blackBoardMaterial.color.a);
-
             yield return new WaitForSeconds(0.05f);
-            Debug.Log("DestroyInteractable3 : " + plusAlpha);
         }
         yield break;
     }

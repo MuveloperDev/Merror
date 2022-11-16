@@ -72558,6 +72558,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lighter
       objectReference: {fileID: 0}
+    - target: {fileID: 5605291698963243829, guid: 95789ea3734d3ff4f8beec10795e5713, type: 3}
+      propertyPath: m_Center.y
+      value: 0.29
+      objectReference: {fileID: 0}
     - target: {fileID: 6618684669736363302, guid: 95789ea3734d3ff4f8beec10795e5713, type: 3}
       propertyPath: outlineTargets.Array.data[0].IsVisible
       value: 0

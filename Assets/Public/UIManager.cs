@@ -9,6 +9,7 @@ using System.IO;
 using Unity.VisualScripting;
 using TMPro;
 using System.IO;
+using System.Reflection.Emit;
 
 public class UIManager : MonoBehaviour
 {
@@ -22,6 +23,10 @@ public class UIManager : MonoBehaviour
 
     // LoadGame Children image gameobject
     [SerializeField] Image LoadButtonImage;
+
+    [SerializeField] TextMeshProUGUI transLanguage = null;
+
+
 
     GameObject soundManager = null;
 
@@ -49,12 +54,12 @@ public class UIManager : MonoBehaviour
     {
         aim.SetActive(false);
         FileInfo SaveFileInfo = new FileInfo(System.IO.Directory.GetCurrentDirectory() + "/SaveData/Data.txt");
-        if(SaveFileInfo.Exists == false)
+        if (SaveFileInfo.Exists == false)
         {
             GameObject loadBtn = GameObject.Find("LoadButton");
             loadBtn.GetComponent<Button>().interactable = false;
             Destroy(loadBtn.GetComponent<PointerEvent>());
-        }    
+        }
         // Load Game Data�� ����� ��츦 ��Ÿ�״� bool ���� �ʿ�
         //Load Data : Null => Button interactable : false
         //if (transButtons[1] == null)
@@ -62,7 +67,7 @@ public class UIManager : MonoBehaviour
         //   Destroy(LoadButtonImage);
         //   transButtons[1].interactable = false;    
     }
-        
+
     //#region Button Event Trigger
     //public void OnPointerEnter(PointerEventData eventData)
     //{
@@ -80,7 +85,6 @@ public class UIManager : MonoBehaviour
     // NewGameButton
     public void OnClickNewGame()
     {
-        //GameManager.Instance.GetCaptureManager().Language = CaptureManager.LanguageCategory.KOREAN;
         GameManager.Instance.GetCaptureManager().Init();
         // LodingScene AsyncLoad
 #if UNITY_EDITOR
@@ -96,6 +100,7 @@ public class UIManager : MonoBehaviour
     {
         // Activate SoundManager UI
         soundManager.SetActive(true);
+        SelectLanguage();
     }
 
     // SaveButton
@@ -125,6 +130,26 @@ public class UIManager : MonoBehaviour
     }
 
 #endregion
+
+    #region SelectLanguage
+    public void SelectLanguage()
+    {
+        string inStr = transLanguage.text;
+        Debug.Log(inStr);
+        switch (inStr)
+        {
+            case "KR":
+                GameManager.Instance.GetCaptureManager().Language = CaptureManager.LanguageCategory.KOREAN;
+                break;
+
+            case "US":
+                GameManager.Instance.GetCaptureManager().Language = CaptureManager.LanguageCategory.ENGLISH;
+                break;
+        }
+    }
+
+
+    #endregion
 
     // Raycast �и� ���� 
     // *** ray -> Player : interactorable �Ǵ� 
@@ -156,7 +181,7 @@ public class UIManager : MonoBehaviour
     */
     [SerializeField] Slider acquisitionNotificationSlider = null;
     [SerializeField] TextMeshProUGUI acquisitionNotificationText = null;
-    [SerializeField] AudioSource uiAudioSource= null;
+    [SerializeField] AudioSource uiAudioSource = null;
     public void AcquisitionNotification(string name)
     {
         if (GameManager.Instance.completeLoad == false)

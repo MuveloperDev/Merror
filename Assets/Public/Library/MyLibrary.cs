@@ -356,6 +356,7 @@ namespace MyLibrary
         private List<GameObject> inven = null;
         public int GetItemCount { get { return inven.Count; } }
         public GameObject GetInvenItem(int index) => inven[index];
+        public bool FindInInven(GameObject item) => inven.Contains(item);
         private int count = 0;
 
         public List<GameObject> GetInventoryItem()
@@ -415,8 +416,8 @@ namespace MyLibrary
                 {
                     items[i].gameObject.layer = InventoryLayer;
                 }
-                item.transform.localScale = new Vector3(scale, scale, scale);
                 item.transform.SetParent(uiCamera.transform, false);
+                item.transform.localScale = new Vector3(scale, scale, scale);
                 Destroy(interObj);
                 item.SetActive(false);
                 inven.Add(item);

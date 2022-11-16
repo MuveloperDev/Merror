@@ -8,7 +8,10 @@ using JetBrains.Annotations;
 public class PuzzleManager : MonoBehaviour
 {
     private Puzzle CurrentPuzzle = null;
-    public Puzzle GetCurrentPuzzle() => CurrentPuzzle;
+    public Puzzle GetCurrentPuzzle()
+    {
+        return this.CurrentPuzzle;
+    }
     public class Puzzle : PuzzleManager
     {
         public int ChapterNumber;
@@ -29,7 +32,10 @@ public class PuzzleManager : MonoBehaviour
             return;
         }
         if (CurrentPuzzle != null) CurrentPuzzle = null; // Delete current puzzle memory.
-        CurrentPuzzle = new Puzzle(); // Create new puzzle class
+        CurrentPuzzle = new GameObject(typeof(Puzzle).ToString(), typeof(Puzzle)).GetComponent<Puzzle>();
+        CurrentPuzzle.transform.SetParent(this.transform);
+
+        Debug.Log(CurrentPuzzle);
         CurrentPuzzle.ChapterNumber = chapterNum;
         switch (CurrentPuzzle.ChapterNumber) 
         {

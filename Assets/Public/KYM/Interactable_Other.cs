@@ -50,6 +50,7 @@ public partial class Interactable : MonoBehaviour
                 }
             case ObjectType.Mirror:
                 {
+                    if (GameManager.Instance.GetPlayer().CanHammer == false) return;
                     Do_Break_Mirror();
                     break;
                 }

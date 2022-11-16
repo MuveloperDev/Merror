@@ -265,6 +265,7 @@ public class GameManager : Singleton<GameManager>
         SetSaveDoorDatas();
         SetSaveInvenItems();
         SetSaveMirrors();
+        Data.CanLight = true;
         return true;
     }
 
@@ -312,6 +313,7 @@ public class GameManager : Singleton<GameManager>
         LoadDoor();
         HospitalTrigger ht = FindObjectOfType<HospitalTrigger>();
         ht.LoadHospital();
+        GetPlayer().CanLight = Data.CanLight;
     }
 
     private void LoadInvenItems()

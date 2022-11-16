@@ -108,13 +108,6 @@ public class UIManager : MonoBehaviour
 
     #endregion
 
-
-
-
-
-
-
-
     // Raycast 분리 이후 
     // *** ray -> Player : interactorable 판단 
     // O : mytype -> 마우스 커서 변경
@@ -135,7 +128,6 @@ public class UIManager : MonoBehaviour
         }
     }
 
-
     /*
         public virtual void Do_Outline(bool value)
         {
@@ -144,4 +136,5 @@ public class UIManager : MonoBehaviour
             GameManager.Instance.GetUI().ChangeIcon(myType, value);
         }
     */
+
 }

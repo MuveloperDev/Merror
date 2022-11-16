@@ -97,12 +97,7 @@ public class FreemasonCipher : MonoBehaviour
         if (input == answerString)
         {
             Debug.Log("퍼즐 풀이 성공");
-            blackBoard.CallChangeBlackBoardAlpha();
-            DropHint();
-            //gameObject.SendMessage("CallChangeBlackBoardAlpha", SendMessageOptions.DontRequireReceiver);
-            DeleteOutline();
-            SolvedPuzzle();
-            ClickCloseButton();
+            InsertItemInventory();
         }
     }
 
@@ -142,14 +137,20 @@ public class FreemasonCipher : MonoBehaviour
         Destroy(BlackBoard.GetComponent<Interactable>());
     }
 
-    private void DropHint()
+    private void InsertItemInventory()
     {
         if (isDrop == false)
         {
             Debug.Log("DropHint");
+
             GameManager.Instance.ClearPuzzle("FreemasonCipher", Hint2, 7f);
             isDrop = true;
         }
+        blackBoard.CallChangeBlackBoardAlpha();
+        DeleteOutline();
+        SolvedPuzzle();
+        ClickCloseButton();
+        GameManager.Instance.Save();
     }
 }
 

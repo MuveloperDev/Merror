@@ -205,7 +205,7 @@ GameObject:
   - component: {fileID: 2849733170565474749}
   - component: {fileID: 2849733170565474748}
   m_Layer: 0
-  m_Name: DrawHint3
+  m_Name: Diary3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -1062,7 +1062,6 @@ MonoBehaviour:
   Objs: []
   draw: {fileID: 2081973195}
   changingDraw: {fileID: 2100000, guid: 0d8b3f36eb163194aba64fbbd3100445, type: 2}
-  doll: {fileID: 110849475}
   isClear: 0
 --- !u!114 &42794264
 MonoBehaviour:
@@ -50859,7 +50858,6 @@ MonoBehaviour:
   Objs: []
   draw: {fileID: 0}
   changingDraw: {fileID: 0}
-  doll: {fileID: 0}
   isClear: 0
 --- !u!65 &1927672086
 BoxCollider:
@@ -54335,7 +54333,6 @@ MonoBehaviour:
   Objs: []
   draw: {fileID: 0}
   changingDraw: {fileID: 0}
-  doll: {fileID: 0}
   isClear: 0
 --- !u!65 &2047079352
 BoxCollider:
@@ -84061,7 +84058,7 @@ MonoBehaviour:
   drawingMode: 1
   outlineLayer: 0
   outlineTargets:
-  - IsVisible: 0
+  - IsVisible: 1
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
@@ -84077,7 +84074,7 @@ MonoBehaviour:
     cutoutTextureName: 
     DilateRenderingMode: 0
     cutoutTextureIndex: 0
-  - IsVisible: 0
+  - IsVisible: 1
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
@@ -84093,7 +84090,7 @@ MonoBehaviour:
     cutoutTextureName: 
     DilateRenderingMode: 0
     cutoutTextureIndex: 0
-  - IsVisible: 0
+  - IsVisible: 1
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
@@ -84109,7 +84106,7 @@ MonoBehaviour:
     cutoutTextureName: 
     DilateRenderingMode: 0
     cutoutTextureIndex: 0
-  - IsVisible: 0
+  - IsVisible: 1
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
@@ -84125,7 +84122,7 @@ MonoBehaviour:
     cutoutTextureName: 
     DilateRenderingMode: 0
     cutoutTextureIndex: 0
-  - IsVisible: 0
+  - IsVisible: 1
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
@@ -84141,7 +84138,7 @@ MonoBehaviour:
     cutoutTextureName: 
     DilateRenderingMode: 0
     cutoutTextureIndex: 0
-  - IsVisible: 0
+  - IsVisible: 1
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
@@ -100343,6 +100340,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 583063568}
     m_Modifications:
+    - target: {fileID: 1502805366780286097, guid: 7cb71fa216eae6e4a9efce30aa3c9002, type: 3}
+      propertyPath: Hint2
+      value: 
+      objectReference: {fileID: 2849733170565474736, guid: b7158ac06f2a3d34a8af2c8b6a977b08, type: 3}
     - target: {fileID: 1502805366895461230, guid: 7cb71fa216eae6e4a9efce30aa3c9002, type: 3}
       propertyPath: m_RootOrder
       value: 11

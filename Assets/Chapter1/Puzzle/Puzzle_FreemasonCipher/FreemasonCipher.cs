@@ -10,12 +10,13 @@ public class FreemasonCipher : MonoBehaviour
 {
     [SerializeField] AudioClip[] ChalkSound = null;
 
-    [SerializeField] GameObject BlackBoardBackground;
+    [SerializeField] GameObject BlackBoardBackground = null;
     //[SerializeField] Button CloseButton;
-    [SerializeField] GameObject[] HintPaper;
-    [SerializeField] TextMeshProUGUI inputStr;
-    [SerializeField] GameObject BlackBoard;
-    [SerializeField] BlackBoard blackBoard;
+    [SerializeField] GameObject[] HintPaper = null;
+    [SerializeField] TextMeshProUGUI inputStr = null;
+    [SerializeField] GameObject BlackBoard = null;
+    [SerializeField] BlackBoard blackBoard = null;
+    [SerializeField] GameObject Hint2 = null;
 
     private AudioSource playChalkSound = null;
 
@@ -116,6 +117,7 @@ public class FreemasonCipher : MonoBehaviour
             Debug.Log("퍼즐 정답");
 
             blackBoard.CallChangeBlackBoardAlpha();
+            DropHint();
             DeleteOutline();
             SolvedPuzzle();
             ClickCloseButton();
@@ -136,6 +138,11 @@ public class FreemasonCipher : MonoBehaviour
     {
         Destroy(BlackBoard.GetComponent<Outlinable>());
         Destroy(BlackBoard.GetComponent<Interactable>());
+    }
+
+    private void DropHint()
+    {
+        GameManager.Instance.ClearPuzzle("FreemasonCipher", Hint2, 7f);
     }
 }
 

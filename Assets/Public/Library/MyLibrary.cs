@@ -477,6 +477,9 @@ namespace MyLibrary
         /// </summary>
         public void NextItem()
         {
+            if (GameInput.RightArrow == false)
+                return;
+
             if (inven.Count == 0 || inven.Count == 1)
                 return;
 
@@ -503,6 +506,9 @@ namespace MyLibrary
         /// </summary>
         public void PrevItem()
         {
+            if (GameInput.LeftArrow == false)
+                return;
+
             if (inven.Count == 0 || inven.Count == 1)
                 return;
 
@@ -581,6 +587,8 @@ namespace MyLibrary
         public static bool LeftShiftUp { get; private set; } = false;
         public static bool LeftCtrl { get; private set; } = false;
         public static bool LeftCtrlUp { get; private set; } = false;
+        public static bool RightArrow { get; private set; } = false;
+        public static bool LeftArrow { get; private set; } = false;
 
         private static float XSpeed = 70f;
         public static void SetXSpeed(float speed) => XSpeed = speed;
@@ -600,6 +608,9 @@ namespace MyLibrary
 
             LeftCtrl = Input.GetKey(KeyCode.LeftControl);
             LeftCtrlUp = Input.GetKeyUp(KeyCode.LeftControl);
+
+            LeftArrow = Input.GetKeyDown(KeyCode.LeftArrow);
+            RightArrow = Input.GetKeyDown(KeyCode.RightArrow);
         }
         private static void ClampMouseY()
         {

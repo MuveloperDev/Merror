@@ -8,6 +8,7 @@ using UnityEngine.EventSystems;
 using System.IO;
 using Unity.VisualScripting;
 using TMPro;
+using System.IO;
 
 public class UIManager : MonoBehaviour
 {
@@ -164,7 +165,6 @@ public class UIManager : MonoBehaviour
             uiAudioSource.clip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Interactable, "UI_AddInventory");
         uiAudioSource.PlayOneShot(uiAudioSource.clip);
         StartCoroutine(StartFill(acquisitionNotificationSlider, acquisitionNotificationText));
-
     }
 
     IEnumerator StartFill(Slider slider, TextMeshProUGUI text)

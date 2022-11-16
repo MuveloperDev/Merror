@@ -458,7 +458,7 @@ namespace MyLibrary
             {
                 notice.gameObject.SetActive(true);
             }
-
+            GameManager.Instance.GetCaptureManager().GetCapture(CaptureManager.Category.ITEMINFO, inven[count].name);
         }
 
         /// <summary>
@@ -502,6 +502,7 @@ namespace MyLibrary
 
             inven[count].SetActive(true);
             inven[count].transform.localRotation = Quaternion.identity;
+            GameManager.Instance.GetCaptureManager().GetCapture(CaptureManager.Category.ITEMINFO, inven[count].name);
         }
 
         /// <summary>
@@ -531,6 +532,7 @@ namespace MyLibrary
 
             inven[count].SetActive(true);
             inven[count].transform.localRotation = Quaternion.identity;
+            GameManager.Instance.GetCaptureManager().GetCapture(CaptureManager.Category.ITEMINFO, inven[count].name);
         }
 
         /// <summary>

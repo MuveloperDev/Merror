@@ -1011,6 +1011,7 @@ GameObject:
   - component: {fileID: 453554245}
   - component: {fileID: 453554246}
   - component: {fileID: 453554247}
+  - component: {fileID: 453554248}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1170,6 +1171,22 @@ MonoBehaviour:
   identity: {fileID: 0}
   identities:
   - {fileID: 6158605988422083488, guid: d79758cb418aff349a4891c85952e289, type: 3}
+--- !u!114 &453554248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 453554239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b709609ad2e46547a5132e4fa11853f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  language: 0
+  offsetPath: C:\Users\ich96\UnityProjects\Merror\Merror
+  pathsList: []
+  fileNameList: []
 --- !u!1 &490044334
 GameObject:
   m_ObjectHideFlags: 0

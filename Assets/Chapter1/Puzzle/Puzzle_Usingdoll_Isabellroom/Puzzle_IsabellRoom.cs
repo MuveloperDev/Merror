@@ -96,6 +96,7 @@ public class Puzzle_IsabellRoom : MonoBehaviour
                 break;
 
             case 8:
+                InsertItemInventory();
                 StartCoroutine(FinishPuzzle());
                 break;
         }

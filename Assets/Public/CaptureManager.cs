@@ -108,7 +108,7 @@ public class CaptureManager : MonoBehaviour
         itemInfoText.text = captionTable[category.ToString()][name];
     }
 
-    public string GetCapture(Category category, int chapter) => captionTable[category.ToString()][chapter.ToString()];
+    public string GetCapture(Category category, int chapter) => captionTable[category.ToString()][(chapter+1).ToString()];
 
 
 }

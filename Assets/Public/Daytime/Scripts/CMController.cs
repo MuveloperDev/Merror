@@ -1,12 +1,9 @@
 using Cinemachine;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static CaptionManager;
-using static VideoPlayerManager.VideoClips;
 
 public class CMController : MonoBehaviour
 {
@@ -19,13 +16,24 @@ public class CMController : MonoBehaviour
     [SerializeField] private CanvasGroup ui_capturePanel = null;
     [SerializeField] private TextMeshProUGUI ui_captionTxt = null;
 
+    [Header("AudioSources")]
+    [SerializeField] private AudioSource BGM = null;
+    [SerializeField] private AudioSource BGM2 = null;
+    [SerializeField] private AudioSource Player = null;
+    [SerializeField] private AudioSource Body = null;
+
     private WaitForSecondsRealtime waitForNext = new WaitForSecondsRealtime(6f);
 
     private void Awake() => cinemachineVirtualCameras = cmvCams.GetComponentsInChildren<CinemachineVirtualCamera>();
 
     private void Start() => Init();
 
-    private void Init() => StartCoroutine(GoToTablePointOfView());
+    private void Init()
+    {
+        ui_captionTxt.text = "";
+        ui_capturePanel.alpha = 0f;
+        StartCoroutine(GoToTablePointOfView());
+    } 
 
 
     // Offset point of view.
@@ -48,7 +56,7 @@ public class CMController : MonoBehaviour
         cinemachineVirtualCameras[0].enabled = false;
         windowCam.enabled = true;
         yield return new WaitForSecondsRealtime(4f);
-        TurnOnCaption(CaptureManager.Category.REMEMBER, GameManager.Instance.ChapterNum);
+        TurnOnCaption(CaptureManager.Category.DATE, GameManager.Instance.ChapterNum);
         yield return new WaitForSecondsRealtime(2f);
         TurnOffCaption();
         StartCoroutine(GoToOffsetPointOfView(windowCam, delegate { StartCoroutine(GoToMirrorPointOfView()); }));

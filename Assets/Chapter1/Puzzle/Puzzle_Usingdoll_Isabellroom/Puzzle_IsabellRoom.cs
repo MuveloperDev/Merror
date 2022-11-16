@@ -151,18 +151,14 @@ public class Puzzle_IsabellRoom : MonoBehaviour
     {
         CameraState cameraState = FindObjectOfType<CameraState>();
         yield return new WaitForSeconds(2f);
+        Destroy(frame);
         GameManager.Instance.GetVideoPlayer().CallPlayVideo(GameManager.Instance.GetVideoPlayer().getVideoClips.getChapter1.IsabelRoomVideo,
-            () => {
+            () =>
+            {
                 InsertItemInventory();
                 GameManager.Instance.Save();
-                Debug.Log("EndVideo"); 
+                Debug.Log("EndVideo");
             });
-        yield return new WaitForSeconds(2f);
-        Destroy(frame);
-        for (int i = 0; i < allDolls.Length; i++)
-        {
-            allDolls[i].transform.LookAt(player.transform.position);
-        }
     }
 
     void RotateSM(Transform target, float time, bool delayRender)

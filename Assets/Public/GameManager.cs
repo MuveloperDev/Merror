@@ -47,6 +47,8 @@ public class GameManager : Singleton<GameManager>
 
     private int chapterNum;
     public int ChapterNum { get { return chapterNum; } }
+    public bool completeLoad = false;
+
     private IEnumerator InitChapter(int chapterNum)
     {
         ToggleCursor(true); // Lock cursor
@@ -68,10 +70,9 @@ public class GameManager : Singleton<GameManager>
     private IEnumerator WaitLoad(int chapterNum)
     {
         TimeControl.Pause();
-        Debug.Log("PAUSE");
         yield return InitChapter(chapterNum);
         TimeControl.Play();
-        Debug.Log("PLAY");
+        completeLoad = true;
         _IdentityManager.InstIdentity();
     }
     #endregion
@@ -98,7 +99,7 @@ public class GameManager : Singleton<GameManager>
     }
     #endregion // Find my player and save reference and camera.
     #region Inventory Management
-    private bool ShowInven = false;
+    public bool ShowInven = false;
     private Inventory MyInventory = null;
     public Inventory GetInventory() { return MyInventory; }
     private Canvas InventoryCanvas = null;
@@ -140,7 +141,7 @@ public class GameManager : Singleton<GameManager>
             }
         }
     }
-    public void ClearPuzzle(string puzzleName, GameObject puzzleItem, float scale)
+    public void ClearPuzzle(string puzzleName,GameObject puzzleItem, float scale)
     {
         GameObject obj = Instantiate(puzzleItem, Vector3.zero, Quaternion.identity);
         Debug.Log(obj.name);
@@ -245,6 +246,7 @@ public class GameManager : Singleton<GameManager>
         Data.chapter = 1;
     }
 
+    #region Make Save Data
     private bool SetSaveData() 
     {
         Data = new SaveData();
@@ -261,6 +263,7 @@ public class GameManager : Singleton<GameManager>
         Data.puzzles = _Puzzle.GetCurrentPuzzle().chapterPuzzleDatas;
         SetSaveDoorDatas();
         SetSaveInvenItems();
+        SetSaveMirrors();
         return true;
     }
 
@@ -286,6 +289,18 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
+    private void SetSaveMirrors()
+    {
+        MirrorManager mm = FindObjectOfType<MirrorManager>();
+        Data.isBroken = new bool[mm.GetMirrorsCount()];
+
+        for(int i = 0; i < Data.isBroken.Length; i++)
+        {
+            Data.isBroken[i] = mm.GetMirrorsIsBroken(i);
+        }
+    }
+    #endregion
+    #region Response Load Data
     private void LoadData(int chapterNum)
     {
         MyPlayer.transform.position = Data.playerPos;
@@ -322,10 +337,19 @@ public class GameManager : Singleton<GameManager>
                 {
                     inter.SetSpecial(false);
                     inter.NonInteractable();
-                    Debug.Log("NonIterAct");
                 }
-                obj.SendMessage("InsertItemInventory", SendMessageOptions.RequireReceiver);
+                
             }
+        }
+    }
+
+    private void LoadMirrorsData()
+    {
+        MirrorManager mm = FindObjectOfType<MirrorManager>();
+        for(int i = 0; i < mm.GetMirrorsCount(); i++)
+        {
+            if(Data.isBroken[i] == true)
+                mm.SetMirrorsIsBroken(i,Data.isBroken[i]);
         }
     }
 
@@ -341,7 +365,7 @@ public class GameManager : Singleton<GameManager>
                 doors[i].GetComponent<Interactable>().IsLocked = true;
         }
     }
-
+    #endregion
 
 
     #endregion

@@ -85,11 +85,9 @@ public class Decryption_Puzzle : MonoBehaviour
         Interactable interactable = GetComponent<Interactable>();
         interactable.SetSpecial(false);
         interactable.NonInteractable();
-        DisVisibleUI();
         InsertItemInventory();
-        GameManager.Instance.SetClear("Decryption_Puzzle");
+        DisVisibleUI();
         GameManager.Instance.Save();
-        // Do_Something
     }
 
     private void InsertItemInventory()

@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9752814dd4d9a7248bfd89b1039bd8b5, type: 2}
+  - {fileID: 2100000, guid: 754b963aeeb4414488bf75d58beede0e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -204,7 +204,7 @@ GameObject:
   - component: {fileID: 2849733170565474749}
   - component: {fileID: 2849733170565474748}
   m_Layer: 0
-  m_Name: DrawHint1
+  m_Name: Medical
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -247,7 +247,7 @@ MonoBehaviour:
   Movement_Speed: 1
   InvertMovement: 0
   Gettable: 1
-  Inventory_Scale: 1.5
+  Inventory_Scale: 7
   Special: 0
   isPuzzle: 0
   _Light: {fileID: 0}

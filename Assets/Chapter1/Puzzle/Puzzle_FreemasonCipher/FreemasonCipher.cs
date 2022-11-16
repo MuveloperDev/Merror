@@ -13,9 +13,8 @@ public class FreemasonCipher : MonoBehaviour
     [SerializeField] GameObject BlackBoardBackground = null;
     //[SerializeField] Button CloseButton;
     [SerializeField] GameObject[] HintPaper = null;
-    [SerializeField] TextMeshProUGUI inputStr = null;
-    [SerializeField] GameObject BlackBoard = null;
     [SerializeField] BlackBoard blackBoard = null;
+
     [SerializeField] GameObject Hint2 = null;
 
     private AudioSource playChalkSound = null;
@@ -36,7 +35,6 @@ public class FreemasonCipher : MonoBehaviour
         GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Interactable, "ChalkSound4"),
         GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Interactable, "ChalkSound5")
         };
-
     }
 
     private void inputBoard()
@@ -67,45 +65,6 @@ public class FreemasonCipher : MonoBehaviour
         }
     }
 
-    public void OnValueChange()
-    {
-        string input = inputStr.text;
-
-        char[] convertCharArray = input.ToCharArray();
-
-        if (input != null)
-        {
-            for (int i = 0; i < input.Length - 1; i++)
-            {
-                int toInt = (int)input[i];
-                if (toInt > 96)
-                {
-                    convertCharArray[i] = (char)(toInt - 32);
-                }
-
-                else if (toInt < 96)
-                {
-                    convertCharArray[i] = (char)toInt;
-                }
-            }
-            input = new string(convertCharArray).Remove(convertCharArray.Length - 1);
-        }
-
-        Debug.Log(input);
-
-        // 분리 필요
-        if (input == answerString)
-        {
-            Debug.Log("퍼즐 풀이 성공");
-            blackBoard.CallChangeBlackBoardAlpha();
-            DropHint();
-            //gameObject.SendMessage("CallChangeBlackBoardAlpha", SendMessageOptions.DontRequireReceiver);
-            DeleteOutline();
-            SolvedPuzzle();
-            ClickCloseButton();
-        }
-    }
-
     // 추가 중
     public void CompareAnswer(string inStr)
     {
@@ -119,10 +78,9 @@ public class FreemasonCipher : MonoBehaviour
         {
             Debug.Log("퍼즐 정답");
 
-            blackBoard.CallChangeBlackBoardAlpha();
-            DeleteOutline();
-            SolvedPuzzle();
-            ClickCloseButton();
+            InsertItemInventory();
+            GameManager.Instance.Save();
+            
         }
     }
 
@@ -138,18 +96,23 @@ public class FreemasonCipher : MonoBehaviour
 
     private void DeleteOutline()
     {
-        Destroy(BlackBoard.GetComponent<Outlinable>());
-        Destroy(BlackBoard.GetComponent<Interactable>());
+        Destroy(this.gameObject.GetComponent<Outlinable>());
+        Destroy(this.gameObject.GetComponent<Interactable>());
     }
 
-    private void DropHint()
+    private void InsertItemInventory()
     {
         if (isDrop == false)
         {
             Debug.Log("DropHint");
+
             GameManager.Instance.ClearPuzzle("FreemasonCipher", Hint2, 7f);
             isDrop = true;
         }
+        blackBoard.CallChangeBlackBoardAlpha();
+        DeleteOutline();
+        SolvedPuzzle();
+        ClickCloseButton();
     }
 }
 

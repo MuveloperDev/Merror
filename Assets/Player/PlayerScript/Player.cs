@@ -28,6 +28,7 @@ public partial class Player : MonoBehaviour
     private void Update()
     {
         InitMovementValues();
+
         if(Time.timeScale != 0)
             myRay.StartRay(_MainCam.transform, RayDistance, Input.GetMouseButtonDown(0));
         

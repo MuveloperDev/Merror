@@ -296,7 +296,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8737658421879596501, guid: 51cc57c0d118c5f4987ad492969a4557, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8737658421879596501, guid: 51cc57c0d118c5f4987ad492969a4557, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -304,7 +304,7 @@ PrefabInstance:
       objectReference: {fileID: 453554243}
     - target: {fileID: 8737658421879596501, guid: 51cc57c0d118c5f4987ad492969a4557, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: AcquisitionNotification
+      value: OnClickLoadGame
       objectReference: {fileID: 0}
     - target: {fileID: 8737658421959204060, guid: 51cc57c0d118c5f4987ad492969a4557, type: 3}
       propertyPath: m_AnchorMax.y

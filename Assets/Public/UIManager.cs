@@ -42,7 +42,7 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
-        soundManager = GameObject.Find("SoundOption");
+        soundManager = GameObject.Find("Option");
         transButtons = GameObject.Find("Menu").GetComponentsInChildren<Button>();
 
         // Move UI to front
@@ -138,11 +138,11 @@ public class UIManager : MonoBehaviour
         Debug.Log(inStr);
         switch (inStr)
         {
-            case "KR":
+            case "Korea":
                 GameManager.Instance.GetCaptureManager().Language = CaptureManager.LanguageCategory.KOREAN;
                 break;
 
-            case "US":
+            case "English":
                 GameManager.Instance.GetCaptureManager().Language = CaptureManager.LanguageCategory.ENGLISH;
                 break;
         }

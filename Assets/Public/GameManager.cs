@@ -293,6 +293,8 @@ public class GameManager : Singleton<GameManager>
         LoadInvenItems();
         LoadPuzzleItmes(chapterNum);
         LoadDoor();
+        HospitalTrigger ht = FindObjectOfType<HospitalTrigger>();
+        ht.LoadHospital();
     }
 
     private void LoadInvenItems()
@@ -322,7 +324,7 @@ public class GameManager : Singleton<GameManager>
                     inter.NonInteractable();
                     Debug.Log("NonIterAct");
                 }
-                
+                obj.SendMessage("InsertItemInventory", SendMessageOptions.RequireReceiver);
             }
         }
     }
@@ -339,6 +341,7 @@ public class GameManager : Singleton<GameManager>
                 doors[i].GetComponent<Interactable>().IsLocked = true;
         }
     }
+
 
 
     #endregion

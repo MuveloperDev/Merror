@@ -11,6 +11,7 @@ public class Decryption_Puzzle : MonoBehaviour
 {
     [SerializeField] private GameObject DecryptionUI = null;
     [SerializeField] private TextMeshProUGUI resultTXT = null;
+    [SerializeField] private GameObject ClearHint = null;
 
     static private bool isComplete = false;
     private const string puzzleAnswer = "SEVEN";
@@ -85,8 +86,14 @@ public class Decryption_Puzzle : MonoBehaviour
         interactable.SetSpecial(false);
         interactable.NonInteractable();
         DisVisibleUI();
+        InsertItemInventory();
         GameManager.Instance.SetClear("Decryption_Puzzle");
         GameManager.Instance.Save();
         // Do_Something
+    }
+
+    private void InsertItemInventory()
+    {
+        GameManager.Instance.ClearPuzzle("Decryption_Puzzle", ClearHint, ClearHint.GetComponent<Interactable>().GetInvenScale());
     }
 }

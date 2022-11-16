@@ -460,7 +460,8 @@ namespace MyLibrary
             {
                 notice.gameObject.SetActive(true);
             }
-            GameManager.Instance.GetCaptureManager().GetCapture(CaptureManager.Category.ITEMINFO, inven[count].name);
+            if(count != 0)
+                GameManager.Instance.GetCaptureManager().GetCapture(CaptureManager.Category.ITEMINFO, inven[count].name);
         }
 
         /// <summary>

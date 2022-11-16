@@ -307,8 +307,10 @@ public class GameManager : Singleton<GameManager>
         MyPlayer.transform.rotation = Data.playerRot;
         LoadInvenItems();
         LoadPuzzleItmes(chapterNum);
-        LoadDoor();
         LoadMirrorsData();
+        LoadDoor();
+        HospitalTrigger ht = FindObjectOfType<HospitalTrigger>();
+        ht.LoadHospital();
     }
 
     private void LoadInvenItems()
@@ -318,8 +320,6 @@ public class GameManager : Singleton<GameManager>
             GameObject item = GameObject.Find(Data.invenItems[i]);
             if (item != null)
                 MyInventory.InsertItem(item, item.GetComponent<Interactable>().GetInvenScale());
-            else
-                Debug.LogError("Can not found '" + Data.invenItems[i] + "'");
         }
     }
 
@@ -337,7 +337,7 @@ public class GameManager : Singleton<GameManager>
                     inter.SetSpecial(false);
                     inter.NonInteractable();
                 }
-                obj.SendMessage("InsertItemInventory", SendMessageOptions.RequireReceiver);
+                obj.SendMessage("InsertItemInventory",SendMessageOptions.RequireReceiver);
             }
         }
     }
@@ -365,6 +365,7 @@ public class GameManager : Singleton<GameManager>
         }
     }
     #endregion
+
 
     #endregion
     #region IdentityManagement

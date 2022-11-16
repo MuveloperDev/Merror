@@ -15300,7 +15300,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1016080
+  m_Name: pb_Mesh-505970
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -15796,7 +15796,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1016096
+  m_Name: pb_Mesh-505986
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -17326,7 +17326,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1016010
+  m_Name: pb_Mesh-505898
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -19662,7 +19662,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1016048
+  m_Name: pb_Mesh-505938
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -28090,7 +28090,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1016032
+  m_Name: pb_Mesh-505922
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -33052,7 +33052,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1016064
+  m_Name: pb_Mesh-505954
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -53545,7 +53545,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2040614759
 RectTransform:
   m_ObjectHideFlags: 0
@@ -53554,7 +53554,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2040614758}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 100}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -55432,6 +55432,10 @@ PrefabInstance:
       propertyPath: outlineTargets.Array.data[10].IsVisible
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 992556473, guid: 225e584c47cc8704aab81ac550e6681d, type: 3}
+      propertyPath: myCamera
+      value: 
+      objectReference: {fileID: 4271194168344073365}
     - target: {fileID: 953353264988636177, guid: 225e584c47cc8704aab81ac550e6681d, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -56893,7 +56897,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DecryptionUI: {fileID: 1384977286}
   resultTXT: {fileID: 1010890320}
-  ClearHint: {fileID: 2849733170565474736, guid: f2cc196fbb9176448b7fe4484c654170, type: 3}
+  ClearHint: {fileID: 2849733170565474736, guid: 85c9074681575d448a9fbf26eb448a8a, type: 3}
 --- !u!114 &64168484270933295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75949,14 +75953,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3645543086721425339, guid: 95789ea3734d3ff4f8beec10795e5713, type: 3}
-      propertyPath: Clip_Name
-      value: Interactable_Get
-      objectReference: {fileID: 0}
-    - target: {fileID: 3645543086721425339, guid: 95789ea3734d3ff4f8beec10795e5713, type: 3}
-      propertyPath: Audio_Playable
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3645543086721425339, guid: 95789ea3734d3ff4f8beec10795e5713, type: 3}
       propertyPath: Inventory_Scale
       value: 0.1
       objectReference: {fileID: 0}
@@ -79964,7 +79960,7 @@ MonoBehaviour:
   drawingMode: 1
   outlineLayer: 0
   outlineTargets:
-  - IsVisible: 1
+  - IsVisible: 0
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
@@ -79980,7 +79976,7 @@ MonoBehaviour:
     cutoutTextureName: 
     DilateRenderingMode: 0
     cutoutTextureIndex: 0
-  - IsVisible: 1
+  - IsVisible: 0
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
@@ -79996,7 +79992,7 @@ MonoBehaviour:
     cutoutTextureName: 
     DilateRenderingMode: 0
     cutoutTextureIndex: 0
-  - IsVisible: 1
+  - IsVisible: 0
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
@@ -80012,7 +80008,7 @@ MonoBehaviour:
     cutoutTextureName: 
     DilateRenderingMode: 0
     cutoutTextureIndex: 0
-  - IsVisible: 1
+  - IsVisible: 0
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
@@ -80028,7 +80024,7 @@ MonoBehaviour:
     cutoutTextureName: 
     DilateRenderingMode: 0
     cutoutTextureIndex: 0
-  - IsVisible: 1
+  - IsVisible: 0
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
@@ -84454,7 +84450,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 115
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: a7cb4c13c9957074cb69ca4bf06a3976, type: 2}
   m_TargetDisplay: 0

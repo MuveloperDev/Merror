@@ -21,4 +21,10 @@ public class HospitalTrigger : MonoBehaviour
 
     void DisableObj() => gameObject.SetActive(false);
 
+    public void LoadHospital()
+    {
+        wall.SetActive(true);
+        hospitalRoom.SetActive(false);
+        DisableObj();
+    }
 }

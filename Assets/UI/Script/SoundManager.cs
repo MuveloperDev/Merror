@@ -9,7 +9,7 @@ public class SoundManager : MonoBehaviour
 
     public void Awake()
     {
-        SoundMenu = GameObject.Find("SoundOption");
+        SoundMenu = GameObject.Find("Option");
     }
 
 

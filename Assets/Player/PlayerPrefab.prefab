@@ -2971,7 +2971,6 @@ MonoBehaviour:
   Lighter: {fileID: 846293457564985816}
   Cheat: 1
   _AudioSource: {fileID: 567607514753312866}
-  _AudioSourceLighter: {fileID: 0}
   lighterOpenClip: {fileID: 0}
   lighterCloseClip: {fileID: 0}
   walkClip: {fileID: 0}
@@ -3141,6 +3140,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2408514796481766022}
     m_Modifications:
+    - target: {fileID: 1525087646098297215, guid: 10ae0d8ded6032a4eb727256e76ba012, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7359966430502901510, guid: 10ae0d8ded6032a4eb727256e76ba012, type: 3}
       propertyPath: m_Name
       value: Lighter
@@ -3200,6 +3203,10 @@ PrefabInstance:
     - target: {fileID: 7898602444086831656, guid: 10ae0d8ded6032a4eb727256e76ba012, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7898602444086831659, guid: 10ae0d8ded6032a4eb727256e76ba012, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10ae0d8ded6032a4eb727256e76ba012, type: 3}

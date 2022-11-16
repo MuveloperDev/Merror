@@ -71,7 +71,7 @@ public partial class Player : MonoBehaviour
         Speed = MaxWalkSpeed;
         Stamina = MaxStamina;
 
-        Lighter.SetActive(false);
+        Lighter.transform.GetChild(0).gameObject.SetActive(false);
         lighterOpenClip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Player, "Lighter_On");
         lighterCloseClip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Player, "Lighter_Close");
         walkClip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Player, "Player_Walk");
@@ -81,14 +81,12 @@ public partial class Player : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
-            _Animator.SetBool("IsLighter", !Lighter.activeSelf);
-            LighterSound(!Lighter.activeSelf);
-            //if(!Lighter.activeSelf)
-            //    Invoke("DelayActive", 1f);
-            //else
-            //    Lighter.SetActive(!Lighter.activeSelf);
-
-            Lighter.SetActive(!Lighter.activeSelf);
+            _Animator.SetBool("IsLighter", !Lighter.transform.GetChild(0).gameObject.activeSelf);
+            LighterSound(!Lighter.transform.GetChild(0).gameObject.activeSelf);
+            if(!Lighter.transform.GetChild(0).gameObject.activeSelf)
+                Invoke("DelayActive", 1f);
+            else
+                Lighter.transform.GetChild(0).gameObject.SetActive(!Lighter.transform.GetChild(0).gameObject.activeSelf);
         }
     }
     private void LighterSound(bool active)

@@ -22,6 +22,8 @@ public class FreemasonCipher : MonoBehaviour
 
     private const string answerString = "DESTROYDOLL";
 
+    private bool isDrop = false;
+
     private void Awake()
     {
         playChalkSound = GetComponent<AudioSource>();
@@ -88,7 +90,7 @@ public class FreemasonCipher : MonoBehaviour
             }
             input = new string(convertCharArray).Remove(convertCharArray.Length - 1);
         }
-        
+
         Debug.Log(input);
 
         // 분리 필요
@@ -96,13 +98,14 @@ public class FreemasonCipher : MonoBehaviour
         {
             Debug.Log("퍼즐 풀이 성공");
             blackBoard.CallChangeBlackBoardAlpha();
+            DropHint();
             //gameObject.SendMessage("CallChangeBlackBoardAlpha", SendMessageOptions.DontRequireReceiver);
             DeleteOutline();
             SolvedPuzzle();
             ClickCloseButton();
         }
     }
-    
+
     // 추가 중
     public void CompareAnswer(string inStr)
     {
@@ -117,7 +120,6 @@ public class FreemasonCipher : MonoBehaviour
             Debug.Log("퍼즐 정답");
 
             blackBoard.CallChangeBlackBoardAlpha();
-            DropHint();
             DeleteOutline();
             SolvedPuzzle();
             ClickCloseButton();
@@ -142,7 +144,12 @@ public class FreemasonCipher : MonoBehaviour
 
     private void DropHint()
     {
-        GameManager.Instance.ClearPuzzle("FreemasonCipher", Hint2, 7f);
+        if (isDrop == false)
+        {
+            Debug.Log("DropHint");
+            GameManager.Instance.ClearPuzzle("FreemasonCipher", Hint2, 7f);
+            isDrop = true;
+        }
     }
 }
 

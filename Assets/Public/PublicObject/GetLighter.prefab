@@ -121,7 +121,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3825727682228551268}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.81, y: 0, z: 10.01}
+  m_LocalPosition: {x: -8.81, y: -8.3, z: 10}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -219,7 +219,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 10.56776, y: 17.368376, z: 3.4618084}
-  m_Center: {x: 0.6067276, y: 8.641612, z: -0.24547355}
+  m_Center: {x: 0.6067276, y: 0.29, z: -0.24547355}
 --- !u!114 &3645543086721425339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,15 +233,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsLocked: 0
-  myType: 0
+  myType: 13
   Moveable: 0
   Movement_Axis: 0
   Target_Movement: 5
   Movement_Speed: 1
   InvertMovement: 0
   Gettable: 1
-  Inventory_Scale: 1
-  Special: 0
+  Inventory_Scale: 0.1
+  Special: 1
   isPuzzle: 0
   _Light: {fileID: 0}
   Outlinable: 1

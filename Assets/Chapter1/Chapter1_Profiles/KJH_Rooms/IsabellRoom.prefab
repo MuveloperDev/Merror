@@ -747,9 +747,9 @@ MonoBehaviour:
   AutoReset: 0
   ResetTimer: 0
   Reset_Speed: 50
-  Audio_Playable: 0
+  Audio_Playable: 1
   _MyClip: {fileID: 0}
-  Clip_Name: 
+  Clip_Name: Doll Move
 --- !u!65 &2259024378666398558
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1249,9 +1249,9 @@ MonoBehaviour:
   AutoReset: 0
   ResetTimer: 0
   Reset_Speed: 50
-  Audio_Playable: 0
+  Audio_Playable: 1
   _MyClip: {fileID: 0}
-  Clip_Name: 
+  Clip_Name: Doll Move
 --- !u!65 &2765936203546974650
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1585,9 +1585,9 @@ MonoBehaviour:
   AutoReset: 0
   ResetTimer: 0
   Reset_Speed: 50
-  Audio_Playable: 0
+  Audio_Playable: 1
   _MyClip: {fileID: 0}
-  Clip_Name: 
+  Clip_Name: Doll Move
 --- !u!65 &2808380094990509625
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2479,9 +2479,9 @@ MonoBehaviour:
   AutoReset: 0
   ResetTimer: 0
   Reset_Speed: 50
-  Audio_Playable: 0
+  Audio_Playable: 1
   _MyClip: {fileID: 0}
-  Clip_Name: 
+  Clip_Name: Doll Move
 --- !u!65 &4337341570706104180
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4750,9 +4750,9 @@ MonoBehaviour:
   AutoReset: 0
   ResetTimer: 0
   Reset_Speed: 50
-  Audio_Playable: 0
+  Audio_Playable: 1
   _MyClip: {fileID: 0}
-  Clip_Name: 
+  Clip_Name: Doll Move
 --- !u!65 &4854857503788327981
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5410,7 +5410,7 @@ MonoBehaviour:
   AutoReset: 0
   ResetTimer: 0
   Reset_Speed: 50
-  Audio_Playable: 0
+  Audio_Playable: 1
   _MyClip: {fileID: 0}
   Clip_Name: 
 --- !u!114 &1987658796906956015
@@ -5746,9 +5746,9 @@ MonoBehaviour:
   AutoReset: 0
   ResetTimer: 0
   Reset_Speed: 50
-  Audio_Playable: 0
+  Audio_Playable: 1
   _MyClip: {fileID: 0}
-  Clip_Name: 
+  Clip_Name: Doll Move
 --- !u!65 &5505843405394829613
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7960,9 +7960,9 @@ MonoBehaviour:
   AutoReset: 0
   ResetTimer: 0
   Reset_Speed: 50
-  Audio_Playable: 0
+  Audio_Playable: 1
   _MyClip: {fileID: 0}
-  Clip_Name: 
+  Clip_Name: Doll Move
 --- !u!65 &8574284769593079348
 BoxCollider:
   m_ObjectHideFlags: 0

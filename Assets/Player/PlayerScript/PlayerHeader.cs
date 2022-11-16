@@ -77,7 +77,7 @@ public partial class Player : MonoBehaviour
         Speed = MaxWalkSpeed;
         Stamina = MaxStamina;
         Lighter.SetActive(false);
-        GetLighter = GameObject.Find("GetLighter");
+        GetLighter = GameObject.Find("Lighter");
 
         Lighter.transform.GetChild(0).gameObject.SetActive(false);
         lighterOpenClip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Player, "Lighter_On");

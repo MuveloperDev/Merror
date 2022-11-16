@@ -96,7 +96,7 @@ public class GameManager : Singleton<GameManager>
     }
     #endregion // Find my player and save reference and camera.
     #region Inventory Management
-    private bool ShowInven = false;
+    public bool ShowInven = false;
     private Inventory MyInventory = null;
     public Inventory GetInventory() { return MyInventory; }
     private Canvas InventoryCanvas = null;

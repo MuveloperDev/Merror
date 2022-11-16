@@ -307,6 +307,7 @@ public class GameManager : Singleton<GameManager>
         MyPlayer.transform.rotation = Data.playerRot;
         LoadInvenItems();
         LoadPuzzleItmes(chapterNum);
+        LoadMirrorsData();
         LoadDoor();
         HospitalTrigger ht = FindObjectOfType<HospitalTrigger>();
         ht.LoadHospital();
@@ -319,8 +320,6 @@ public class GameManager : Singleton<GameManager>
             GameObject item = GameObject.Find(Data.invenItems[i]);
             if (item != null)
                 MyInventory.InsertItem(item, item.GetComponent<Interactable>().GetInvenScale());
-            else
-                Debug.LogError("Can not found '" + Data.invenItems[i] + "'");
         }
     }
 
@@ -338,7 +337,7 @@ public class GameManager : Singleton<GameManager>
                     inter.SetSpecial(false);
                     inter.NonInteractable();
                 }
-                
+                obj.SendMessage("InsertItemInventory",SendMessageOptions.RequireReceiver);
             }
         }
     }

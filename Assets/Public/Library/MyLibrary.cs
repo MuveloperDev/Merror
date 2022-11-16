@@ -467,6 +467,7 @@ namespace MyLibrary
         /// </summary>
         public void HideInventory()
         {
+            inven[count].SetActive(false);
             count = 0;
             uiCamera.gameObject.SetActive(false);
             canvas.gameObject.SetActive(false);
@@ -500,7 +501,7 @@ namespace MyLibrary
             }
 
             inven[count].SetActive(true);
-            inven[count].transform.rotation = Quaternion.identity;
+            inven[count].transform.localRotation = Quaternion.identity;
         }
 
         /// <summary>
@@ -529,7 +530,7 @@ namespace MyLibrary
             }
 
             inven[count].SetActive(true);
-            inven[count].transform.rotation = Quaternion.identity;
+            inven[count].transform.localRotation = Quaternion.identity;
         }
 
         /// <summary>

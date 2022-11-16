@@ -53545,7 +53545,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2040614759
 RectTransform:
   m_ObjectHideFlags: 0
@@ -53554,7 +53554,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2040614758}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 100}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -56893,7 +56893,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DecryptionUI: {fileID: 1384977286}
   resultTXT: {fileID: 1010890320}
-  ClearHint: {fileID: 2849733170565474736, guid: f2cc196fbb9176448b7fe4484c654170, type: 3}
+  ClearHint: {fileID: 2849733170565474736, guid: 85c9074681575d448a9fbf26eb448a8a, type: 3}
 --- !u!114 &64168484270933295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80036,7 +80036,7 @@ MonoBehaviour:
     cutoutTextureName: 
     DilateRenderingMode: 0
     cutoutTextureIndex: 0
-  - IsVisible: 0
+  - IsVisible: 1
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5

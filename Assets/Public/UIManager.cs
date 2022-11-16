@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using MyLibrary;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using System.IO;
 using Unity.VisualScripting;
 using TMPro;
 
@@ -46,8 +47,14 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         aim.SetActive(false);
-
-        // Load Game Data°¡ ºñ¾úÀ» °æ¿ì¸¦ ³ªÅ¸³×´Â bool º¯¼ö ÇÊ¿ä
+        FileInfo SaveFileInfo = new FileInfo(System.IO.Directory.GetCurrentDirectory() + "/SaveData/Data.txt");
+        if(SaveFileInfo.Exists == false)
+        {
+            GameObject loadBtn = GameObject.Find("LoadButton");
+            loadBtn.GetComponent<Button>().interactable = false;
+            Destroy(loadBtn.GetComponent<PointerEvent>());
+        }    
+        // Load Game Dataï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ì¸¦ ï¿½ï¿½Å¸ï¿½×´ï¿½ bool ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½
         //Load Data : Null => Button interactable : false
         //if (transButtons[1] == null)
         //{
@@ -110,17 +117,10 @@ public class UIManager : MonoBehaviour
 
     #endregion
 
-
-
-
-
-
-
-
-    // Raycast ºÐ¸® ÀÌÈÄ 
-    // *** ray -> Player : interactorable ÆÇ´Ü 
-    // O : mytype -> ¸¶¿ì½º Ä¿¼­ º¯°æ
-    // X : default ¸¶¿ì½º Ä¿¼­·Î º¯°æ
+    // Raycast ï¿½Ð¸ï¿½ ï¿½ï¿½ï¿½ï¿½ 
+    // *** ray -> Player : interactorable ï¿½Ç´ï¿½ 
+    // O : mytype -> ï¿½ï¿½ï¿½ì½º Ä¿ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    // X : default ï¿½ï¿½ï¿½ì½º Ä¿ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     //---------------------------------------------------------------------
     // Contact Mylibrary => interactable Script
 
@@ -136,7 +136,6 @@ public class UIManager : MonoBehaviour
             aim.SetActive(!value);
         }
     }
-
 
     /*
         public virtual void Do_Outline(bool value)

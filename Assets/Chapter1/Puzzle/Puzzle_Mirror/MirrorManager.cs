@@ -7,32 +7,33 @@ public class MirrorManager : MonoBehaviour
     private List<Mirror> Mirrors = new List<Mirror>();
     [SerializeField] private int maxMirrorCount;
     [SerializeField] private GameObject janeText = null;
+    private int count;
+    public int GetMirrorsCount() => Mirrors.Count;
+    public bool GetMirrorsIsBroken(int index) => Mirrors[index].IsBroken;
+    
     private void Awake()
     {
         for(int i = 1; i <= maxMirrorCount; i++)
         {
             Mirrors.Add(GameObject.Find("Mirror" + i).GetComponent<Mirror>());
         }
+        count = Mirrors.Count;
     }
+
     public void RemoveMirror(Mirror mir)
     {
-        if(CheckMirrorCount())
+        count--;
+        GameManager.Instance.Save();
+        if (count == 0)
         {
             Instantiate(janeText, mir.transform.position, Quaternion.LookRotation(-mir.transform.right));
         }
-        Mirrors.Remove(mir);
-        if(Mirrors.Count == 0)
-        {
-            Destroy(this.gameObject);
-        }
     }
-    private bool CheckMirrorCount()
+
+    public void SetMirrorsIsBroken(int index,bool isBroken)
     {
-        if (Mirrors.Count == 1)
-        {
-            //GameManager.Instance.GetPuzzle().SetClear("Mirror", true);
-            return true;
-        }
-        return false;
+        count--;
+        Mirrors[index].IsBroken = isBroken;
+        Mirrors[index].gameObject.SetActive(false);
     }
 }

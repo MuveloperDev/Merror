@@ -6,6 +6,8 @@ using MyLibrary;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using System.IO;
+using Unity.VisualScripting;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
@@ -52,7 +54,7 @@ public class UIManager : MonoBehaviour
             loadBtn.GetComponent<Button>().interactable = false;
             Destroy(loadBtn.GetComponent<PointerEvent>());
         }    
-        // Load Game Data°¡ ºñ¾úÀ» °æ¿ì¸¦ ³ªÅ¸³×´Â bool º¯¼ö ÇÊ¿ä
+        // Load Game Dataï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ì¸¦ ï¿½ï¿½Å¸ï¿½×´ï¿½ bool ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½
         //Load Data : Null => Button interactable : false
         //if (transButtons[1] == null)
         //{
@@ -115,17 +117,10 @@ public class UIManager : MonoBehaviour
 
     #endregion
 
-
-
-
-
-
-
-
-    // Raycast ºÐ¸® ÀÌÈÄ 
-    // *** ray -> Player : interactorable ÆÇ´Ü 
-    // O : mytype -> ¸¶¿ì½º Ä¿¼­ º¯°æ
-    // X : default ¸¶¿ì½º Ä¿¼­·Î º¯°æ
+    // Raycast ï¿½Ð¸ï¿½ ï¿½ï¿½ï¿½ï¿½ 
+    // *** ray -> Player : interactorable ï¿½Ç´ï¿½ 
+    // O : mytype -> ï¿½ï¿½ï¿½ì½º Ä¿ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    // X : default ï¿½ï¿½ï¿½ì½º Ä¿ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     //---------------------------------------------------------------------
     // Contact Mylibrary => interactable Script
 
@@ -142,7 +137,6 @@ public class UIManager : MonoBehaviour
         }
     }
 
-
     /*
         public virtual void Do_Outline(bool value)
         {
@@ -151,4 +145,43 @@ public class UIManager : MonoBehaviour
             GameManager.Instance.GetUI().ChangeIcon(myType, value);
         }
     */
+    [SerializeField] Slider acquisitionNotificationSlider = null;
+    [SerializeField] TextMeshProUGUI acquisitionNotificationText = null;
+    [SerializeField] AudioSource uiAudioSource= null;
+    public void AcquisitionNotification(string name)
+    {
+        if (acquisitionNotificationSlider == null)
+        {
+            acquisitionNotificationSlider = GameObject.Find("Canvas").transform.GetChild(0).GetComponent<Slider>();
+            acquisitionNotificationText = acquisitionNotificationSlider.transform.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>();
+            uiAudioSource = acquisitionNotificationSlider.GetComponent<AudioSource>();
+        }
+        acquisitionNotificationText.text = "Added Inventory The " + name;
+        if (uiAudioSource.clip == null)
+            uiAudioSource.clip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Interactable, "UI_AddInventory");
+        uiAudioSource.PlayOneShot(uiAudioSource.clip);
+        StartCoroutine(StartFill(acquisitionNotificationSlider, acquisitionNotificationText));
+
+    }
+
+    IEnumerator StartFill(Slider slider, TextMeshProUGUI text)
+    {
+        float fillValue = 0f;
+        while (slider.value != 1)
+        {
+
+            fillValue += Time.deltaTime * 7f;
+            slider.value = fillValue;
+            yield return new WaitForFixedUpdate();
+        }
+        text.gameObject.SetActive(true);
+        yield return new WaitForSecondsRealtime(3f);
+        text.gameObject.SetActive(false);
+        while (slider.value != 0f)
+        {
+            fillValue -= Time.deltaTime * 7f;
+            slider.value = fillValue;
+            yield return new WaitForFixedUpdate();
+        }
+    }
 }

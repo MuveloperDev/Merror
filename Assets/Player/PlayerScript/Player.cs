@@ -30,6 +30,13 @@ public partial class Player : MonoBehaviour
         InitMovementValues();
         myRay.StartRay(_MainCam.transform, RayDistance, Input.GetMouseButtonDown(0));
         GameManager.Instance.ToggleInventory();
+
+        if(GameManager.Instance.ShowInven == true)
+        {
+            GameManager.Instance.GetInventory().NextItem();
+            GameManager.Instance.GetInventory().PrevItem();
+        }
+        
         RotatePlayer();
         Crouch();
         Equip();

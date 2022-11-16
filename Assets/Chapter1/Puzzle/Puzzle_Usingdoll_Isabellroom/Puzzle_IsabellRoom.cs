@@ -37,8 +37,8 @@ public class Puzzle_IsabellRoom : MonoBehaviour
 
     private void Start()
     {
-        // Receive this puzzle is Finished from GameManager
-        // puzzleFinish = GameManager.Inst.~~~;
+        ////Receive this puzzle is Finished from GameManager
+        //puzzleFinish = GameManager.Instance.GetPuzzle().InitPuzzle(1).;
 
         //if (puzzleFinish == null)
         //    Debug.LogError("Failed To Receive Value From GameManager");
@@ -150,12 +150,11 @@ public class Puzzle_IsabellRoom : MonoBehaviour
     IEnumerator Do_Eff()
     {
         CameraState cameraState = FindObjectOfType<CameraState>();
-        cameraState.TurnOnState(CameraState.CamState.FADEOUT);
         yield return new WaitForSeconds(2f);
-        GameManager.Instance.ClearPuzzle("Puzzle_IsabellRoom", Hint1, 7f);
         GameManager.Instance.GetVideoPlayer().CallPlayVideo(GameManager.Instance.GetVideoPlayer().getVideoClips.getChapter1.IsabelRoomVideo,
             () => {
-                cameraState.TurnOnState(CameraState.CamState.FADEIN);
+                InsertItemInventory();
+                GameManager.Instance.Save();
                 Debug.Log("EndVideo"); 
             });
         yield return new WaitForSeconds(2f);
@@ -194,5 +193,10 @@ public class Puzzle_IsabellRoom : MonoBehaviour
 
         if (delayRender == true)
             RenderLine(true);
+    }
+
+    private void InsertItemInventory()
+    {
+        GameManager.Instance.ClearPuzzle("Puzzle_IsabellRoom", Hint1, 7f);
     }
 }

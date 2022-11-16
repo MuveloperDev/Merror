@@ -150,12 +150,11 @@ public class Puzzle_IsabellRoom : MonoBehaviour
     IEnumerator Do_Eff()
     {
         CameraState cameraState = FindObjectOfType<CameraState>();
-        cameraState.TurnOnState(CameraState.CamState.FADEOUT);
         yield return new WaitForSeconds(2f);
-        GameManager.Instance.ClearPuzzle("Puzzle_IsabellRoom", Hint1, 7f);
+        InsertItemInventory();
         GameManager.Instance.GetVideoPlayer().CallPlayVideo(GameManager.Instance.GetVideoPlayer().getVideoClips.getChapter1.IsabelRoomVideo,
             () => {
-                cameraState.TurnOnState(CameraState.CamState.FADEIN);
+                InsertItemInventory();
                 Debug.Log("EndVideo"); 
             });
         yield return new WaitForSeconds(2f);
@@ -194,5 +193,10 @@ public class Puzzle_IsabellRoom : MonoBehaviour
 
         if (delayRender == true)
             RenderLine(true);
+    }
+
+    private void InsertItemInventory()
+    {
+        GameManager.Instance.ClearPuzzle("Puzzle_IsabellRoom", Hint1, 7f);
     }
 }

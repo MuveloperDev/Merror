@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using MyLibrary;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using System.IO;
 
 public class UIManager : MonoBehaviour
 {
@@ -44,7 +45,13 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         aim.SetActive(false);
-
+        FileInfo SaveFileInfo = new FileInfo(System.IO.Directory.GetCurrentDirectory() + "/SaveData/Data.txt");
+        if(SaveFileInfo.Exists == false)
+        {
+            GameObject loadBtn = GameObject.Find("LoadButton");
+            loadBtn.GetComponent<Button>().interactable = false;
+            Destroy(loadBtn.GetComponent<PointerEvent>());
+        }    
         // Load Game Data가 비었을 경우를 나타네는 bool 변수 필요
         //Load Data : Null => Button interactable : false
         //if (transButtons[1] == null)

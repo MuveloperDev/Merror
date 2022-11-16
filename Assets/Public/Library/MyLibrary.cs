@@ -421,12 +421,12 @@ namespace MyLibrary
                 Destroy(interObj);
                 item.SetActive(false);
                 inven.Add(item);
-                GameManager.Instance.GetUI().AcquisitionNotification(item.name.Replace("(Clone)", ""));
             }
             else
             {
                 return;
             }
+            GameManager.Instance.GetUI().AcquisitionNotification(item.name.Replace("(Clone)", ""));
 
         }
 

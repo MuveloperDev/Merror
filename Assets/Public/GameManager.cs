@@ -140,11 +140,12 @@ public class GameManager : Singleton<GameManager>
             }
         }
     }
-    public void ClearPuzzle(GameObject puzzleItem, float scale)
+    public void ClearPuzzle(string puzzleName, GameObject puzzleItem, float scale)
     {
         GameObject obj = Instantiate(puzzleItem, Vector3.zero, Quaternion.identity);
         Debug.Log(obj.name);
         MyInventory.InsertItem(obj, scale);
+        SetClear(puzzleName);
     }
     #endregion // Set inventory
     #region Audio Management

@@ -212,7 +212,7 @@ public class GameManager : Singleton<GameManager>
     #region SaveLoad Management
     private SaveData Data;
     public SaveData GetData() => Data;
-    private bool isFirstPlay = true;
+    public bool isFirstPlay = true;
     public void Save()
     {
         if(SetSaveData() == true)

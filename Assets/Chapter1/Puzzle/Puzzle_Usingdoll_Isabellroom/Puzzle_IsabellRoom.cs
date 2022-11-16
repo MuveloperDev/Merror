@@ -37,20 +37,18 @@ public class Puzzle_IsabellRoom : MonoBehaviour
 
     private void Start()
     {
-        ////Receive this puzzle is Finished from GameManager
-        //puzzleFinish = GameManager.Instance.GetPuzzle().InitPuzzle(1).;
+        //Receive this puzzle is Finished from GameManager
+        puzzleFinish = !GameManager.Instance.isFirstPlay;
 
-        //if (puzzleFinish == null)
-        //    Debug.LogError("Failed To Receive Value From GameManager");
+        if (puzzleFinish == null)
+            Debug.LogError("Failed To Receive Value From GameManager");
 
         // Check this Puzzle is finished
         if (puzzleFinish == true)
         {
             Destroy(gameObject.GetComponent<Interactable>());
             Destroy(gameObject.GetComponent<Puzzle_IsabellRoom>());
-
-            // Set Position of frame
-            // ~~~
+            frame.SetActive(false);
         }
 
         if (gameObject.name == "1_RABBIT" || gameObject.name == "Frame_Finish") interactableok = true;
@@ -193,6 +191,8 @@ public class Puzzle_IsabellRoom : MonoBehaviour
 
     private void InsertItemInventory()
     {
+        if (puzzleFinish == true)
+            return;
         StartCoroutine(FinishPuzzle());
     }
 }

@@ -43,8 +43,8 @@ public class PuzzleManager : MonoBehaviour
                 CurrentPuzzle.chapterPuzzleDatas = new ChapterPuzzles[5];
                 CurrentPuzzle.chapterPuzzleDatas[0] = new ChapterPuzzles("FreemasonCipher", false);
                 CurrentPuzzle.chapterPuzzleDatas[1] = new ChapterPuzzles("Puzzle_IsabellRoom", false);
-                CurrentPuzzle.chapterPuzzleDatas[2] = new ChapterPuzzles("Mirror", false);
-                CurrentPuzzle.chapterPuzzleDatas[3] = new ChapterPuzzles("Decryption_Puzzle", false);
+                CurrentPuzzle.chapterPuzzleDatas[2] = new ChapterPuzzles("Decryption_Puzzle", false);
+                CurrentPuzzle.chapterPuzzleDatas[3] = new ChapterPuzzles("Mirror", false);
                 CurrentPuzzle.chapterPuzzleDatas[4] = new ChapterPuzzles("PuzzleGuessWho", false);
                 break;
         }
@@ -88,7 +88,7 @@ public class PuzzleManager : MonoBehaviour
     /// <param name="chapterNum">Chapter number</param>
     private void CheckAllPuzzleClear()
     {
-        for(int i = 0; i < CurrentPuzzle.chapterPuzzleDatas.Length - 1; i++)
+        for(int i = 0; i < CurrentPuzzle.chapterPuzzleDatas.Length - 2; i++)
         {
             if(CurrentPuzzle.chapterPuzzleDatas[i].isCleared == false)
             {

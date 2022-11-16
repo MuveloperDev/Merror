@@ -146,6 +146,8 @@ namespace MyLibrary
         public Door[] isDoorOpen;
         public string[] invenItems;
         public bool[] isBroken;
+        public bool CanLight;
+        public bool CanHamer;
     }
 
     [System.Serializable]
@@ -458,7 +460,7 @@ namespace MyLibrary
             {
                 notice.gameObject.SetActive(true);
             }
-
+            GameManager.Instance.GetCaptureManager().GetCapture(CaptureManager.Category.ITEMINFO, inven[count].name);
         }
 
         /// <summary>
@@ -467,7 +469,8 @@ namespace MyLibrary
         /// </summary>
         public void HideInventory()
         {
-            inven[count].SetActive(false);
+            if(inven.Count != 0)
+                inven[count].SetActive(false);
             count = 0;
             uiCamera.gameObject.SetActive(false);
             canvas.gameObject.SetActive(false);
@@ -502,6 +505,7 @@ namespace MyLibrary
 
             inven[count].SetActive(true);
             inven[count].transform.localRotation = Quaternion.identity;
+            GameManager.Instance.GetCaptureManager().GetCapture(CaptureManager.Category.ITEMINFO, inven[count].name);
         }
 
         /// <summary>
@@ -531,6 +535,7 @@ namespace MyLibrary
 
             inven[count].SetActive(true);
             inven[count].transform.localRotation = Quaternion.identity;
+            GameManager.Instance.GetCaptureManager().GetCapture(CaptureManager.Category.ITEMINFO, inven[count].name);
         }
 
         /// <summary>

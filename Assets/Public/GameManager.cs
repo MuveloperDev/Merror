@@ -17,6 +17,7 @@ public class GameManager : Singleton<GameManager>
         InitPuzzleManager();
         InitVideoPlayerManager();
         InitIdentityManager();
+        InitCaptureManager();
         DefaultInit();
         //InitCutScenePlayer();
         SceneManager.activeSceneChanged -= OnSceneChanged;
@@ -264,6 +265,7 @@ public class GameManager : Singleton<GameManager>
         SetSaveDoorDatas();
         SetSaveInvenItems();
         SetSaveMirrors();
+        Data.CanLight = true;
         return true;
     }
 
@@ -311,6 +313,7 @@ public class GameManager : Singleton<GameManager>
         LoadDoor();
         HospitalTrigger ht = FindObjectOfType<HospitalTrigger>();
         ht.LoadHospital();
+        GetPlayer().CanLight = Data.CanLight;
     }
 
     private void LoadInvenItems()
@@ -374,7 +377,12 @@ public class GameManager : Singleton<GameManager>
     public IdentitiesManager GetIdentityManager() => _IdentityManager;
 
     #endregion
+    #region CaptureManagement
+    private CaptureManager _captureManager = null;
+    public void InitCaptureManager() => _captureManager = GetComponent<CaptureManager>();
+    public CaptureManager GetCaptureManager() => _captureManager;
 
+    #endregion
 
 
 

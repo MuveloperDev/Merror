@@ -52,6 +52,10 @@ public partial class Player : MonoBehaviour
     [SerializeField] private GameObject Lighter = null;
     [SerializeField] private GameObject GetLighter = null;
     [SerializeField] private GameObject LighterMesh = null;
+    [SerializeField] private GameObject VisualLighter = null;
+    public bool CanHammer = true;
+    [SerializeField] private GameObject Hammer = null;
+    [SerializeField] private GameObject VisualHammer = null;
     public GameObject GetLight() => Lighter;
 
     [Header("Temp")]
@@ -76,10 +80,13 @@ public partial class Player : MonoBehaviour
 
         Speed = MaxWalkSpeed;
         Stamina = MaxStamina;
-        Lighter.SetActive(false);
+        Hammer.SetActive(false);
+        VisualHammer.SetActive(false);
+        Lighter.SetActive(true);
+        VisualLighter.SetActive(false);
         GetLighter = GameObject.Find("Lighter");
 
-        Lighter.transform.GetChild(0).gameObject.SetActive(false);
+        LighterMesh.SetActive(false);
         lighterOpenClip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Player, "Lighter_On");
         lighterCloseClip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Player, "Lighter_Close");
         walkClip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Player, "Player_Walk");
@@ -89,12 +96,34 @@ public partial class Player : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Alpha1) && CanLight == true)
         {
+            if (Hammer.activeSelf == true)
+            {
+                Hammer.SetActive(!Hammer.activeSelf);
+                VisualHammer.SetActive(Hammer.activeSelf);
+            }
             _Animator.SetBool("IsLighter", !LighterMesh.activeSelf);
             PlayLighterSound(!LighterMesh.activeSelf);
-            if(!LighterMesh.activeSelf)
-                Invoke("DelayActive", 1f);
+            if (!LighterMesh.activeSelf)
+            {
+                Invoke(nameof(DelayActive), 1f);
+            }
             else
+            {
                 LighterMesh.SetActive(!LighterMesh.activeSelf);
+                VisualLighter.SetActive(LighterMesh.activeSelf);
+            }
+        }
+        else if(Input.GetKeyDown(KeyCode.Alpha2) && CanHammer == true)
+        {
+            if (LighterMesh.activeSelf == true)
+            {
+                LighterMesh.SetActive(!LighterMesh.activeSelf);
+                VisualLighter.SetActive(LighterMesh.activeSelf);
+                PlayLighterSound(LighterMesh.activeSelf);
+            }
+            _Animator.SetBool("IsLighter", !Hammer.activeSelf);
+            Hammer.SetActive(!Hammer.activeSelf);
+            VisualHammer.SetActive(Hammer.activeSelf);
         }
     }
     private void PlayLighterSound(bool active)
@@ -115,5 +144,9 @@ public partial class Player : MonoBehaviour
         Leg.GetComponent<AudioSource>().clip = playClip;
         Leg.GetComponent<AudioSource>().Play();
     }
-    private void DelayActive() => LighterMesh.SetActive(!LighterMesh.activeSelf);
+    private void DelayActive()
+    {
+        LighterMesh.SetActive(!LighterMesh.activeSelf);
+        VisualLighter.SetActive(LighterMesh.activeSelf);
+    }
 }

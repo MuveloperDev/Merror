@@ -28,6 +28,15 @@ public class IdentitiesManager : MonoBehaviour
 		identity.TurnOnState(BaseStateMachine.State.CHASE);
 
     }
+
+    public void WaitForChaseIdentity(float time) => Invoke("ChaseIdentity", time);
+    public void ChaseIdentity(Vector3 pos)
+    {
+        identity.transform.position = pos;
+        identity.gameObject.SetActive(true);
+        identity.TurnOnState(BaseStateMachine.State.CHASE);
+
+    }
     public void OnEnableIdentity(Vector3 pos, Quaternion quaternion, BaseStateMachine.State state)
     {
         identity.transform.position = pos;

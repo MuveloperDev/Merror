@@ -415,8 +415,8 @@ namespace MyLibrary
                 {
                     items[i].gameObject.layer = InventoryLayer;
                 }
-                item.transform.localScale = new Vector3(scale, scale, scale);
                 item.transform.SetParent(uiCamera.transform, false);
+                item.transform.localScale = new Vector3(scale, scale, scale);
                 Destroy(interObj);
                 item.SetActive(false);
                 inven.Add(item);

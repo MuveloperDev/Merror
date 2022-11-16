@@ -11,7 +11,7 @@ public class Mirror : MonoBehaviour
     {
         if(IsBroken == true)
         {
-            Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
         }
         mirrorManager = GameObject.FindObjectOfType<MirrorManager>();
         pieces = this.transform.GetChild(0).gameObject;
@@ -22,6 +22,7 @@ public class Mirror : MonoBehaviour
     /// </summary>
     private void Break()
     {
+        IsBroken = true;
         pieces.SetActive(true);
         pieces.transform.SetParent(null);
         for (int i = 0; i < pieces.transform.childCount; i++)
@@ -41,6 +42,5 @@ public class Mirror : MonoBehaviour
         {
             pieces.transform.GetChild(i).gameObject.GetComponent<Rigidbody>().isKinematic = true;
         }
-        Destroy(this.gameObject);
     }
 }

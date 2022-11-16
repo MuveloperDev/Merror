@@ -97,7 +97,6 @@ public class Puzzle_IsabellRoom : MonoBehaviour
 
             case 8:
                 InsertItemInventory();
-                StartCoroutine(FinishPuzzle());
                 break;
         }
 
@@ -156,7 +155,7 @@ public class Puzzle_IsabellRoom : MonoBehaviour
         GameManager.Instance.GetVideoPlayer().CallPlayVideo(GameManager.Instance.GetVideoPlayer().getVideoClips.getChapter1.IsabelRoomVideo,
             () =>
             {
-                InsertItemInventory();
+                GameManager.Instance.ClearPuzzle("Puzzle_IsabellRoom", Hint1, 7f);
                 GameManager.Instance.Save();
                 Debug.Log("EndVideo");
             });
@@ -194,6 +193,6 @@ public class Puzzle_IsabellRoom : MonoBehaviour
 
     private void InsertItemInventory()
     {
-        GameManager.Instance.ClearPuzzle("Puzzle_IsabellRoom", Hint1, 7f);
+        StartCoroutine(FinishPuzzle());
     }
 }

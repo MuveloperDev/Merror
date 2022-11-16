@@ -12,6 +12,7 @@ public class TerraceExit : MonoBehaviour
     [SerializeField] private Interactable terraceDoor = null;
     private WaitForSecondsRealtime waitTime = new WaitForSecondsRealtime(3f);
     private Coroutine myCo = null;
+    [SerializeField] private AudioSource audioSource = null;
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Player"))
@@ -25,20 +26,31 @@ public class TerraceExit : MonoBehaviour
         {
             if (terraceDoor.GetUsedState() == false)
             {
+                //GameManager.Instance.GetIdentityManager().GetIdentity().TurnOffState();
                 // Isabel scream sound play
+                PlaySound(GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Identity, "Isabel_KnockingDoor"));
+                yield return new WaitForSecondsRealtime(1f);
+                PlaySound(GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Identity, "Isabel_Bable"));
+                yield return new WaitForSecondsRealtime(6f);
                 // Isable knocking door sound play
                 yield return waitTime;
                 // Isabel setactive false sendmessage
                 if (exitCallback != null) exitCallback();
                 // Disable identity
-                Debug.Log("This");
-                GameManager.Instance.GetIdentityManager().GetIdentity().TurnOffState();
                 GameManager.Instance.GetIdentityManager().GetIdentity().gameObject.SetActive(false);
                 myCo = null;
                 yield break;
             }
+            else GameManager.Instance.GetIdentityManager().GetIdentity().TurnOnState(BaseStateMachine.State.CHASE);
             exitCallback = null;
             yield return null;
         }
+    }
+
+    void PlaySound(AudioClip clip)
+    {
+        audioSource.Stop();
+        audioSource.clip = clip;
+        audioSource.Play();
     }
 }

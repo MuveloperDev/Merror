@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using MyLibrary;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using Unity.VisualScripting;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
@@ -144,4 +146,38 @@ public class UIManager : MonoBehaviour
             GameManager.Instance.GetUI().ChangeIcon(myType, value);
         }
     */
+    [SerializeField] Slider acquisitionNotificationSlider = null;
+    [SerializeField] TextMeshProUGUI acquisitionNotificationText = null;
+    public void AcquisitionNotification(string name)
+    {
+        if (acquisitionNotificationSlider == null)
+        {
+            acquisitionNotificationSlider = GameObject.Find("Canvas").transform.GetChild(0).GetComponent<Slider>();
+            acquisitionNotificationText = acquisitionNotificationSlider.transform.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>();
+        }
+        acquisitionNotificationText.text = "Added Inventory The " + name;
+        StartCoroutine(StartFill(acquisitionNotificationSlider, acquisitionNotificationText));
+
+    }
+
+    IEnumerator StartFill(Slider slider, TextMeshProUGUI text)
+    {
+        float fillValue = 0f;
+        while (slider.value != 1)
+        {
+
+            fillValue += Time.deltaTime * 7f;
+            slider.value = fillValue;
+            yield return new WaitForFixedUpdate();
+        }
+        text.gameObject.SetActive(true);
+        yield return new WaitForSecondsRealtime(3f);
+        text.gameObject.SetActive(false);
+        while (slider.value != 0f)
+        {
+            fillValue -= Time.deltaTime * 7f;
+            slider.value = fillValue;
+            yield return new WaitForFixedUpdate();
+        }
+    }
 }

@@ -1,14 +1,17 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Mirror : MonoBehaviour
 {
+    [SerializeField] private GameObject myCamera = null;
     private MirrorManager mirrorManager = null;
     private GameObject pieces;
     public bool IsBroken = false;
     private void Start()
     {
+        myCamera.GetComponent<Camera>().enabled = false;
         if(IsBroken == true)
         {
             this.gameObject.SetActive(false);
@@ -41,6 +44,20 @@ public class Mirror : MonoBehaviour
         for (int i = 0; i < pieces.transform.childCount; i++)
         {
             pieces.transform.GetChild(i).gameObject.GetComponent<Rigidbody>().isKinematic = true;
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            myCamera.GetComponent<Camera>().enabled = true;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            myCamera.GetComponent<Camera>().enabled = false;
         }
     }
 }

@@ -15300,7 +15300,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-964696
+  m_Name: pb_Mesh-505970
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -15796,7 +15796,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-964712
+  m_Name: pb_Mesh-505986
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -17326,7 +17326,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-964626
+  m_Name: pb_Mesh-505898
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -19662,7 +19662,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-964664
+  m_Name: pb_Mesh-505938
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -28090,7 +28090,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-964648
+  m_Name: pb_Mesh-505922
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -33052,7 +33052,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-964680
+  m_Name: pb_Mesh-505954
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -55432,6 +55432,10 @@ PrefabInstance:
       propertyPath: outlineTargets.Array.data[10].IsVisible
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 992556473, guid: 225e584c47cc8704aab81ac550e6681d, type: 3}
+      propertyPath: myCamera
+      value: 
+      objectReference: {fileID: 4271194168344073365}
     - target: {fileID: 953353264988636177, guid: 225e584c47cc8704aab81ac550e6681d, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -80036,7 +80040,7 @@ MonoBehaviour:
     cutoutTextureName: 
     DilateRenderingMode: 0
     cutoutTextureIndex: 0
-  - IsVisible: 1
+  - IsVisible: 0
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5

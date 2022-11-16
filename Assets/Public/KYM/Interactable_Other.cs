@@ -159,6 +159,11 @@ public partial class Interactable : MonoBehaviour
 
     protected virtual void Do_PuzzleFreemasonCipher()
     {
+        /*if (TryGetComponent<FreemasonCipher>(out FreemasonCipher freemasonCipher))
+        {
+            freemasonCipher.SendMessage("inputBoard", SendMessageOptions.DontRequireReceiver);
+        }*/
+        
         if (TryGetComponent<FreemasonCipher>(out FreemasonCipher freemasonCipher))
         {
             freemasonCipher.SendMessage("inputBoard", SendMessageOptions.DontRequireReceiver);

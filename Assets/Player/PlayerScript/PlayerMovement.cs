@@ -34,11 +34,13 @@ public partial class Player : MonoBehaviour
             //_Rigidbody.position += Speed * Time.deltaTime * MoveVector;
             _Rigidbody.MovePosition(Speed * Time.deltaTime * MoveVector + _Rigidbody.position);
 
-            if(!_AudioSource.isPlaying)
-                PlaySound(walkClip);
+            if(!leg.GetComponent<AudioSource>().isPlaying)
+            {
+                PlayWalkSound(walkClip);
+            }
         }
         else
-            _AudioSource.Stop();
+            leg.GetComponent<AudioSource>().Stop();
     }
     /// <summary>
     /// Crouch player. This crouching method is that the camera postion translate to under crouched position.
@@ -129,18 +131,18 @@ public partial class Player : MonoBehaviour
         if (IsCrouch) // Player is crouching
         {
             Speed = MaxCrouchSpeed; // Set speed to crouched speed.
-            _AudioSource.pitch = Speed * 0.6f;
+            leg.GetComponent<AudioSource>().pitch = Speed * 0.6f;
             return; // Crouching is primary.
         }
         if (IsMove) // Player has movement.
         {
             Speed = MaxWalkSpeed;
-            _AudioSource.pitch = Speed * 0.33f;
+            leg.GetComponent<AudioSource>().pitch = Speed * 0.33f;
             if (IsRun && Stamina > 0f) // Player has movement, is running and have enough stamina.
             {
                 RunningShakeCoroutine ??= StartCoroutine(RunningCamShake());
                 Speed = MaxRunSpeed; // Set speed to running speed.
-                _AudioSource.pitch = Speed * 0.33f;
+                leg.GetComponent<AudioSource>().pitch = Speed * 0.33f;
                 if (StaminaRecoverCoroutine != null) // If recover coroutine already running,
                 {
                     StopCoroutine(StaminaRecoverCoroutine); // Stop recover.

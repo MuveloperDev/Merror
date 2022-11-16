@@ -48,10 +48,12 @@ public partial class Player : MonoBehaviour
     [Header("Player Item")]
     private bool CanLight = false;
     [SerializeField] private GameObject Lighter = null;
+    [SerializeField] private GameObject LighterMesh = null;
     public GameObject GetLight() => Lighter;
 
     [Header("Temp")]
     [SerializeField] private bool Cheat = false;
+    [SerializeField] private GameObject leg = null;
 
     [Header("Player Audio")]
     [SerializeField] private AudioSource _AudioSource = null;
@@ -81,15 +83,15 @@ public partial class Player : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
-            _Animator.SetBool("IsLighter", !Lighter.transform.GetChild(0).gameObject.activeSelf);
-            LighterSound(!Lighter.transform.GetChild(0).gameObject.activeSelf);
-            if(!Lighter.transform.GetChild(0).gameObject.activeSelf)
+            _Animator.SetBool("IsLighter", !LighterMesh.activeSelf);
+            PlayLighterSound(!LighterMesh.activeSelf);
+            if(!LighterMesh.activeSelf)
                 Invoke("DelayActive", 1f);
             else
-                Lighter.transform.GetChild(0).gameObject.SetActive(!Lighter.transform.GetChild(0).gameObject.activeSelf);
+                LighterMesh.SetActive(!LighterMesh.activeSelf);
         }
     }
-    private void LighterSound(bool active)
+    private void PlayLighterSound(bool active)
     {
         if(active == true)
         {
@@ -102,10 +104,15 @@ public partial class Player : MonoBehaviour
             Lighter.GetComponent<AudioSource>().Play();
         }
     }
-    private void PlaySound(AudioClip playClip)
+    private void PlayWalkSound(AudioClip playClip)
     {
-        _AudioSource.clip = playClip;       
+        leg.GetComponent<AudioSource>().clip = playClip;
+        leg.GetComponent<AudioSource>().Play();
+    }
+    private void PlayRoughBreathSound()
+    {
+        _AudioSource.clip = roughBreathClip;
         _AudioSource.Play();
     }
-    private void DelayActive() => Lighter.SetActive(!Lighter.activeSelf);
+    private void DelayActive() => LighterMesh.SetActive(!LighterMesh.activeSelf);
 }

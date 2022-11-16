@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Chapter1.unity
     guid: a7b77da491a9bd84e88b581398f994aa
+  - enabled: 1
+    path: Assets/Scenes/Public/DaytimeScene.unity
+    guid: ded52ae24ed3dbb4fbec3bc51d331c37
   m_configObjects: {}

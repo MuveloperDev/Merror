@@ -83,7 +83,12 @@ public class UIManager : MonoBehaviour
         //GameManager.Instance.GetCaptureManager().Language = CaptureManager.LanguageCategory.KOREAN;
         GameManager.Instance.GetCaptureManager().Init();
         // LodingScene AsyncLoad
+#if UNITY_EDITOR
         SceneManager.LoadSceneAsync("LodingScene");
+        return;
+#else
+        SceneManager.LoadScene("DaytimeScene");
+#endif
     }
 
     // OptionButton 
@@ -119,7 +124,7 @@ public class UIManager : MonoBehaviour
         soundManager.SetActive(false);
     }
 
-    #endregion
+#endregion
 
     // Raycast �и� ���� 
     // *** ray -> Player : interactorable �Ǵ� 

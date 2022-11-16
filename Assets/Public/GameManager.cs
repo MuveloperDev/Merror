@@ -234,6 +234,8 @@ public class GameManager : Singleton<GameManager>
             Data = (SaveData)loadData;
             isFirstPlay = false;
             Debug.Log("Load Complete");
+            CameraState cameraState = GameObject.Find("PostProcess").GetComponent<CameraState>();
+            if (cameraState != null) cameraState.TurnOnState(CameraState.CamState.FADEIN);
         }
         else
         {

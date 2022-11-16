@@ -61,11 +61,11 @@ public class CaptureManager : MonoBehaviour
             languageFilePath.Add(i, textFilesInfo.GetDirectories()[i].FullName);
         }
 
-        // ¼±ÅÃµÈ °æ·Î Ãß°¡.
+        // ï¿½ï¿½ï¿½Ãµï¿½ ï¿½ï¿½ï¿½ ï¿½ß°ï¿½.
         directoryInfo = new DirectoryInfo(languageFilePath[(int)language]);
 
 
-        // µð·ºÅä¸®¿¡¼­ ÆÄÀÏ °æ·Î °¡Á®¿Â ÈÄ °æ·Î¸®½ºÆ®¿¡ Ãß°¡.
+        // ï¿½ï¿½ï¿½ä¸®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Î¸ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ß°ï¿½.
         foreach (FileInfo fileInfo in directoryInfo.GetFiles("*.*", SearchOption.AllDirectories))
         {
             if (fileInfo.Extension == ".meta") continue;
@@ -96,7 +96,6 @@ public class CaptureManager : MonoBehaviour
 
     public void GetCapture(Category category, string objName)
     {
-
         if (itemNameText == null || itemInfoText == null)
         {
             GameObject Parent = GameObject.Find("InventoryCanvas").transform.GetChild(1).GetChild(0).gameObject;

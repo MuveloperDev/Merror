@@ -55,7 +55,7 @@ MonoBehaviour:
   Movement_Speed: 1
   InvertMovement: 0
   Gettable: 1
-  Inventory_Scale: 1
+  Inventory_Scale: 5
   Special: 1
   isPuzzle: 0
   _Light: {fileID: 0}

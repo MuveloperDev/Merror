@@ -308,7 +308,8 @@ public class GameManager : Singleton<GameManager>
         LoadInvenItems();
         LoadPuzzleItmes(chapterNum);
         LoadDoor();
-        LoadMirrorsData();
+        HospitalTrigger ht = FindObjectOfType<HospitalTrigger>();
+        ht.LoadHospital();
     }
 
     private void LoadInvenItems()
@@ -337,7 +338,7 @@ public class GameManager : Singleton<GameManager>
                     inter.SetSpecial(false);
                     inter.NonInteractable();
                 }
-                obj.SendMessage("InsertItemInventory", SendMessageOptions.RequireReceiver);
+                
             }
         }
     }
@@ -365,6 +366,7 @@ public class GameManager : Singleton<GameManager>
         }
     }
     #endregion
+
 
     #endregion
     #region IdentityManagement

@@ -17,6 +17,7 @@ public class GameManager : Singleton<GameManager>
         InitPuzzleManager();
         InitVideoPlayerManager();
         InitIdentityManager();
+        InitCaptureManager();
         DefaultInit();
         //InitCutScenePlayer();
         SceneManager.activeSceneChanged -= OnSceneChanged;
@@ -376,7 +377,12 @@ public class GameManager : Singleton<GameManager>
     public IdentitiesManager GetIdentityManager() => _IdentityManager;
 
     #endregion
+    #region CaptureManagement
+    private CaptureManager _captureManager = null;
+    public void InitCaptureManager() => _captureManager = GetComponent<CaptureManager>();
+    public CaptureManager GetCaptureManager() => _captureManager;
 
+    #endregion
 
 
 

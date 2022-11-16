@@ -106,7 +106,7 @@ public partial class Player : MonoBehaviour
     }
     private void PlaySound(AudioClip playClip)
     {
-        _AudioSource.clip = playClip;
+        _AudioSource.clip = playClip;       
         _AudioSource.Play();
     }
     private void DelayActive() => Lighter.SetActive(!Lighter.activeSelf);

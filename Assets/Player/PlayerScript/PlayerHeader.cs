@@ -77,7 +77,7 @@ public partial class Player : MonoBehaviour
         lighterOpenClip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Player, "Lighter_On");
         lighterCloseClip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Player, "Lighter_Close");
         walkClip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Player, "Player_Walk");
-        roughBreathClip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Player, "female-breathing-heavily");
+        roughBreathClip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Player, "Player_RoughBreathing");
     }
     private void Equip()
     {
@@ -108,11 +108,6 @@ public partial class Player : MonoBehaviour
     {
         leg.GetComponent<AudioSource>().clip = playClip;
         leg.GetComponent<AudioSource>().Play();
-    }
-    private void PlayRoughBreathSound()
-    {
-        _AudioSource.clip = roughBreathClip;
-        _AudioSource.Play();
     }
     private void DelayActive() => LighterMesh.SetActive(!LighterMesh.activeSelf);
 }

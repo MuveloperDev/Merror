@@ -80,6 +80,8 @@ public class UIManager : MonoBehaviour
     // NewGameButton
     public void OnClickNewGame()
     {
+        //GameManager.Instance.GetCaptureManager().Language = CaptureManager.LanguageCategory.KOREAN;
+        GameManager.Instance.GetCaptureManager().Init();
         // LodingScene AsyncLoad
         SceneManager.LoadSceneAsync("LodingScene");
     }
@@ -94,6 +96,7 @@ public class UIManager : MonoBehaviour
     // SaveButton
     public void OnClickLoadGame()
     {
+        GameManager.Instance.GetCaptureManager().Init();
         GameManager.Instance.Load();
         SceneManager.LoadSceneAsync("LodingScene");
         Debug.LogError("Load Game");

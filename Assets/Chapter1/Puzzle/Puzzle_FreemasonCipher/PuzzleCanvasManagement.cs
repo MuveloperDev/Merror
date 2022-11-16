@@ -35,6 +35,5 @@ public class PuzzleCanvasManagement : MonoBehaviour
             input = new string(convertCharArray).Remove(convertCharArray.Length - 1);
             freemasonCipher.CompareAnswer(input);
         }
-
     }
 }

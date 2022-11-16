@@ -143,7 +143,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] AudioSource uiAudioSource= null;
     public void AcquisitionNotification(string name)
     {
-        if (acquisitionNotificationSlider == null)
+        if (GameManager.Instance.completeLoad == false)
+            return;
+
+        if (acquisitionNotificationSlider == null || acquisitionNotificationText == null)
         {
             acquisitionNotificationSlider = GameObject.Find("Canvas").transform.GetChild(0).GetComponent<Slider>();
             acquisitionNotificationText = acquisitionNotificationSlider.transform.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>();

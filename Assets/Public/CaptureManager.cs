@@ -12,14 +12,14 @@ public class CaptureManager : MonoBehaviour
     /// <summary>
     /// Defined language
     /// </summary>
-    public enum Language
+    public enum LanguageCategory
     {
         ENGLISH,
         KOREAN,   // Test
     }
 
-    [SerializeField] private Language language = Language.ENGLISH;
-
+    [SerializeField] private LanguageCategory language = LanguageCategory.ENGLISH;
+    public LanguageCategory Language { get { return language; } set { language = value; } }
     /// <summary>
     /// Defined Captions Category
     /// </summary>
@@ -47,12 +47,12 @@ public class CaptureManager : MonoBehaviour
     // Combine captions as a list and store them in the caption table.
     private Dictionary<string, Dictionary<string, string>> captionTable = new Dictionary<string, Dictionary<string, string>>();
 
-    private void Start()
+    public void Init()
     {
         offsetPath = Directory.GetCurrentDirectory() + "\\Assets\\Resources\\Capture";
         ReadCaption(language);
     }
-    private void ReadCaption(Language language)
+    private void ReadCaption(LanguageCategory language)
     {
         textFilesInfo = new DirectoryInfo(offsetPath);
 

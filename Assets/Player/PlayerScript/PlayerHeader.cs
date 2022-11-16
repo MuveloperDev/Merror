@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using MyLibrary;
 using Unity.VisualScripting;
+using System;
 
 public partial class Player : MonoBehaviour
 {
@@ -48,6 +50,7 @@ public partial class Player : MonoBehaviour
     [Header("Player Item")]
     private bool CanLight = false;
     [SerializeField] private GameObject Lighter = null;
+    [SerializeField] private GameObject GetLighter = null;
     public GameObject GetLight() => Lighter;
 
     [Header("Temp")]
@@ -71,8 +74,8 @@ public partial class Player : MonoBehaviour
 
         Speed = MaxWalkSpeed;
         Stamina = MaxStamina;
-
         Lighter.SetActive(false);
+        GetLighter = GameObject.Find("GetLighter");
         lighterOpenClip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Player, "Lighter_On");
         lighterCloseClip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Player, "Lighter_Close");
         walkClip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Player, "Player_Walk");
@@ -80,7 +83,7 @@ public partial class Player : MonoBehaviour
     }
     private void Equip()
     {
-        if(Input.GetKeyDown(KeyCode.Alpha1))
+        if(Input.GetKeyDown(KeyCode.Alpha1) && GameManager.Instance.GetInventory().FindInInven(GetLighter) == true)
         {
             _Animator.SetBool("IsLighter", !Lighter.activeSelf);
             LighterSound(!Lighter.activeSelf);

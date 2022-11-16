@@ -24,12 +24,14 @@ public class TerraceExit : MonoBehaviour
     {
         while(true)
         {
+            yield return new WaitUntil(() => { return GameManager.Instance.GetIdentityManager().GetIdentity().gameObject.active == true;  });
             if (terraceDoor.GetUsedState() == false)
             {
-                //GameManager.Instance.GetIdentityManager().GetIdentity().TurnOffState();
+                GameManager.Instance.GetIdentityManager().GetIdentity().TurnOffState();
+                terraceDoor.IsLocked = true;
                 // Isabel scream sound play
                 PlaySound(GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Identity, "Isabel_KnockingDoor"));
-                yield return new WaitForSecondsRealtime(1f);
+                yield return new WaitForSecondsRealtime(2f);
                 PlaySound(GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Identity, "Isabel_Bable"));
                 yield return new WaitForSecondsRealtime(6f);
                 // Isable knocking door sound play
@@ -39,9 +41,10 @@ public class TerraceExit : MonoBehaviour
                 // Disable identity
                 GameManager.Instance.GetIdentityManager().GetIdentity().gameObject.SetActive(false);
                 myCo = null;
+                terraceDoor.IsLocked = false;
                 yield break;
             }
-            else GameManager.Instance.GetIdentityManager().GetIdentity().TurnOnState(BaseStateMachine.State.CHASE);
+
             exitCallback = null;
             yield return null;
         }

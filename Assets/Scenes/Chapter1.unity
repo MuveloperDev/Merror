@@ -15075,7 +15075,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-964696
+  m_Name: pb_Mesh-1016080
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -15571,7 +15571,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-964712
+  m_Name: pb_Mesh-1016096
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -16966,7 +16966,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-964626
+  m_Name: pb_Mesh-1016010
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -19302,7 +19302,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-964664
+  m_Name: pb_Mesh-1016048
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -27730,7 +27730,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-964648
+  m_Name: pb_Mesh-1016032
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -32692,7 +32692,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-964680
+  m_Name: pb_Mesh-1016064
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -75498,6 +75498,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3645543086721425339, guid: 95789ea3734d3ff4f8beec10795e5713, type: 3}
+      propertyPath: Clip_Name
+      value: Interactable_Get
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645543086721425339, guid: 95789ea3734d3ff4f8beec10795e5713, type: 3}
+      propertyPath: Audio_Playable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3645543086721425339, guid: 95789ea3734d3ff4f8beec10795e5713, type: 3}
       propertyPath: Inventory_Scale
       value: 0.1

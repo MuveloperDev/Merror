@@ -142,6 +142,13 @@ public partial class Player : MonoBehaviour
             {
                 RunningShakeCoroutine ??= StartCoroutine(RunningCamShake());
                 Speed = MaxRunSpeed; // Set speed to running speed.
+
+                if (!_AudioSource.isPlaying)
+                {
+                    _AudioSource.clip = roughBreathClip;
+                    _AudioSource.Play();
+                }
+
                 leg.GetComponent<AudioSource>().pitch = Speed * 0.33f;
                 if (StaminaRecoverCoroutine != null) // If recover coroutine already running,
                 {
@@ -153,6 +160,7 @@ public partial class Player : MonoBehaviour
             }
             else
             {
+                _AudioSource.Stop();
                 if (RunningShakeCoroutine != null)
                 {
                     StopCoroutine(RunningShakeCoroutine);

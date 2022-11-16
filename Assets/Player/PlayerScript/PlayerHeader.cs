@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using MyLibrary;
 using Unity.VisualScripting;
+using System;
 
 public partial class Player : MonoBehaviour
 {
@@ -48,6 +50,7 @@ public partial class Player : MonoBehaviour
     [Header("Player Item")]
     private bool CanLight = false;
     [SerializeField] private GameObject Lighter = null;
+    [SerializeField] private GameObject GetLighter = null;
     [SerializeField] private GameObject LighterMesh = null;
     public GameObject GetLight() => Lighter;
 
@@ -72,16 +75,18 @@ public partial class Player : MonoBehaviour
 
         Speed = MaxWalkSpeed;
         Stamina = MaxStamina;
+        Lighter.SetActive(false);
+        GetLighter = GameObject.Find("GetLighter");
 
         Lighter.transform.GetChild(0).gameObject.SetActive(false);
         lighterOpenClip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Player, "Lighter_On");
         lighterCloseClip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Player, "Lighter_Close");
         walkClip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Player, "Player_Walk");
-        roughBreathClip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Player, "female-breathing-heavily");
+        roughBreathClip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Player, "Player_RoughBreathing");
     }
     private void Equip()
     {
-        if(Input.GetKeyDown(KeyCode.Alpha1))
+        if(Input.GetKeyDown(KeyCode.Alpha1) && GameManager.Instance.GetInventory().FindInInven(GetLighter) == true)
         {
             _Animator.SetBool("IsLighter", !LighterMesh.activeSelf);
             PlayLighterSound(!LighterMesh.activeSelf);
@@ -108,11 +113,6 @@ public partial class Player : MonoBehaviour
     {
         leg.GetComponent<AudioSource>().clip = playClip;
         leg.GetComponent<AudioSource>().Play();
-    }
-    private void PlayRoughBreathSound()
-    {
-        _AudioSource.clip = roughBreathClip;
-        _AudioSource.Play();
     }
     private void DelayActive() => LighterMesh.SetActive(!LighterMesh.activeSelf);
 }

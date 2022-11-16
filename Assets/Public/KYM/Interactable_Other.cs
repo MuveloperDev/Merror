@@ -213,7 +213,6 @@ public partial class Interactable : MonoBehaviour
         _MySource.Stop();
         if (IsUsed) _MyClip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Interactable, "Door_Close");
         else _MyClip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Interactable, "Door_Open");
-
         _MySource.clip = _MyClip;
         _MySource.Play();
     }

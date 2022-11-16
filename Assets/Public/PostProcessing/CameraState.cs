@@ -183,7 +183,7 @@ public class CameraState : MonoBehaviour
 
                 TurnOffState();
                 // For Test
-                SceneManager.LoadScene("LodingScene");
+                GameManager.Instance.Load();
             }, 2f);
     }
     

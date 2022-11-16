@@ -5114,7 +5114,7 @@ GameObject:
   - component: {fileID: 191666604}
   - component: {fileID: 190373088}
   - component: {fileID: 189667314}
-  - component: {fileID: 9095311276889572224}
+  - component: {fileID: 191666605}
   m_Layer: 0
   m_Name: Bed
   m_TagString: Untagged
@@ -5137,6 +5137,19 @@ Transform:
   m_Father: {fileID: 1559786115}
   m_RootOrder: 36
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &191666605
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191420342}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.6164154, y: 1.2550933, z: 3.0268395}
+  m_Center: {x: 0.000001847744, y: 0.6310115, z: -0.00012099746}
 --- !u!65 &191763732
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -96010,20 +96023,6 @@ Transform:
   m_Father: {fileID: 5861294547630945717}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &9095311276889572224
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 191420342}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: a3f0e4079a6836d478718f6ee6d366b6, type: 3}
 --- !u!23 &9098265546580614967
 MeshRenderer:
   m_ObjectHideFlags: 0

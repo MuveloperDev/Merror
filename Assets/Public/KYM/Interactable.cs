@@ -84,7 +84,9 @@ public partial class Interactable : MonoBehaviour
             if(myType == ObjectType.Door)
             {
                 //Play Clip
-
+                _MyClip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Interactable, "Door_Lock");
+                _MySource.clip = _MyClip;
+                _MySource.Play();
             }
             return;
         } 

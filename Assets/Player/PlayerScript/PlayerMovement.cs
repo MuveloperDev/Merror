@@ -34,13 +34,13 @@ public partial class Player : MonoBehaviour
             //_Rigidbody.position += Speed * Time.deltaTime * MoveVector;
             _Rigidbody.MovePosition(Speed * Time.deltaTime * MoveVector + _Rigidbody.position);
 
-            if(!leg.GetComponent<AudioSource>().isPlaying)
+            if(!Leg.GetComponent<AudioSource>().isPlaying)
             {
                 PlayWalkSound(walkClip);
             }
         }
         else
-            leg.GetComponent<AudioSource>().Stop();
+            Leg.GetComponent<AudioSource>().Stop();
     }
     /// <summary>
     /// Crouch player. This crouching method is that the camera postion translate to under crouched position.
@@ -131,25 +131,25 @@ public partial class Player : MonoBehaviour
         if (IsCrouch) // Player is crouching
         {
             Speed = MaxCrouchSpeed; // Set speed to crouched speed.
-            leg.GetComponent<AudioSource>().pitch = Speed * 0.6f;
+            Leg.GetComponent<AudioSource>().pitch = Speed * 0.6f;
             return; // Crouching is primary.
         }
         if (IsMove) // Player has movement.
         {
             Speed = MaxWalkSpeed;
-            leg.GetComponent<AudioSource>().pitch = Speed * 0.33f;
+            Leg.GetComponent<AudioSource>().pitch = Speed * 0.33f;
             if (IsRun && Stamina > 0f) // Player has movement, is running and have enough stamina.
             {
                 RunningShakeCoroutine ??= StartCoroutine(RunningCamShake());
                 Speed = MaxRunSpeed; // Set speed to running speed.
 
-                if (!_AudioSource.isPlaying)
+                if (!Neck.GetComponent<AudioSource>().isPlaying)
                 {
-                    _AudioSource.clip = roughBreathClip;
-                    _AudioSource.Play();
+                    Neck.GetComponent<AudioSource>().clip = roughBreathClip;
+                    Neck.GetComponent<AudioSource>().Play();
                 }
 
-                leg.GetComponent<AudioSource>().pitch = Speed * 0.33f;
+                Leg.GetComponent<AudioSource>().pitch = Speed * 0.33f;
                 if (StaminaRecoverCoroutine != null) // If recover coroutine already running,
                 {
                     StopCoroutine(StaminaRecoverCoroutine); // Stop recover.
@@ -160,7 +160,7 @@ public partial class Player : MonoBehaviour
             }
             else
             {
-                _AudioSource.Stop();
+                Neck.GetComponent<AudioSource>().Stop();
                 if (RunningShakeCoroutine != null)
                 {
                     StopCoroutine(RunningShakeCoroutine);

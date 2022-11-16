@@ -56,7 +56,8 @@ public partial class Player : MonoBehaviour
 
     [Header("Temp")]
     [SerializeField] private bool Cheat = false;
-    [SerializeField] private GameObject leg = null;
+    [SerializeField] private GameObject Leg = null;
+    [SerializeField] private GameObject Neck = null;
 
     [Header("Player Audio")]
     [SerializeField] private AudioSource _AudioSource = null;
@@ -111,8 +112,8 @@ public partial class Player : MonoBehaviour
     }
     private void PlayWalkSound(AudioClip playClip)
     {
-        leg.GetComponent<AudioSource>().clip = playClip;
-        leg.GetComponent<AudioSource>().Play();
+        Leg.GetComponent<AudioSource>().clip = playClip;
+        Leg.GetComponent<AudioSource>().Play();
     }
     private void DelayActive() => LighterMesh.SetActive(!LighterMesh.activeSelf);
 }

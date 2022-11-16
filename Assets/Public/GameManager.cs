@@ -47,6 +47,8 @@ public class GameManager : Singleton<GameManager>
 
     private int chapterNum;
     public int ChapterNum { get { return chapterNum; } }
+    public bool completeLoad = false;
+
     private IEnumerator InitChapter(int chapterNum)
     {
         ToggleCursor(true); // Lock cursor
@@ -70,6 +72,7 @@ public class GameManager : Singleton<GameManager>
         TimeControl.Pause();
         yield return InitChapter(chapterNum);
         TimeControl.Play();
+        completeLoad = true;
         _IdentityManager.InstIdentity();
     }
     #endregion

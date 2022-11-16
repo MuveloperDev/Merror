@@ -11,9 +11,15 @@ public class Trailer : MonoBehaviour
     private void Awake()
     {
         virtualCam = new CinemachineVirtualCamera[camCount];
+        for(int i = 1; i <= camCount; i++)
+        {
+            virtualCam[i - 1] = GameObject.Find("CM vcam" + i).GetComponent<CinemachineVirtualCamera>();
+        }   
     }
     private IEnumerator Cut1()
     {
+        virtualCam[0].enabled = true;
+
         yield return null;
     }
     private IEnumerator Cut2()

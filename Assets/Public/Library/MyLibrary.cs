@@ -460,7 +460,7 @@ namespace MyLibrary
             {
                 notice.gameObject.SetActive(true);
             }
-            if(count != 0)
+            if(inven[count] != null)
                 GameManager.Instance.GetCaptureManager().GetCapture(CaptureManager.Category.ITEMINFO, inven[count].name);
         }
 

@@ -1,5 +1,6 @@
-Lighter|It is a lighter that can light up the darkness.
-Diary1|This is Isabel's first picture diary.
-Diary2|This is Isabel's second picture diary.
-Diary3|This is Isabel's third picture diary.
-Medical|This is Isabel's Medical Chart
+Lighter|어둠을 밝힐 수 있는 라이터이다.
+Diary1|이사벨의 첫번째 그림일기.
+Diary2|이사벨의 두번째 그림일기.
+Diary3|이사벨의 세번째 그림일기.
+Medical|이사벨의 병원 기록이다.
+Hammer|거울을 깰 수 있는 망치이다.

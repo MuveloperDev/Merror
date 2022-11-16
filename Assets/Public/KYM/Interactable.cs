@@ -31,6 +31,7 @@ public partial class Interactable : MonoBehaviour
         PuzzleFreemasonCipher,
         Door,
         JukeBox,
+        lighter
     }
 
     public bool IsLocked = false;

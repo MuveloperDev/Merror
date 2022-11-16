@@ -73,6 +73,11 @@ public partial class Interactable : MonoBehaviour
                     Do_Key();
                     break;
                 }
+            case ObjectType.lighter:
+                {
+                    GameManager.Instance.GetPlayer().CanLight = true;
+                    break;
+                }
 
             default: break;
         }

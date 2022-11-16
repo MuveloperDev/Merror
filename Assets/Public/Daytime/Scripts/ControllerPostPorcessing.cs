@@ -68,14 +68,14 @@ public class ControllerPostPorcessing : MonoBehaviour
         Debug.Log("InBloom");
         while (true)
         {
-            if (bloom.intensity.value <= 13f && !fadeInOut)
+            if (bloom.intensity.value <= 24f && !fadeInOut)
             {
                 // FadeIn Next DirectingEffects
                 StartCoroutine(DirectingEffect_Vignette());
                 StartCoroutine(DirectingEffect_AmbientOcclusion());
                 yield break;
             }
-            if (bloom.intensity.value >= 30f && fadeInOut)
+            if (bloom.intensity.value >= 40f && fadeInOut)
             {
                 Debug.Log("FadeIn");
                 // FadeOut Next DirectingEffects

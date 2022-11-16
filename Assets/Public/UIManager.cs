@@ -87,7 +87,12 @@ public class UIManager : MonoBehaviour
     {
         GameManager.Instance.GetCaptureManager().Init();
         // LodingScene AsyncLoad
+#if UNITY_EDITOR
         SceneManager.LoadSceneAsync("LodingScene");
+        return;
+#else
+        SceneManager.LoadScene("DaytimeScene");
+#endif
     }
 
     // OptionButton 
@@ -124,7 +129,7 @@ public class UIManager : MonoBehaviour
         soundManager.SetActive(false);
     }
 
-    #endregion
+#endregion
 
     #region SelectLanguage
     public void SelectLanguage()

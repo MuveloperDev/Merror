@@ -1,8 +1,9 @@
 using Cinemachine;
 using System;
 using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CMController : MonoBehaviour
 {
@@ -10,9 +11,16 @@ public class CMController : MonoBehaviour
     [SerializeField] private Transform cmvCams = null;
     [SerializeField] private CinemachineVirtualCamera[] cinemachineVirtualCameras = null;
 
-    [Header("Caption Machine")]
-    [SerializeField] private CaptionManager captionManager = null;
 
+    [Header("Caption UI")]
+    [SerializeField] private CanvasGroup ui_capturePanel = null;
+    [SerializeField] private TextMeshProUGUI ui_captionTxt = null;
+
+    [Header("AudioSources")]
+    [SerializeField] private AudioSource BGM = null;
+    [SerializeField] private AudioSource BGM2 = null;
+    [SerializeField] private AudioSource Player = null;
+    [SerializeField] private AudioSource Body = null;
 
     private WaitForSecondsRealtime waitForNext = new WaitForSecondsRealtime(6f);
 
@@ -20,7 +28,12 @@ public class CMController : MonoBehaviour
 
     private void Start() => Init();
 
-    private void Init() => StartCoroutine(GoToTablePointOfView());
+    private void Init()
+    {
+        ui_captionTxt.text = "";
+        ui_capturePanel.alpha = 0f;
+        StartCoroutine(GoToTablePointOfView());
+    } 
 
 
     // Offset point of view.
@@ -43,9 +56,9 @@ public class CMController : MonoBehaviour
         cinemachineVirtualCameras[0].enabled = false;
         windowCam.enabled = true;
         yield return new WaitForSecondsRealtime(4f);
-        captionManager.TurnOnCaption(CaptionManager.Captions.DATE, captionManager.Chapter);
+        TurnOnCaption(CaptureManager.Category.DATE, GameManager.Instance.ChapterNum);
         yield return new WaitForSecondsRealtime(2f);
-        captionManager.TurnOffCaption();
+        TurnOffCaption();
         StartCoroutine(GoToOffsetPointOfView(windowCam, delegate { StartCoroutine(GoToMirrorPointOfView()); }));
     }
 
@@ -53,7 +66,7 @@ public class CMController : MonoBehaviour
     // Go to main virtual camera After going to mirror virtual camera from main virtual camera.
     IEnumerator GoToMirrorPointOfView()
     {
-        captionManager.TurnOffCaption();
+        TurnOffCaption();
         CinemachineVirtualCamera mirrorCam = cinemachineVirtualCameras[2];
         cinemachineVirtualCameras[0].enabled = false;
         mirrorCam.enabled = true;
@@ -69,11 +82,38 @@ public class CMController : MonoBehaviour
         cinemachineVirtualCameras[0].enabled = false;
         windowCam.enabled = true;
         yield return new WaitForSecondsRealtime(4f);
-        captionManager.TurnOnCaption(CaptionManager.Captions.REMEMBER, 1);
+        TurnOnCaption(CaptureManager.Category.REMEMBER, GameManager.Instance.ChapterNum);
         yield return new WaitForSecondsRealtime(2f);
-        captionManager.TurnOffCaption();
-        StartCoroutine(GoToOffsetPointOfView(windowCam, delegate { }));
+        TurnOffCaption();
+        StartCoroutine(GoToOffsetPointOfView(windowCam, delegate { SceneManager.LoadSceneAsync("LodingScene"); }));
     }
 
+    // Set text in caption list after Increase caption UI alpha.
+    public void TurnOnCaption(CaptureManager.Category capture, int chapter)
+    {
+        if (ui_captionTxt.text.Length != 0) ui_captionTxt.text = "";
+        StartCoroutine(SetCaptionPanelAlpha(1, GameManager.Instance.GetCaptureManager().GetCapture(capture, chapter)));
+        chapter++;
+    }
 
+    // Set text in caption list after Decrease caption UI alpha.
+    public void TurnOffCaption() => StartCoroutine(SetCaptionPanelAlpha(0, ""));
+
+
+    /// <summary>
+    /// Set caption alpha and assign caption text.
+    /// </summary>
+    /// <param name="alpha">Set the alpha value. Assign only 0 or 1</param>
+    /// <param name="caption">Assgin value for caption text</param>
+    /// <returns></returns>
+    IEnumerator SetCaptionPanelAlpha(int alpha, string caption)
+    {
+        float value = alpha == 1 ? Time.deltaTime * 6f : -Time.deltaTime * 3f;
+        do
+        {
+            yield return null;
+            ui_capturePanel.alpha += value;
+        } while (ui_capturePanel.alpha != alpha);
+        ui_captionTxt.text = caption;
+    }
 }

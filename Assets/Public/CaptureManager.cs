@@ -97,7 +97,7 @@ public class CaptureManager : MonoBehaviour
     public void GetCapture(Category category, string objName)
     {
         
-        if (itemNameText == null || itemInfoText == null);
+        if (itemNameText == null || itemInfoText == null)
         {
             GameObject Parent = GameObject.Find("InventoryCanvas").transform.GetChild(1).GetChild(0).gameObject;
             itemNameText = Parent.transform.GetChild(0).GetComponent<TextMeshProUGUI>();

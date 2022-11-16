@@ -27,6 +27,7 @@ public class BaseStateMachine : MonoBehaviour
 
     protected bool isKill = false;
     private State prevState = State.NONE;
+    public State PrevState { get { return prevState; } }
 
     protected virtual void Init()
     {

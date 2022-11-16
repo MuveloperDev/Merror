@@ -356,6 +356,7 @@ namespace MyLibrary
         private List<GameObject> inven = null;
         public int GetItemCount { get { return inven.Count; } }
         public GameObject GetInvenItem(int index) => inven[index];
+        public bool FindInInven(GameObject item) => inven.Contains(item);
         private int count = 0;
 
         public List<GameObject> GetInventoryItem()

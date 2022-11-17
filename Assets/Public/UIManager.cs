@@ -182,17 +182,19 @@ public class UIManager : MonoBehaviour
     [SerializeField] Slider acquisitionNotificationSlider = null;
     [SerializeField] TextMeshProUGUI acquisitionNotificationText = null;
     [SerializeField] AudioSource uiAudioSource = null;
+
+    public void InitAcquisitionNotification()
+    {
+        acquisitionNotificationSlider = GameObject.Find("AcquisitionNotification").GetComponent<Slider>();
+        acquisitionNotificationText = GameObject.Find("AcquisitionNotificationText").GetComponent<TextMeshProUGUI>();
+        uiAudioSource = acquisitionNotificationSlider.GetComponent<AudioSource>();
+        acquisitionNotificationText.gameObject.SetActive(false);
+    }
     public void AcquisitionNotification(string name)
     {
         if (GameManager.Instance.completeLoad == false)
             return;
 
-        if (acquisitionNotificationSlider == null || acquisitionNotificationText == null)
-        {
-            acquisitionNotificationSlider = GameObject.Find("Canvas").transform.GetChild(0).GetComponent<Slider>();
-            acquisitionNotificationText = acquisitionNotificationSlider.transform.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>();
-            uiAudioSource = acquisitionNotificationSlider.GetComponent<AudioSource>();
-        }
         acquisitionNotificationText.text = "Added Inventory The " + name;
         if (uiAudioSource.clip == null)
             uiAudioSource.clip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Interactable, "UI_AddInventory");

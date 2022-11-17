@@ -428,6 +428,7 @@ namespace MyLibrary
             {
                 return;
             }
+           
             GameManager.Instance.GetUI().AcquisitionNotification(item.name.Replace("(Clone)", ""));
 
         }

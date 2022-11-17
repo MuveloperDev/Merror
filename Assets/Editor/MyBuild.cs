@@ -9,6 +9,12 @@ public class MyBuild : EditorWindow
     private const string defaultPath = "Assets/Scenes/";
     private const string publicPath = "public/";
     private const string unityPath = ".unity";
+    private static string defaultScenen_1 = defaultPath + publicPath + "DaytimeScene.unity";
+    private static string defaultScenen_2 = defaultPath + publicPath + "IntroScene.unity";
+    private static string defaultScenen_3 = defaultPath + publicPath + "LodingScene.unity";
+    private static string defaultScenen_4 = defaultPath + publicPath + "StartScene.unity";
+    private static string defaultScenen_5 = defaultPath + "Chapter1.unity";
+
     private bool isPublic = false;
     private static List<string> Levels;
     private string sceneArray = "";
@@ -17,6 +23,15 @@ public class MyBuild : EditorWindow
     public MyBuild()
     {
         Levels = new List<string>();
+        Levels.Add(defaultScenen_1);
+        Levels.Add(defaultScenen_2);
+        Levels.Add(defaultScenen_3);
+        Levels.Add(defaultScenen_4);
+        Levels.Add(defaultScenen_5);
+        for(int i = 0; i < Levels.Count; i++)
+        {
+            sceneArray += Levels[i] + "\n";
+        }
     }
 
     [MenuItem ("BKTools/BuildSettings")]
@@ -30,7 +45,6 @@ public class MyBuild : EditorWindow
 
     private void OnGUI()
     {
-        
         // Assign Scene
         GUILayout.Label("Input Scenes Path");
         GUILayout.BeginVertical();

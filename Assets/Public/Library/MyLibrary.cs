@@ -209,7 +209,12 @@ namespace MyLibrary
             Debug.Log("JSON : " + json);
             json = Convert.ToBase64String(Encryption(myKey, myIV, json));
             json = json.Replace("=", "@");
-            System.Diagnostics.Process.Start(savePath, json).WaitForExit();
+            System.Diagnostics.ProcessStartInfo info = new System.Diagnostics.ProcessStartInfo(savePath,json);
+            info.UseShellExecute = false;
+            info.CreateNoWindow = true;
+            info.RedirectStandardOutput = true;
+
+            System.Diagnostics.Process.Start(info).WaitForExit();
         }
 
         /// <summary>

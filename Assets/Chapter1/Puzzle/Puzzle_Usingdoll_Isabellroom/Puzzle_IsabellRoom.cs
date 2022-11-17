@@ -190,7 +190,10 @@ public class Puzzle_IsabellRoom : MonoBehaviour
     private void InsertItemInventory()
     {
         if (puzzleFinish == true)
+        {
+            GameManager.Instance.ClearPuzzle("Puzzle_IsabellRoom", Hint1, 7f);
             return;
+        }
         StartCoroutine(FinishPuzzle());
     }
 }

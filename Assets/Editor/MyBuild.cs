@@ -87,16 +87,12 @@ public class MyBuild : EditorWindow
         string path = EditorUtility.SaveFolderPanel("Choose Location of Built Game", "", "");
         // Get filename.
         string[] levels = Levels.ToArray();
-        //{"Assets/Chapter1/IntroScene.unity",
-        //    "Assets/Chapter1/StartScene.unity" ,
-        //    "Assets/Chapter1/LodingScene.unity" , 
-        //    "Assets/Chapter1/Chapter1.unity" };
 
         // Batch File Path
         string defaultPath = System.IO.Directory.GetCurrentDirectory();
         string makeFilePath = defaultPath + "/MakeFile.bat";
         string readFilePath = defaultPath + "/ReadFile.bat";
-
+        string captureFolderPath = defaultPath + "/Capture";
 
         // Build player.
         BuildPipeline.BuildPlayer(levels, path + "/Merror.exe", BuildTarget.StandaloneWindows, option);
@@ -104,6 +100,7 @@ public class MyBuild : EditorWindow
         FileInfo BulidFileInfo = new FileInfo(path + "/Merror.exe");
         FileInfo MakeFileInfo = new FileInfo(path + "/MakeFile.bat");
         FileInfo ReadFileInfo = new FileInfo(path + "/ReadFile.bat");
+        FileInfo CaptureInfo = new FileInfo(path + "/Capture");
         // Copy a file from the project folder to the build folder, alongside the built game.]
         if (BulidFileInfo.Exists)
         {
@@ -111,6 +108,8 @@ public class MyBuild : EditorWindow
                 FileUtil.CopyFileOrDirectory(makeFilePath, path + "/MakeFile.bat");
             if(ReadFileInfo.Exists == false)
                 FileUtil.CopyFileOrDirectory(readFilePath, path + "/ReadFile.bat");
+            if (CaptureInfo.Exists == false)
+                FileUtil.CopyFileOrDirectory(captureFolderPath, path + "/Capture");
         }
 
         return path;

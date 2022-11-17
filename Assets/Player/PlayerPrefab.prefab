@@ -3234,7 +3234,7 @@ MonoBehaviour:
   GetLighter: {fileID: 0}
   LighterMesh: {fileID: 8698502781684658081}
   VisualLighter: {fileID: 2126356205176451958}
-  CanHammer: 1
+  CanHammer: 0
   Hammer: {fileID: 8105337757201571676}
   VisualHammer: {fileID: 6124453207224359215}
   Cheat: 1

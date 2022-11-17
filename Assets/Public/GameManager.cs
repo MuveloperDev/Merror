@@ -57,6 +57,7 @@ public class GameManager : Singleton<GameManager>
         FindPlayerCamera(); // Find camera
         InitInventory(); // Init inventory
         _Puzzle.InitPuzzle(chapterNum); // Init puzzles
+        _UIManager.InitAcquisitionNotification();
         this.chapterNum = chapterNum;
        
         
@@ -234,8 +235,12 @@ public class GameManager : Singleton<GameManager>
             Data = (SaveData)loadData;
             isFirstPlay = false;
             Debug.Log("Load Complete");
-            CameraState cameraState = GameObject.Find("PostProcess").GetComponent<CameraState>();
-            if (cameraState != null) cameraState.TurnOnState(CameraState.CamState.FADEIN);
+            if (SceneManager.GetActiveScene().name == "Chapter"+chapterNum.ToString())
+            {
+                CameraState cameraState = GameObject.Find("PostProcess").GetComponent<CameraState>();
+                if (cameraState != null) cameraState.TurnOnState(CameraState.CamState.FADEIN);
+            }
+
         }
         else
         {

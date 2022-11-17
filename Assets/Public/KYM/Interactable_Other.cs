@@ -50,7 +50,7 @@ public partial class Interactable : MonoBehaviour
                 }
             case ObjectType.Mirror:
                 {
-                    if (GameManager.Instance.GetPlayer().CanHammer == false) return;
+                    if (GameManager.Instance.GetPlayer().IsHammer() == false) return;
                     Do_Break_Mirror();
                     break;
                 }
@@ -74,9 +74,14 @@ public partial class Interactable : MonoBehaviour
                     Do_Key();
                     break;
                 }
-            case ObjectType.lighter:
+            case ObjectType.Lighter:
                 {
                     GameManager.Instance.GetPlayer().CanLight = true;
+                    break;
+                }
+            case ObjectType.Hammer:
+                {
+                    GameManager.Instance.GetPlayer().CanHammer = true;
                     break;
                 }
 

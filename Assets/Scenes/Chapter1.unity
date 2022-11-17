@@ -73100,6 +73100,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4126375854037848394, guid: 41e1513d90b39054b8ccf8042f568b95, type: 3}
+      propertyPath: IsLocked
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4126375854037848396, guid: 41e1513d90b39054b8ccf8042f568b95, type: 3}
       propertyPath: outlineTargets.Array.data[0].IsVisible
       value: 0

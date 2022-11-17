@@ -15378,7 +15378,11 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
   m_Name: pb_Mesh-298338
+=======
+  m_Name: pb_Mesh-1828420
+>>>>>>> Stashed changes
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -15874,7 +15878,11 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
   m_Name: pb_Mesh-298354
+=======
+  m_Name: pb_Mesh-1828436
+>>>>>>> Stashed changes
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -17404,7 +17412,11 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
   m_Name: pb_Mesh-298266
+=======
+  m_Name: pb_Mesh-1828348
+>>>>>>> Stashed changes
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -19800,7 +19812,11 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
   m_Name: pb_Mesh-298306
+=======
+  m_Name: pb_Mesh-1828388
+>>>>>>> Stashed changes
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -28374,7 +28390,11 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
   m_Name: pb_Mesh-298290
+=======
+  m_Name: pb_Mesh-1828372
+>>>>>>> Stashed changes
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -33471,7 +33491,11 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
   m_Name: pb_Mesh-298322
+=======
+  m_Name: pb_Mesh-1828404
+>>>>>>> Stashed changes
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -78379,15 +78403,79 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 983979600824171792, guid: 820f519f5273ea541b8b183f242d8865, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.131
+      value: 5.595
       objectReference: {fileID: 0}
     - target: {fileID: 983979600824171792, guid: 820f519f5273ea541b8b183f242d8865, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.369
+      value: 8.925419
       objectReference: {fileID: 0}
     - target: {fileID: 983979600824171792, guid: 820f519f5273ea541b8b183f242d8865, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.43
+      value: -3.7260091
+      objectReference: {fileID: 0}
+    - target: {fileID: 983979600824171792, guid: 820f519f5273ea541b8b183f242d8865, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.4056203
+      objectReference: {fileID: 0}
+    - target: {fileID: 983979600824171792, guid: 820f519f5273ea541b8b183f242d8865, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.4056203
+      objectReference: {fileID: 0}
+    - target: {fileID: 983979600824171792, guid: 820f519f5273ea541b8b183f242d8865, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.5791996
+      objectReference: {fileID: 0}
+    - target: {fileID: 983979600824171792, guid: 820f519f5273ea541b8b183f242d8865, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.5791996
+      objectReference: {fileID: 0}
+    - target: {fileID: 983979600824171792, guid: 820f519f5273ea541b8b183f242d8865, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 983979600824171792, guid: 820f519f5273ea541b8b183f242d8865, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -109.992
+      objectReference: {fileID: 0}
+    - target: {fileID: 1690236677869725934, guid: 820f519f5273ea541b8b183f242d8865, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 19.766
+      objectReference: {fileID: 0}
+    - target: {fileID: 1690236677869725934, guid: 820f519f5273ea541b8b183f242d8865, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.6932632
+      objectReference: {fileID: 0}
+    - target: {fileID: 1690236677869725934, guid: 820f519f5273ea541b8b183f242d8865, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 12.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 1690236677869725934, guid: 820f519f5273ea541b8b183f242d8865, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.68360835
+      objectReference: {fileID: 0}
+    - target: {fileID: 1690236677869725934, guid: 820f519f5273ea541b8b183f242d8865, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.72984904
+      objectReference: {fileID: 0}
+    - target: {fileID: 1690236677869725934, guid: 820f519f5273ea541b8b183f242d8865, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1690236677869725934, guid: 820f519f5273ea541b8b183f242d8865, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1690236677869725934, guid: 820f519f5273ea541b8b183f242d8865, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -93.747
+      objectReference: {fileID: 0}
+    - target: {fileID: 1690236677869725934, guid: 820f519f5273ea541b8b183f242d8865, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1690236677869725934, guid: 820f519f5273ea541b8b183f242d8865, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2433977030604382064, guid: 820f519f5273ea541b8b183f242d8865, type: 3}
       propertyPath: outlineTargets.Array.data[0].IsVisible
@@ -83978,7 +84066,24 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< Updated upstream
     m_RemovedComponents: []
+=======
+    - target: {fileID: 8305443267789634838, guid: bb1e68c4f4e887147ae9c8aa1b3587a3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5536151494829641252}
+    - target: {fileID: 8305443267789634838, guid: bb1e68c4f4e887147ae9c8aa1b3587a3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ClickCloseButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 8460667688376091645, guid: bb1e68c4f4e887147ae9c8aa1b3587a3, type: 3}
+      propertyPath: freemasonCipher
+      value: 
+      objectReference: {fileID: 5536151494829641252}
+    m_RemovedComponents:
+    - {fileID: 8305443266863063087, guid: bb1e68c4f4e887147ae9c8aa1b3587a3, type: 3}
+>>>>>>> Stashed changes
   m_SourcePrefab: {fileID: 100100000, guid: bb1e68c4f4e887147ae9c8aa1b3587a3, type: 3}
 --- !u!23 &5541079223411172054
 MeshRenderer:

@@ -116,10 +116,14 @@ public class CameraState : MonoBehaviour
 
         Debug.Log("TurnOffState");
         StopCoroutine(prevState.ToString() + "_STATE");
+        Debug.Log("DeatahStop");
         prevState = CamState.NONE;
+        Debug.Log("None");
         Init();
+        Debug.Log("Init");
 
         isProcess = false;
+        Debug.Log("Init");
     }
 
     void CallBackEndFadeOut()
@@ -181,7 +185,7 @@ public class CameraState : MonoBehaviour
         GameManager.Instance.GetVideoPlayer().CallPlayVideo(
             GameManager.Instance.GetVideoPlayer().getVideoClips.getChapter1.DeathVideo, () => {
 
-                TurnOffState();
+                //TurnOffState();
                 // For Test
                 GameManager.Instance.Load();
                 SceneManager.LoadSceneAsync("LodingScene");

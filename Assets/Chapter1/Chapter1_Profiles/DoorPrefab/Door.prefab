@@ -62,7 +62,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsLocked: 0
-  myType: 11
+  myType: 9
   Moveable: 0
   Movement_Axis: 0
   Target_Movement: 5

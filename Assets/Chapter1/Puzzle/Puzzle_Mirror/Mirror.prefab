@@ -1137,7 +1137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsLocked: 0
-  myType: 8
+  myType: 6
   Moveable: 0
   Movement_Axis: 0
   Target_Movement: 5
@@ -1158,7 +1158,7 @@ MonoBehaviour:
   AutoReset: 0
   ResetTimer: 0
   Reset_Speed: 50
-  Audio_Playable: 0
+  Audio_Playable: 1
   _MyClip: {fileID: 0}
   Clip_Name: 
 --- !u!114 &992556473

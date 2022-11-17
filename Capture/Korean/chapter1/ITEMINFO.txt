@@ -7,4 +7,5 @@ Hammer|거울을 깰 수 있을 거 같다.
 1F_CarpentryRoomKey|1층 목공방 열쇠이다.
 1F_StorageKey|1층 창고 방 열쇠이다.
 1F_TwoRoomKey|1층 미투 방 열쇠이다.
-2F_ParentRoomKey|2층 부모님 방 열쇠이다/
+2F_ParentRoomKey|2층 부모님 방 열쇠이다.
+Doll_of_Isabel|이사벨이 아끼는 이상한 인형이다.

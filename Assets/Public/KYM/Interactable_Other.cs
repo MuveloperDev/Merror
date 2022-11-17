@@ -50,7 +50,7 @@ public partial class Interactable : MonoBehaviour
                 }
             case ObjectType.Mirror:
                 {
-                    if (GameManager.Instance.GetPlayer().CanHammer == false) return;
+                    if (GameManager.Instance.GetPlayer().IsHammer() == false) return;
                     Do_Break_Mirror();
                     break;
                 }
@@ -74,9 +74,14 @@ public partial class Interactable : MonoBehaviour
                     Do_Key();
                     break;
                 }
-            case ObjectType.lighter:
+            case ObjectType.Lighter:
                 {
                     GameManager.Instance.GetPlayer().CanLight = true;
+                    break;
+                }
+            case ObjectType.Hammer:
+                {
+                    GameManager.Instance.GetPlayer().CanHammer = true;
                     break;
                 }
 
@@ -213,7 +218,6 @@ public partial class Interactable : MonoBehaviour
         _MySource.Stop();
         if (IsUsed) _MyClip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Interactable, "Door_Close");
         else _MyClip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Interactable, "Door_Open");
-
         _MySource.clip = _MyClip;
         _MySource.Play();
     }

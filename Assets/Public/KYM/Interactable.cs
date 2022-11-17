@@ -20,9 +20,7 @@ public partial class Interactable : MonoBehaviour
     {
         None,
         Key,
-        Lock,
         Toilet_Flush,
-        Sink,
         Switch,
         PuzzleGuessWho,
         PuzzleIsabellRoom,
@@ -31,7 +29,8 @@ public partial class Interactable : MonoBehaviour
         PuzzleFreemasonCipher,
         Door,
         JukeBox,
-        lighter
+        Lighter,
+        Hammer,
     }
 
     public bool IsLocked = false;
@@ -84,7 +83,9 @@ public partial class Interactable : MonoBehaviour
             if(myType == ObjectType.Door)
             {
                 //Play Clip
-
+                _MyClip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Interactable, "Door_Lock");
+                _MySource.clip = _MyClip;
+                _MySource.Play();
             }
             return;
         } 

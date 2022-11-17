@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Video;
 using static CameraState;
@@ -182,7 +183,8 @@ public class CameraState : MonoBehaviour
 
                 TurnOffState();
                 // For Test
-                TurnOnState(CamState.FADEIN);
+                GameManager.Instance.Load();
+                SceneManager.LoadSceneAsync("LodingScene");
             }, 2f);
     }
     

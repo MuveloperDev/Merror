@@ -76653,7 +76653,7 @@ MonoBehaviour:
   drawingMode: 1
   outlineLayer: 0
   outlineTargets:
-  - IsVisible: 0
+  - IsVisible: 1
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
@@ -76717,7 +76717,7 @@ MonoBehaviour:
     cutoutTextureName: 
     DilateRenderingMode: 0
     cutoutTextureIndex: 0
-  - IsVisible: 0
+  - IsVisible: 1
     CutoutMask: 8
     edgeDilateAmount: 5
     frontEdgeDilateAmount: 5
@@ -83945,6 +83945,10 @@ PrefabInstance:
     - target: {fileID: 2710977578808438298, guid: bb1e68c4f4e887147ae9c8aa1b3587a3, type: 3}
       propertyPath: outlineTargets.Array.data[0].IsVisible
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2710977578808438303, guid: bb1e68c4f4e887147ae9c8aa1b3587a3, type: 3}
+      propertyPath: myType
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8305443266642623803, guid: bb1e68c4f4e887147ae9c8aa1b3587a3, type: 3}
       propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_Target

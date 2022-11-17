@@ -19,7 +19,7 @@ public class PuzzleCanvasManagement : MonoBehaviour
 
         if (input != null)
         {
-            for (int i = 0; i < input.Length - 1; i++)
+            for (int i = 0; i < 11; i++)
             {
                 int toInt = (int)input[i];
                 if (toInt > 96)

@@ -10,6 +10,8 @@ public class HospitalRoomCheckTrigger : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
+        { 
             if (player.CanLight) hospitalRoom.IsLocked = false;
+        }
     }
 }

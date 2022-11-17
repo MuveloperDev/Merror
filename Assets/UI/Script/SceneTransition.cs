@@ -28,20 +28,6 @@ public class SceneTransition : MonoBehaviour
         //loadAO = SceneManager.LoadSceneAsync("Chapter1_SSH", LoadSceneMode.Additive);
         Logo.fillAmount = 0;
     }
-
-
-    private void Update()
-    {
-        if (loadAO == null)
-            return;
-
-        if (loadAO.isDone == true)
-        {
-            SceneManager.UnloadSceneAsync("LodingScene");
-            loadAO.allowSceneActivation = true;
-        }
-    }
-
     IEnumerator FillLoadingBar(int ChapterNum)
     {
         string chapter = null;
@@ -64,19 +50,10 @@ public class SceneTransition : MonoBehaviour
                 break;
             default:
                 Debug.LogError("Chapter Number Error");
-                break;
+                yield break;
         }
 
-        if (chapter == null)
-        {
-            Debug.LogError("Chapter string is null");
-            yield break;
-        }
-
-        loadAO = SceneManager.LoadSceneAsync(chapter, LoadSceneMode.Additive);
-
-
-        yield return new WaitForFixedUpdate();
+        loadAO = SceneManager.LoadSceneAsync(chapter);
 
         while (!loadAO.isDone)
         {
@@ -99,8 +76,9 @@ public class SceneTransition : MonoBehaviour
             }
             else
             {
-                Debug.Log("�ε� �Ϸ�");
+                loadAO.allowSceneActivation = true;
             }
         }
+        yield return new WaitForFixedUpdate();
     }
 }

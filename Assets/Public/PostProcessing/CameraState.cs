@@ -116,10 +116,14 @@ public class CameraState : MonoBehaviour
 
         Debug.Log("TurnOffState");
         StopCoroutine(prevState.ToString() + "_STATE");
+        Debug.Log("DeatahStop");
         prevState = CamState.NONE;
+        Debug.Log("None");
         Init();
+        Debug.Log("Init");
 
         isProcess = false;
+        Debug.Log("Init");
     }
 
     void CallBackEndFadeOut()

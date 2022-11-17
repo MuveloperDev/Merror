@@ -49,7 +49,8 @@ public class CaptureManager : MonoBehaviour
 
     public void Init()
     {
-        offsetPath = Directory.GetCurrentDirectory() + "\\Assets\\Resources\\Capture";
+
+        offsetPath = Directory.GetCurrentDirectory() + "/Capture";
         ReadCaption(language);
     }
     private void ReadCaption(LanguageCategory language)

@@ -184,6 +184,7 @@ public class CameraState : MonoBehaviour
                 TurnOffState();
                 // For Test
                 GameManager.Instance.Load();
+                SceneManager.LoadSceneAsync("LodingScene");
             }, 2f);
     }
     

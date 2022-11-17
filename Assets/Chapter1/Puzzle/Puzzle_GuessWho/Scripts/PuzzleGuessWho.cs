@@ -14,6 +14,8 @@ public class PuzzleGuessWho : MonoBehaviour
     [SerializeField] private MeshRenderer draw = null;
     [SerializeField] private Material changingDraw= null;
     [SerializeField] private bool isClear = false;
+    [SerializeField] private Interactable doll = null;
+    [SerializeField] private BoxCollider endTrigger = null;
 
     private void OnEnable() => Init();
 
@@ -44,8 +46,9 @@ public class PuzzleGuessWho : MonoBehaviour
         draw.material = changingDraw;
         InsertItemInventory();
         GameManager.Instance.GetIdentityManager().OnEnableIdentity(new Vector3(41f, 8.5f, 14f), Quaternion.Euler(0, 53f, 0),BaseStateMachine.State.SITTINGANDFOCUS);
+        doll.gameObject.SetActive(true);
+        endTrigger.gameObject.SetActive(true);
 
-        
         Invoke("AudioourceDisable", 2f);
     }
 

@@ -20,9 +20,7 @@ public partial class Interactable : MonoBehaviour
     {
         None,
         Key,
-        Lock,
         Toilet_Flush,
-        Sink,
         Switch,
         PuzzleGuessWho,
         PuzzleIsabellRoom,
@@ -31,7 +29,8 @@ public partial class Interactable : MonoBehaviour
         PuzzleFreemasonCipher,
         Door,
         JukeBox,
-        lighter
+        Lighter,
+        Hammer,
     }
 
     public bool IsLocked = false;

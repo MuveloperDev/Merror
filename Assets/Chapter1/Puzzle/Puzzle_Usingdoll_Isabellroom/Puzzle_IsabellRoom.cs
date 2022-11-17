@@ -50,7 +50,6 @@ public class Puzzle_IsabellRoom : MonoBehaviour
             Destroy(gameObject.GetComponent<Puzzle_IsabellRoom>());
             frame.SetActive(false);
         }
-
         if (gameObject.name == "1_RABBIT" || gameObject.name == "Frame_Finish") interactableok = true;
     }
 

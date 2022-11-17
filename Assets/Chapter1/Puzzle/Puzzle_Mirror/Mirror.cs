@@ -33,7 +33,9 @@ public class Mirror : MonoBehaviour
             pieces.transform.GetChild(i).gameObject.GetComponent<Rigidbody>().isKinematic = false;
         }
         mirrorManager.RemoveMirror(this);
-        this.gameObject.SetActive(false);
+        gameObject.GetComponent<MeshRenderer>().enabled = false;
+        gameObject.GetComponent<BoxCollider>().enabled = false;
+        //this.gameObject.SetActive(false);
         Invoke("PhysicsOff", 2f);
     }
     /// <summary>
@@ -45,6 +47,7 @@ public class Mirror : MonoBehaviour
         {
             pieces.transform.GetChild(i).gameObject.GetComponent<Rigidbody>().isKinematic = true;
         }
+        this.gameObject.SetActive(false);
     }
     private void OnTriggerEnter(Collider other)
     {

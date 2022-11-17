@@ -890,7 +890,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 10
+  m_VersionIndex: 13
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1158,9 +1158,9 @@ MonoBehaviour:
   AutoReset: 0
   ResetTimer: 0
   Reset_Speed: 50
-  Audio_Playable: 0
+  Audio_Playable: 1
   _MyClip: {fileID: 0}
-  Clip_Name: 
+  Clip_Name: MirrorCrash
 --- !u!114 &992556473
 MonoBehaviour:
   m_ObjectHideFlags: 0

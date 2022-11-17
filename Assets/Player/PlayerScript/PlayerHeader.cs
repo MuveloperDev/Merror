@@ -53,8 +53,9 @@ public partial class Player : MonoBehaviour
     [SerializeField] private GameObject GetLighter = null;
     [SerializeField] private GameObject LighterMesh = null;
     [SerializeField] private GameObject VisualLighter = null;
-    public bool CanHammer = true;
+    public bool CanHammer = false;
     [SerializeField] private GameObject Hammer = null;
+    public bool IsHammer() { return Hammer.activeSelf; }
     [SerializeField] private GameObject VisualHammer = null;
     public GameObject GetLight() => Lighter;
 

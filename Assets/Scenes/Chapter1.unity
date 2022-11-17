@@ -48524,7 +48524,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4126375854037848394, guid: 41e1513d90b39054b8ccf8042f568b95, type: 3}
       propertyPath: IsLocked
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4456438982523820485, guid: 41e1513d90b39054b8ccf8042f568b95, type: 3}
       propertyPath: m_RootOrder
@@ -48576,7 +48576,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7140354358845414370, guid: 41e1513d90b39054b8ccf8042f568b95, type: 3}
       propertyPath: m_Name
-      value: Door (3)
+      value: 1FToiletDoor__
       objectReference: {fileID: 0}
     - target: {fileID: 7140354358845414370, guid: 41e1513d90b39054b8ccf8042f568b95, type: 3}
       propertyPath: m_TagString

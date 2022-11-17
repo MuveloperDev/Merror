@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Security.Principal;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -75,6 +76,7 @@ public class BaseStateMachine : MonoBehaviour
     // Deallocate state.
     public virtual void TurnOffState()
     {
+
         if (navMeshAgent != null && navMeshAgent.enabled)
         { 
             navMeshAgent.ResetPath();

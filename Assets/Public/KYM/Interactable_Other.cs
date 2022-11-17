@@ -188,6 +188,11 @@ public partial class Interactable : MonoBehaviour
 
     protected virtual void Do_JukeBox()
     {
+        if (GameManager.Instance.GetIdentityManager().IsEnable == true)
+        {
+            Debug.LogError("Already Isabel is Enable by MH");
+            return;
+        }
         if (TryGetComponent<JukeBox>(out JukeBox jukeBox))
         {
             jukeBox.SendMessage("Interactable", SendMessageOptions.DontRequireReceiver);

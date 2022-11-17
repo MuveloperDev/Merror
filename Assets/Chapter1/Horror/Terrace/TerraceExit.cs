@@ -40,6 +40,7 @@ public class TerraceExit : MonoBehaviour
                 if (exitCallback != null) exitCallback();
                 // Disable identity
                 GameManager.Instance.GetIdentityManager().GetIdentity().gameObject.SetActive(false);
+                GameManager.Instance.GetIdentityManager().IsEnable = false;
                 myCo = null;
                 terraceDoor.IsLocked = false;
                 yield break;

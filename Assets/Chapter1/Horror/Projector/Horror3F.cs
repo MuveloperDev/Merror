@@ -15,10 +15,16 @@ public class Horror3F : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Player"))
+        if (GameManager.Instance.GetIdentityManager().IsEnable)
+        {
+            Debug.LogError("Already Isabel is Enable by MH");
+            return;
+        }
+        if (other.gameObject.CompareTag("Player"))
         {
             horrorObj.SetActive(true);
             real.SetActive(false);
+            GameManager.Instance.GetIdentityManager().IsEnable = true;
             StartCoroutine(StartHorror());
             Destroy(this.GetComponent<Collider>());
             terrace.gameObject.SetActive(true);

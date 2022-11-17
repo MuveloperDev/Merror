@@ -9,11 +9,11 @@ public class MyBuild : EditorWindow
     private const string defaultPath = "Assets/Scenes/";
     private const string publicPath = "public/";
     private const string unityPath = ".unity";
-    private static string defaultScenen_1 = defaultPath + publicPath + "DaytimeScene";
-    private static string defaultScenen_2 = defaultPath + publicPath + "IntroScene";
-    private static string defaultScenen_3 = defaultPath + publicPath + "LodingScene";
-    private static string defaultScenen_4 = defaultPath + publicPath + "StartScene";
-    private static string defaultScenen_5 = defaultPath + publicPath + "Chapter1";
+    private static string defaultScenen_1 = defaultPath + publicPath + "DaytimeScene.unity";
+    private static string defaultScenen_2 = defaultPath + publicPath + "IntroScene.unity";
+    private static string defaultScenen_3 = defaultPath + publicPath + "LodingScene.unity";
+    private static string defaultScenen_4 = defaultPath + publicPath + "StartScene.unity";
+    private static string defaultScenen_5 = defaultPath + publicPath + "Chapter1.unity";
 
     private bool isPublic = false;
     private static List<string> Levels;

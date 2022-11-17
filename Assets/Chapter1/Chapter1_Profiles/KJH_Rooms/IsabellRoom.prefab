@@ -790,7 +790,7 @@ MonoBehaviour:
   - {fileID: 8572084612608472822}
   - {fileID: 2257356330833476728}
   interactableok: 0
-  Hint1: {fileID: 0}
+  Hint1: {fileID: 2849733170565474736, guid: 8a9ccf4bb2572534aa0578eb5f769779, type: 3}
 --- !u!120 &2259024378666398556
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -1292,7 +1292,7 @@ MonoBehaviour:
   - {fileID: 8572084612608472822}
   - {fileID: 2257356330833476728}
   interactableok: 0
-  Hint1: {fileID: 0}
+  Hint1: {fileID: 2849733170565474736, guid: 8a9ccf4bb2572534aa0578eb5f769779, type: 3}
 --- !u!120 &2765936203546974648
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -1628,7 +1628,7 @@ MonoBehaviour:
   - {fileID: 8572084612608472822}
   - {fileID: 2257356330833476728}
   interactableok: 0
-  Hint1: {fileID: 0}
+  Hint1: {fileID: 2849733170565474736, guid: 8a9ccf4bb2572534aa0578eb5f769779, type: 3}
 --- !u!120 &2808380094990509631
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -2522,7 +2522,7 @@ MonoBehaviour:
   - {fileID: 8572084612608472822}
   - {fileID: 2257356330833476728}
   interactableok: 0
-  Hint1: {fileID: 0}
+  Hint1: {fileID: 2849733170565474736, guid: 8a9ccf4bb2572534aa0578eb5f769779, type: 3}
 --- !u!120 &4337341570706104074
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -4793,7 +4793,7 @@ MonoBehaviour:
   - {fileID: 8572084612608472822}
   - {fileID: 2257356330833476728}
   interactableok: 0
-  Hint1: {fileID: 0}
+  Hint1: {fileID: 2849733170565474736, guid: 8a9ccf4bb2572534aa0578eb5f769779, type: 3}
 --- !u!120 &4854857503788327971
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -5789,7 +5789,7 @@ MonoBehaviour:
   - {fileID: 8572084612608472822}
   - {fileID: 2257356330833476728}
   interactableok: 0
-  Hint1: {fileID: 0}
+  Hint1: {fileID: 2849733170565474736, guid: 8a9ccf4bb2572534aa0578eb5f769779, type: 3}
 --- !u!120 &5505843405394829603
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -8003,7 +8003,7 @@ MonoBehaviour:
   - {fileID: 8572084612608472822}
   - {fileID: 2257356330833476728}
   interactableok: 0
-  Hint1: {fileID: 0}
+  Hint1: {fileID: 2849733170565474736, guid: 8a9ccf4bb2572534aa0578eb5f769779, type: 3}
 --- !u!120 &8574284769593078218
 LineRenderer:
   m_ObjectHideFlags: 0

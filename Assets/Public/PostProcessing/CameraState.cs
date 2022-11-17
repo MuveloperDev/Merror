@@ -185,7 +185,7 @@ public class CameraState : MonoBehaviour
         GameManager.Instance.GetVideoPlayer().CallPlayVideo(
             GameManager.Instance.GetVideoPlayer().getVideoClips.getChapter1.DeathVideo, () => {
 
-                TurnOffState();
+                //TurnOffState();
                 // For Test
                 GameManager.Instance.Load();
                 SceneManager.LoadSceneAsync("LodingScene");

@@ -146,7 +146,6 @@ public class Puzzle_IsabellRoom : MonoBehaviour
 
     IEnumerator Do_Eff()
     {
-        CameraState cameraState = FindObjectOfType<CameraState>();
         yield return new WaitForSeconds(2f);
         Destroy(frame);
         GameManager.Instance.GetVideoPlayer().CallPlayVideo(GameManager.Instance.GetVideoPlayer().getVideoClips.getChapter1.IsabelRoomVideo,

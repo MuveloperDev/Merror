@@ -100,7 +100,6 @@ public class UIManager : MonoBehaviour
     {
         // Activate SoundManager UI
         soundManager.SetActive(true);
-        SelectLanguage();
     }
 
     // SaveButton
@@ -135,15 +134,16 @@ public class UIManager : MonoBehaviour
     public void SelectLanguage()
     {
         string inStr = transLanguage.text;
-        Debug.Log(inStr);
         switch (inStr)
         {
-            case "Korea":
-                GameManager.Instance.GetCaptureManager().Language = CaptureManager.LanguageCategory.KOREAN;
-                break;
-
             case "English":
+                Debug.Log("English");
+
                 GameManager.Instance.GetCaptureManager().Language = CaptureManager.LanguageCategory.ENGLISH;
+                break;
+            case "Korean":
+                Debug.Log("Korean");
+                GameManager.Instance.GetCaptureManager().Language = CaptureManager.LanguageCategory.KOREAN;
                 break;
         }
     }

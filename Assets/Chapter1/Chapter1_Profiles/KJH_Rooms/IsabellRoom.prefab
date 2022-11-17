@@ -726,7 +726,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsLocked: 0
-  myType: 7
+  myType: 5
   Moveable: 0
   Movement_Axis: 0
   Target_Movement: 5
@@ -1228,7 +1228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsLocked: 0
-  myType: 7
+  myType: 5
   Moveable: 0
   Movement_Axis: 0
   Target_Movement: 5
@@ -1564,7 +1564,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsLocked: 0
-  myType: 7
+  myType: 5
   Moveable: 0
   Movement_Axis: 0
   Target_Movement: 5
@@ -2458,7 +2458,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsLocked: 0
-  myType: 7
+  myType: 5
   Moveable: 0
   Movement_Axis: 0
   Target_Movement: 5
@@ -4729,7 +4729,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsLocked: 0
-  myType: 7
+  myType: 5
   Moveable: 0
   Movement_Axis: 0
   Target_Movement: 5
@@ -5389,7 +5389,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsLocked: 0
-  myType: 7
+  myType: 5
   Moveable: 0
   Movement_Axis: 0
   Target_Movement: 5
@@ -5725,7 +5725,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsLocked: 0
-  myType: 7
+  myType: 5
   Moveable: 0
   Movement_Axis: 0
   Target_Movement: 5
@@ -7939,7 +7939,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsLocked: 0
-  myType: 7
+  myType: 5
   Moveable: 0
   Movement_Axis: 0
   Target_Movement: 5

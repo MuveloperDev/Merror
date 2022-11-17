@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsLocked: 0
-  myType: 10
+  myType: 8
   Moveable: 0
   Movement_Axis: 0
   Target_Movement: 5
@@ -999,7 +999,7 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8305443266863063087}
+      - m_Target: {fileID: 8460667688376091645}
         m_TargetAssemblyTypeName: PuzzleCanvasManagement, Assembly-CSharp
         m_MethodName: OnValueChange
         m_Mode: 1
@@ -1206,7 +1206,6 @@ GameObject:
   - component: {fileID: 8305443266863063077}
   - component: {fileID: 8305443266863063076}
   - component: {fileID: 8305443266863063079}
-  - component: {fileID: 8305443266863063087}
   m_Layer: 0
   m_Name: FreemasonCipherCanvas
   m_TagString: Untagged
@@ -1299,20 +1298,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &8305443266863063087
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8305443266863063081}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4dd337d6d700994b959350e4515975a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inputStr: {fileID: 8305443266364174735}
-  freemasonCipher1: {fileID: 2710977578808438371}
 --- !u!1 &8305443266983098332
 GameObject:
   m_ObjectHideFlags: 0
@@ -1379,7 +1364,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputStr: {fileID: 8305443266364174735}
-  freemasonCipher1: {fileID: 2710977578808438371}
+  freemasonCipher: {fileID: 2710977578808438371}
 --- !u!1 &8305443267545207050
 GameObject:
   m_ObjectHideFlags: 0

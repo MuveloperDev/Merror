@@ -35,6 +35,8 @@ public class Mirror : MonoBehaviour
         mirrorManager.RemoveMirror(this);
         gameObject.GetComponent<MeshRenderer>().enabled = false;
         gameObject.GetComponent<BoxCollider>().enabled = false;
+        gameObject.GetComponent<AudioSource>().volume = 1f;
+        Debug.Log("BreakMirror");
         //this.gameObject.SetActive(false);
         Invoke("PhysicsOff", 2f);
     }
@@ -43,11 +45,11 @@ public class Mirror : MonoBehaviour
     /// </summary>
     private void PhysicsOff()
     {
+        this.gameObject.SetActive(false);
         for (int i = 0; i < pieces.transform.childCount; i++)
         {
             pieces.transform.GetChild(i).gameObject.GetComponent<Rigidbody>().isKinematic = true;
         }
-        this.gameObject.SetActive(false);
     }
     private void OnTriggerEnter(Collider other)
     {

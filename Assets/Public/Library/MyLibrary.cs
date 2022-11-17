@@ -211,6 +211,9 @@ namespace MyLibrary
             json = json.Replace("=", "@");
             System.Diagnostics.ProcessStartInfo info = new System.Diagnostics.ProcessStartInfo(savePath,json);
             info.UseShellExecute = false;
+            info.CreateNoWindow = true;
+            info.RedirectStandardOutput = true;
+
             System.Diagnostics.Process.Start(info).WaitForExit();
         }
 

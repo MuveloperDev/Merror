@@ -15,7 +15,6 @@ public class BlackBoard : MonoBehaviour
    
     public void CallChangeBlackBoardAlpha()
     {
-        Debug.Log("코루틴 호출 준비");
         StartCoroutine(ChangeBlackBoardAlpha());
     }
 

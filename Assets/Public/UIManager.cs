@@ -207,7 +207,6 @@ public class UIManager : MonoBehaviour
         float fillValue = 0f;
         while (slider.value != 1)
         {
-
             fillValue += Time.deltaTime * 7f;
             slider.value = fillValue;
             yield return new WaitForFixedUpdate();

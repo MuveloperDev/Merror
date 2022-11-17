@@ -13,7 +13,7 @@ public class MyBuild : EditorWindow
     private static string defaultScenen_2 = defaultPath + publicPath + "IntroScene.unity";
     private static string defaultScenen_3 = defaultPath + publicPath + "LodingScene.unity";
     private static string defaultScenen_4 = defaultPath + publicPath + "StartScene.unity";
-    private static string defaultScenen_5 = defaultPath + publicPath + "Chapter1.unity";
+    private static string defaultScenen_5 = defaultPath + "Chapter1.unity";
 
     private bool isPublic = false;
     private static List<string> Levels;

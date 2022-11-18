@@ -13,10 +13,13 @@ public partial class Player : MonoBehaviour
         InitPlayer();
         GameInput.Clamped_Delta_Mouse_Y = 0f;
 
-        GameManager.Instance.GetVideoPlayer().CallPlayVideo(
+        if(GameManager.Instance.isFirstPlay == true)
+        {
+            GameManager.Instance.GetVideoPlayer().CallPlayVideo(
                GameManager.Instance.GetVideoPlayer().getVideoClips.getChapter1.OP,
                () =>
                { Debug.Log("op"); });
+        }
     }
     private void FixedUpdate()
     {

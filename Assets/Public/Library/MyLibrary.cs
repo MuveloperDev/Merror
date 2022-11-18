@@ -250,7 +250,6 @@ namespace MyLibrary
 
             encodingString = Descryption(myKey, myIV, Convert.FromBase64String(encodingString));
             data = JsonUtility.FromJson<SaveData>(encodingString.Replace("$", ","));
-            Debug.Log(encodingString);
 
             SaveData ia = (SaveData)data;
 

@@ -16,6 +16,7 @@ public class EndingTrigger : MonoBehaviour
             GameManager.Instance.GetVideoPlayer().CallPlayVideo(
                 GameManager.Instance.GetVideoPlayer().getVideoClips.getChapter1.EndVideo,
                 () => {
+                    Debug.Log("ENDACTION");
                     SceneManager.LoadScene("DemoEndScene");
                 }
                 );

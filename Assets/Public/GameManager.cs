@@ -26,6 +26,7 @@ public class GameManager : Singleton<GameManager>
     private void Update()
     {
         GameInput.UpdateKey();
+        GetVideoPlayer().SkipVideo();
     }
     #region Check current scene and initialize something work
     private void OnSceneChanged(Scene previous, Scene current) // Called when scene changed

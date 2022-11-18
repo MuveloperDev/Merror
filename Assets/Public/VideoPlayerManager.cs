@@ -22,11 +22,13 @@ public class VideoPlayerManager : MonoBehaviour
             [SerializeField] private VideoClip deathVideo = null;
             [SerializeField] private VideoClip endVideo = null;
             [SerializeField] private VideoClip isabelRoomVideo = null;
+            [SerializeField] private VideoClip demoEndVideo = null;
 
             public VideoClip OP { get { return op; } }
             public VideoClip DeathVideo { get { return deathVideo; } }
             public VideoClip EndVideo { get { return endVideo; } }
             public VideoClip IsabelRoomVideo { get { return isabelRoomVideo; } }
+            public VideoClip DemoEndVideo { get { return demoEndVideo; } }
         }
     }
 
@@ -55,8 +57,8 @@ public class VideoPlayerManager : MonoBehaviour
 
         videoPlayer.loopPointReached += (VideoPlayer vp) => {
             TimeControl.Play();
-            func();
             videoPlayer.Stop();
+            func();
         };
         
         videoPlayer.Prepare();

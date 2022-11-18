@@ -12,6 +12,11 @@ public partial class Player : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         InitPlayer();
         GameInput.Clamped_Delta_Mouse_Y = 0f;
+
+        GameManager.Instance.GetVideoPlayer().CallPlayVideo(
+               GameManager.Instance.GetVideoPlayer().getVideoClips.getChapter1.OP,
+               () =>
+               { Debug.Log("op"); });
     }
     private void FixedUpdate()
     {

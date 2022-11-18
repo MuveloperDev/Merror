@@ -119,6 +119,7 @@ public class AudioManager : MonoBehaviour
             case Type.Environment:
                 curdic = EnviromentClips;
                 break;
+
             case Type.Puzzle:
                 curdic = PuzzleClips;
                 break;

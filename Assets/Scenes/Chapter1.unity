@@ -26122,6 +26122,7 @@ GameObject:
   - component: {fileID: 1018264869}
   - component: {fileID: 1017201125}
   - component: {fileID: 6647571564605539516}
+  - component: {fileID: 6647571564605539517}
   m_Layer: 0
   m_Name: door frame
   m_TagString: Untagged
@@ -26138,7 +26139,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1015385523}
-  - component: {fileID: 7848277989401248106}
+  - component: {fileID: 1015385526}
+  - component: {fileID: 1015385525}
+  - component: {fileID: 1015385524}
   m_Layer: 0
   m_Name: Door 1
   m_TagString: Untagged
@@ -26158,6 +26161,7 @@ GameObject:
   - component: {fileID: 1018292457}
   - component: {fileID: 1017533761}
   - component: {fileID: 6647571564912100066}
+  - component: {fileID: 6647571564912100067}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -26212,6 +26216,145 @@ Transform:
   m_Father: {fileID: 1559786115}
   m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 47.535, z: 0}
+--- !u!114 &1015385524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1015033471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fe91dc294731a9428c0941ea7579110, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  complexMaskingMode: 0
+  drawingMode: 1
+  outlineLayer: 0
+  outlineTargets:
+  - IsVisible: 1
+    CutoutMask: 8
+    edgeDilateAmount: 5
+    frontEdgeDilateAmount: 5
+    backEdgeDilateAmount: 5
+    renderer: {fileID: 1017533761}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    DilateRenderingMode: 0
+    cutoutTextureIndex: 0
+  - IsVisible: 1
+    CutoutMask: 8
+    edgeDilateAmount: 5
+    frontEdgeDilateAmount: 5
+    backEdgeDilateAmount: 5
+    renderer: {fileID: 1017533761}
+    SubmeshIndex: 1
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    DilateRenderingMode: 0
+    cutoutTextureIndex: 0
+  - IsVisible: 1
+    CutoutMask: 8
+    edgeDilateAmount: 5
+    frontEdgeDilateAmount: 5
+    backEdgeDilateAmount: 5
+    renderer: {fileID: 1017201125}
+    SubmeshIndex: 0
+    BoundsMode: 0
+    Bounds:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    DilateRenderingMode: 0
+    cutoutTextureIndex: 0
+  renderStyle: 1
+  outlineParameters:
+    enabled: 1
+    color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    dilateShift: 1
+    blurShift: 1
+    fillPass:
+      shader: {fileID: 0}
+      serializedProperties: []
+  backParameters:
+    enabled: 1
+    color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    dilateShift: 1
+    blurShift: 1
+    fillPass:
+      shader: {fileID: 0}
+      serializedProperties: []
+  frontParameters:
+    enabled: 1
+    color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    dilateShift: 1
+    blurShift: 1
+    fillPass:
+      shader: {fileID: 0}
+      serializedProperties: []
+--- !u!65 &1015385525
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1015033471}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1015385526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1015033471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 475529cd2c0c0b84fbeb8de8c74ff46c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsLocked: 1
+  myType: 0
+  Moveable: 0
+  Movement_Axis: 0
+  Target_Movement: 5
+  Movement_Speed: 1
+  InvertMovement: 0
+  Gettable: 0
+  Inventory_Scale: 1
+  Special: 0
+  isPuzzle: 0
+  _Light: {fileID: 0}
+  Outlinable: 1
+  Rotatable: 1
+  Rotation_Axis: 1
+  Target_Angle: 90
+  Rotate_Speed: 70
+  Invert: 0
+  IsUsed: 0
+  AutoReset: 0
+  ResetTimer: 0
+  Reset_Speed: 50
+  Audio_Playable: 0
+  _MyClip: {fileID: 0}
+  Clip_Name: 
 --- !u!23 &1017201125
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -90684,6 +90827,18 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 8963d9c81d173ab4289c3537588401bf, type: 3}
+--- !u!114 &6647571564605539517
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1015025345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!64 &6647571564912100066
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -90698,6 +90853,18 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300002, guid: 8963d9c81d173ab4289c3537588401bf, type: 3}
+--- !u!114 &6647571564912100067
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1015232365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!33 &6669573191915450337
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -92979,23 +93146,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7813333398272503806}
   m_Mesh: {fileID: -4712354522835897271, guid: be36a53c5a2adb3439701fa74e6a8b97, type: 3}
---- !u!111 &7848277989401248106
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1015033471}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 1827226128182048838, guid: 8963d9c81d173ab4289c3537588401bf, type: 3}
-  m_Animations:
-  - {fileID: 1827226128182048838, guid: 8963d9c81d173ab4289c3537588401bf, type: 3}
-  - {fileID: -5405653242291790180, guid: 8963d9c81d173ab4289c3537588401bf, type: 3}
-  m_WrapMode: 0
-  m_PlayAutomatically: 0
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!23 &7850249089115381207
 MeshRenderer:
   m_ObjectHideFlags: 0

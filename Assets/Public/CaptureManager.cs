@@ -9,6 +9,17 @@ using TMPro;
 
 public class CaptureManager : MonoBehaviour
 {
+    public class Capture
+    {
+        public string name = null;
+        public string subTitle = null;
+
+        public Capture(string name, string subtitle)
+        { 
+            this.name = name;
+            this.subTitle = subtitle;
+        }
+    }
     /// <summary>
     /// Defined language
     /// </summary>
@@ -45,7 +56,7 @@ public class CaptureManager : MonoBehaviour
     private DirectoryInfo directoryInfo = null;
 
     // Combine captions as a list and store them in the caption table.
-    private Dictionary<string, Dictionary<string, string>> captionTable = new Dictionary<string, Dictionary<string, string>>();
+    private Dictionary<string, Dictionary<string, Capture>> captionTable = new Dictionary<string, Dictionary<string, Capture>>();
 
     public void Init()
     {
@@ -77,14 +88,17 @@ public class CaptureManager : MonoBehaviour
         // // Saved CationList After Read CationTextFile From PathsList.
         for (int i = 0; i < pathsList.Count; i++)
         {
-            Dictionary<string, string> captionsList = new Dictionary<string, string>();
+            Dictionary<string, Capture> captionsList = new Dictionary<string, Capture>();
             using (FileStream fileStream = new FileStream(pathsList[i], FileMode.Open))
             {
                 StreamReader reader = new StreamReader(fileStream);
                 while (!reader.EndOfStream)
                 {
                     string[] captions = reader.ReadLine().Split('|');
-                    captionsList.Add(captions[0], captions[1]);
+                    Debug.Log(captions[0]);
+                    if (captions.Length > 2)
+                        captionsList.Add(captions[0], new Capture(captions[1], captions[2]));
+                    else captionsList.Add(captions[0], new Capture(null, captions[1]));
                 }
             }
             captionTable.Add(fileNameList[i], captionsList);
@@ -104,11 +118,12 @@ public class CaptureManager : MonoBehaviour
             itemInfoText = Parent.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
         }
         string name = objName.Replace("(Clone)", "");
-        itemNameText.text = name;
-        itemInfoText.text = captionTable[category.ToString()][name];
+        itemNameText.text = captionTable[category.ToString()][name].name;
+        itemInfoText.text = captionTable[category.ToString()][name].subTitle;
     }
 
-    public string GetCapture(Category category, int chapter) => captionTable[category.ToString()][(chapter+1).ToString()];
+    public string GetSubTitle(Category category, int chapter) => captionTable[category.ToString()][(chapter+1).ToString()].subTitle;
+    public string GetName(Category category, string objName) => captionTable[category.ToString()][objName].name;
 
 
 }

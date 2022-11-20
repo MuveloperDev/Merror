@@ -59,7 +59,6 @@ public partial class Player : MonoBehaviour
                 StandUpCoroutine = null;
             }
             isSitting = true;
-            Debug.Log("isSItting : " + isSitting);
             // Translate camera to crouched position.
             _MainCam.transform.position = Vector3.Lerp(_MainCam.transform.position, CrouchCamPos.position, Time.deltaTime * 6f);
         }
@@ -71,9 +70,7 @@ public partial class Player : MonoBehaviour
                 StandUpCoroutine = null;
             }
             isSitting = false;
-            Debug.Log("isSItting : " + isSitting);
             StandUpCoroutine = StartCoroutine(StandUp()); // Run stand up coroutine.
-            Debug.Log("Start Stand Up - Coroutine State : " + StandUpCoroutine);
         }
     }
     private IEnumerator StandUp()
@@ -85,7 +82,6 @@ public partial class Player : MonoBehaviour
             {
                 _MainCam.transform.position = OriginCamPos.position; // Fix Y position.
                 StandUpCoroutine = null; // Initialize.
-                Debug.Log("Finish Stand Up - Coroutine State : " + StandUpCoroutine);
                 yield break;
             }
             // Translate main camera from current position to plus Y axis.

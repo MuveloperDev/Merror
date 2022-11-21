@@ -39,28 +39,31 @@ public class VideoPlayerManager : MonoBehaviour
     private void Start() => Init();
     void Init() => videoPlayer = GetComponent<VideoPlayer>();
 
-    
+
 
     public void CallPlayVideo(VideoClip clip, Action func) => StartCoroutine(PlayVideo(clip, func));
     public void CallPlayVideo(VideoClip clip, Action func, float time) => StartCoroutine(WaitForPlayVideo(clip, func, time));
 
     IEnumerator WaitForPlayVideo(VideoClip clip, Action func, float time)
-    { 
+    {
         yield return new WaitForSecondsRealtime(time);
         StartCoroutine(PlayVideo(clip, func));
     }
 
+    Action videoFunc = null;
     IEnumerator PlayVideo(VideoClip clip, Action func)
     {
         if (videoPlayer.targetCamera != Camera.main) videoPlayer.targetCamera = Camera.main;
         videoPlayer.clip = clip;
 
-        videoPlayer.loopPointReached += (VideoPlayer vp) => {
+        videoPlayer.loopPointReached += (VideoPlayer vp) =>
+        {
             TimeControl.Play();
             videoPlayer.Stop();
+            
             func();
         };
-        
+        videoFunc = func;
         videoPlayer.Prepare();
         yield return new WaitUntil(() => videoPlayer.isPrepared == true);
         GameObject fadeInOutPanel = GameObject.Find("FadeInOutPanel");
@@ -71,4 +74,17 @@ public class VideoPlayerManager : MonoBehaviour
         videoPlayer.Play();
     }
 
+
+    public void SkipVideo()
+    {
+        if (!GameManager.Instance.isFirstPlay && Input.GetKeyDown(KeyCode.Escape) && videoPlayer.isPlaying)
+        {
+            Debug.Log("SkipVideo");
+            StopCoroutine("PlayVideo");
+            TimeControl.Play();
+            videoPlayer.Stop();
+            videoFunc();
+            videoFunc = null;
+        }
+    }
 }

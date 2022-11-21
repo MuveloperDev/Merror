@@ -1,11 +1,11 @@
-Lighter|어둠을 밝힐 수 있는 라이터이다.
-Diary1|이사벨의 첫번째 그림일기.
-Diary2|이사벨의 두번째 그림일기.
-Diary3|이사벨의 세번째 그림일기.
-MedicalRecord|이사벨의 병원 기록이다.
-Hammer|거울을 깰 수 있을 거 같다.
-1F_CarpentryRoomKey|1층 목공방 열쇠이다.
-1F_StorageKey|1층 창고 방 열쇠이다.
-1F_GuestRoomKey|1층 미투 방 열쇠이다.
-2F_ParentRoomKey|2층 부모님 방 열쇠이다.
-Doll_of_Isabel|이사벨이 아끼는 이상한 인형이다.
+Lighter|라이터|어둠을 밝힐 수 있는 라이터이다.
+Diary1|그림일기 1|이사벨의 첫번째 그림일기.
+Diary2|그림일기 2|이사벨의 두번째 그림일기.
+Diary3|그림일기 3|이사벨의 세번째 그림일기.
+MedicalRecord|병원 기록|이사벨의 병원 기록이다.
+Hammer|망치|거울을 깰 수 있을 거 같다.
+1F_CarpentryRoomKey|1층 목공방 열쇠|1층 목공방 열쇠이다.
+1F_StorageKey|1층 창고방 열쇠|1층 창고 방 열쇠이다.
+1F_GuestRoomKey|1층 손님방 열쇠|1층 손님 방 열쇠이다.
+2F_ParentRoomKey|2층 부모님 방 열쇠|2층 부모님 방 열쇠이다.
+Doll_of_Isabel|이사벨의 기괴한 인형|이사벨이 아끼는 이상한 인형이다.

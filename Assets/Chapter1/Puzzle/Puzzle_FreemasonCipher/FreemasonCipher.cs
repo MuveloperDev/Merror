@@ -90,8 +90,6 @@ public class FreemasonCipher : MonoBehaviour
         }
     }
 
-
-
     private void DeleteOutline()
     {
         Destroy(this.gameObject.GetComponent<Outlinable>());

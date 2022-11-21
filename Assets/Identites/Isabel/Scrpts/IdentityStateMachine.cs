@@ -13,7 +13,6 @@ public class IdentityStateMachine : BaseStateMachine
 
     public void WaitForDisable(float time) => Invoke("Disable", time);
 
-
     private void Disable() => gameObject.SetActive(false);
 
 }

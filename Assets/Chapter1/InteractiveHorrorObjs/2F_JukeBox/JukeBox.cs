@@ -11,14 +11,25 @@ public class JukeBox : MonoBehaviour
 
     void Interactable()
     {
-        terrace.gameObject.SetActive(true);
-        Destroy(GetComponent<Interactable>());
-        Destroy(GetComponent<Outlinable>());
-        cameraState.TurnOnState(CameraState.CamState.PANIC);
-        // Call Isabel
-        cameraState.callBackPanic = () => { GameManager.Instance.GetIdentityManager().ChaseIdentity(); };
-        terrace.GetComponentInChildren<TerraceExit>().ExitCallback = () => {
-            Destroy(GetComponent<AudioSource>());
+        if (GameManager.Instance.GetIdentityManager().IsEnable == true)
+        {
+            Debug.LogError("Already Isabel is Enable by MH");
+            return;
+        }
+        else
+        {
+            terrace.gameObject.SetActive(true);
+            GameManager.Instance.GetIdentityManager().IsEnable = true;
+            Destroy(GetComponent<Interactable>());
+            Destroy(GetComponent<Outlinable>());
+            cameraState.TurnOnState(CameraState.CamState.PANIC);
+            // Call Isabel
+            cameraState.callBackPanic = () => { GameManager.Instance.GetIdentityManager().ChaseIdentity(); };
+            terrace.GetComponentInChildren<TerraceExit>().ExitCallback = () =>
+            {
+                Destroy(GetComponent<AudioSource>());
+            };
+
         };
     }
 }

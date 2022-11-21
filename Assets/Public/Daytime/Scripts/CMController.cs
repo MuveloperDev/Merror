@@ -92,7 +92,7 @@ public class CMController : MonoBehaviour
     public void TurnOnCaption(CaptureManager.Category capture, int chapter)
     {
         if (ui_captionTxt.text.Length != 0) ui_captionTxt.text = "";
-        StartCoroutine(SetCaptionPanelAlpha(1, GameManager.Instance.GetCaptureManager().GetCapture(capture, chapter)));
+        StartCoroutine(SetCaptionPanelAlpha(1, GameManager.Instance.GetCaptureManager().GetSubTitle(capture, chapter)));
         chapter++;
     }
 

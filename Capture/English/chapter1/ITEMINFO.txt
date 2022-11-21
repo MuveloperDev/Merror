@@ -1,11 +1,11 @@
-Lighter|It is a lighter that can light up the darkness.
-Diary1|This is Isabel's first picture diary.
-Diary2|This is Isabel's second picture diary.
-Diary3|This is Isabel's third picture diary.
-MedicalRecord|This is Isabel's Medical Chart
-Hammer|A hammer that can break mirrors.
-1F_CarpentryRoomKey|I think I can open a carpentry shop on the first floor.
-1F_StorageKey|I think I can open a storage on the first floor.
-1F_TwoRoomKey|I think I can open a room on the first floor.
-2F_ParentRoomKey|I think I can open a parent room on the second floor.
-Doll_of_Isabel|Isabel's favorite strange doll.
+Lighter|Lighter|It is a lighter that can light up the darkness.
+Diary1|Diary 1|This is Isabel's first picture diary.
+Diary2|Diary 2|This is Isabel's second picture diary.
+Diary3|Diary 3|This is Isabel's third picture diary.
+MedicalRecord|Medical record|This is Isabel's Medical Chart
+Hammer|Hammer|A hammer that can break mirrors.
+1F_CarpentryRoomKey|1F Carpentry room key|I think I can open a carpentry shop on the first floor.
+1F_StorageKey|1F storage key|I think I can open a storage on the first floor.
+1F_GuestRoomKey|1F guest room key|I think I can open a room on the first floor.
+2F_ParentRoomKey|2F parent room key|I think I can open a parent room on the second floor.
+Doll_of_Isabel|Doll of Isabel|Isabel's favorite strange doll.

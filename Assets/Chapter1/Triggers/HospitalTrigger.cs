@@ -15,6 +15,7 @@ public class HospitalTrigger : MonoBehaviour
             wall.SetActive(true);
             hospitalRoom.SetActive(false);
             audioSource.Play();
+            GameManager.Instance.Save();
             Invoke("DisableObj", 2f);
         }
     }

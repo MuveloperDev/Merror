@@ -26,6 +26,7 @@ public class GameManager : Singleton<GameManager>
     private void Update()
     {
         GameInput.UpdateKey();
+        GetVideoPlayer().SkipVideo();
     }
     #region Check current scene and initialize something work
     private void OnSceneChanged(Scene previous, Scene current) // Called when scene changed
@@ -37,7 +38,7 @@ public class GameManager : Singleton<GameManager>
                 default: { ToggleCursor(false); break; }
                 case "Chapter1": { StartCoroutine(WaitLoad(1)); break; }
                 case "Chapter2": { StartCoroutine(WaitLoad(2)); break; }
-                //case "Chapter1_KYM": { InitChapter(1); break; } // test
+                    //case "Chapter1_KYM": { InitChapter(1); break; } // test
             }
         }
     }
@@ -57,15 +58,26 @@ public class GameManager : Singleton<GameManager>
         FindPlayerCamera(); // Find camera
         InitInventory(); // Init inventory
         _Puzzle.InitPuzzle(chapterNum); // Init puzzles
-        _UIManager.InitAcquisitionNotification();
+        yield return StartCoroutine(_UIManager.InitAcquisitionNotification());
         this.chapterNum = chapterNum;
-       
-        
-        if(isFirstPlay == false)
+        GetIdentityManager().IsEnable = false;
+
+        if (isFirstPlay == false)
         {
             LoadData(chapterNum);
+
         }
-        
+        //else
+        //{
+        //    //Test op video
+        //    GetVideoPlayer().CallPlayVideo(
+        //        GetVideoPlayer().getVideoClips.getChapter1.OP,
+        //    () =>
+        //    { 
+        //        Debug.Log("OPVideOff");
+        //    });
+        //}
+
         yield return null;
     }
 
@@ -143,7 +155,7 @@ public class GameManager : Singleton<GameManager>
             }
         }
     }
-    public void ClearPuzzle(string puzzleName,GameObject puzzleItem, float scale)
+    public void ClearPuzzle(string puzzleName, GameObject puzzleItem, float scale)
     {
         GameObject obj = Instantiate(puzzleItem, Vector3.zero, Quaternion.identity);
         Debug.Log(obj.name);
@@ -171,7 +183,7 @@ public class GameManager : Singleton<GameManager>
         _Puzzle.SetClear(puzzleName, true);
     }
 
-    
+
     #endregion
     #region Cut Scene
     private VideoPlayerManager _VideoPlayer = null;
@@ -217,7 +229,7 @@ public class GameManager : Singleton<GameManager>
     public bool isFirstPlay = true;
     public void Save()
     {
-        if(SetSaveData() == true)
+        if (SetSaveData() == true)
             SaveLoad.Save(Data);
         else
         {
@@ -235,7 +247,7 @@ public class GameManager : Singleton<GameManager>
             Data = (SaveData)loadData;
             isFirstPlay = false;
             Debug.Log("Load Complete");
-            if (SceneManager.GetActiveScene().name == "Chapter"+chapterNum.ToString())
+            if (SceneManager.GetActiveScene().name == "Chapter" + chapterNum.ToString())
             {
                 CameraState cameraState = GameObject.Find("PostProcess").GetComponent<CameraState>();
                 if (cameraState != null) cameraState.TurnOnState(CameraState.CamState.FADEIN);
@@ -255,12 +267,12 @@ public class GameManager : Singleton<GameManager>
     }
 
     #region Make Save Data
-    private bool SetSaveData() 
+    private bool SetSaveData()
     {
         Data = new SaveData();
         GameObject Player = FindObjectOfType<Player>().gameObject;
 
-        Data.chapter = chapterNum; 
+        Data.chapter = chapterNum;
         if (Player == null)
             return false;
         Data.playerPos = Player.transform.position;
@@ -280,8 +292,8 @@ public class GameManager : Singleton<GameManager>
     {
         GameObject[] doors = GameObject.FindGameObjectsWithTag("Door");
         Data.isDoorOpen = new Door[doors.Length];
-        
-        for(int i = 0; i < doors.Length; i++)
+
+        for (int i = 0; i < doors.Length; i++)
         {
             Data.isDoorOpen[i].doorName = doors[i].name;
             Data.isDoorOpen[i].isOpened = !doors[i].GetComponent<Interactable>().IsLocked;
@@ -291,8 +303,8 @@ public class GameManager : Singleton<GameManager>
     private void SetSaveInvenItems()
     {
         Data.invenItems = new string[MyInventory.GetItemCount];
-        
-        for(int i = 0; i < MyInventory.GetItemCount; i++)
+
+        for (int i = 0; i < MyInventory.GetItemCount; i++)
         {
             Data.invenItems[i] = MyInventory.GetInvenItem(i).name;
         }
@@ -303,7 +315,7 @@ public class GameManager : Singleton<GameManager>
         MirrorManager mm = FindObjectOfType<MirrorManager>();
         Data.isBroken = new bool[mm.GetMirrorsCount()];
 
-        for(int i = 0; i < Data.isBroken.Length; i++)
+        for (int i = 0; i < Data.isBroken.Length; i++)
         {
             Data.isBroken[i] = mm.GetMirrorsIsBroken(i);
         }
@@ -325,7 +337,7 @@ public class GameManager : Singleton<GameManager>
 
     private void LoadInvenItems()
     {
-        for(int i = 0; i < Data.invenItems.Length; i++)
+        for (int i = 0; i < Data.invenItems.Length; i++)
         {
             GameObject item = GameObject.Find(Data.invenItems[i]);
             if (item != null)
@@ -335,11 +347,11 @@ public class GameManager : Singleton<GameManager>
 
     private void LoadPuzzleItmes(int chapterNum)
     {
-        for(int i = 0; i < Data.puzzles.Length; i++)
+        for (int i = 0; i < Data.puzzles.Length; i++)
         {
             if (Data.puzzles[i].isCleared == true)
             {
-                GameObject obj = _Puzzle.FindClearPuzzleObj(chapterNum,Data.puzzles[i].puzzleName);
+                GameObject obj = _Puzzle.FindClearPuzzleObj(chapterNum, Data.puzzles[i].puzzleName);
                 _Puzzle.GetCurrentPuzzle().chapterPuzzleDatas[i].isCleared = true;
                 Interactable inter = null;
                 if (obj.TryGetComponent<Interactable>(out inter) == true)
@@ -347,7 +359,7 @@ public class GameManager : Singleton<GameManager>
                     inter.SetSpecial(false);
                     inter.NonInteractable();
                 }
-                obj.SendMessage("InsertItemInventory",SendMessageOptions.RequireReceiver);
+                obj.SendMessage("InsertItemInventory", SendMessageOptions.RequireReceiver);
             }
         }
     }
@@ -355,10 +367,10 @@ public class GameManager : Singleton<GameManager>
     private void LoadMirrorsData()
     {
         MirrorManager mm = FindObjectOfType<MirrorManager>();
-        for(int i = 0; i < mm.GetMirrorsCount(); i++)
+        for (int i = 0; i < mm.GetMirrorsCount(); i++)
         {
-            if(Data.isBroken[i] == true)
-                mm.SetMirrorsIsBroken(i,Data.isBroken[i]);
+            if (Data.isBroken[i] == true)
+                mm.SetMirrorsIsBroken(i, Data.isBroken[i]);
         }
     }
 

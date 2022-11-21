@@ -13,27 +13,35 @@ public class IdentitiesManager : MonoBehaviour
 	[SerializeField] private GameObject[] identities;
 
 	private Vector3 offsetPos = new Vector3(18f, 1.5f, 1.4f);
-
-	public IdentityStateMachine GetIdentity() => identity;
+    private bool isEnable = false;
+    public bool IsEnable { get { return isEnable; } set { isEnable = value; } }
+    public IdentityStateMachine GetIdentity() => identity;
 	public void InstIdentity()
 	{
 		this.identity = Instantiate(identities[GameManager.Instance.ChapterNum - 1], offsetPos, Quaternion.identity).GetComponent<IdentityStateMachine>();
         identity.gameObject.SetActive(false);
-	}
 
+    }
+    
 	public void ChaseIdentity()
-	{
-		identity.transform.position = offsetPos;
+	{;
+
+        identity.transform.position = offsetPos;
 		identity.gameObject.SetActive(true);
-		identity.TurnOnState(BaseStateMachine.State.CHASE);
+        isEnable = true;
+        Debug.Log(isEnable);
+        identity.TurnOnState(BaseStateMachine.State.CHASE);
 
     }
 
     public void WaitForChaseIdentity(float time) => Invoke("ChaseIdentity", time);
     public void ChaseIdentity(Vector3 pos)
     {
+
+        Debug.Log(isEnable);
         identity.transform.position = pos;
         identity.gameObject.SetActive(true);
+        isEnable = true;
         identity.TurnOnState(BaseStateMachine.State.CHASE);
 
     }

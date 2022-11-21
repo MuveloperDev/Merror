@@ -183,19 +183,20 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI acquisitionNotificationText = null;
     [SerializeField] AudioSource uiAudioSource = null;
 
-    public void InitAcquisitionNotification()
+    public IEnumerator InitAcquisitionNotification()
     {
         acquisitionNotificationSlider = GameObject.Find("AcquisitionNotification").GetComponent<Slider>();
         acquisitionNotificationText = GameObject.Find("AcquisitionNotificationText").GetComponent<TextMeshProUGUI>();
         uiAudioSource = acquisitionNotificationSlider.GetComponent<AudioSource>();
         acquisitionNotificationText.gameObject.SetActive(false);
+        yield break;
     }
     public void AcquisitionNotification(string name)
     {
         if (GameManager.Instance.completeLoad == false)
             return;
 
-        acquisitionNotificationText.text = "Added Inventory The " + name;
+        acquisitionNotificationText.text = "Added Inventory The " + GameManager.Instance.GetCaptureManager().GetName(CaptureManager.Category.ITEMINFO,name);
         if (uiAudioSource.clip == null)
             uiAudioSource.clip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Interactable, "UI_AddInventory");
         uiAudioSource.PlayOneShot(uiAudioSource.clip);

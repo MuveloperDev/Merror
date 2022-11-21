@@ -1,4 +1,5 @@
 using EPOOutline;
+using System;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -23,6 +24,7 @@ public class Puzzle_IsabellRoom : MonoBehaviour
     //public bool InteractableOK { get { return interactableok; } set { interactableok = InteractableOK; } }
     [SerializeField] bool interactableok = false;
     [SerializeField] GameObject Hint1 = null;
+    [SerializeField] Interactable[] openDoors = null;
     #endregion
     
     private bool? puzzleFinish;
@@ -33,10 +35,13 @@ public class Puzzle_IsabellRoom : MonoBehaviour
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        Debug.Log("door 배열 개수 : " + openDoors.Length + " Awake");
     }
 
     private void Start()
     {
+        Debug.Log("door 배열 개수 : " + openDoors.Length + " Start");
+
         //Receive this puzzle is Finished from GameManager
         puzzleFinish = !GameManager.Instance.isFirstPlay;
 
@@ -47,7 +52,8 @@ public class Puzzle_IsabellRoom : MonoBehaviour
         if (puzzleFinish == true)
         {
             Destroy(gameObject.GetComponent<Interactable>());
-            Destroy(gameObject.GetComponent<Puzzle_IsabellRoom>());
+            Destroy(gameObject.GetComponent<Outlinable>());
+            //Destroy(gameObject.GetComponent<Puzzle_IsabellRoom>());
             frame.SetActive(false);
         }
         if (gameObject.name == "1_RABBIT" || gameObject.name == "Frame_Finish") interactableok = true;
@@ -146,13 +152,18 @@ public class Puzzle_IsabellRoom : MonoBehaviour
 
     IEnumerator Do_Eff()
     {
-        CameraState cameraState = FindObjectOfType<CameraState>();
         yield return new WaitForSeconds(2f);
         Destroy(frame);
         GameManager.Instance.GetVideoPlayer().CallPlayVideo(GameManager.Instance.GetVideoPlayer().getVideoClips.getChapter1.IsabelRoomVideo,
             () =>
             {
                 GameManager.Instance.ClearPuzzle("Puzzle_IsabellRoom", Hint1, 7f);
+                Debug.Log("door 배열 개수 : " + openDoors.Length + " Real");
+
+                for (int i = 0; i < openDoors.Length; i++)
+                {
+                    openDoors[i].IsLocked = false;
+                }
                 GameManager.Instance.Save();
                 Debug.Log("EndVideo");
             });
@@ -191,7 +202,10 @@ public class Puzzle_IsabellRoom : MonoBehaviour
     private void InsertItemInventory()
     {
         if (puzzleFinish == true)
+        {
+            GameManager.Instance.ClearPuzzle("Puzzle_IsabellRoom", Hint1, 7f);
             return;
+        }
         StartCoroutine(FinishPuzzle());
     }
 }

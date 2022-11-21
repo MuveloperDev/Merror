@@ -1795,7 +1795,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2710977578808438371}
         m_TargetAssemblyTypeName: FreemasonCipher, Assembly-CSharp
         m_MethodName: ClickCloseButton
         m_Mode: 1

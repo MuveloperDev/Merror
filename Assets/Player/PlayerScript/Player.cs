@@ -16,9 +16,8 @@ public partial class Player : MonoBehaviour
         if(GameManager.Instance.isFirstPlay == true)
         {
             GameManager.Instance.GetVideoPlayer().CallPlayVideo(
-               GameManager.Instance.GetVideoPlayer().getVideoClips.getChapter1.OP,
-               () =>
-               { Debug.Log("op"); });
+               GameManager.Instance.GetVideoPlayer().GetClip(VideoPlayerManager.VideoCategory.CHAPTER1, "OP"),
+               () => { Debug.Log("op"); });
         }
     }
     private void FixedUpdate()

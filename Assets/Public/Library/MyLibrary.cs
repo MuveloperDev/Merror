@@ -466,7 +466,7 @@ namespace MyLibrary
                 notice.gameObject.SetActive(true);
             }
             if(inven[count] != null)
-                GameManager.Instance.GetCaptureManager().GetCapture(CaptureManager.Category.ITEMINFO, inven[count].name);
+                GameManager.Instance.GetCaptureManager().GetInfoInInventory(CaptureManager.SubtitleCategory.ITEMINFO, inven[count].name);
         }
 
         /// <summary>
@@ -511,7 +511,7 @@ namespace MyLibrary
 
             inven[count].SetActive(true);
             inven[count].transform.localRotation = Quaternion.identity;
-            GameManager.Instance.GetCaptureManager().GetCapture(CaptureManager.Category.ITEMINFO, inven[count].name);
+            GameManager.Instance.GetCaptureManager().GetInfoInInventory(CaptureManager.SubtitleCategory.ITEMINFO, inven[count].name);
         }
 
         /// <summary>
@@ -541,7 +541,7 @@ namespace MyLibrary
 
             inven[count].SetActive(true);
             inven[count].transform.localRotation = Quaternion.identity;
-            GameManager.Instance.GetCaptureManager().GetCapture(CaptureManager.Category.ITEMINFO, inven[count].name);
+            GameManager.Instance.GetCaptureManager().GetInfoInInventory(CaptureManager.SubtitleCategory.ITEMINFO, inven[count].name);
         }
 
         /// <summary>

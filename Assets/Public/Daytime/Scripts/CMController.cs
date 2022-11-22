@@ -56,7 +56,7 @@ public class CMController : MonoBehaviour
         cinemachineVirtualCameras[0].enabled = false;
         windowCam.enabled = true;
         yield return new WaitForSecondsRealtime(4f);
-        TurnOnCaption(CaptureManager.Category.DATE, GameManager.Instance.ChapterNum);
+        TurnOnCaption(CaptureManager.SubtitleCategory.DATE, GameManager.Instance.ChapterNum);
         yield return new WaitForSecondsRealtime(2f);
         TurnOffCaption();
         StartCoroutine(GoToOffsetPointOfView(windowCam, delegate { StartCoroutine(GoToMirrorPointOfView()); }));
@@ -82,17 +82,17 @@ public class CMController : MonoBehaviour
         cinemachineVirtualCameras[0].enabled = false;
         windowCam.enabled = true;
         yield return new WaitForSecondsRealtime(4f);
-        TurnOnCaption(CaptureManager.Category.REMEMBER, GameManager.Instance.ChapterNum);
+        TurnOnCaption(CaptureManager.SubtitleCategory.REMEMBER, GameManager.Instance.ChapterNum);
         yield return new WaitForSecondsRealtime(2f);
         TurnOffCaption();
         StartCoroutine(GoToOffsetPointOfView(windowCam, delegate { SceneManager.LoadSceneAsync("LodingScene"); }));
     }
 
     // Set text in caption list after Increase caption UI alpha.
-    public void TurnOnCaption(CaptureManager.Category capture, int chapter)
+    public void TurnOnCaption(CaptureManager.SubtitleCategory capture, int chapter)
     {
         if (ui_captionTxt.text.Length != 0) ui_captionTxt.text = "";
-        StartCoroutine(SetCaptionPanelAlpha(1, GameManager.Instance.GetCaptureManager().GetSubTitle(capture, chapter)));
+        StartCoroutine(SetCaptionPanelAlpha(1, GameManager.Instance.GetCaptureManager().GetSubtitle(capture, chapter)));
         chapter++;
     }
 

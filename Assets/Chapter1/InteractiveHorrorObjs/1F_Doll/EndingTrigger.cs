@@ -14,9 +14,9 @@ public class EndingTrigger : MonoBehaviour
             gameObject.SetActive(false);
             Debug.Log("Inven : " + GameManager.Instance.GetInventory().FindInInven(isabelDoll));
             GameManager.Instance.GetVideoPlayer().CallPlayVideo(
-                GameManager.Instance.GetVideoPlayer().getVideoClips.getChapter1.EndVideo,
+                GameManager.Instance.GetVideoPlayer().GetClip(VideoPlayerManager.VideoCategory.CHAPTER1, "END"),
                 () => {
-                    Debug.Log("ENDACTION");
+                    Debug.Log("END");
                     SceneManager.LoadScene("DemoEndScene");
                 }
                 );

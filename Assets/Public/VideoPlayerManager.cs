@@ -1,56 +1,68 @@
+using MyLibrary;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
-using static VideoPlayerManager;
-using MyLibrary;
+
+[System.Serializable]
+public class CustomDictionary<T1, T2> where T1 : class where T2 : class
+{
+    [SerializeField] private T1[] keys;
+    public T1[] Keys { get { return keys; } }
+    [SerializeField] private T2[] values;
+    public T2[] Values { get { return values; } }
+
+    [SerializeField] private Dictionary<T1, T2> dictionary = new Dictionary<T1, T2>();
+    public void Init()
+    {
+        for (int i = 0; i < keys.Length; i++) dictionary.Add(keys[i], values[i]);
+    }
+
+    public T2 GetValue(T1 key) => dictionary[key];
+}
 
 public class VideoPlayerManager : MonoBehaviour
 {
-    [Serializable]
-    public class VideoClips
+    public enum VideoCategory
     {
-        [SerializeField] private Chapter1 chapter1 = new Chapter1();
-
-        public Chapter1 getChapter1 { get { return chapter1; } }
-
-        [Serializable]
-        public class Chapter1
-        {
-            [SerializeField] private VideoClip op = null;
-            [SerializeField] private VideoClip deathVideo = null;
-            [SerializeField] private VideoClip endVideo = null;
-            [SerializeField] private VideoClip isabelRoomVideo = null;
-            [SerializeField] private VideoClip demoEndVideo = null;
-
-            public VideoClip OP { get { return op; } }
-            public VideoClip DeathVideo { get { return deathVideo; } }
-            public VideoClip EndVideo { get { return endVideo; } }
-            public VideoClip IsabelRoomVideo { get { return isabelRoomVideo; } }
-            public VideoClip DemoEndVideo { get { return demoEndVideo; } }
-        }
+        PUBLIC,
+        CHAPTER1,
     }
+    [SerializeField] private CustomDictionary<string, VideoClip> clips = new CustomDictionary<string, VideoClip>();
 
-    [SerializeField] private VideoClips videoClips = new VideoClips();
-    public VideoClips getVideoClips { get { return videoClips; } }
     [SerializeField] private VideoPlayer videoPlayer = null;
 
     private void Start() => Init();
-    void Init() => videoPlayer = GetComponent<VideoPlayer>();
+    void Init()
+    { 
+        videoPlayer = GetComponent<VideoPlayer>();
+        clips.Init();
+    } 
 
 
-
+    /// <summary>
+    /// Play the video referenced in VideoClips on the main camera.
+    /// </summary>
+    /// <param name="clip">This is the video to be played.</param>
+    /// <param name="func">Callback function to be executed at the end of the video.</param>
     public void CallPlayVideo(VideoClip clip, Action func) => StartCoroutine(PlayVideo(clip, func));
+    /// <summary>
+    /// Play the video referenced in VideoClips on the main camera.
+    /// </summary>
+    /// <param name="clip">This is the video to be played.</param>
+    /// <param name="func">Callback function to be executed at the end of the video.</param>
+    /// <param name="time">Delay the playback time by the argument.</param>
     public void CallPlayVideo(VideoClip clip, Action func, float time) => StartCoroutine(WaitForPlayVideo(clip, func, time));
 
+    // Calls the PlayVideo coroutine with a delay as long as the time received as an argument.
     IEnumerator WaitForPlayVideo(VideoClip clip, Action func, float time)
     {
         yield return new WaitForSecondsRealtime(time);
         StartCoroutine(PlayVideo(clip, func));
     }
 
-    Action videoFunc = null;
+
     IEnumerator PlayVideo(VideoClip clip, Action func)
     {
         if (videoPlayer.targetCamera != Camera.main) videoPlayer.targetCamera = Camera.main;
@@ -60,7 +72,6 @@ public class VideoPlayerManager : MonoBehaviour
         {
             TimeControl.Play();
             videoPlayer.Stop();
-            
             func();
         };
         videoFunc = func;
@@ -74,7 +85,7 @@ public class VideoPlayerManager : MonoBehaviour
         videoPlayer.Play();
     }
 
-
+    Action videoFunc = null;
     public void SkipVideo()
     {
         if (!GameManager.Instance.isFirstPlay && Input.GetKeyDown(KeyCode.Escape) && videoPlayer.isPlaying)
@@ -87,4 +98,8 @@ public class VideoPlayerManager : MonoBehaviour
             videoFunc = null;
         }
     }
+
+    public VideoClip GetClip(VideoCategory category, string name) => clips.GetValue(category.ToString() + "_" + name);
+
+
 }

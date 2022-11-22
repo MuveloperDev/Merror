@@ -83,6 +83,7 @@ MonoBehaviour:
   AutoReset: 0
   ResetTimer: 0
   Reset_Speed: 50
+  myobstacle: {fileID: 2136802771381582084}
   Audio_Playable: 1
   _MyClip: {fileID: 0}
   Clip_Name: 

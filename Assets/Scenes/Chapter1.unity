@@ -1099,6 +1099,7 @@ MonoBehaviour:
   AutoReset: 0
   ResetTimer: 0
   Reset_Speed: 50
+  myobstacle: {fileID: 0}
   Audio_Playable: 0
   _MyClip: {fileID: 0}
   Clip_Name: 
@@ -15489,7 +15490,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-763828
+  m_Name: pb_Mesh-5698134
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -15985,7 +15986,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-763844
+  m_Name: pb_Mesh-5698150
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -17515,7 +17516,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-763754
+  m_Name: pb_Mesh-5698060
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -19911,7 +19912,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-763796
+  m_Name: pb_Mesh-5698102
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -26352,6 +26353,7 @@ MonoBehaviour:
   AutoReset: 0
   ResetTimer: 0
   Reset_Speed: 50
+  myobstacle: {fileID: 0}
   Audio_Playable: 0
   _MyClip: {fileID: 0}
   Clip_Name: 
@@ -28647,7 +28649,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-763780
+  m_Name: pb_Mesh-5698086
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -33775,7 +33777,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-763812
+  m_Name: pb_Mesh-5698118
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -47888,6 +47890,7 @@ MonoBehaviour:
   AutoReset: 0
   ResetTimer: 0
   Reset_Speed: 50
+  myobstacle: {fileID: 0}
   Audio_Playable: 0
   _MyClip: {fileID: 0}
   Clip_Name: 
@@ -51220,6 +51223,7 @@ MonoBehaviour:
   AutoReset: 0
   ResetTimer: 0
   Reset_Speed: 50
+  myobstacle: {fileID: 0}
   Audio_Playable: 0
   _MyClip: {fileID: 0}
   Clip_Name: 
@@ -54712,6 +54716,7 @@ MonoBehaviour:
   AutoReset: 0
   ResetTimer: 0
   Reset_Speed: 50
+  myobstacle: {fileID: 0}
   Audio_Playable: 0
   _MyClip: {fileID: 0}
   Clip_Name: 
@@ -56238,7 +56243,7 @@ PrefabInstance:
       objectReference: {fileID: 1132994168}
     - target: {fileID: 953353264988636270, guid: 225e584c47cc8704aab81ac550e6681d, type: 3}
       propertyPath: m_VersionIndex
-      value: 29
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 3926199657158667824, guid: 225e584c47cc8704aab81ac550e6681d, type: 3}
       propertyPath: m_Mesh
@@ -56246,7 +56251,7 @@ PrefabInstance:
       objectReference: {fileID: 700874968}
     - target: {fileID: 3926199657158667824, guid: 225e584c47cc8704aab81ac550e6681d, type: 3}
       propertyPath: m_VersionIndex
-      value: 28
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 3926199657158667827, guid: 225e584c47cc8704aab81ac550e6681d, type: 3}
       propertyPath: m_Name
@@ -56314,7 +56319,7 @@ PrefabInstance:
       objectReference: {fileID: 802459653}
     - target: {fileID: 6972945470397174061, guid: 225e584c47cc8704aab81ac550e6681d, type: 3}
       propertyPath: m_VersionIndex
-      value: 29
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 6972945470516939225, guid: 225e584c47cc8704aab81ac550e6681d, type: 3}
       propertyPath: m_Mesh
@@ -56326,7 +56331,7 @@ PrefabInstance:
       objectReference: {fileID: 644117445}
     - target: {fileID: 6972945470516939226, guid: 225e584c47cc8704aab81ac550e6681d, type: 3}
       propertyPath: m_VersionIndex
-      value: 29
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 6972945470516939229, guid: 225e584c47cc8704aab81ac550e6681d, type: 3}
       propertyPath: m_Mesh
@@ -56346,7 +56351,7 @@ PrefabInstance:
       objectReference: {fileID: 1290072090}
     - target: {fileID: 6972945470745723758, guid: 225e584c47cc8704aab81ac550e6681d, type: 3}
       propertyPath: m_VersionIndex
-      value: 29
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 6972945472030410337, guid: 225e584c47cc8704aab81ac550e6681d, type: 3}
       propertyPath: m_Mesh
@@ -56358,7 +56363,7 @@ PrefabInstance:
       objectReference: {fileID: 652783940}
     - target: {fileID: 6972945472030410338, guid: 225e584c47cc8704aab81ac550e6681d, type: 3}
       propertyPath: m_VersionIndex
-      value: 29
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 6972945472030410341, guid: 225e584c47cc8704aab81ac550e6681d, type: 3}
       propertyPath: m_Mesh
@@ -57736,6 +57741,7 @@ MonoBehaviour:
   AutoReset: 0
   ResetTimer: 0
   Reset_Speed: 50
+  myobstacle: {fileID: 0}
   Audio_Playable: 0
   _MyClip: {fileID: 0}
   Clip_Name: 
@@ -58071,6 +58077,7 @@ MonoBehaviour:
   AutoReset: 0
   ResetTimer: 0
   Reset_Speed: 50
+  myobstacle: {fileID: 0}
   Audio_Playable: 1
   _MyClip: {fileID: 8300000, guid: 7819fdcf2b71cf345a5ed212d47fcef3, type: 3}
   Clip_Name: 
@@ -60797,6 +60804,7 @@ MonoBehaviour:
   AutoReset: 0
   ResetTimer: 0
   Reset_Speed: 50
+  myobstacle: {fileID: 0}
   Audio_Playable: 0
   _MyClip: {fileID: 0}
   Clip_Name: 
@@ -68254,6 +68262,7 @@ MonoBehaviour:
   AutoReset: 1
   ResetTimer: 0
   Reset_Speed: 20
+  myobstacle: {fileID: 0}
   Audio_Playable: 0
   _MyClip: {fileID: 0}
   Clip_Name: 
@@ -68593,6 +68602,7 @@ MonoBehaviour:
   AutoReset: 0
   ResetTimer: 0
   Reset_Speed: 50
+  myobstacle: {fileID: 0}
   Audio_Playable: 0
   _MyClip: {fileID: 0}
   Clip_Name: 
@@ -68793,6 +68803,7 @@ MonoBehaviour:
   AutoReset: 0
   ResetTimer: 0
   Reset_Speed: 50
+  myobstacle: {fileID: 0}
   Audio_Playable: 0
   _MyClip: {fileID: 0}
   Clip_Name: 
@@ -68927,6 +68938,7 @@ MonoBehaviour:
   AutoReset: 0
   ResetTimer: 0
   Reset_Speed: 50
+  myobstacle: {fileID: 0}
   Audio_Playable: 0
   _MyClip: {fileID: 0}
   Clip_Name: 
@@ -71019,6 +71031,7 @@ MonoBehaviour:
   AutoReset: 0
   ResetTimer: 0
   Reset_Speed: 50
+  myobstacle: {fileID: 0}
   Audio_Playable: 0
   _MyClip: {fileID: 0}
   Clip_Name: 
@@ -81182,6 +81195,7 @@ MonoBehaviour:
   AutoReset: 0
   ResetTimer: 0
   Reset_Speed: 50
+  myobstacle: {fileID: 0}
   Audio_Playable: 0
   _MyClip: {fileID: 0}
   Clip_Name: 
@@ -81428,6 +81442,7 @@ MonoBehaviour:
   AutoReset: 1
   ResetTimer: 0
   Reset_Speed: 20
+  myobstacle: {fileID: 0}
   Audio_Playable: 0
   _MyClip: {fileID: 0}
   Clip_Name: 
@@ -81511,6 +81526,7 @@ MonoBehaviour:
   AutoReset: 0
   ResetTimer: 0
   Reset_Speed: 50
+  myobstacle: {fileID: 0}
   Audio_Playable: 0
   _MyClip: {fileID: 0}
   Clip_Name: 
@@ -83403,15 +83419,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5375018172247264916, guid: b18b8908fd443a54c8e46031d6008245, type: 3}
       propertyPath: outlineTargets.Array.data[0].IsVisible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5375018172247264916, guid: b18b8908fd443a54c8e46031d6008245, type: 3}
       propertyPath: outlineTargets.Array.data[1].IsVisible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5375018172247264916, guid: b18b8908fd443a54c8e46031d6008245, type: 3}
       propertyPath: outlineTargets.Array.data[2].IsVisible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b18b8908fd443a54c8e46031d6008245, type: 3}
@@ -83464,6 +83480,7 @@ MonoBehaviour:
   AutoReset: 0
   ResetTimer: 0
   Reset_Speed: 50
+  myobstacle: {fileID: 0}
   Audio_Playable: 0
   _MyClip: {fileID: 0}
   Clip_Name: 
@@ -84637,6 +84654,7 @@ MonoBehaviour:
   AutoReset: 1
   ResetTimer: 0
   Reset_Speed: 20
+  myobstacle: {fileID: 0}
   Audio_Playable: 0
   _MyClip: {fileID: 0}
   Clip_Name: 
@@ -93687,6 +93705,7 @@ MonoBehaviour:
   AutoReset: 0
   ResetTimer: 0
   Reset_Speed: 50
+  myobstacle: {fileID: 0}
   Audio_Playable: 0
   _MyClip: {fileID: 0}
   Clip_Name: 
@@ -95117,6 +95136,7 @@ MonoBehaviour:
   AutoReset: 0
   ResetTimer: 0
   Reset_Speed: 50
+  myobstacle: {fileID: 0}
   Audio_Playable: 0
   _MyClip: {fileID: 0}
   Clip_Name: 

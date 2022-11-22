@@ -21,7 +21,7 @@ public class CustomDictionary<T1, T2> where T1 : class where T2 : class
 
     public T2 GetValue(T1 key) => dictionary[key];
 }
-
+[RequireComponent(typeof(VideoPlayer))]
 public class VideoPlayerManager : MonoBehaviour
 {
     public enum VideoCategory

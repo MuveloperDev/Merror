@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.EventSystems;
 #pragma warning disable 0414
 
@@ -28,6 +29,9 @@ public partial class Interactable : MonoBehaviour
 
     protected Coroutine RotateCoroutine = null;
     protected bool FinishReset = false;
+
+    [SerializeField] NavMeshObstacle myobstacle = null;
+
     public virtual void Do_Rotate() // Can be sent message from player.
     {
         if (Rotatable == false) return;
@@ -60,6 +64,8 @@ public partial class Interactable : MonoBehaviour
             {
                 Debug.Log("Finished Rotating Object");
                 IsUsed = !IsUsed; // Check used
+                if (myobstacle != null)
+                    myobstacle.enabled = IsUsed;
                 //Invert = IsUsed == true ? false : true;   
                 if (AutoReset)
                 {

@@ -55737,7 +55737,7 @@ GameObject:
   - component: {fileID: 2084358457}
   - component: {fileID: 2084358456}
   m_Layer: 5
-  m_Name: Image
+  m_Name: AimUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -21,7 +21,7 @@ public class CustomDictionary<T1, T2> where T1 : class where T2 : class
 
     public T2 GetValue(T1 key) => dictionary[key];
 }
-
+[RequireComponent(typeof(VideoPlayer))]
 public class VideoPlayerManager : MonoBehaviour
 {
     public enum VideoCategory
@@ -63,43 +63,69 @@ public class VideoPlayerManager : MonoBehaviour
     }
 
 
+    // VideoPlayer
     IEnumerator PlayVideo(VideoClip clip, Action func)
     {
+        // if VideoPlayer tartget camera is not main camera Change videoPlayer target camera to main camera 
         if (videoPlayer.targetCamera != Camera.main) videoPlayer.targetCamera = Camera.main;
+
+        // Change video clip
         videoPlayer.clip = clip;
 
+        GameObject aimUI = GameObject.Find("AimUI");
+        //Del & Add Aim UI 
+        if (aimUI != null)
+            aimUI.SetActive(false);
+
+        // loopPointReached : last point of Video clip 
         videoPlayer.loopPointReached += (VideoPlayer vp) =>
         {
             TimeControl.Play();
             videoPlayer.Stop();
+            if (aimUI != null)
+                aimUI.SetActive(true);
             func();
         };
+        // for skip
         videoFunc = func;
+
+        // The video is prepared in advance to remove the video delay.
         videoPlayer.Prepare();
+
+        // Wait until your video is ready.
         yield return new WaitUntil(() => videoPlayer.isPrepared == true);
-        GameObject fadeInOutPanel = GameObject.Find("FadeInOutPanel");
-        //Del & Add Aim UI 
-        if (fadeInOutPanel != null)
-            fadeInOutPanel.SetActive(false);
+
+        // timeScale is zero
         TimeControl.Pause();
+
+        // play video
         videoPlayer.Play();
     }
 
+    // A callback function to be called when the video ends.
     Action videoFunc = null;
+
+    /// <summary>
+    /// If it is not the first play and the video is playing, pressing the ESC button skips the video.
+    /// </summary>
     public void SkipVideo()
     {
         if (!GameManager.Instance.isFirstPlay && Input.GetKeyDown(KeyCode.Escape) && videoPlayer.isPlaying)
         {
-            Debug.Log("SkipVideo");
             StopCoroutine("PlayVideo");
-            TimeControl.Play();
+            if (Time.timeScale == 0) TimeControl.Play();
             videoPlayer.Stop();
             videoFunc();
             videoFunc = null;
         }
     }
 
+
+    /// <summary>
+    /// Returns a video clip from a custom dictionary.
+    /// </summary>
+    /// <param name="category">An enum that defines chapters.</param>
+    /// <param name="name">The name of the video for the chapter.Pass the argument without "chapter_" in front of the name</param>
+    /// <returns></returns>
     public VideoClip GetClip(VideoCategory category, string name) => clips.GetValue(category.ToString() + "_" + name);
-
-
 }

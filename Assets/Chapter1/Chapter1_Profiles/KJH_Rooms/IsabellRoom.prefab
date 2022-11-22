@@ -791,7 +791,8 @@ MonoBehaviour:
   - {fileID: 2257356330833476728}
   interactableok: 0
   Hint1: {fileID: 2849733170565474736, guid: 8a9ccf4bb2572534aa0578eb5f769779, type: 3}
-  opendDoor1: []
+  openDoors: []
+  PlayerPosAfterCutVideo: {fileID: 1866048421443760939}
 --- !u!120 &2259024378666398556
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -1294,10 +1295,8 @@ MonoBehaviour:
   - {fileID: 2257356330833476728}
   interactableok: 0
   Hint1: {fileID: 2849733170565474736, guid: 8a9ccf4bb2572534aa0578eb5f769779, type: 3}
-  opendDoor1:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  openDoors: []
+  PlayerPosAfterCutVideo: {fileID: 1866048421443760939}
 --- !u!120 &2765936203546974648
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -1634,7 +1633,8 @@ MonoBehaviour:
   - {fileID: 2257356330833476728}
   interactableok: 0
   Hint1: {fileID: 2849733170565474736, guid: 8a9ccf4bb2572534aa0578eb5f769779, type: 3}
-  opendDoor1: []
+  openDoors: []
+  PlayerPosAfterCutVideo: {fileID: 1866048421443760939}
 --- !u!120 &2808380094990509631
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -2529,7 +2529,8 @@ MonoBehaviour:
   - {fileID: 2257356330833476728}
   interactableok: 0
   Hint1: {fileID: 2849733170565474736, guid: 8a9ccf4bb2572534aa0578eb5f769779, type: 3}
-  opendDoor1: []
+  openDoors: []
+  PlayerPosAfterCutVideo: {fileID: 1866048421443760939}
 --- !u!120 &4337341570706104074
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -4801,7 +4802,8 @@ MonoBehaviour:
   - {fileID: 2257356330833476728}
   interactableok: 0
   Hint1: {fileID: 2849733170565474736, guid: 8a9ccf4bb2572534aa0578eb5f769779, type: 3}
-  opendDoor1: []
+  openDoors: []
+  PlayerPosAfterCutVideo: {fileID: 1866048421443760939}
 --- !u!120 &4854857503788327971
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -5449,7 +5451,8 @@ MonoBehaviour:
   - {fileID: 2257356330833476728}
   interactableok: 0
   Hint1: {fileID: 2849733170565474736, guid: 8a9ccf4bb2572534aa0578eb5f769779, type: 3}
-  opendDoor1: []
+  openDoors: []
+  PlayerPosAfterCutVideo: {fileID: 1866048421443760939}
 --- !u!1 &5266499834413900334
 GameObject:
   m_ObjectHideFlags: 0
@@ -5799,7 +5802,8 @@ MonoBehaviour:
   - {fileID: 2257356330833476728}
   interactableok: 0
   Hint1: {fileID: 2849733170565474736, guid: 8a9ccf4bb2572534aa0578eb5f769779, type: 3}
-  opendDoor1: []
+  openDoors: []
+  PlayerPosAfterCutVideo: {fileID: 1866048421443760939}
 --- !u!120 &5505843405394829603
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -6221,6 +6225,7 @@ Transform:
   - {fileID: 6377153121707622175}
   - {fileID: 6377153122507119220}
   - {fileID: 6377153123497386293}
+  - {fileID: 1866048421443760939}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7076,6 +7081,37 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 8bfe925b42ad449a28d7fc0ae852eda8, type: 3}
+--- !u!1 &7173505383568290672
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1866048421443760939}
+  m_Layer: 0
+  m_Name: PlayerPosAfterCutVideo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1866048421443760939
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7173505383568290672}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 29.759, y: 8.916, z: 12.802}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6377153122314936556}
+  m_RootOrder: 32
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7993011264463989611
 GameObject:
   m_ObjectHideFlags: 0
@@ -8014,7 +8050,8 @@ MonoBehaviour:
   - {fileID: 2257356330833476728}
   interactableok: 0
   Hint1: {fileID: 2849733170565474736, guid: 8a9ccf4bb2572534aa0578eb5f769779, type: 3}
-  opendDoor1: []
+  openDoors: []
+  PlayerPosAfterCutVideo: {fileID: 1866048421443760939}
 --- !u!120 &8574284769593078218
 LineRenderer:
   m_ObjectHideFlags: 0

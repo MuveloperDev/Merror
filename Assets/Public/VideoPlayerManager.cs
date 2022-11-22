@@ -76,7 +76,10 @@ public class VideoPlayerManager : MonoBehaviour
         //Del & Add Aim UI 
         if (aimUI != null)
             aimUI.SetActive(false);
-
+        GameObject fadeInOutPanel = GameObject.Find("FadeInOutPanel");
+        //Del & Add Aim UI 
+        if (aimUI != null)
+            aimUI.SetActive(false);
         // loopPointReached : last point of Video clip 
         videoPlayer.loopPointReached += (VideoPlayer vp) =>
         {

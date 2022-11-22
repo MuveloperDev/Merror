@@ -63,8 +63,10 @@ public class VideoPlayerManager : MonoBehaviour
     }
 
 
+    // VideoPlayer
     IEnumerator PlayVideo(VideoClip clip, Action func)
     {
+        // if VideoPlayer tartget camera is not main camera Change videoPlayer target camera to main camera 
         if (videoPlayer.targetCamera != Camera.main) videoPlayer.targetCamera = Camera.main;
         videoPlayer.clip = clip;
 
@@ -100,6 +102,4 @@ public class VideoPlayerManager : MonoBehaviour
     }
 
     public VideoClip GetClip(VideoCategory category, string name) => clips.GetValue(category.ToString() + "_" + name);
-
-
 }

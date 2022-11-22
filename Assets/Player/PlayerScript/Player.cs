@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using MyLibrary;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public partial class Player : MonoBehaviour
 {
@@ -49,7 +50,17 @@ public partial class Player : MonoBehaviour
     }
     private void Death()
     {
-        cameraState.TurnOnState(CameraState.CamState.DEATH);
+        // cameraState.TurnOnState(CameraState.CamState.DEATH);
+        GameManager.Instance.GetVideoPlayer().CallPlayVideo(
+        GameManager.Instance.GetVideoPlayer().GetClip(VideoPlayerManager.VideoCategory.CHAPTER1, "DEATH"), () => {
+
+            //TurnOffState();
+            // For Test
+            Debug.Log("Deathhhhh Plaese");
+            Debug.Log(GameManager.Instance.GetVideoPlayer().GetClip(VideoPlayerManager.VideoCategory.CHAPTER1, "DEATH").name);
+            GameManager.Instance.Load();
+            SceneManager.LoadSceneAsync("LodingScene");
+        });
         GameManager.Instance.GetIdentityManager().GetIdentity().WaitForDisable(6f);
     }
 }

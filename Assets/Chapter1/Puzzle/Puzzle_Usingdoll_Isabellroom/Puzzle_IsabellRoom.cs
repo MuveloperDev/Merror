@@ -151,7 +151,7 @@ public class Puzzle_IsabellRoom : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         Destroy(frame);
-        GameManager.Instance.GetVideoPlayer().CallPlayVideo(GameManager.Instance.GetVideoPlayer().getVideoClips.getChapter1.IsabelRoomVideo,
+        GameManager.Instance.GetVideoPlayer().CallPlayVideo(GameManager.Instance.GetVideoPlayer().GetClip(VideoPlayerManager.VideoCategory.CHAPTER1, "ISABELROOM"),
             () =>
             {
                 player.transform.position = PlayerPosAfterCutVideo.position;

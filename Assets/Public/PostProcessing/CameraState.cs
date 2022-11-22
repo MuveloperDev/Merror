@@ -183,7 +183,7 @@ public class CameraState : MonoBehaviour
         fadeInOutPanel.gameObject.SetActive(true);
 
         GameManager.Instance.GetVideoPlayer().CallPlayVideo(
-            GameManager.Instance.GetVideoPlayer().getVideoClips.getChapter1.DeathVideo, () => {
+            GameManager.Instance.GetVideoPlayer().GetClip(VideoPlayerManager.VideoCategory.CHAPTER1, "DEATH"), () => {
 
                 //TurnOffState();
                 // For Test

@@ -196,7 +196,7 @@ public class UIManager : MonoBehaviour
         if (GameManager.Instance.completeLoad == false)
             return;
 
-        acquisitionNotificationText.text = "Added Inventory The " + GameManager.Instance.GetCaptureManager().GetName(CaptureManager.Category.ITEMINFO,name);
+        acquisitionNotificationText.text = "Added Inventory The " + GameManager.Instance.GetCaptureManager().GetName(CaptureManager.SubtitleCategory.ITEMINFO,name);
         if (uiAudioSource.clip == null)
             uiAudioSource.clip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Interactable, "UI_AddInventory");
         uiAudioSource.PlayOneShot(uiAudioSource.clip);

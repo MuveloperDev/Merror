@@ -776,13 +776,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85b0e89040a7b4b4a8652e20555728c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clips:
+    keys:
+    - PUBLIC_DEMO
+    - CHAPTER1_OP
+    - CHAPTER1_END
+    - CHAPTER1_ISABELROOM
+    - CHAPTER1_DEATH
+    values:
+    - {fileID: 32900000, guid: 1e3a27acad149c04591b08fc2a2d2755, type: 3}
+    - {fileID: 32900000, guid: 2e71e538db84ca94699f3e96f8731c6d, type: 3}
+    - {fileID: 32900000, guid: cefb4ba55f3c52d42a466b12e7ced373, type: 3}
+    - {fileID: 32900000, guid: bc890f83eadfc5644a2220e8cfb4bc70, type: 3}
+    - {fileID: 32900000, guid: ac0b0b85adcfb514fb9f4d991d4f3a26, type: 3}
   videoClips:
     chapter1:
-      op: {fileID: 32900000, guid: 2e71e538db84ca94699f3e96f8731c6d, type: 3}
-      deathVideo: {fileID: 32900000, guid: 6b4105c95b8871d4db60b2a8e214f9e7, type: 3}
-      endVideo: {fileID: 32900000, guid: cefb4ba55f3c52d42a466b12e7ced373, type: 3}
-      isabelRoomVideo: {fileID: 32900000, guid: bc890f83eadfc5644a2220e8cfb4bc70, type: 3}
-      demoEndVideo: {fileID: 32900000, guid: 1e3a27acad149c04591b08fc2a2d2755, type: 3}
+      op: {fileID: 0}
+      deathVideo: {fileID: 0}
+      endVideo: {fileID: 0}
+      isabelRoomVideo: {fileID: 0}
+      demoEndVideo: {fileID: 0}
   videoPlayer: {fileID: 0}
 --- !u!114 &453554247
 MonoBehaviour:

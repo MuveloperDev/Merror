@@ -5,7 +5,6 @@ using System.IO;
 using System.Collections.ObjectModel;
 using Unity.VisualScripting;
 using TMPro;
-using static UnityEditor.Progress;
 
 public class CaptureManager : MonoBehaviour
 {

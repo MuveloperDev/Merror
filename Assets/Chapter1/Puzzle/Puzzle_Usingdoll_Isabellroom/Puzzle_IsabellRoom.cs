@@ -21,13 +21,14 @@ public class Puzzle_IsabellRoom : MonoBehaviour
     [SerializeField] GameObject frame;
     [SerializeField] GameObject[] allDolls;
 
-    //public bool InteractableOK { get { return interactableok; } set { interactableok = InteractableOK; } }
     [SerializeField] bool interactableok = false;
     [SerializeField] GameObject Hint1 = null;
     [SerializeField] Interactable[] openDoors = null;
+    [SerializeField] Transform PlayerPosAfterCutVideo = null;
+
     #endregion
-    
-    private bool? puzzleFinish;
+
+    private bool? puzzleFinish = null;
 
     // Player
     private GameObject player = null;
@@ -35,25 +36,22 @@ public class Puzzle_IsabellRoom : MonoBehaviour
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        Debug.Log("door 배열 개수 : " + openDoors.Length + " Awake");
     }
 
     private void Start()
     {
-        Debug.Log("door 배열 개수 : " + openDoors.Length + " Start");
-
         //Receive this puzzle is Finished from GameManager
-        puzzleFinish = !GameManager.Instance.isFirstPlay;
+        if(GameManager.Instance.isFirstPlay == false)
+            puzzleFinish = GameManager.Instance.GetData().puzzles[1].isCleared;
 
         if (puzzleFinish == null)
-            Debug.LogError("Failed To Receive Value From GameManager");
+            Debug.LogError("No Receive DataValue From GameManager");
 
         // Check this Puzzle is finished
         if (puzzleFinish == true)
         {
             Destroy(gameObject.GetComponent<Interactable>());
             Destroy(gameObject.GetComponent<Outlinable>());
-            //Destroy(gameObject.GetComponent<Puzzle_IsabellRoom>());
             frame.SetActive(false);
         }
         if (gameObject.name == "1_RABBIT" || gameObject.name == "Frame_Finish") interactableok = true;
@@ -128,7 +126,6 @@ public class Puzzle_IsabellRoom : MonoBehaviour
 
     IEnumerator FinishPuzzle()
     {
-        puzzleFinish = true;
         for (int i = 0; i < allDolls.Length; i++)
         {
             if (allDolls[i].name == "3_Duck")
@@ -157,9 +154,8 @@ public class Puzzle_IsabellRoom : MonoBehaviour
         GameManager.Instance.GetVideoPlayer().CallPlayVideo(GameManager.Instance.GetVideoPlayer().getVideoClips.getChapter1.IsabelRoomVideo,
             () =>
             {
-                GameManager.Instance.ClearPuzzle("Puzzle_IsabellRoom", Hint1, 7f);
-                Debug.Log("door 배열 개수 : " + openDoors.Length + " Real");
-
+                player.transform.position = PlayerPosAfterCutVideo.position;
+                player.transform.rotation = PlayerPosAfterCutVideo.rotation;
                 for (int i = 0; i < openDoors.Length; i++)
                 {
                     openDoors[i].IsLocked = false;
@@ -201,9 +197,9 @@ public class Puzzle_IsabellRoom : MonoBehaviour
 
     private void InsertItemInventory()
     {
+        GameManager.Instance.ClearPuzzle("Puzzle_IsabellRoom", Hint1, 7f);
         if (puzzleFinish == true)
         {
-            GameManager.Instance.ClearPuzzle("Puzzle_IsabellRoom", Hint1, 7f);
             return;
         }
         StartCoroutine(FinishPuzzle());

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System.Collections.ObjectModel;
-using static VideoPlayerManager.VideoClips;
 using Unity.VisualScripting;
 using TMPro;
+using static UnityEditor.Progress;
 
 public class CaptureManager : MonoBehaviour
 {
@@ -34,7 +34,7 @@ public class CaptureManager : MonoBehaviour
     /// <summary>
     /// Defined Captions Category
     /// </summary>
-    public enum Category
+    public enum SubtitleCategory
     {
         ITEMINFO,
         DATE,
@@ -109,21 +109,57 @@ public class CaptureManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI itemNameText = null;
     [SerializeField] private TextMeshProUGUI itemInfoText = null;
 
-    public void GetCapture(Category category, string objName)
+    /// <summary>
+    /// Item information in the inventory is returned from a text file.
+    /// </summary>
+    /// <param name="category">Receives the list to be found in SubtitleCategory as an argument of Enum type.</param>
+    /// <param name="objName">Subtitles and Name are returned by object name</param>
+    public void GetInfoInInventory(SubtitleCategory category, string objName)
     {
         if (itemNameText == null || itemInfoText == null)
         {
             GameObject Parent = GameObject.Find("InventoryCanvas").transform.GetChild(1).GetChild(0).gameObject;
             itemNameText = Parent.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
             itemInfoText = Parent.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
+            if (itemNameText == null || itemInfoText == null)
+            {
+                Debug.LogError("TextObj is null in inventroy");
+                return;
+            }
         }
         string name = objName.Replace("(Clone)", "");
-        itemNameText.text = captionTable[category.ToString()][name].name;
-        itemInfoText.text = captionTable[category.ToString()][name].subTitle;
+        itemNameText.text = GetCapture(category, name).name;
+        itemInfoText.text = GetCapture(category, name).subTitle;
     }
 
-    public string GetSubTitle(Category category, int chapter) => captionTable[category.ToString()][(chapter+1).ToString()].subTitle;
-    public string GetName(Category category, string objName) => captionTable[category.ToString()][objName].name;
+    /// <summary>
+    /// Returns subtitles defined by chapter.
+    /// </summary>
+    /// <param name="category">Receives the list to be found in SubtitleCategory as an argument of Enum type.</param>
+    /// <param name="chapter">Current chpater.</param>
+    /// <returns></returns>
+    public string GetSubtitle(SubtitleCategory category, int chapter) => captionTable[category.ToString()][(chapter+1).ToString()].subTitle;
+    /// <summary>
+    /// Subtitles are returned with the type and object name defined in SubtitleCategory.
+    /// </summary>
+    /// <param name="category">Receives the list to be found in SubtitleCategory as an argument of Enum type. </param>
+    /// <param name="objName">Subtitles are returned by object name.</param>
+    /// <returns></returns>
+    public string GetSubtitle(SubtitleCategory category, string objName) => captionTable[category.ToString()][objName].subTitle;
+    /// <summary>
+    /// The name defined in the text file is returned as the type and object name defined in SubtitleCategory.
+    /// </summary>
+    /// <param name="category">Receives the list to be found in SubtitleCategory as an argument of Enum type. </param>
+    /// <param name="objName">Name of object are returned by object name.</param>
+    /// <returns></returns>
+    public string GetName(SubtitleCategory category, string objName) => captionTable[category.ToString()][objName].name;
+    /// <summary>
+    /// Returns a Capture class that contains the object name and subtitle.
+    /// </summary>
+    /// <param name="category">Receives the list to be found in SubtitleCategory as an argument of Enum type. </param>
+    /// <param name="objName">Capture of object are returned by object name.</param>
+    /// <returns></returns>
+    public Capture GetCapture(SubtitleCategory category, string objName) => captionTable[category.ToString()][objName];
 
 
 }

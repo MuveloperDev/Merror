@@ -103,7 +103,7 @@ public class BaseStateMachine : MonoBehaviour
         navMeshAgent.acceleration = 50f;
 
         PlaySound(ClipChanger("Isabel_Run"),true);
-        
+
         while (true)
         {
             yield return new WaitForFixedUpdate();
@@ -119,7 +119,15 @@ public class BaseStateMachine : MonoBehaviour
                     transform.LookAt(target);
                     TurnOffState();
                 }
-                
+            }
+            float distanceY = Mathf.Abs(transform.position.y - target.transform.position.y);
+            float distance = Mathf.Abs(Vector3.Distance(transform.position, target.transform.position));
+            float dot = Vector3.Dot(transform.position, target.transform.position);
+            if (dot >= 0 && distanceY < 1f && distance < 6f)
+            {
+                navMeshAgent.updateRotation = false;
+                transform.LookAt(target);
+                navMeshAgent.updateRotation = true;
             }
             // Reset Destination
             if (navMeshAgent.enabled) navMeshAgent.SetDestination(target.position);

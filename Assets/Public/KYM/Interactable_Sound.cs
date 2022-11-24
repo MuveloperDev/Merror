@@ -8,11 +8,11 @@ public partial class Interactable : MonoBehaviour
 {
     [Header("::Audio::")]
     [Tooltip("Is this object have to play any sound?")]
-    [SerializeField] private bool Audio_Playable = false;
-    [SerializeField] private AudioClip _MyClip = null;
-    [SerializeField] private string Clip_Name = "";
+    [SerializeField] protected bool Audio_Playable = false;
+    [SerializeField] protected AudioClip _MyClip = null;
+    [SerializeField] protected string Clip_Name = "";
 
-    private AudioSource _MySource = null;
+    protected AudioSource _MySource = null;
 
     /// <summary>
     /// Play my audio clip if this object is audio playable object.

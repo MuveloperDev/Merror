@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,7 @@ public partial class Interactable : MonoBehaviour
     public void SetSpecial(bool value) => Special = value;
     public bool GetIsPuzzle() => isPuzzle;
 
+    [Obsolete]
     /// <summary>
     /// Do something special fuction.
     /// </summary>

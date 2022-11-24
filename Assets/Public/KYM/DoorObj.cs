@@ -15,6 +15,9 @@ public class DoorObj : Interactable, ISpecial
     }
     public void MySpecial()
     {
+        _MyClip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Interactable, "Door_Lock");
+        _MySource.clip = _MyClip;
+        _MySource.Play();
         Debug.Log("Locked Sound");
     }
 }

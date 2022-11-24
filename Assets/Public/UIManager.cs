@@ -180,6 +180,7 @@ public class UIManager : MonoBehaviour
         }
     */
     [SerializeField] Slider acquisitionNotificationSlider = null;
+    public Slider AcquisitionNotificationSlider { get { return acquisitionNotificationSlider; } private set { } }
     [SerializeField] TextMeshProUGUI acquisitionNotificationText = null;
     [SerializeField] AudioSource uiAudioSource = null;
 

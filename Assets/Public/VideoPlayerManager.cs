@@ -77,16 +77,28 @@ public class VideoPlayerManager : MonoBehaviour
         if (aimUI != null)
             aimUI.SetActive(false);
         GameObject fadeInOutPanel = GameObject.Find("FadeInOutPanel");
-        //Del & Add Aim UI 
-        if (aimUI != null)
-            aimUI.SetActive(false);
+        //Del & Add fadeInOutPanel 
+        if (fadeInOutPanel != null)
+            fadeInOutPanel.SetActive(false);
+        // Del AcquisitionNotificationSlider Before Play Video
+        if (GameManager.Instance.GetUI().AcquisitionNotificationSlider.gameObject != null)
+            GameManager.Instance.GetUI().AcquisitionNotificationSlider.gameObject.SetActive(false);
+        // Del PostProcess Before Play Video
+        GameObject postProcess = GameObject.Find("PostProcess");
+        if (postProcess != null)
+            postProcess.SetActive(false);
+
         // loopPointReached : last point of Video clip 
         videoPlayer.loopPointReached += (VideoPlayer vp) =>
         {
-            TimeControl.Play();
             videoPlayer.Stop();
             if (aimUI != null)
                 aimUI.SetActive(true);
+            if (GameManager.Instance.GetUI().AcquisitionNotificationSlider.gameObject != null)
+                GameManager.Instance.GetUI().AcquisitionNotificationSlider.gameObject.SetActive(true);
+            if (postProcess != null)
+                postProcess.SetActive(true);
+            TimeControl.Play();
             func();
         };
         // for skip

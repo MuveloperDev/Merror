@@ -1,35 +1,30 @@
 using EPOOutline;
-using System;
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Assertions.Must;
-using static CameraState;
 
 public class Puzzle_IsabellRoom : MonoBehaviour
 {
-    #region Refefences
-    [SerializeField] int index;
-
+    #region CachingComponents
     [SerializeField] LineRenderer lr;
-
     [SerializeField] Transform startPos;
     [SerializeField] Transform endPos;
-
-    [SerializeField] GameObject nextObject;
-
-    [SerializeField] GameObject frame;
-    [SerializeField] GameObject[] allDolls;
-
-    [SerializeField] bool interactableok = false;
-    [SerializeField] GameObject Hint1 = null;
-    [SerializeField] Interactable[] openDoors = null;
     [SerializeField] Transform PlayerPosAfterCutVideo = null;
-
+    [SerializeField] GameObject nextObject;
+    [SerializeField] GameObject frame;
+    [SerializeField] GameObject Hint1 = null;
+    [SerializeField] GameObject[] allDolls;
+    [SerializeField] Interactable[] openDoors = null;
+    [SerializeField] LineRenderer myRenderLine = null;
+    [SerializeField] Interactable myInteractable = null;
+    [SerializeField] Outlinable myOutlinable = null;
+    [SerializeField] Puzzle_IsabellRoom myPuzzle = null;
+    [SerializeField] Puzzle_IsabellRoom nextObjPuzzle = null;
     #endregion
-
+    #region memberVariable
+    [SerializeField] int index;
+    [SerializeField] bool interactableok = false;
     private bool? puzzleFinish = null;
-
+    #endregion
     // Player
     private GameObject player = null;
 
@@ -50,31 +45,27 @@ public class Puzzle_IsabellRoom : MonoBehaviour
         // Check this Puzzle is finished
         if (puzzleFinish == true)
         {
-            Destroy(gameObject.GetComponent<Interactable>());
-            Destroy(gameObject.GetComponent<Outlinable>());
+            Destroy(myInteractable);
+            Destroy(myOutlinable);
             frame.SetActive(false);
+            return;
         }
         if (gameObject.name == "1_RABBIT" || gameObject.name == "Frame_Finish") interactableok = true;
     }
 
     private void CheckDolls()
     {
-        if (gameObject.GetComponent<Puzzle_IsabellRoom>().interactableok == false)
+        if (interactableok == false)
         {
             for(int i = 0; i < allDolls.Length; i++)
             {
                 if (i == 2)
                 {
-                    allDolls[i].transform.GetChild(0).GetComponent<Puzzle_IsabellRoom>().RenderLine(false);
-                    allDolls[i].transform.GetChild(0).GetComponent<Puzzle_IsabellRoom>().interactableok = false;
-                    allDolls[i].transform.GetChild(0).GetComponent<Puzzle_IsabellRoom>().RotateSM(allDolls[i].transform.GetChild(0).GetComponent<Puzzle_IsabellRoom>().nextObject.transform, 1f, false);
+                    allDolls[i].transform.GetChild(0).SendMessage("WrongAnswer", SendMessageOptions.DontRequireReceiver);//GetComponent<Puzzle_IsabellRoom>().RenderLine(false);
                     continue;
                 }
-                allDolls[i].GetComponent<Puzzle_IsabellRoom>().RenderLine(false);
-                allDolls[i].GetComponent<Puzzle_IsabellRoom>().RotateSM(allDolls[i].GetComponent<Puzzle_IsabellRoom>().nextObject.transform, 1f, false);
-                allDolls[i].GetComponent<Puzzle_IsabellRoom>().interactableok = false;
+                allDolls[i].SendMessage("WrongAnswer", SendMessageOptions.DontRequireReceiver);
             }
-            allDolls[0].GetComponent<Puzzle_IsabellRoom>().interactableok = true;
             return;
         }
 
@@ -87,7 +78,7 @@ public class Puzzle_IsabellRoom : MonoBehaviour
             case 5:
             case 6:
                 StartCoroutine(Rotate(frame.transform, 1f, true));
-                nextObject.GetComponent<Puzzle_IsabellRoom>().interactableok = true;
+                nextObjPuzzle.interactableok = true;
                 break;
 
             case 7:
@@ -103,12 +94,22 @@ public class Puzzle_IsabellRoom : MonoBehaviour
 
     }
 
+    private void WrongAnswer()
+    {
+        RenderLine(false);
+        RotateSM(nextObject.transform, 1f, false);
+        interactableok = false;
+
+        if (gameObject.name == "1_RABBIT")
+            interactableok = true;
+    }
+
     private void RenderLine(bool active)
     {
         if(active == false)
-            gameObject.GetComponent<LineRenderer>().enabled = false;
+            myRenderLine.enabled = false;
         else
-            gameObject.GetComponent<LineRenderer>().enabled = true;
+            myRenderLine.enabled = true;
 
         lr.startColor = new Color(1, 0, 0, 0.7f);
         lr.endColor = new Color(1, 0, 0, 0.7f);
@@ -128,15 +129,12 @@ public class Puzzle_IsabellRoom : MonoBehaviour
     {
         for (int i = 0; i < allDolls.Length; i++)
         {
-            if (allDolls[i].name == "3_Duck")
+            if(i == 2)
             {
-                allDolls[i].GetComponentInChildren<LineRenderer>().enabled = false;
-                Destroy(allDolls[i].GetComponentInChildren<Interactable>());
+                allDolls[i].transform.GetChild(0).SendMessage("RemoveAll", SendMessageOptions.DontRequireReceiver);
                 continue;
             }
-            allDolls[i].GetComponent<LineRenderer>().enabled = false;
-
-            Destroy(allDolls[i].GetComponent<Interactable>());
+            allDolls[i].SendMessage("RemoveAll", SendMessageOptions.DontRequireReceiver);
         }
         frame.AddComponent<Rigidbody>();
         frame.GetComponent<Rigidbody>().AddForce(0,0,-10f, ForceMode.Impulse);
@@ -145,6 +143,13 @@ public class Puzzle_IsabellRoom : MonoBehaviour
         Destroy(frame.GetComponent<Outlinable>());
         StartCoroutine(Do_Eff());
         yield return new WaitForFixedUpdate();
+    }
+
+    private void RemoveAll()
+    {
+        myRenderLine.enabled = false;
+        Destroy(myRenderLine);
+        Destroy(myInteractable);
     }
 
     IEnumerator Do_Eff()
@@ -161,7 +166,6 @@ public class Puzzle_IsabellRoom : MonoBehaviour
                     openDoors[i].IsLocked = false;
                 }
                 GameManager.Instance.Save();
-                Debug.Log("EndVideo");
             });
     }
 
@@ -172,8 +176,8 @@ public class Puzzle_IsabellRoom : MonoBehaviour
 
     IEnumerator Rotate(Transform target, float time, bool delayRender)
     {
-        Debug.Log(" Do Rotate : " + target.gameObject.name);
         Vector3 dir;
+        float fixedDeltaTime = Time.fixedDeltaTime;
         while (time > 0)
         {
             if (gameObject.name == "3_DuckObj")
@@ -187,7 +191,7 @@ public class Puzzle_IsabellRoom : MonoBehaviour
                 this.transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * 3f);
             }
 
-            time -= Time.fixedDeltaTime;
+            time -= fixedDeltaTime;
             yield return new WaitForFixedUpdate();
         }
 
@@ -197,7 +201,9 @@ public class Puzzle_IsabellRoom : MonoBehaviour
 
     private void InsertItemInventory()
     {
-        GameManager.Instance.ClearPuzzle("Puzzle_IsabellRoom", Hint1, 7f);
+        if(gameObject.name == "Frame_Finish")
+            GameManager.Instance.ClearPuzzle("Puzzle_IsabellRoom", Hint1, 7f);
+
         if (puzzleFinish == true)
         {
             return;

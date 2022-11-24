@@ -11,11 +11,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using MyLibrary;
+using System;
 
 public partial class Interactable : MonoBehaviour
 {
-    public Interactable() { }
-
+    [Obsolete]
     public enum ObjectType
     {
         None,
@@ -34,11 +34,11 @@ public partial class Interactable : MonoBehaviour
     }
 
     public bool IsLocked = false;
-    [SerializeField] protected ObjectType myType = ObjectType.None;
-    public ObjectType GetMyType() => myType;
+    [SerializeField, Obsolete] public ObjectType myType = ObjectType.None;
+    [Obsolete] public ObjectType GetMyType() => myType;
 
-    private delegate void Do();
-    private Do DoMyWork = null; // My Interaction
+    protected delegate void Do();
+    protected Do DoMyWork = null; // My Interaction
 
     private void Awake()
     {

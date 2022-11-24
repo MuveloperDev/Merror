@@ -747,6 +747,7 @@ MonoBehaviour:
   AutoReset: 0
   ResetTimer: 0
   Reset_Speed: 50
+  myobstacle: {fileID: 0}
   Audio_Playable: 1
   _MyClip: {fileID: 0}
   Clip_Name: DollMove
@@ -793,6 +794,11 @@ MonoBehaviour:
   Hint1: {fileID: 2849733170565474736, guid: 8a9ccf4bb2572534aa0578eb5f769779, type: 3}
   openDoors: []
   PlayerPosAfterCutVideo: {fileID: 1866048421443760939}
+  myRenderLine: {fileID: 2259024378666398556}
+  myInteractable: {fileID: 2259024378666398559}
+  myOutlinable: {fileID: 2259024378666398552}
+  myPuzzle: {fileID: 2259024378666398557}
+  nextObjPuzzle: {fileID: 1987658796906956015}
 --- !u!120 &2259024378666398556
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -1251,6 +1257,7 @@ MonoBehaviour:
   AutoReset: 0
   ResetTimer: 0
   Reset_Speed: 50
+  myobstacle: {fileID: 0}
   Audio_Playable: 1
   _MyClip: {fileID: 0}
   Clip_Name: DollMove
@@ -1297,6 +1304,11 @@ MonoBehaviour:
   Hint1: {fileID: 2849733170565474736, guid: 8a9ccf4bb2572534aa0578eb5f769779, type: 3}
   openDoors: []
   PlayerPosAfterCutVideo: {fileID: 1866048421443760939}
+  myRenderLine: {fileID: 2765936203546974648}
+  myInteractable: {fileID: 2765936203546974651}
+  myOutlinable: {fileID: 2765936203546974628}
+  myPuzzle: {fileID: 2765936203546974649}
+  nextObjPuzzle: {fileID: 2808380094990509624}
 --- !u!120 &2765936203546974648
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -1589,6 +1601,7 @@ MonoBehaviour:
   AutoReset: 0
   ResetTimer: 0
   Reset_Speed: 50
+  myobstacle: {fileID: 0}
   Audio_Playable: 1
   _MyClip: {fileID: 0}
   Clip_Name: DollMove
@@ -1635,6 +1648,11 @@ MonoBehaviour:
   Hint1: {fileID: 2849733170565474736, guid: 8a9ccf4bb2572534aa0578eb5f769779, type: 3}
   openDoors: []
   PlayerPosAfterCutVideo: {fileID: 1866048421443760939}
+  myRenderLine: {fileID: 2808380094990509631}
+  myInteractable: {fileID: 2808380094990509626}
+  myOutlinable: {fileID: 2808380094990509627}
+  myPuzzle: {fileID: 2808380094990509624}
+  nextObjPuzzle: {fileID: 4337341570706104075}
 --- !u!120 &2808380094990509631
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -2485,6 +2503,7 @@ MonoBehaviour:
   AutoReset: 0
   ResetTimer: 0
   Reset_Speed: 50
+  myobstacle: {fileID: 0}
   Audio_Playable: 1
   _MyClip: {fileID: 0}
   Clip_Name: DollMove
@@ -2531,6 +2550,11 @@ MonoBehaviour:
   Hint1: {fileID: 2849733170565474736, guid: 8a9ccf4bb2572534aa0578eb5f769779, type: 3}
   openDoors: []
   PlayerPosAfterCutVideo: {fileID: 1866048421443760939}
+  myRenderLine: {fileID: 4337341570706104074}
+  myInteractable: {fileID: 4337341570706104181}
+  myOutlinable: {fileID: 4337341570706104182}
+  myPuzzle: {fileID: 4337341570706104075}
+  nextObjPuzzle: {fileID: 4854857503788327980}
 --- !u!120 &4337341570706104074
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -4478,6 +4502,7 @@ MonoBehaviour:
   AutoReset: 0
   ResetTimer: 0
   Reset_Speed: 50
+  myobstacle: {fileID: 0}
   Audio_Playable: 0
   _MyClip: {fileID: 0}
   Clip_Name: 
@@ -4758,6 +4783,7 @@ MonoBehaviour:
   AutoReset: 0
   ResetTimer: 0
   Reset_Speed: 50
+  myobstacle: {fileID: 0}
   Audio_Playable: 1
   _MyClip: {fileID: 0}
   Clip_Name: DollMove
@@ -4804,6 +4830,11 @@ MonoBehaviour:
   Hint1: {fileID: 2849733170565474736, guid: 8a9ccf4bb2572534aa0578eb5f769779, type: 3}
   openDoors: []
   PlayerPosAfterCutVideo: {fileID: 1866048421443760939}
+  myRenderLine: {fileID: 4854857503788327971}
+  myInteractable: {fileID: 4854857503788327982}
+  myOutlinable: {fileID: 4854857503788327983}
+  myPuzzle: {fileID: 4854857503788327980}
+  nextObjPuzzle: {fileID: 5505843405394829612}
 --- !u!120 &4854857503788327971
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -5420,6 +5451,7 @@ MonoBehaviour:
   AutoReset: 0
   ResetTimer: 0
   Reset_Speed: 50
+  myobstacle: {fileID: 0}
   Audio_Playable: 1
   _MyClip: {fileID: 0}
   Clip_Name: FrameCrashSound
@@ -5453,6 +5485,11 @@ MonoBehaviour:
   Hint1: {fileID: 2849733170565474736, guid: 8a9ccf4bb2572534aa0578eb5f769779, type: 3}
   openDoors: []
   PlayerPosAfterCutVideo: {fileID: 1866048421443760939}
+  myRenderLine: {fileID: 0}
+  myInteractable: {fileID: 1987658796906956010}
+  myOutlinable: {fileID: 1987658796906956008}
+  myPuzzle: {fileID: 1987658796906956015}
+  nextObjPuzzle: {fileID: 0}
 --- !u!1 &5266499834413900334
 GameObject:
   m_ObjectHideFlags: 0
@@ -5596,9 +5633,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5503962032566992789}
-  m_LocalRotation: {x: -0.015064516, y: 0.6133869, z: 0.08656682, w: 0.78487945}
-  m_LocalPosition: {x: 38.346, y: 9.816, z: 8.690001}
-  m_LocalScale: {x: 0.30000007, y: 0.3, z: 0.3}
+  m_LocalRotation: {x: -0.015064526, y: 0.613387, z: 0.08656682, w: 0.78487945}
+  m_LocalPosition: {x: 38.346, y: 9.816, z: 8.689999}
+  m_LocalScale: {x: 0.30000004, y: 0.30000007, z: 0.30000007}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 456871144}
@@ -5758,6 +5795,7 @@ MonoBehaviour:
   AutoReset: 0
   ResetTimer: 0
   Reset_Speed: 50
+  myobstacle: {fileID: 0}
   Audio_Playable: 1
   _MyClip: {fileID: 0}
   Clip_Name: DollMove
@@ -5804,6 +5842,11 @@ MonoBehaviour:
   Hint1: {fileID: 2849733170565474736, guid: 8a9ccf4bb2572534aa0578eb5f769779, type: 3}
   openDoors: []
   PlayerPosAfterCutVideo: {fileID: 1866048421443760939}
+  myRenderLine: {fileID: 5505843405394829603}
+  myInteractable: {fileID: 5505843405394829614}
+  myOutlinable: {fileID: 5505843405394829615}
+  myPuzzle: {fileID: 5505843405394829612}
+  nextObjPuzzle: {fileID: 8574284769593078219}
 --- !u!120 &5505843405394829603
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -8006,6 +8049,7 @@ MonoBehaviour:
   AutoReset: 0
   ResetTimer: 0
   Reset_Speed: 50
+  myobstacle: {fileID: 0}
   Audio_Playable: 1
   _MyClip: {fileID: 0}
   Clip_Name: DollMove
@@ -8052,6 +8096,11 @@ MonoBehaviour:
   Hint1: {fileID: 2849733170565474736, guid: 8a9ccf4bb2572534aa0578eb5f769779, type: 3}
   openDoors: []
   PlayerPosAfterCutVideo: {fileID: 1866048421443760939}
+  myRenderLine: {fileID: 8574284769593078218}
+  myInteractable: {fileID: 8574284769593079349}
+  myOutlinable: {fileID: 8574284769593079350}
+  myPuzzle: {fileID: 8574284769593078219}
+  nextObjPuzzle: {fileID: 2259024378666398557}
 --- !u!120 &8574284769593078218
 LineRenderer:
   m_ObjectHideFlags: 0

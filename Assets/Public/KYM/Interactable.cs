@@ -78,7 +78,7 @@ public partial class Interactable : MonoBehaviour
     /// </summary>
     public virtual void Do_Interact()
     {
-        if (IsLocked == true) 
+        if (IsLocked == true)
         {
             if(myType == ObjectType.Door)
             {

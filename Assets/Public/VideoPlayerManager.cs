@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.Video;
 
 [System.Serializable]
-public class CustomDictionary<T1, T2> where T1 : class where T2 : class
+public class SerializableDictionary<T1, T2> where T1 : class where T2 : class
 {
     [SerializeField] private T1[] keys;
     public T1[] Keys { get { return keys; } }
@@ -29,7 +29,7 @@ public class VideoPlayerManager : MonoBehaviour
         PUBLIC,
         CHAPTER1,
     }
-    [SerializeField] private CustomDictionary<string, VideoClip> clips = new CustomDictionary<string, VideoClip>();
+    [SerializeField] private SerializableDictionary<string, VideoClip> clips = new SerializableDictionary<string, VideoClip>();
 
     [SerializeField] private VideoPlayer videoPlayer = null;
 
@@ -116,8 +116,8 @@ public class VideoPlayerManager : MonoBehaviour
         if (!GameManager.Instance.isFirstPlay && Input.GetKeyDown(KeyCode.Escape) && videoPlayer.isPlaying)
         {
             StopCoroutine("PlayVideo");
-            if (Time.timeScale == 0) TimeControl.Play();
             videoPlayer.Stop();
+            if (Time.timeScale == 0) TimeControl.Play();
             videoFunc();
             videoFunc = null;
         }

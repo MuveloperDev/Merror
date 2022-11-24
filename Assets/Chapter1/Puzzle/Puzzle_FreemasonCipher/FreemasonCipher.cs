@@ -9,7 +9,7 @@ using EPOOutline;
 public class FreemasonCipher : MonoBehaviour
 {
     [SerializeField] AudioClip[] ChalkSound = null;
-
+    
     [SerializeField] GameObject BlackBoardBackground = null;
     [SerializeField] GameObject[] HintPaper = null;
     [SerializeField] BlackBoard blackBoard = null;

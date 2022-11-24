@@ -31,10 +31,9 @@ public class IdentitiesManager : MonoBehaviour
         identity.TurnOnState(BaseStateMachine.State.CHASE);
     }
 
-    public void WaitForChaseIdentity(float time) => Invoke("ChaseIdentity", time);
+    public void WaitForChaseIdentity(float time) => Invoke(nameof(ChaseIdentity), time);
     public void ChaseIdentity(Vector3 pos)
     {
-
         Debug.Log(isEnable);
         identity.transform.position = pos;
         identity.gameObject.SetActive(true);

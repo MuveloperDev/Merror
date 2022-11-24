@@ -1063,6 +1063,7 @@ MonoBehaviour:
   draw: {fileID: 2081973195}
   changingDraw: {fileID: 2100000, guid: 0d8b3f36eb163194aba64fbbd3100445, type: 2}
   isClear: 0
+  isCorrect: 1
   doll: {fileID: 110849475}
   endTrigger: {fileID: 450564542}
 --- !u!114 &42794264
@@ -51246,6 +51247,7 @@ MonoBehaviour:
   draw: {fileID: 0}
   changingDraw: {fileID: 0}
   isClear: 0
+  isCorrect: 0
   doll: {fileID: 0}
   endTrigger: {fileID: 0}
 --- !u!65 &1927672086
@@ -54739,6 +54741,7 @@ MonoBehaviour:
   draw: {fileID: 0}
   changingDraw: {fileID: 0}
   isClear: 0
+  isCorrect: 0
   doll: {fileID: 0}
   endTrigger: {fileID: 0}
 --- !u!65 &2047079352

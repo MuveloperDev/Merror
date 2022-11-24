@@ -634,5 +634,22 @@ namespace MyLibrary
             Clamped_Delta_Mouse_Y = Mathf.Clamp(Clamped_Delta_Mouse_Y, -70f, 70f); // Clamp Range : (-Upside, -Downside)
         }
     }
+
+    [System.Serializable]
+    public class SerializableDictionary<T1, T2> where T1 : class where T2 : class
+    {
+        [SerializeField] private T1[] keys;
+        public T1[] Keys { get { return keys; } }
+        [SerializeField] private T2[] values;
+        public T2[] Values { get { return values; } }
+
+        [SerializeField] private Dictionary<T1, T2> dictionary = new Dictionary<T1, T2>();
+        public void Init()
+        {
+            for (int i = 0; i < keys.Length; i++) dictionary.Add(keys[i], values[i]);
+        }
+
+        public T2 GetValue(T1 key) => dictionary[key];
+    }
 }
  

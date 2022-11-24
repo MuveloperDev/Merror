@@ -100,7 +100,7 @@ public class CameraState : MonoBehaviour
 
         Debug.Log("TurnOnState");
 
-        // »óÅÂÇØÁ¦ Å×½ºÆ®¿ë
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½×½ï¿½Æ®ï¿½ï¿½
         if (prevState == STATE)
         {
             TurnOffState();

@@ -11,8 +11,7 @@ public class EventToiletTrigger : MonoBehaviour
     [SerializeField] private Transform terrace = null;
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(GameManager.Instance.GetIdentityManager().IsEnable);
-        if (GameManager.Instance.GetIdentityManager().IsEnable == true)
+        if (GameManager.Instance.GetIdentityManager().GetIdentity().gameObject.activeSelf)
         {
             Debug.LogError("Already Isabel is Enable by MH");
             return;
@@ -21,7 +20,6 @@ public class EventToiletTrigger : MonoBehaviour
         {
             if (other.gameObject.CompareTag("Player"))
             {
-                Debug.Log("OnCollision");
                 eventObjs.gameObject.SetActive(true);
                 cameraState.TurnOnState(CameraState.CamState.PANIC);
                 PlaySound(audios[0], ClipChanger("2FToilet_Clack"), true);
@@ -30,7 +28,6 @@ public class EventToiletTrigger : MonoBehaviour
                     eventObjs.gameObject.SetActive(false);
                     GameManager.Instance.GetIdentityManager().ChaseIdentity();
                 };
-                GameManager.Instance.GetIdentityManager().IsEnable = true;
                 terrace.gameObject.SetActive(true);
                 gameObject.SetActive(false);
             }

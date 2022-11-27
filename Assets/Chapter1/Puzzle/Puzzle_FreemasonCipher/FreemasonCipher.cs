@@ -9,9 +9,8 @@ using EPOOutline;
 public class FreemasonCipher : MonoBehaviour
 {
     [SerializeField] AudioClip[] ChalkSound = null;
-
+    
     [SerializeField] GameObject BlackBoardBackground = null;
-    //[SerializeField] Button CloseButton;
     [SerializeField] GameObject[] HintPaper = null;
     [SerializeField] BlackBoard blackBoard = null;
 
@@ -45,6 +44,15 @@ public class FreemasonCipher : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }
+    public void PalyChalkSound()
+    {
+        if (ChalkSound != null)
+        {
+            int playRandomClip = Random.Range(0, 4);
+            playChalkSound.clip = ChalkSound[playRandomClip];
+            playChalkSound.Play();
+        }
+    }
 
     public void ClickCloseButton()
     {
@@ -65,7 +73,6 @@ public class FreemasonCipher : MonoBehaviour
         }
     }
 
-    // 추가 중
     public void CompareAnswer(string inStr)
     {
 
@@ -79,18 +86,7 @@ public class FreemasonCipher : MonoBehaviour
             Debug.Log("퍼즐 정답");
 
             InsertItemInventory();
-            GameManager.Instance.Save();
-            
-        }
-    }
-
-    public void PalyChalkSound()
-    {
-        if (ChalkSound != null)
-        {
-            int playRandomClip = Random.Range(0, 4);
-            playChalkSound.clip = ChalkSound[playRandomClip];
-            playChalkSound.Play();
+            GameManager.Instance.Save();            
         }
     }
 

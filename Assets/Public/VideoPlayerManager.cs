@@ -5,22 +5,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
 
-[System.Serializable]
-public class CustomDictionary<T1, T2> where T1 : class where T2 : class
-{
-    [SerializeField] private T1[] keys;
-    public T1[] Keys { get { return keys; } }
-    [SerializeField] private T2[] values;
-    public T2[] Values { get { return values; } }
-
-    [SerializeField] private Dictionary<T1, T2> dictionary = new Dictionary<T1, T2>();
-    public void Init()
-    {
-        for (int i = 0; i < keys.Length; i++) dictionary.Add(keys[i], values[i]);
-    }
-
-    public T2 GetValue(T1 key) => dictionary[key];
-}
 [RequireComponent(typeof(VideoPlayer))]
 public class VideoPlayerManager : MonoBehaviour
 {
@@ -29,7 +13,7 @@ public class VideoPlayerManager : MonoBehaviour
         PUBLIC,
         CHAPTER1,
     }
-    [SerializeField] private CustomDictionary<string, VideoClip> clips = new CustomDictionary<string, VideoClip>();
+    [SerializeField] private SerializableDictionary<string, VideoClip> clips = new SerializableDictionary<string, VideoClip>();
 
     [SerializeField] private VideoPlayer videoPlayer = null;
 
@@ -62,7 +46,10 @@ public class VideoPlayerManager : MonoBehaviour
         StartCoroutine(PlayVideo(clip, func));
     }
 
-
+    [Header("Find UI")]
+    [SerializeField] private GameObject aimUI = null;
+    [SerializeField] private GameObject fadeInOutPanel = null;
+    [SerializeField] private GameObject postProcess = null;
     // VideoPlayer
     IEnumerator PlayVideo(VideoClip clip, Action func)
     {
@@ -72,32 +59,30 @@ public class VideoPlayerManager : MonoBehaviour
         // Change video clip
         videoPlayer.clip = clip;
 
-        GameObject aimUI = GameObject.Find("AimUI");
         //Del & Add Aim UI 
-        if (aimUI != null)
-            aimUI.SetActive(false);
-        GameObject fadeInOutPanel = GameObject.Find("FadeInOutPanel");
+        if (aimUI == null) GameObject.Find("AimUI");
+        if (aimUI != null) aimUI.SetActive(false);
+
         //Del & Add fadeInOutPanel 
-        if (fadeInOutPanel != null)
-            fadeInOutPanel.SetActive(false);
+        if (fadeInOutPanel == null) fadeInOutPanel = GameObject.Find("FadeInOutPanel");
+        if (fadeInOutPanel != null) fadeInOutPanel.SetActive(false);
+
         // Del AcquisitionNotificationSlider Before Play Video
         if (GameManager.Instance.GetUI().AcquisitionNotificationSlider.gameObject != null)
             GameManager.Instance.GetUI().AcquisitionNotificationSlider.gameObject.SetActive(false);
+
         // Del PostProcess Before Play Video
-        GameObject postProcess = GameObject.Find("PostProcess");
-        if (postProcess != null)
-            postProcess.SetActive(false);
+        if (postProcess == null) GameObject.Find("PostProcess");
+        if (postProcess != null) postProcess.SetActive(false);
 
         // loopPointReached : last point of Video clip 
         videoPlayer.loopPointReached += (VideoPlayer vp) =>
         {
             videoPlayer.Stop();
-            if (aimUI != null)
-                aimUI.SetActive(true);
+            if (aimUI != null) aimUI.SetActive(true);
+            if (postProcess != null) postProcess.SetActive(true);
             if (GameManager.Instance.GetUI().AcquisitionNotificationSlider.gameObject != null)
                 GameManager.Instance.GetUI().AcquisitionNotificationSlider.gameObject.SetActive(true);
-            if (postProcess != null)
-                postProcess.SetActive(true);
             TimeControl.Play();
             func();
         };
@@ -128,8 +113,8 @@ public class VideoPlayerManager : MonoBehaviour
         if (!GameManager.Instance.isFirstPlay && Input.GetKeyDown(KeyCode.Escape) && videoPlayer.isPlaying)
         {
             StopCoroutine("PlayVideo");
-            if (Time.timeScale == 0) TimeControl.Play();
             videoPlayer.Stop();
+            if (Time.timeScale == 0) TimeControl.Play();
             videoFunc();
             videoFunc = null;
         }
@@ -142,5 +127,5 @@ public class VideoPlayerManager : MonoBehaviour
     /// <param name="category">An enum that defines chapters.</param>
     /// <param name="name">The name of the video for the chapter.Pass the argument without "chapter_" in front of the name</param>
     /// <returns></returns>
-    public VideoClip GetClip(VideoCategory category, string name) => clips.GetValue(category.ToString() + "_" + name);
+    public VideoClip GetClip(VideoCategory category, string name) => clips.GetValue(category + "_" + name);
 }

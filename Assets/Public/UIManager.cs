@@ -1,15 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using MyLibrary;
-using UnityEngine.SceneManagement;
-using UnityEngine.EventSystems;
 using System.IO;
-using Unity.VisualScripting;
 using TMPro;
-using System.IO;
-using System.Reflection.Emit;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using System;
 
 public class UIManager : MonoBehaviour
 {
@@ -26,9 +21,8 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI transLanguage = null;
 
-
-
     GameObject soundManager = null;
+
 
     private UIManager() { }
     #region Player Stamina UI
@@ -45,6 +39,7 @@ public class UIManager : MonoBehaviour
         soundManager = GameObject.Find("Option");
         transButtons = GameObject.Find("Menu").GetComponentsInChildren<Button>();
 
+
         // Move UI to front
         aim.transform.SetAsLastSibling();
         DontDestroyOnLoad(aim);
@@ -60,26 +55,7 @@ public class UIManager : MonoBehaviour
             loadBtn.GetComponent<Button>().interactable = false;
             Destroy(loadBtn.GetComponent<PointerEvent>());
         }
-        // Load Game Data�� ����� ��츦 ��Ÿ�״� bool ���� �ʿ�
-        //Load Data : Null => Button interactable : false
-        //if (transButtons[1] == null)
-        //{
-        //   Destroy(LoadButtonImage);
-        //   transButtons[1].interactable = false;    
     }
-
-    //#region Button Event Trigger
-    //public void OnPointerEnter(PointerEventData eventData)
-    //{
-    //    Debug.Log("OnPointerEnter");
-    //    Debug.Log(gameObject.name);
-    //}
-    //
-    //public void OnPointerExit(PointerEventData eventData)
-    //{
-    //    Debug.Log("OnPointerExit");
-    //}
-    //#endregion // StartScene Envent Trigger
 
     #region Button Click Event
     // NewGameButton
@@ -128,7 +104,7 @@ public class UIManager : MonoBehaviour
         soundManager.SetActive(false);
     }
 
-#endregion
+    #endregion
 
     #region SelectLanguage
     public void SelectLanguage()
@@ -151,13 +127,6 @@ public class UIManager : MonoBehaviour
 
     #endregion
 
-    // Raycast �и� ���� 
-    // *** ray -> Player : interactorable �Ǵ� 
-    // O : mytype -> ���콺 Ŀ�� ����
-    // X : default ���콺 Ŀ���� ����
-    //---------------------------------------------------------------------
-    // Contact Mylibrary => interactable Script
-
     /// <summary>
     /// When player mouse ray enter or exit the object.
     /// Change mouse aim 
@@ -171,19 +140,11 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    /*
-        public virtual void Do_Outline(bool value)
-        {
-            if (_Outlinable != null)
-                _Outlinable.enabled = value;
-            GameManager.Instance.GetUI().ChangeIcon(myType, value);
-        }
-    */
     [SerializeField] Slider acquisitionNotificationSlider = null;
     public Slider AcquisitionNotificationSlider { get { return acquisitionNotificationSlider; } private set { } }
     [SerializeField] TextMeshProUGUI acquisitionNotificationText = null;
     [SerializeField] AudioSource uiAudioSource = null;
-
+    public Slider ScquisitionNotificationSlider { get { return acquisitionNotificationSlider; } }
     public IEnumerator InitAcquisitionNotification()
     {
         acquisitionNotificationSlider = GameObject.Find("AcquisitionNotification").GetComponent<Slider>();
@@ -197,22 +158,22 @@ public class UIManager : MonoBehaviour
         if (GameManager.Instance.completeLoad == false)
             return;
 
-        acquisitionNotificationText.text = "Added Inventory The " + GameManager.Instance.GetCaptureManager().GetName(CaptureManager.SubtitleCategory.ITEMINFO,name);
+        acquisitionNotificationText.text = "Added Inventory The " + GameManager.Instance.GetCaptureManager().GetName(CaptureManager.SubtitleCategory.ITEMINFO, name);
         if (uiAudioSource.clip == null)
             uiAudioSource.clip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Interactable, "UI_AddInventory");
         uiAudioSource.PlayOneShot(uiAudioSource.clip);
         StartCoroutine(StartFill(acquisitionNotificationSlider, acquisitionNotificationText));
     }
 
+    WaitForFixedUpdate wait = new WaitForFixedUpdate();
     IEnumerator StartFill(Slider slider, TextMeshProUGUI text)
     {
         float fillValue = 0f;
         while (slider.value != 1)
         {
-
             fillValue += Time.deltaTime * 7f;
             slider.value = fillValue;
-            yield return new WaitForFixedUpdate();
+            yield return wait;
         }
         text.gameObject.SetActive(true);
         yield return new WaitForSecondsRealtime(3f);
@@ -221,7 +182,7 @@ public class UIManager : MonoBehaviour
         {
             fillValue -= Time.deltaTime * 7f;
             slider.value = fillValue;
-            yield return new WaitForFixedUpdate();
+            yield return wait;
         }
     }
 }

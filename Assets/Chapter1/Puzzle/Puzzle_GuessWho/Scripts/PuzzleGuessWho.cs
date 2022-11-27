@@ -5,7 +5,8 @@ using MyLibrary;
 using Newtonsoft.Json.Linq;
 using Unity.VisualScripting;
 
-public class PuzzleGuessWho : MonoBehaviour
+
+public class PuzzleGuessWho : MonoBehaviour,ISpecial
 {
     [SerializeField] private Player player = null;
     [SerializeField] private GameObject hintObj = null;
@@ -14,6 +15,7 @@ public class PuzzleGuessWho : MonoBehaviour
     [SerializeField] private MeshRenderer draw = null;
     [SerializeField] private Material changingDraw= null;
     [SerializeField] private bool isClear = false;
+    [SerializeField] private bool isCorrect = false;
     [SerializeField] private Interactable doll = null;
     [SerializeField] private BoxCollider endTrigger = null;
 
@@ -28,7 +30,7 @@ public class PuzzleGuessWho : MonoBehaviour
     
     void CheckAnswer()
     {
-        if (gameObject.name == "Isabel")
+        if (isCorrect)
         {
             DropKey();
             isClear = true;
@@ -40,7 +42,6 @@ public class PuzzleGuessWho : MonoBehaviour
 
     void DropKey()
     { 
-        Debug.Log("Drop key by BK ObjectsPool");
         audioSource.clip = GameManager.Instance.GetAudio().GetClip(AudioManager.Type.Identity, "Isabel_Gigle");
         audioSource.Play();
         draw.material = changingDraw;
@@ -49,13 +50,11 @@ public class PuzzleGuessWho : MonoBehaviour
         doll.gameObject.SetActive(true);
         endTrigger.gameObject.SetActive(true);
 
-        Invoke("AudioourceDisable", 2f);
+        Invoke(nameof(AudioourceDisable), 2f);
     }
 
     void AudioourceDisable() => audioSource.gameObject.SetActive(false);
+    private void InsertItemInventory() => GameManager.Instance.ClearPuzzle(nameof(PuzzleGuessWho), hintObj, 7f);
+    public void MySpecial() => CheckAnswer();
 
-    private void InsertItemInventory()
-    {
-        GameManager.Instance.ClearPuzzle("PuzzleGuessWho", hintObj, 7f);
-    }
 }

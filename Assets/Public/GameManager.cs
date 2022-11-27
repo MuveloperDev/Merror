@@ -60,7 +60,6 @@ public class GameManager : Singleton<GameManager>
         _Puzzle.InitPuzzle(chapterNum); // Init puzzles
         yield return StartCoroutine(_UIManager.InitAcquisitionNotification());
         this.chapterNum = chapterNum;
-        GetIdentityManager().IsEnable = false;
 
         if (isFirstPlay == false)
         {

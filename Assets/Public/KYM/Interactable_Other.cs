@@ -40,11 +40,6 @@ public partial class Interactable : MonoBehaviour
                     Do_Light();
                     break;
                 }
-            case ObjectType.PuzzleGuessWho:
-                {
-                    Do_Puzzle_GuessWho();
-                    break;
-                }
             case ObjectType.Mirror:
                 {
                     if (GameManager.Instance.GetPlayer().IsHammer() == false) return;
@@ -59,11 +54,6 @@ public partial class Interactable : MonoBehaviour
             case ObjectType.PuzzleFreemasonCipher:
                 {
                     Do_PuzzleFreemasonCipher();
-                    break;
-                }
-            case ObjectType.JukeBox:
-                {
-                    Do_JukeBox();
                     break;
                 }
             case ObjectType.Key:
@@ -110,17 +100,6 @@ public partial class Interactable : MonoBehaviour
         }
     }
 
-    public virtual void Do_Puzzle_GuessWho()
-    {
-        if (TryGetComponent<PuzzleGuessWho>(out PuzzleGuessWho puzzleGuessWho))
-        {
-            puzzleGuessWho.SendMessage("CheckAnswer",SendMessageOptions.DontRequireReceiver);
-        }
-        else
-        {
-            Debug.Log("This Object not have PuzzleGuessWho Script.");
-        }
-    }
 
     protected void Do_Break_Mirror()
     {
@@ -167,25 +146,6 @@ public partial class Interactable : MonoBehaviour
         {
             Debug.LogError("Require to CMJ & SSH");
         }
-    }
-
-    protected virtual void Do_JukeBox()
-    {
-        if (GameManager.Instance.GetIdentityManager().IsEnable == true)
-        {
-            Debug.LogError("Already Isabel is Enable by MH");
-            return;
-        }
-        if (TryGetComponent<JukeBox>(out JukeBox jukeBox))
-        {
-            jukeBox.SendMessage("Interactable", SendMessageOptions.DontRequireReceiver);
-        }
-
-        else
-        {
-            Debug.LogError("Require to JukeBox");
-        }
-
     }
 
     protected virtual void Do_Key()

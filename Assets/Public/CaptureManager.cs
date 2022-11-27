@@ -5,7 +5,6 @@ using System.IO;
 using System.Collections.ObjectModel;
 using Unity.VisualScripting;
 using TMPro;
-using static UnityEditor.Progress;
 
 public class CaptureManager : MonoBehaviour
 {
@@ -15,7 +14,7 @@ public class CaptureManager : MonoBehaviour
         public string subTitle = null;
 
         public Capture(string name, string subtitle)
-        { 
+        {
             this.name = name;
             this.subTitle = subtitle;
         }
@@ -29,8 +28,9 @@ public class CaptureManager : MonoBehaviour
         KOREAN,   // Test
     }
 
-    [SerializeField] private LanguageCategory language = LanguageCategory.ENGLISH;
-    public LanguageCategory Language { get { return language; } set { language = value; } }
+    public LanguageCategory Language = LanguageCategory.ENGLISH;
+    //public LanguageCategory Language { get { return language; } set { language = value; } }
+
     /// <summary>
     /// Defined Captions Category
     /// </summary>
@@ -62,7 +62,7 @@ public class CaptureManager : MonoBehaviour
     {
 
         offsetPath = Directory.GetCurrentDirectory() + "/Capture";
-        ReadCaption(language);
+        ReadCaption(Language);
     }
     private void ReadCaption(LanguageCategory language)
     {
@@ -73,11 +73,9 @@ public class CaptureManager : MonoBehaviour
             languageFilePath.Add(i, textFilesInfo.GetDirectories()[i].FullName);
         }
 
-        // ���õ� ��� �߰�.
         directoryInfo = new DirectoryInfo(languageFilePath[(int)language]);
 
 
-        // ���丮���� ���� ��� ������ �� ��θ���Ʈ�� �߰�.
         foreach (FileInfo fileInfo in directoryInfo.GetFiles("*.*", SearchOption.AllDirectories))
         {
             if (fileInfo.Extension == ".meta") continue;
@@ -89,6 +87,7 @@ public class CaptureManager : MonoBehaviour
         for (int i = 0; i < pathsList.Count; i++)
         {
             Dictionary<string, Capture> captionsList = new Dictionary<string, Capture>();
+            // 소멸자
             using (FileStream fileStream = new FileStream(pathsList[i], FileMode.Open))
             {
                 StreamReader reader = new StreamReader(fileStream);

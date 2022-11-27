@@ -25,7 +25,7 @@ public class CMController : MonoBehaviour
     private WaitForSecondsRealtime waitForNext = new WaitForSecondsRealtime(6f);
 
     private void Awake() => cinemachineVirtualCameras = cmvCams.GetComponentsInChildren<CinemachineVirtualCamera>();
-
+    
     private void Start() => Init();
 
     private void Init()

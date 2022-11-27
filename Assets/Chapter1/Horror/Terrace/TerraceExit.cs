@@ -24,7 +24,7 @@ public class TerraceExit : MonoBehaviour
     {
         while(true)
         {
-            yield return new WaitUntil(() => { return GameManager.Instance.GetIdentityManager().GetIdentity().gameObject.active == true;  });
+            yield return new WaitUntil(() => { return GameManager.Instance.GetIdentityManager().GetIdentity().gameObject.activeSelf == true;  });
             if (terraceDoor.GetUsedState() == false)
             {
                 GameManager.Instance.GetIdentityManager().GetIdentity().TurnOffState();
@@ -40,7 +40,6 @@ public class TerraceExit : MonoBehaviour
                 if (exitCallback != null) exitCallback();
                 // Disable identity
                 GameManager.Instance.GetIdentityManager().GetIdentity().gameObject.SetActive(false);
-                GameManager.Instance.GetIdentityManager().IsEnable = false;
                 myCo = null;
                 terraceDoor.IsLocked = false;
                 yield break;

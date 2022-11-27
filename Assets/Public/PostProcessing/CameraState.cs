@@ -10,7 +10,7 @@ using static CameraState;
 
 public class CameraState : MonoBehaviour
 {
-    
+
     public enum CamState
     {
         NONE,
@@ -100,7 +100,7 @@ public class CameraState : MonoBehaviour
 
         Debug.Log("TurnOnState");
 
-        // »óÅÂÇØÁ¦ Å×½ºÆ®¿ë
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½×½ï¿½Æ®ï¿½ï¿½
         if (prevState == STATE)
         {
             TurnOffState();
@@ -144,7 +144,7 @@ public class CameraState : MonoBehaviour
             yield return new WaitForFixedUpdate();
             time += Time.deltaTime;
             vignette.color.value = Color.red;
-            vignette.intensity.value = Mathf.Clamp(time * 5f, 0.1f,0.8f);
+            vignette.intensity.value = Mathf.Clamp(time * 5f, 0.1f, 0.8f);
             lensDistortion.intensity.value = Mathf.Clamp(time * 30f, 0f, 80f);
             chromaticAberration.intensity.value = Mathf.Clamp(time * 5f, 0.1f, 1f);
             bloom.intensity.value = Mathf.Clamp(time * 30f, 0f, 60f);
@@ -154,7 +154,7 @@ public class CameraState : MonoBehaviour
             {
                 yield return new WaitForSeconds(3f);
                 break;
-            }    
+            }
         }
         if (callBackPanic != null) callBackPanic();
         TurnOffState();
@@ -183,8 +183,8 @@ public class CameraState : MonoBehaviour
         fadeInOutPanel.gameObject.SetActive(false);
 
         GameManager.Instance.GetVideoPlayer().CallPlayVideo(
-            GameManager.Instance.GetVideoPlayer().GetClip(VideoPlayerManager.VideoCategory.CHAPTER1, "DEATH"), () => {
-
+            GameManager.Instance.GetVideoPlayer().GetClip(VideoPlayerManager.VideoCategory.CHAPTER1, "DEATH"), () =>
+            {
                 //TurnOffState();
                 // For Test
                 Debug.Log("Deathhhhh Plaese");
@@ -193,7 +193,7 @@ public class CameraState : MonoBehaviour
                 SceneManager.LoadSceneAsync("LodingScene");
             }, 2f);
     }
-    
+
     IEnumerator FADEIN_STATE()
     {
         fadeInOut = false;
@@ -276,7 +276,7 @@ public class CameraState : MonoBehaviour
 
             color.a = alpha;
             fadeInOutPanel.color = color;
-            yield return new WaitForFixedUpdate(); 
+            yield return new WaitForFixedUpdate();
         }
     }
 
@@ -309,7 +309,7 @@ public class CameraState : MonoBehaviour
     IEnumerator DirectingEffect_Vignette()
     {
         float value = fadeInOut ? 0.01f : -0.01f;
-        
+
         while (true)
         {
             if (vignette.intensity.value <= 0.52f && !fadeInOut)

@@ -4,14 +4,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JukeBox : MonoBehaviour
+public class JukeBox : MonoBehaviour,ISpecial
 {
     [SerializeField] private Transform terrace = null;
     [SerializeField] private CameraState cameraState = null;
 
+    public void MySpecial()
+    {
+        if (GameManager.Instance.GetIdentityManager().GetIdentity().gameObject.activeSelf)
+        {
+            Debug.LogError("Already Isabel is Enable by MH");
+            return;
+        }
+        Interactable();
+    }
+
     void Interactable()
     {
-        if (GameManager.Instance.GetIdentityManager().IsEnable == true)
+        if (GameManager.Instance.GetIdentityManager().GetIdentity().gameObject.activeSelf)
         {
             Debug.LogError("Already Isabel is Enable by MH");
             return;
@@ -19,7 +29,6 @@ public class JukeBox : MonoBehaviour
         else
         {
             terrace.gameObject.SetActive(true);
-            GameManager.Instance.GetIdentityManager().IsEnable = true;
             Destroy(GetComponent<Interactable>());
             Destroy(GetComponent<Outlinable>());
             cameraState.TurnOnState(CameraState.CamState.PANIC);

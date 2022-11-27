@@ -735,7 +735,7 @@ MonoBehaviour:
   Gettable: 0
   Inventory_Scale: 1
   Special: 1
-  isPuzzle: 0
+  isPuzzle: 1
   _Light: {fileID: 0}
   Outlinable: 1
   Rotatable: 0
@@ -776,12 +776,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d93ff4400cf6c5443bca7ee16c65649b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 7
+  IsLocked: 0
+  myType: 0
+  Moveable: 0
+  Movement_Axis: 0
+  Target_Movement: 5
+  Movement_Speed: 1
+  InvertMovement: 0
+  Gettable: 0
+  Inventory_Scale: 1
+  Special: 1
+  isPuzzle: 0
+  _Light: {fileID: 0}
+  Outlinable: 0
+  Rotatable: 0
+  Rotation_Axis: 0
+  Target_Angle: 90
+  Rotate_Speed: 70
+  Invert: 0
+  IsUsed: 0
+  AutoReset: 0
+  ResetTimer: 0
+  Reset_Speed: 50
+  myobstacle: {fileID: 0}
+  Audio_Playable: 0
+  _MyClip: {fileID: 0}
+  Clip_Name: 
   lr: {fileID: 2259024378666398556}
   startPos: {fileID: 120946293}
   endPos: {fileID: 6826912118619891906}
+  PlayerPosAfterCutVideo: {fileID: 1866048421443760939}
   nextObject: {fileID: 5193633343245566736}
   frame: {fileID: 5193633343245566736}
+  Hint1: {fileID: 2849733170565474736, guid: 8a9ccf4bb2572534aa0578eb5f769779, type: 3}
   allDolls:
   - {fileID: 2752945434087458692}
   - {fileID: 2804930306498313129}
@@ -790,15 +817,14 @@ MonoBehaviour:
   - {fileID: 5503962032566992789}
   - {fileID: 8572084612608472822}
   - {fileID: 2257356330833476728}
-  interactableok: 0
-  Hint1: {fileID: 2849733170565474736, guid: 8a9ccf4bb2572534aa0578eb5f769779, type: 3}
   openDoors: []
-  PlayerPosAfterCutVideo: {fileID: 1866048421443760939}
   myRenderLine: {fileID: 2259024378666398556}
   myInteractable: {fileID: 2259024378666398559}
   myOutlinable: {fileID: 2259024378666398552}
   myPuzzle: {fileID: 2259024378666398557}
   nextObjPuzzle: {fileID: 1987658796906956015}
+  index: 7
+  interactableok: 0
 --- !u!120 &2259024378666398556
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -1245,7 +1271,7 @@ MonoBehaviour:
   Gettable: 0
   Inventory_Scale: 1
   Special: 1
-  isPuzzle: 0
+  isPuzzle: 1
   _Light: {fileID: 0}
   Outlinable: 1
   Rotatable: 0
@@ -1286,12 +1312,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d93ff4400cf6c5443bca7ee16c65649b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 1
+  IsLocked: 0
+  myType: 0
+  Moveable: 0
+  Movement_Axis: 0
+  Target_Movement: 5
+  Movement_Speed: 1
+  InvertMovement: 0
+  Gettable: 0
+  Inventory_Scale: 1
+  Special: 1
+  isPuzzle: 0
+  _Light: {fileID: 0}
+  Outlinable: 0
+  Rotatable: 0
+  Rotation_Axis: 0
+  Target_Angle: 90
+  Rotate_Speed: 70
+  Invert: 0
+  IsUsed: 0
+  AutoReset: 0
+  ResetTimer: 0
+  Reset_Speed: 50
+  myobstacle: {fileID: 0}
+  Audio_Playable: 0
+  _MyClip: {fileID: 0}
+  Clip_Name: 
   lr: {fileID: 2765936203546974648}
   startPos: {fileID: 794049969}
   endPos: {fileID: 6826912118619891906}
+  PlayerPosAfterCutVideo: {fileID: 1866048421443760939}
   nextObject: {fileID: 2804930306498313129}
   frame: {fileID: 5193633343245566736}
+  Hint1: {fileID: 2849733170565474736, guid: 8a9ccf4bb2572534aa0578eb5f769779, type: 3}
   allDolls:
   - {fileID: 2752945434087458692}
   - {fileID: 2804930306498313129}
@@ -1300,15 +1353,14 @@ MonoBehaviour:
   - {fileID: 5503962032566992789}
   - {fileID: 8572084612608472822}
   - {fileID: 2257356330833476728}
-  interactableok: 0
-  Hint1: {fileID: 2849733170565474736, guid: 8a9ccf4bb2572534aa0578eb5f769779, type: 3}
   openDoors: []
-  PlayerPosAfterCutVideo: {fileID: 1866048421443760939}
   myRenderLine: {fileID: 2765936203546974648}
   myInteractable: {fileID: 2765936203546974651}
   myOutlinable: {fileID: 2765936203546974628}
   myPuzzle: {fileID: 2765936203546974649}
   nextObjPuzzle: {fileID: 2808380094990509624}
+  index: 1
+  interactableok: 0
 --- !u!120 &2765936203546974648
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -1589,7 +1641,7 @@ MonoBehaviour:
   Gettable: 0
   Inventory_Scale: 1
   Special: 1
-  isPuzzle: 0
+  isPuzzle: 1
   _Light: {fileID: 0}
   Outlinable: 1
   Rotatable: 0
@@ -1630,12 +1682,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d93ff4400cf6c5443bca7ee16c65649b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 2
+  IsLocked: 0
+  myType: 0
+  Moveable: 0
+  Movement_Axis: 0
+  Target_Movement: 5
+  Movement_Speed: 1
+  InvertMovement: 0
+  Gettable: 0
+  Inventory_Scale: 1
+  Special: 1
+  isPuzzle: 0
+  _Light: {fileID: 0}
+  Outlinable: 0
+  Rotatable: 0
+  Rotation_Axis: 0
+  Target_Angle: 90
+  Rotate_Speed: 70
+  Invert: 0
+  IsUsed: 0
+  AutoReset: 0
+  ResetTimer: 0
+  Reset_Speed: 50
+  myobstacle: {fileID: 0}
+  Audio_Playable: 0
+  _MyClip: {fileID: 0}
+  Clip_Name: 
   lr: {fileID: 2808380094990509631}
   startPos: {fileID: 1641363395}
   endPos: {fileID: 6826912118619891906}
+  PlayerPosAfterCutVideo: {fileID: 1866048421443760939}
   nextObject: {fileID: 4337341570703030640}
   frame: {fileID: 5193633343245566736}
+  Hint1: {fileID: 2849733170565474736, guid: 8a9ccf4bb2572534aa0578eb5f769779, type: 3}
   allDolls:
   - {fileID: 2752945434087458692}
   - {fileID: 2804930306498313129}
@@ -1644,15 +1723,14 @@ MonoBehaviour:
   - {fileID: 5503962032566992789}
   - {fileID: 8572084612608472822}
   - {fileID: 2257356330833476728}
-  interactableok: 0
-  Hint1: {fileID: 2849733170565474736, guid: 8a9ccf4bb2572534aa0578eb5f769779, type: 3}
   openDoors: []
-  PlayerPosAfterCutVideo: {fileID: 1866048421443760939}
   myRenderLine: {fileID: 2808380094990509631}
   myInteractable: {fileID: 2808380094990509626}
   myOutlinable: {fileID: 2808380094990509627}
   myPuzzle: {fileID: 2808380094990509624}
   nextObjPuzzle: {fileID: 4337341570706104075}
+  index: 2
+  interactableok: 0
 --- !u!120 &2808380094990509631
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -2491,7 +2569,7 @@ MonoBehaviour:
   Gettable: 0
   Inventory_Scale: 1
   Special: 1
-  isPuzzle: 0
+  isPuzzle: 1
   _Light: {fileID: 0}
   Outlinable: 1
   Rotatable: 0
@@ -2532,12 +2610,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d93ff4400cf6c5443bca7ee16c65649b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 3
+  IsLocked: 0
+  myType: 0
+  Moveable: 0
+  Movement_Axis: 0
+  Target_Movement: 5
+  Movement_Speed: 1
+  InvertMovement: 0
+  Gettable: 0
+  Inventory_Scale: 1
+  Special: 1
+  isPuzzle: 0
+  _Light: {fileID: 0}
+  Outlinable: 0
+  Rotatable: 0
+  Rotation_Axis: 0
+  Target_Angle: 90
+  Rotate_Speed: 70
+  Invert: 0
+  IsUsed: 0
+  AutoReset: 0
+  ResetTimer: 0
+  Reset_Speed: 50
+  myobstacle: {fileID: 0}
+  Audio_Playable: 0
+  _MyClip: {fileID: 0}
+  Clip_Name: 
   lr: {fileID: 4337341570706104074}
   startPos: {fileID: 1973571265}
   endPos: {fileID: 6826912118619891906}
+  PlayerPosAfterCutVideo: {fileID: 1866048421443760939}
   nextObject: {fileID: 4851856985678412563}
   frame: {fileID: 5193633343245566736}
+  Hint1: {fileID: 2849733170565474736, guid: 8a9ccf4bb2572534aa0578eb5f769779, type: 3}
   allDolls:
   - {fileID: 2752945434087458692}
   - {fileID: 2804930306498313129}
@@ -2546,15 +2651,14 @@ MonoBehaviour:
   - {fileID: 5503962032566992789}
   - {fileID: 8572084612608472822}
   - {fileID: 2257356330833476728}
-  interactableok: 0
-  Hint1: {fileID: 2849733170565474736, guid: 8a9ccf4bb2572534aa0578eb5f769779, type: 3}
   openDoors: []
-  PlayerPosAfterCutVideo: {fileID: 1866048421443760939}
   myRenderLine: {fileID: 4337341570706104074}
   myInteractable: {fileID: 4337341570706104181}
   myOutlinable: {fileID: 4337341570706104182}
   myPuzzle: {fileID: 4337341570706104075}
   nextObjPuzzle: {fileID: 4854857503788327980}
+  index: 3
+  interactableok: 0
 --- !u!120 &4337341570706104074
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -4771,7 +4875,7 @@ MonoBehaviour:
   Gettable: 0
   Inventory_Scale: 1
   Special: 1
-  isPuzzle: 0
+  isPuzzle: 1
   _Light: {fileID: 0}
   Outlinable: 1
   Rotatable: 0
@@ -4812,12 +4916,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d93ff4400cf6c5443bca7ee16c65649b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 4
+  IsLocked: 0
+  myType: 0
+  Moveable: 0
+  Movement_Axis: 0
+  Target_Movement: 5
+  Movement_Speed: 1
+  InvertMovement: 0
+  Gettable: 0
+  Inventory_Scale: 1
+  Special: 1
+  isPuzzle: 0
+  _Light: {fileID: 0}
+  Outlinable: 0
+  Rotatable: 0
+  Rotation_Axis: 0
+  Target_Angle: 90
+  Rotate_Speed: 70
+  Invert: 0
+  IsUsed: 0
+  AutoReset: 0
+  ResetTimer: 0
+  Reset_Speed: 50
+  myobstacle: {fileID: 0}
+  Audio_Playable: 0
+  _MyClip: {fileID: 0}
+  Clip_Name: 
   lr: {fileID: 4854857503788327971}
   startPos: {fileID: 1506299220}
   endPos: {fileID: 6826912118619891906}
+  PlayerPosAfterCutVideo: {fileID: 1866048421443760939}
   nextObject: {fileID: 5503962032566992789}
   frame: {fileID: 5193633343245566736}
+  Hint1: {fileID: 2849733170565474736, guid: 8a9ccf4bb2572534aa0578eb5f769779, type: 3}
   allDolls:
   - {fileID: 2752945434087458692}
   - {fileID: 2804930306498313129}
@@ -4826,15 +4957,14 @@ MonoBehaviour:
   - {fileID: 5503962032566992789}
   - {fileID: 8572084612608472822}
   - {fileID: 2257356330833476728}
-  interactableok: 0
-  Hint1: {fileID: 2849733170565474736, guid: 8a9ccf4bb2572534aa0578eb5f769779, type: 3}
   openDoors: []
-  PlayerPosAfterCutVideo: {fileID: 1866048421443760939}
   myRenderLine: {fileID: 4854857503788327971}
   myInteractable: {fileID: 4854857503788327982}
   myOutlinable: {fileID: 4854857503788327983}
   myPuzzle: {fileID: 4854857503788327980}
   nextObjPuzzle: {fileID: 5505843405394829612}
+  index: 4
+  interactableok: 0
 --- !u!120 &4854857503788327971
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -5439,7 +5569,7 @@ MonoBehaviour:
   Gettable: 0
   Inventory_Scale: 1
   Special: 1
-  isPuzzle: 0
+  isPuzzle: 1
   _Light: {fileID: 0}
   Outlinable: 1
   Rotatable: 0
@@ -5467,12 +5597,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d93ff4400cf6c5443bca7ee16c65649b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 8
+  IsLocked: 0
+  myType: 0
+  Moveable: 0
+  Movement_Axis: 0
+  Target_Movement: 5
+  Movement_Speed: 1
+  InvertMovement: 0
+  Gettable: 0
+  Inventory_Scale: 1
+  Special: 1
+  isPuzzle: 0
+  _Light: {fileID: 0}
+  Outlinable: 0
+  Rotatable: 0
+  Rotation_Axis: 0
+  Target_Angle: 90
+  Rotate_Speed: 70
+  Invert: 0
+  IsUsed: 0
+  AutoReset: 0
+  ResetTimer: 0
+  Reset_Speed: 50
+  myobstacle: {fileID: 0}
+  Audio_Playable: 0
+  _MyClip: {fileID: 0}
+  Clip_Name: 
   lr: {fileID: 0}
   startPos: {fileID: 0}
   endPos: {fileID: 0}
+  PlayerPosAfterCutVideo: {fileID: 1866048421443760939}
   nextObject: {fileID: 0}
   frame: {fileID: 5193633343245566736}
+  Hint1: {fileID: 2849733170565474736, guid: 8a9ccf4bb2572534aa0578eb5f769779, type: 3}
   allDolls:
   - {fileID: 2752945434087458692}
   - {fileID: 2804930306498313129}
@@ -5481,15 +5638,14 @@ MonoBehaviour:
   - {fileID: 5503962032566992789}
   - {fileID: 8572084612608472822}
   - {fileID: 2257356330833476728}
-  interactableok: 0
-  Hint1: {fileID: 2849733170565474736, guid: 8a9ccf4bb2572534aa0578eb5f769779, type: 3}
   openDoors: []
-  PlayerPosAfterCutVideo: {fileID: 1866048421443760939}
   myRenderLine: {fileID: 0}
   myInteractable: {fileID: 1987658796906956010}
   myOutlinable: {fileID: 1987658796906956008}
   myPuzzle: {fileID: 1987658796906956015}
   nextObjPuzzle: {fileID: 0}
+  index: 8
+  interactableok: 0
 --- !u!1 &5266499834413900334
 GameObject:
   m_ObjectHideFlags: 0
@@ -5783,7 +5939,7 @@ MonoBehaviour:
   Gettable: 0
   Inventory_Scale: 1
   Special: 1
-  isPuzzle: 0
+  isPuzzle: 1
   _Light: {fileID: 0}
   Outlinable: 1
   Rotatable: 0
@@ -5824,12 +5980,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d93ff4400cf6c5443bca7ee16c65649b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 5
+  IsLocked: 0
+  myType: 0
+  Moveable: 0
+  Movement_Axis: 0
+  Target_Movement: 5
+  Movement_Speed: 1
+  InvertMovement: 0
+  Gettable: 0
+  Inventory_Scale: 1
+  Special: 1
+  isPuzzle: 0
+  _Light: {fileID: 0}
+  Outlinable: 0
+  Rotatable: 0
+  Rotation_Axis: 0
+  Target_Angle: 90
+  Rotate_Speed: 70
+  Invert: 0
+  IsUsed: 0
+  AutoReset: 0
+  ResetTimer: 0
+  Reset_Speed: 50
+  myobstacle: {fileID: 0}
+  Audio_Playable: 0
+  _MyClip: {fileID: 0}
+  Clip_Name: 
   lr: {fileID: 5505843405394829603}
   startPos: {fileID: 456871144}
   endPos: {fileID: 6826912118619891906}
+  PlayerPosAfterCutVideo: {fileID: 1866048421443760939}
   nextObject: {fileID: 8572084612608472822}
   frame: {fileID: 5193633343245566736}
+  Hint1: {fileID: 2849733170565474736, guid: 8a9ccf4bb2572534aa0578eb5f769779, type: 3}
   allDolls:
   - {fileID: 2752945434087458692}
   - {fileID: 2804930306498313129}
@@ -5838,15 +6021,14 @@ MonoBehaviour:
   - {fileID: 5503962032566992789}
   - {fileID: 8572084612608472822}
   - {fileID: 2257356330833476728}
-  interactableok: 0
-  Hint1: {fileID: 2849733170565474736, guid: 8a9ccf4bb2572534aa0578eb5f769779, type: 3}
   openDoors: []
-  PlayerPosAfterCutVideo: {fileID: 1866048421443760939}
   myRenderLine: {fileID: 5505843405394829603}
   myInteractable: {fileID: 5505843405394829614}
   myOutlinable: {fileID: 5505843405394829615}
   myPuzzle: {fileID: 5505843405394829612}
   nextObjPuzzle: {fileID: 8574284769593078219}
+  index: 5
+  interactableok: 0
 --- !u!120 &5505843405394829603
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -8037,7 +8219,7 @@ MonoBehaviour:
   Gettable: 0
   Inventory_Scale: 1
   Special: 1
-  isPuzzle: 0
+  isPuzzle: 1
   _Light: {fileID: 0}
   Outlinable: 1
   Rotatable: 0
@@ -8078,12 +8260,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d93ff4400cf6c5443bca7ee16c65649b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 6
+  IsLocked: 0
+  myType: 0
+  Moveable: 0
+  Movement_Axis: 0
+  Target_Movement: 5
+  Movement_Speed: 1
+  InvertMovement: 0
+  Gettable: 0
+  Inventory_Scale: 1
+  Special: 1
+  isPuzzle: 0
+  _Light: {fileID: 0}
+  Outlinable: 0
+  Rotatable: 0
+  Rotation_Axis: 0
+  Target_Angle: 90
+  Rotate_Speed: 70
+  Invert: 0
+  IsUsed: 0
+  AutoReset: 0
+  ResetTimer: 0
+  Reset_Speed: 50
+  myobstacle: {fileID: 0}
+  Audio_Playable: 0
+  _MyClip: {fileID: 0}
+  Clip_Name: 
   lr: {fileID: 8574284769593078218}
   startPos: {fileID: 608568483}
   endPos: {fileID: 6826912118619891906}
+  PlayerPosAfterCutVideo: {fileID: 1866048421443760939}
   nextObject: {fileID: 2257356330833476728}
   frame: {fileID: 5193633343245566736}
+  Hint1: {fileID: 2849733170565474736, guid: 8a9ccf4bb2572534aa0578eb5f769779, type: 3}
   allDolls:
   - {fileID: 2752945434087458692}
   - {fileID: 2804930306498313129}
@@ -8092,15 +8301,14 @@ MonoBehaviour:
   - {fileID: 5503962032566992789}
   - {fileID: 8572084612608472822}
   - {fileID: 2257356330833476728}
-  interactableok: 0
-  Hint1: {fileID: 2849733170565474736, guid: 8a9ccf4bb2572534aa0578eb5f769779, type: 3}
   openDoors: []
-  PlayerPosAfterCutVideo: {fileID: 1866048421443760939}
   myRenderLine: {fileID: 8574284769593078218}
   myInteractable: {fileID: 8574284769593079349}
   myOutlinable: {fileID: 8574284769593079350}
   myPuzzle: {fileID: 8574284769593078219}
   nextObjPuzzle: {fileID: 2259024378666398557}
+  index: 6
+  interactableok: 0
 --- !u!120 &8574284769593078218
 LineRenderer:
   m_ObjectHideFlags: 0

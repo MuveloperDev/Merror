@@ -2,7 +2,7 @@ using EPOOutline;
 using System.Collections;
 using UnityEngine;
 
-public class Puzzle_IsabellRoom : MonoBehaviour
+public class Puzzle_IsabellRoom : Interactable, ISpecial
 {
     #region CachingComponents
     [SerializeField] LineRenderer lr;
@@ -33,7 +33,7 @@ public class Puzzle_IsabellRoom : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    private void Start()
+    protected new void Start()
     {
         //Receive this puzzle is Finished from GameManager
         if(GameManager.Instance.isFirstPlay == false)
@@ -42,22 +42,31 @@ public class Puzzle_IsabellRoom : MonoBehaviour
         if (puzzleFinish == null)
             Debug.LogError("No Receive DataValue From GameManager");
 
+        if(nextObject != null)
+            RotateSM(nextObject.transform, 1f, false);
+
         // Check this Puzzle is finished
         if (puzzleFinish == true)
         {
             Destroy(myInteractable);
             Destroy(myOutlinable);
             frame.SetActive(false);
+            Destroy(this, 0.5f);
             return;
         }
         if (gameObject.name == "1_RABBIT" || gameObject.name == "Frame_Finish") interactableok = true;
     }
 
-    private void CheckDolls()
+    public override void Do_Interact()
+    {
+        MySpecial();
+    }
+
+    public void MySpecial()
     {
         if (interactableok == false)
         {
-            for(int i = 0; i < allDolls.Length; i++)
+            for (int i = 0; i < allDolls.Length; i++)
             {
                 if (i == 2)
                 {
@@ -91,7 +100,6 @@ public class Puzzle_IsabellRoom : MonoBehaviour
                 InsertItemInventory();
                 break;
         }
-
     }
 
     private void WrongAnswer()

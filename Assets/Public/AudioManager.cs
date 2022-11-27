@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-
 public class AudioManager : MonoBehaviour
 {
     public enum Type { Player, Identity, HorrorEvnets, Interactable, Environment, Puzzle};

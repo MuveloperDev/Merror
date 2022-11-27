@@ -45,11 +45,6 @@ public partial class Interactable : MonoBehaviour
                     Do_Puzzle_GuessWho();
                     break;
                 }
-            case ObjectType.PuzzleIsabellRoom:
-                {
-                    Do_Puzzme_IsabellRoom();
-                    break;
-                }
             case ObjectType.Mirror:
                 {
                     if (GameManager.Instance.GetPlayer().IsHammer() == false) return;
@@ -127,20 +122,6 @@ public partial class Interactable : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Check Puzzle in IsabellRoom
-    /// </summary>
-    protected void Do_Puzzme_IsabellRoom()
-    {
-        if (TryGetComponent<Puzzle_IsabellRoom>(out Puzzle_IsabellRoom puzzle_IsabellRoom))
-        {
-            puzzle_IsabellRoom.SendMessage("CheckDolls", SendMessageOptions.DontRequireReceiver);
-        }
-        else
-        {
-            Debug.Log("This Object not have Puzzle_IsabellRoom Script.");
-        }
-    }
     protected void Do_Break_Mirror()
     {
         if (TryGetComponent<Mirror>(out Mirror mirror))

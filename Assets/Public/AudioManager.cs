@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+
 public class AudioManager : MonoBehaviour
 {
     public enum Type { Player, Identity, HorrorEvnets, Interactable, Environment, Puzzle};
@@ -14,7 +15,7 @@ public class AudioManager : MonoBehaviour
     private Dictionary<string, AudioClip> PlayerClips = new Dictionary<string, AudioClip>();
     private Dictionary<string, AudioClip> InteractableClips = new Dictionary<string, AudioClip>();
     private Dictionary<string, AudioClip> EnviromentClips = new Dictionary<string, AudioClip>();
-    private Dictionary<string, AudioClip> IdentiyuClips = new Dictionary<string, AudioClip>();
+    private Dictionary<string, AudioClip> IdentityClips = new Dictionary<string, AudioClip>();
     private Dictionary<string, AudioClip> HorrorEvnetsClips = new Dictionary<string, AudioClip>();
     private Dictionary<string, AudioClip> PuzzleClips = new Dictionary<string, AudioClip>();
 
@@ -60,7 +61,7 @@ public class AudioManager : MonoBehaviour
             case "Identity":
                 for (int i = 0; i < obj.Sounds.Length; i++)
                 {
-                    IdentiyuClips.Add(IdentityObj.Sounds[i].name, IdentityObj.Sounds[i]);
+                    IdentityClips.Add(IdentityObj.Sounds[i].name, IdentityObj.Sounds[i]);
                 }
                 break;
             case "HorrorEventSounds":
@@ -100,7 +101,7 @@ public class AudioManager : MonoBehaviour
         switch (soundType)
         {
             case Type.Identity:
-                curdic = IdentiyuClips;
+                curdic = IdentityClips;
                 break;
 
             case Type.Player:

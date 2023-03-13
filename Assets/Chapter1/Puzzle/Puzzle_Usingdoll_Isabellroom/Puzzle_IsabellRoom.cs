@@ -70,7 +70,7 @@ public class Puzzle_IsabellRoom : Interactable, ISpecial
             {
                 if (i == 2)
                 {
-                    allDolls[i].transform.GetChild(0).SendMessage("WrongAnswer", SendMessageOptions.DontRequireReceiver);//GetComponent<Puzzle_IsabellRoom>().RenderLine(false);
+                    allDolls[i].transform.GetChild(0).SendMessage("WrongAnswer", SendMessageOptions.DontRequireReceiver);
                     continue;
                 }
                 allDolls[i].SendMessage("WrongAnswer", SendMessageOptions.DontRequireReceiver);

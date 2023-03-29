@@ -46,6 +46,11 @@ public partial class Interactable : MonoBehaviour
                     Do_Break_Mirror();
                     break;
                 }
+            case ObjectType.PuzzleGuessWho:
+                {
+                    Do_Puzzle_GuessWho();
+                    break;
+                }
             case ObjectType.PuzzleDecryption:
                 {
                     Do_Puzzle_Decryption();
@@ -147,7 +152,17 @@ public partial class Interactable : MonoBehaviour
             Debug.LogError("Require to CMJ & SSH");
         }
     }
-
+    public virtual void Do_Puzzle_GuessWho()
+    {
+        if (TryGetComponent<PuzzleGuessWho>(out PuzzleGuessWho puzzleGuessWho))
+        {
+            puzzleGuessWho.SendMessage("CheckAnswer", SendMessageOptions.DontRequireReceiver);
+        }
+        else
+        {
+            Debug.Log("This Object not have PuzzleGuessWho Script.");
+        }
+    }
     protected virtual void Do_Key()
     {
         if (TryGetComponent<Key>(out Key key))

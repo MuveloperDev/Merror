@@ -184,8 +184,10 @@ namespace MyLibrary
     public static class SaveLoad
     {
         private static readonly string defaultPath = System.IO.Directory.GetCurrentDirectory();
-        private static readonly string savePath = defaultPath + "/MakeFile.bat";
-        private static readonly string loadPath = defaultPath + "/ReadFile.bat";
+        private static readonly string savePath = defaultPath + "/SaveData";
+        private static FileInfo saveDirectoryInfo = null;
+        private static StreamWriter sw = null;
+        private static StreamReader sr = null;
 
         private static byte[] myKey = null;
         private static byte[] myIV = null;
@@ -194,6 +196,8 @@ namespace MyLibrary
         {
             myKey = Convert.FromBase64String("FsaPKfHqao6CB26XJ/TlldRaFxCg7141pQE2gHx2iRw=");
             myIV = Convert.FromBase64String("ZL4IxFBvQzlnirk5wZVIxw==");
+
+            saveDirectoryInfo = new FileInfo(savePath);
         }
 
 
@@ -205,16 +209,30 @@ namespace MyLibrary
         public static void Save(SaveData data)
         {
             string json = JsonUtility.ToJson(data);
-            json = json.Replace(",", "$");
-            Debug.Log("JSON : " + json);
             json = Convert.ToBase64String(Encryption(myKey, myIV, json));
-            json = json.Replace("=", "@");
-            System.Diagnostics.ProcessStartInfo info = new System.Diagnostics.ProcessStartInfo(savePath,json);
-            info.UseShellExecute = false;
-            info.CreateNoWindow = true;
-            info.RedirectStandardOutput = true;
 
-            System.Diagnostics.Process.Start(info).WaitForExit();
+            if(saveDirectoryInfo.Exists == false)
+            {
+                Directory.CreateDirectory(savePath);
+            }
+
+            try
+            {
+                using (sw = new StreamWriter(savePath+ "/Data.txt"))
+                {
+                    sw.WriteLine(json);
+
+                    sw.Close();
+                    sw = null;
+                }
+            }
+            catch(Exception e)
+            {
+                sw.Close();
+                sw = null;
+                Debug.LogException(e);
+            }
+            
         }
 
         /// <summary>
@@ -224,34 +242,28 @@ namespace MyLibrary
         /// <returns> OverWritten Scriptable Object </returns>
         public static SaveData? Load()
         {
-            System.Diagnostics.ProcessStartInfo psi = new System.Diagnostics.ProcessStartInfo();
-            psi.FileName = loadPath;
-            psi.RedirectStandardOutput = true;
-            psi.UseShellExecute = false;
-
-            System.Diagnostics.Process loadProcess = System.Diagnostics.Process.Start(psi);
-
-            string encodingString = null;
-            while (true)
+            string dataStr = null;
+            try
             {
-                string parsing = null;
-                if ((parsing = loadProcess.StandardOutput.ReadLine()) != null)
+                using (sr = new StreamReader(savePath + "/Data.txt"))
                 {
-                    encodingString = parsing;
+                    dataStr = sr.ReadToEnd();
+
+                    sr.Close();
+                    sr = null;
                 }
-
-                if (parsing == null)
-                    break;
-
             }
+            catch(Exception e)
+            {
+                sr.Close();
+                sr = null;
+                Debug.LogException(e);
+            }
+
             SaveData? data = null;
 
-            encodingString = encodingString.Replace("@", "=");
-
-            encodingString = Descryption(myKey, myIV, Convert.FromBase64String(encodingString));
-            data = JsonUtility.FromJson<SaveData>(encodingString.Replace("$", ","));
-
-            SaveData ia = (SaveData)data;
+            dataStr = Descryption(myKey, myIV, Convert.FromBase64String(dataStr));
+            data = JsonUtility.FromJson<SaveData>(dataStr);
 
             return data;
         }

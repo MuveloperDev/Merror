@@ -84,7 +84,6 @@ public class UIManager : MonoBehaviour
         GameManager.Instance.GetCaptureManager().Init();
         GameManager.Instance.Load();
         SceneManager.LoadSceneAsync("LodingScene");
-        Debug.LogError("Load Game");
     }
 
     // ExitButton
